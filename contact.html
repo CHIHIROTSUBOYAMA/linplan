@@ -3,96 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>お問い合わせ | PORTFOLIO</title>
+<title>お問い合わせ | LinPlan</title>
 <meta name="description" content="ホームページ・アプリ制作のご相談、お見積りなどお気軽にお問い合わせください。">
 <meta name="robots" content="index, follow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Klee+One:wght@400;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/common.css">
 
 <style>
-  :root {
-    --white: #ffffff;
-    --bg: #ffffff;
-    --bg-gray: #f6f6f4;
-    --text: #313131;
-    --text-light: #6b6b6b;
-    --text-muted: #a0a0a0;
-    --dark: #32373c;
-    --accent: #3ba297;
-    --border: #e5e5e3;
-    --font: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
-    --font-en: 'Inter', sans-serif;
-    --ease: cubic-bezier(0.16, 1, 0.3, 1);
-    --container: 1080px;
-  }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 2; font-weight: 400; font-size: 15px; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
-  ::selection { background: var(--dark); color: #fff; }
-
-  .container { max-width: var(--container); margin: 0 auto; padding: 0 40px; }
-
-  /* ============ NAV (centered logo) ============ */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0);
-    transition: background .4s var(--ease), box-shadow .4s var(--ease);
-  }
-  .nav.scrolled {
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 1px 0 var(--border);
-  }
-  .nav-inner {
-    max-width: var(--container);
-    margin: 0 auto; padding: 0 40px;
-    height: 80px;
-    display: grid; grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-  }
-  .nav-links-left, .nav-links-right {
-    list-style: none; display: flex; align-items: center; gap: 36px;
-  }
-  .nav-links-left { justify-content: flex-end; }
-  .nav-links-right { justify-content: flex-start; }
-  .nav-links-left a, .nav-links-right a {
-    font-size: .85rem; font-weight: 500; color: var(--text-light);
-    letter-spacing: .03em; transition: color .3s;
-  }
-  .nav-links-left a:hover, .nav-links-right a:hover { color: var(--text); }
-  .nav-logo {
-    font-weight: 700; font-size: 1.2rem; letter-spacing: .04em;
-    text-align: center; padding: 0 32px; color: var(--dark);
-  }
-  .nav-contact-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 8px 24px;
-    background: var(--dark); color: #fff !important;
-    border-radius: 4px; font-size: .82rem; font-weight: 500;
-    transition: opacity .3s;
-  }
-  .nav-contact-link:hover { opacity: .8; color: #fff !important; }
-
-  .hamburger { display: none; width: 28px; height: 20px; position: relative; cursor: pointer; background: none; border: none; }
-  .hamburger span { position: absolute; left: 0; right: 0; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s var(--ease); }
-  .hamburger span:nth-child(1) { top: 2px; }
-  .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-  .hamburger span:nth-child(3) { bottom: 2px; }
-
-  .mobile-menu {
-    position: fixed; inset: 0; background: rgba(255,255,255,0.98);
-    backdrop-filter: blur(10px);
-    z-index: 150; display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity .35s var(--ease);
-  }
-  .mobile-menu.open { opacity: 1; pointer-events: all; }
-  .mobile-menu ul { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 28px; }
-  .mobile-menu a { font-size: 1.1rem; font-weight: 500; color: var(--text); letter-spacing: .03em; }
-  .mobile-menu-close { position: absolute; top: 22px; right: 28px; background: none; border: none; font-size: 2rem; color: var(--text); cursor: pointer; }
 
   /* ============ CONTACT HERO ============ */
   .contact-hero {
@@ -100,7 +20,7 @@
     text-align: center;
   }
   .contact-en {
-    font-family: var(--font-en);
+    font-family: var(--font-display);
     font-size: .7rem; font-weight: 600;
     letter-spacing: .2em; text-transform: uppercase;
     color: var(--text-muted);
@@ -252,57 +172,13 @@
   .form-submit svg { transition: transform .3s; }
   .form-submit:hover svg { transform: translateX(3px); }
 
-  /* ============ FOOTER (centered, simple) ============ */
-  .footer {
-    background: var(--bg-gray);
-    color: var(--text-light);
-    padding: 64px 0 36px;
-    text-align: center;
-  }
-  .footer-logo {
-    font-size: 1.1rem; font-weight: 700;
-    color: var(--dark);
-    letter-spacing: .04em;
-    margin-bottom: 24px;
-  }
-  .footer-nav {
-    list-style: none;
-    display: flex; justify-content: center; flex-wrap: wrap; gap: 28px;
-    margin-bottom: 24px;
-  }
-  .footer-nav a {
-    font-size: .82rem; color: var(--text-light);
-    transition: color .3s;
-  }
-  .footer-nav a:hover { color: var(--text); }
-  .footer-address {
-    font-size: .78rem; color: var(--text-muted);
-    margin-bottom: 20px; font-style: normal;
-  }
-  .footer-copy {
-    font-size: .72rem; color: var(--text-muted);
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-
-  /* ============ REVEAL ============ */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* ============ RESPONSIVE ============ */
+  /* ============ RESPONSIVE (page-specific) ============ */
   @media (max-width: 900px) {
-    .container { padding: 0 24px; }
-    .nav-inner { display: flex; justify-content: space-between; padding: 0 24px; }
-    .nav-links-left, .nav-links-right { display: none; }
-    .hamburger { display: block; }
     .contact-hero { padding: 140px 0 60px; }
     .contact-body { padding: 0 0 80px; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .contact-form { padding: 28px; }
     .form-row { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 600px) {
-    .footer-nav { flex-direction: column; gap: 16px; }
   }
 </style>
 </head>
@@ -312,10 +188,26 @@
 <nav class="nav" id="nav" role="navigation" aria-label="メインナビゲーション">
   <div class="nav-inner">
     <ul class="nav-links-left">
-      <li><a href="index.html#about">私たちについて</a></li>
-      <li><a href="index.html#service">サービス内容</a></li>
+      <li><a href="about.html">私たちについて</a></li>
+      <li><a href="index.html#solution">サービス内容</a></li>
+      <li><a href="aeo-geo.html">AEO / GEO</a></li>
     </ul>
-    <a href="index.html" class="nav-logo">PORTFOLIO</a>
+    <a href="index.html" class="nav-logo" aria-label="LinPlan ホーム">
+      <svg class="lp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" role="img" aria-label="LinPlan">
+        <g class="lp-lin" fill="currentColor" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path fill="none" d="M3.5 8V48H24.5"/>
+          <path fill="none" d="M37 20V48"/>
+          <path fill="none" d="M49.5 48V30C49.5 17 72.5 17 72.5 30V48"/>
+          <circle cx="37" cy="12" r="4" stroke="none"/>
+        </g>
+        <g class="lp-plan" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M86.5 48V28H102.5C112.5 28 112.5 8 102.5 8H86.5"/>
+          <path d="M124.5 8V48"/>
+          <path d="M156.5 20C141.5 20 136.5 26 136.5 34C136.5 42 141.5 48 156.5 48V20"/>
+          <path d="M168.5 48V30C168.5 17 191.5 17 191.5 30V48"/>
+        </g>
+      </svg>
+    </a>
     <ul class="nav-links-right">
       <li><a href="index.html#works">制作事例</a></li>
       <li><a href="contact.html" class="nav-contact-link">お問い合わせ
@@ -331,8 +223,9 @@
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="モバイルメニュー">
   <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="メニューを閉じる">&times;</button>
   <ul>
-    <li><a href="index.html#about" onclick="toggleMenu()">私たちについて</a></li>
-    <li><a href="index.html#service" onclick="toggleMenu()">サービス内容</a></li>
+    <li><a href="about.html" onclick="toggleMenu()">私たちについて</a></li>
+    <li><a href="index.html#solution" onclick="toggleMenu()">サービス内容</a></li>
+    <li><a href="aeo-geo.html" onclick="toggleMenu()">AEO / GEO</a></li>
     <li><a href="index.html#works" onclick="toggleMenu()">制作事例</a></li>
     <li><a href="contact.html" onclick="toggleMenu()">お問い合わせ</a></li>
   </ul>
@@ -437,40 +330,69 @@
 </section>
 
 <!-- ========== FOOTER ========== -->
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <p class="footer-logo">PORTFOLIO</p>
+<div class="footer-spacer"></div>
+<div class="footer-backdrop" id="footerBackdrop"></div>
+<footer class="footer-wrapper" id="footerWrapper" role="contentinfo">
+  <div class="footer-panel">
+    <p class="footer-logo" role="img" aria-label="LinPlan">
+      <svg class="lp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" aria-hidden="true">
+        <g class="lp-lin" fill="currentColor" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path fill="none" d="M3.5 8V48H24.5"/>
+          <path fill="none" d="M37 20V48"/>
+          <path fill="none" d="M49.5 48V30C49.5 17 72.5 17 72.5 30V48"/>
+          <circle cx="37" cy="12" r="4" stroke="none"/>
+        </g>
+        <g class="lp-plan" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M86.5 48V28H102.5C112.5 28 112.5 8 102.5 8H86.5"/>
+          <path d="M124.5 8V48"/>
+          <path d="M156.5 20C141.5 20 136.5 26 136.5 34C136.5 42 141.5 48 156.5 48V20"/>
+          <path d="M168.5 48V30C168.5 17 191.5 17 191.5 30V48"/>
+        </g>
+      </svg>
+    </p>
     <ul class="footer-nav">
-      <li><a href="index.html#about">私たちについて</a></li>
-      <li><a href="index.html#service">サービス内容</a></li>
+      <li><a href="about.html">私たちについて</a></li>
+      <li><a href="index.html#solution">サービス内容</a></li>
       <li><a href="index.html#works">制作事例</a></li>
       <li><a href="contact.html">お問い合わせ</a></li>
     </ul>
     <address class="footer-address">東京都渋谷区 | your-email@example.com</address>
-    <p class="footer-copy">&copy; 2026 PORTFOLIO. All Rights Reserved.</p>
+    <p class="footer-copy">&copy; 2026 LinPlan. All Rights Reserved.</p>
+    <button class="footer-toggle" id="footerToggle" aria-label="フッターを開閉">
+      <span class="footer-toggle-label">
+        <span class="footer-toggle-open" role="img" aria-label="LinPlan">
+          <svg class="lp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" aria-hidden="true">
+            <g class="lp-lin" fill="currentColor" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path fill="none" d="M3.5 8V48H24.5"/>
+              <path fill="none" d="M37 20V48"/>
+              <path fill="none" d="M49.5 48V30C49.5 17 72.5 17 72.5 30V48"/>
+              <circle cx="37" cy="12" r="4" stroke="none"/>
+            </g>
+            <g class="lp-plan" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M86.5 48V28H102.5C112.5 28 112.5 8 102.5 8H86.5"/>
+              <path d="M124.5 8V48"/>
+              <path d="M156.5 20C141.5 20 136.5 26 136.5 34C136.5 42 141.5 48 156.5 48V20"/>
+              <path d="M168.5 48V30C168.5 17 191.5 17 191.5 30V48"/>
+            </g>
+          </svg>
+        </span>
+        <span class="footer-toggle-close">CLOSE</span>
+      </span>
+      <span class="footer-toggle-lines">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
   </div>
 </footer>
 
+<a href="contact.html" class="fab-contact" aria-label="お問い合わせページへ">
+  <span>Contact</span>
+  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+
+<script src="js/common.js"></script>
 <script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const hamburger = document.getElementById('hamburger');
-    const isOpen = menu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     alert('送信ありがとうございます！');

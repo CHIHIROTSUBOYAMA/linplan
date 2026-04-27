@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEO / GEO 対策 | LinPlan</title>
+
+<meta name="description" content="ChatGPT・Perplexity・Geminiなど、AIに「選ばれる」サイトへ。LinPlanのAEO / GEO対策の考え方と具体的な対応内容をご紹介します。">
+<meta name="keywords" content="AEO, GEO, Answer Engine Optimization, Generative Engine Optimization, AI検索, ChatGPT, 構造化データ, schema.org">
+<meta name="author" content="LinPlan">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="AEO / GEO 対策 | LinPlan">
+<meta property="og:description" content="AIに「選ばれる」サイトへ。LinPlanのAEO / GEO対策。">
+<meta property="og:site_name" content="LinPlan">
+<meta property="og:locale" content="ja_JP">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Klee+One:wght@400;600&family=Caveat:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/common.css">
+
+<style>
+  /* ============ SECTION COMMON ============ */
+  .section { padding: 120px 0; }
+  .section-gray { background: var(--bg-gray); }
+  .section-head { margin-bottom: 72px; }
+  .section-head--center { text-align: center; }
+  .section-en {
+    font-family: var(--font-display);
+    font-size: clamp(.7rem, 1.2vw, .8rem);
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: .03em;
+  }
+  .section-desc {
+    margin-top: 18px;
+    color: var(--text-light);
+    font-size: .92rem;
+    line-height: 2;
+    max-width: 540px;
+  }
+  .section-head--center .section-desc { margin-left: auto; margin-right: auto; }
+
+  /* ============ PAGE HERO ============ */
+  .page-hero {
+    padding: 180px 0 80px;
+    text-align: center;
+  }
+  .page-en {
+    font-family: var(--font-display);
+    font-size: .7rem; font-weight: 600;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .page-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .page-hero-desc {
+    font-size: .92rem;
+    line-height: 2.2;
+    color: var(--text-light);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ============ AGITATE (quiet emphasis block) ============ */
+  .agitate {
+    background: var(--bg-gray);
+    padding: 100px 0;
+  }
+  .agitate-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px;
+    text-align: center;
+  }
+  .agitate .section-en {
+    color: var(--text-muted);
+    margin-bottom: 18px;
+  }
+  .agitate-title {
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.9;
+    letter-spacing: .03em;
+    color: var(--dark);
+    margin-bottom: 36px;
+  }
+  .agitate-body p {
+    font-size: .95rem;
+    line-height: 2.2;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .agitate-body p:last-child { margin-bottom: 0; }
+
+  /* ============ AEO / GEO ============ */
+  .aeo-geo { padding: 120px 0; }
+  .aeo-geo-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+  .aeo-geo-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 44px 40px;
+  }
+  .aeo-geo-label {
+    font-family: var(--font-display);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .aeo-geo-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.7;
+    color: var(--dark);
+  }
+  .aeo-geo-card p {
+    font-size: .88rem;
+    line-height: 2;
+    color: var(--text-light);
+  }
+  .aeo-geo-measures {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 48px 48px;
+  }
+  .aeo-geo-measures h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--dark);
+    letter-spacing: .02em;
+  }
+  .aeo-geo-measures ul {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+  }
+  .aeo-geo-measures li {
+    font-size: .9rem;
+    line-height: 1.9;
+    color: var(--text);
+    padding-left: 24px;
+    position: relative;
+  }
+  .aeo-geo-measures li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.85em;
+    width: 12px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  /* ============ PAGE CTA ============ */
+  .page-cta-wrap {
+    text-align: center;
+    padding: 40px 0 120px;
+  }
+  .page-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 40px;
+    background: var(--dark);
+    color: #fff;
+    font-size: .92rem;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: opacity .3s, transform .3s;
+  }
+  .page-cta:hover { opacity: .85; transform: translateY(-1px); color: #fff; }
+  .page-cta svg { transition: transform .3s; }
+  .page-cta:hover svg { transform: translateX(3px); }
+
+  /* ============ SECTION FONT ============ */
+  .agitate,
+  .aeo-geo {
+    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+  }
+
+  /* ============ RESPONSIVE (page-specific) ============ */
+  @media (max-width: 900px) {
+    .page-hero { padding: 140px 0 60px; }
+    .agitate { padding: 80px 0; }
+    .aeo-geo { padding: 80px 0; }
+    .page-cta-wrap { padding: 20px 0 80px; }
+  }
+  @media (max-width: 768px) {
+    .aeo-geo-cards { grid-template-columns: 1fr; }
+    .aeo-geo-measures { padding: 36px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav" id="nav" role="navigation" aria-label="メインナビゲーション">
+  <div class="nav-inner">
+    <ul class="nav-links-left">
+      <li><a href="about.html">私たちについて</a></li>
+      <li><a href="index.html#solution">サービス内容</a></li>
+      <li><a href="aeo-geo.html">AEO / GEO</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo" aria-label="LinPlan ホーム">
+      <svg class="lp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" role="img" aria-label="LinPlan">
+        <g class="lp-lin" fill="currentColor" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path fill="none" d="M3.5 8V48H24.5"/>
+          <path fill="none" d="M37 20V48"/>
+          <path fill="none" d="M49.5 48V30C49.5 17 72.5 17 72.5 30V48"/>
+          <circle cx="37" cy="12" r="4" stroke="none"/>
+        </g>
+        <g class="lp-plan" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M86.5 48V28H102.5C112.5 28 112.5 8 102.5 8H86.5"/>
+          <path d="M124.5 8V48"/>
+          <path d="M156.5 20C141.5 20 136.5 26 136.5 34C136.5 42 141.5 48 156.5 48V20"/>
+          <path d="M168.5 48V30C168.5 17 191.5 17 191.5 30V48"/>
+        </g>
+      </svg>
+    </a>
+    <ul class="nav-links-right">
+      <li><a href="index.html#works">制作事例</a></li>
+      <li><a href="contact.html" class="nav-contact-link">お問い合わせ
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="モバイルメニュー">
+  <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="メニューを閉じる">&times;</button>
+  <ul>
+    <li><a href="about.html" onclick="toggleMenu()">私たちについて</a></li>
+    <li><a href="index.html#solution" onclick="toggleMenu()">サービス内容</a></li>
+    <li><a href="aeo-geo.html" onclick="toggleMenu()">AEO / GEO</a></li>
+    <li><a href="index.html#works" onclick="toggleMenu()">制作事例</a></li>
+    <li><a href="contact.html" onclick="toggleMenu()">お問い合わせ</a></li>
+  </ul>
+</div>
+
+<!-- ========== PAGE HERO ========== -->
+<section class="page-hero">
+  <div class="container">
+    <p class="page-en reveal">AEO / GEO</p>
+    <h1 class="reveal">AIに「選ばれる」サイトへ</h1>
+    <p class="page-hero-desc reveal">
+      検索のかたちが変わるいま、<br>
+      これからのサイトに必要な視点をお伝えします。
+    </p>
+  </div>
+</section>
+
+<!-- ========== AGITATE / Why it matters ========== -->
+<section class="agitate" id="agitate">
+  <div class="agitate-inner reveal">
+    <p class="section-en">Why it matters</p>
+    <h2 class="agitate-title">「あるだけのサイト」が、<br>静かに機会を失っている</h2>
+    <div class="agitate-body">
+      <p>検索結果の一番上は、もはや青いリンクではなくAIの回答です。そこに載らないということは、比較検討の土俵にすら立てないということ。</p>
+      <p>ブランドの魅力が整理されていないサイトは、訪問者に「で、何の会社だっけ」と思われた瞬間に離脱されます。</p>
+      <p>成果につながらないサイトは、毎月の運用費がそのまま損失になる——。</p>
+      <p>ひとつひとつは小さな綻びでも、積み重なれば事業の成長スピードを確実に削ります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AEO / GEO ========== -->
+<section class="aeo-geo" id="aeo-geo">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">AEO / GEO</p>
+      <h2 class="section-title">これからのサイトは<br>「AIに選ばれる」必要があります</h2>
+      <p class="section-desc">いま検索行動は、GoogleからChatGPT・Perplexity・Geminiといった<br>AIへと急速に移っています。従来のSEOだけでは、もう届きません。</p>
+    </div>
+    <div class="aeo-geo-cards">
+      <div class="aeo-geo-card reveal">
+        <p class="aeo-geo-label">AEO</p>
+        <h3>Answer Engine Optimization</h3>
+        <p>AIが質問に答えるとき、情報源として引用されるための最適化。構造化データ・明確な見出し階層・一問一答形式の設計が鍵になります。</p>
+      </div>
+      <div class="aeo-geo-card reveal">
+        <p class="aeo-geo-label">GEO</p>
+        <h3>Generative Engine Optimization</h3>
+        <p>生成AIの回答文そのものに、自社の名前が自然に登場するための最適化。ブランドの文脈化・信頼性シグナル・適切な言及構造が必要です。</p>
+      </div>
+    </div>
+    <div class="aeo-geo-measures reveal">
+      <h4>LinPlanの対応内容</h4>
+      <ul>
+        <li>schema.org による構造化データマークアップ</li>
+        <li>AIクローラーが読み取りやすい情報設計・見出し構造</li>
+        <li>FAQ・Q&amp;A形式での知識資産化</li>
+        <li>E-E-A-T（経験・専門性・権威性・信頼性）を高めるコンテンツ設計</li>
+        <li>ブランド言及の蓄積を促す導線設計</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<div class="page-cta-wrap reveal">
+  <a href="contact.html" class="page-cta">
+    お問い合わせ
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<div class="footer-spacer"></div>
+<div class="footer-backdrop" id="footerBackdrop"></div>
+<footer class="footer-wrapper" id="footerWrapper" role="contentinfo">
+  <div class="footer-panel">
+    <p class="footer-logo" role="img" aria-label="LinPlan">
+      <svg class="lp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" aria-hidden="true">
+        <g class="lp-lin" fill="currentColor" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path fill="none" d="M3.5 8V48H24.5"/>
+          <path fill="none" d="M37 20V48"/>
+          <path fill="none" d="M49.5 48V30C49.5 17 72.5 17 72.5 30V48"/>
+          <circle cx="37" cy="12" r="4" stroke="none"/>
+        </g>
+        <g class="lp-plan" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M86.5 48V28H102.5C112.5 28 112.5 8 102.5 8H86.5"/>
+          <path d="M124.5 8V48"/>
+          <path d="M156.5 20C141.5 20 136.5 26 136.5 34C136.5 42 141.5 48 156.5 48V20"/>
+          <path d="M168.5 48V30C168.5 17 191.5 17 191.5 30V48"/>
+        </g>
+      </svg>
+    </p>
+    <ul class="footer-nav">
+      <li><a href="about.html">私たちについて</a></li>
+      <li><a href="index.html#solution">サービス内容</a></li>
+      <li><a href="index.html#works">制作事例</a></li>
+      <li><a href="contact.html">お問い合わせ</a></li>
+    </ul>
+    <address class="footer-address">東京都渋谷区 | your-email@example.com</address>
+    <p class="footer-copy">&copy; 2026 LinPlan. All Rights Reserved.</p>
+    <button class="footer-toggle" id="footerToggle" aria-label="フッターを開閉">
+      <span class="footer-toggle-label">
+        <span class="footer-toggle-open" role="img" aria-label="LinPlan">
+          <svg class="lp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" aria-hidden="true">
+            <g class="lp-lin" fill="currentColor" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path fill="none" d="M3.5 8V48H24.5"/>
+              <path fill="none" d="M37 20V48"/>
+              <path fill="none" d="M49.5 48V30C49.5 17 72.5 17 72.5 30V48"/>
+              <circle cx="37" cy="12" r="4" stroke="none"/>
+            </g>
+            <g class="lp-plan" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M86.5 48V28H102.5C112.5 28 112.5 8 102.5 8H86.5"/>
+              <path d="M124.5 8V48"/>
+              <path d="M156.5 20C141.5 20 136.5 26 136.5 34C136.5 42 141.5 48 156.5 48V20"/>
+              <path d="M168.5 48V30C168.5 17 191.5 17 191.5 30V48"/>
+            </g>
+          </svg>
+        </span>
+        <span class="footer-toggle-close">CLOSE</span>
+      </span>
+      <span class="footer-toggle-lines">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+</footer>
+
+<a href="contact.html" class="fab-contact" aria-label="お問い合わせページへ">
+  <span>Contact</span>
+  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+
+<script src="js/common.js"></script>
+
+</body>
+</html>
