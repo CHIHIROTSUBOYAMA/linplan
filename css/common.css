@@ -368,3 +368,18 @@ body.at-top .fab-contact { transform: translateY(20px); }
     font-size: .78rem;
   }
 }
+
+/* ============================================================
+   アクセシビリティ：視覚過敏ユーザー向けにアニメーションを抑制
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .lp-nav-loader-bg, .lp-nav-logo-fly { transition: none !important; }
+}

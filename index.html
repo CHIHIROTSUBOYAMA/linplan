@@ -1,36 +1,41 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.replace('no-js','js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LinPlan | ホームページ・アプリ制作</title>
 
 <meta name="description" content="ホームページ・アプリ制作を通じて、ブランドの魅力を最大限に引き出します。丁寧なヒアリングと確かなデザインで、長く愛されるサイトをつくります。">
-<meta name="keywords" content="ホームページ制作, アプリ制作, WEBデザイン, WordPress, コーポレートサイト, レスポンシブ, SEO対策">
 <meta name="author" content="LinPlan">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://example.com/">
+<link rel="canonical" href="https://chihirotsuboyama.github.io/">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="LinPlan | ホームページ・アプリ制作">
 <meta property="og:description" content="丁寧なヒアリングと確かなデザインで、長く愛されるサイトをつくります。">
-<meta property="og:url" content="https://example.com/">
+<meta property="og:url" content="https://chihirotsuboyama.github.io/">
 <meta property="og:site_name" content="LinPlan">
 <meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="LinPlan | ホームページ・アプリ制作">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LinPlan | ホームページ・アプリ制作">
 <meta name="twitter:description" content="丁寧なヒアリングと確かなデザインで、長く愛されるサイトをつくります。">
+<meta name="twitter:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Klee+One:wght@400;600&family=Caveat:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/common.css">
 
-<!-- アニメーション用ライブラリ (Problem / Agitate セクション) -->
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+<!-- アニメーション用ライブラリ（ローカルバンドル） -->
+<script defer src="js/vendor/gsap.min.js"></script>
+<script defer src="js/vendor/ScrollTrigger.min.js"></script>
+<script defer src="js/vendor/split-type.min.js"></script>
 
 <script type="application/ld+json">
 {
@@ -38,8 +43,7 @@
   "@type": "ProfessionalService",
   "name": "LinPlan",
   "description": "ホームページ・アプリ制作を通じて、ブランドの魅力を最大限に引き出します。",
-  "url": "https://example.com/",
-  "address": { "@type": "PostalAddress", "addressLocality": "渋谷区", "addressRegion": "東京都", "addressCountry": "JP" },
+  "url": "https://chihirotsuboyama.github.io/",
   "serviceType": ["ホームページ制作", "アプリ制作", "WEBデザイン", "WordPress構築", "SEO対策"],
   "areaServed": "JP"
 }
@@ -688,6 +692,16 @@
     border-radius: 3px;
   }
 
+  /* ============ JS/GSAP 非ロード時フォールバック ============ */
+  /* no-js: About を最初から濃い色で表示 */
+  html.no-js .about-content .line {
+    background-position: 0% center;
+  }
+  /* GSAPがロードされなかった場合も同様 */
+  html.js:not(.gsap-ready) .about-content .line {
+    background-position: 0% center;
+  }
+
   /* ============ RESPONSIVE (page-specific) ============ */
   @media (max-width: 900px) {
     .hero { --hero-gap: 40px; }
@@ -711,6 +725,8 @@
 <body>
 
 <!-- ========== LOADING SCREEN ========== -->
+<div id="scroll-progress"></div>
+
 <div id="lp-loader">
   <div id="lp-loader-inner">
     <!-- レモン（左半分） -->
@@ -809,6 +825,91 @@
     width: 100%;
     height: auto;
   }
+
+  /* ============ SCROLL PROGRESS BAR ============ */
+  #scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(to right, #E8DB80, #3ba297);
+    z-index: 99999;
+    pointer-events: none;
+    transition: width 0.08s linear;
+  }
+
+  /* ============ CUSTOM CURSOR ============ */
+
+  /* ============ NAV LINK HOVER UNDERLINE ============ */
+  .nav-links-left a,
+  .nav-links-right a:not(.nav-contact-link) {
+    position: relative;
+  }
+  .nav-links-left a::after,
+  .nav-links-right a:not(.nav-contact-link)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 100%; height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s var(--ease);
+  }
+  .nav-links-left a:hover::after,
+  .nav-links-right a:not(.nav-contact-link):hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* ============ HERO CONTENT INITIAL STATE ============ */
+  html.js .hero-logo,
+  html.js .hero-divider,
+  html.js .hero-tagline,
+  html.js .hero-cta {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* ============ SECTION HEAD INITIAL STATE ============ */
+  html.js .section-en,
+  html.js .section-title,
+  html.js .section-desc {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  /* ============ WORK CARD INITIAL STATE ============ */
+  html.js .work-card {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  /* ============ SERVICE GROUP INITIAL STATE ============ */
+  html.js .service-group__head > * {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  /* ============ AEO/GEO TEXT INITIAL STATE ============ */
+  html.js .aeo-geo-tag,
+  html.js .aeo-geo-text h3,
+  html.js .aeo-geo-text p {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  /* ============ AGITATE BODY INITIAL STATE ============ */
+  html.js .agitate-body p {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  /* ============ MAGNETIC BUTTON ============ */
+  .fab-contact {
+    will-change: transform;
+  }
+
 </style>
 
 <script>
@@ -895,8 +996,45 @@
       }
     } catch (_) {}
 
+    // 2回目以降の訪問はローダーをスキップ（localStorage）
+    //  ↓ 「毎回フル再生したい」ため一時的に無効化中。
+    //    再度初回限定にしたい場合は、下の if (false) を if (true) に戻す。
+    if (false) {
+      try {
+        if (localStorage.getItem('lpVisited')) {
+          const skipEl = document.getElementById('lp-loader');
+          if (skipEl) skipEl.style.display = 'none';
+          document.body.classList.remove('loading');
+          return;
+        }
+        localStorage.setItem('lpVisited', '1');
+      } catch (_) {}
+    }
+
+    // ESC キーでスキップ
+    document.addEventListener('keydown', function skipOnEsc(e) {
+      if (e.key !== 'Escape') return;
+      document.removeEventListener('keydown', skipOnEsc);
+      const skipEl = document.getElementById('lp-loader');
+      if (!skipEl || skipEl.style.display === 'none') return;
+      skipEl.style.transition = 'opacity 0.3s ease';
+      skipEl.style.opacity = '0';
+      setTimeout(() => { skipEl.style.display = 'none'; document.body.classList.remove('loading'); }, 300);
+    });
+
+    // CDN タイムアウト対策: 3秒（60回×50ms）でローダーを強制終了
+    let retries = 0;
     const run = () => {
-      if (!window.gsap) { setTimeout(run, 50); return; }
+      if (!window.gsap) {
+        if (++retries > 60) {
+          const loader = document.getElementById('lp-loader');
+          if (loader) loader.style.display = 'none';
+          document.body.classList.remove('loading');
+          return;
+        }
+        setTimeout(run, 50);
+        return;
+      }
       const loader    = document.getElementById('lp-loader');
       const inner     = document.getElementById('lp-loader-inner');
       const lLeft     = document.querySelector('.lp-lemon-left');
@@ -904,25 +1042,24 @@
       const logoEl    = document.getElementById('lp-loader-logo');
       const heroLogo  = document.querySelector('.hero-logo');
 
+      document.documentElement.classList.add('gsap-ready');
       gsap.set(inner, { y: -300, scale: 0.5, opacity: 0 });
 
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
       tl
-        .to(inner, { y: 0, scale: 1, opacity: 1, duration: 0.7, ease: 'bounce.out' })
+        .to(inner, { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: 'bounce.out' })
 
-        .to(inner, { rotation: -6, duration: 0.08, ease: 'power1.inOut' })
-        .to(inner, { rotation:  6, duration: 0.08, ease: 'power1.inOut' })
-        .to(inner, { rotation: -5, duration: 0.07, ease: 'power1.inOut' })
-        .to(inner, { rotation:  5, duration: 0.07, ease: 'power1.inOut' })
-        .to(inner, { rotation:  0, duration: 0.07, ease: 'power1.inOut' })
+        .to(inner, { rotation: -5, duration: 0.06, ease: 'power1.inOut' })
+        .to(inner, { rotation:  5, duration: 0.06, ease: 'power1.inOut' })
+        .to(inner, { rotation:  0, duration: 0.06, ease: 'power1.inOut' })
 
-        .to(lLeft,  { x: -90, rotation: -15, opacity: 0.6, duration: 0.55, ease: 'back.out(1.2)' }, '+=0.1')
-        .to(lRight, { x:  90, rotation:  15, opacity: 0.6, duration: 0.55, ease: 'back.out(1.2)' }, '<')
+        .to(lLeft,  { x: -90, rotation: -15, opacity: 0.6, duration: 0.4, ease: 'back.out(1.2)' }, '+=0.05')
+        .to(lRight, { x:  90, rotation:  15, opacity: 0.6, duration: 0.4, ease: 'back.out(1.2)' }, '<')
 
-        .to(logoEl, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.6)' }, '-=0.2')
+        .to(logoEl, { opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(1.6)' }, '-=0.15')
 
-        .to([lLeft, lRight], { opacity: 0, duration: 0.3 }, '+=0.2')
+        .to([lLeft, lRight], { opacity: 0, duration: 0.2 }, '+=0.1')
 
         .add(() => {
           if (!heroLogo) return;
@@ -934,17 +1071,17 @@
           gsap.to(logoEl, {
             x: dx, y: dy,
             scale: scale,
-            duration: 0.7,
+            duration: 0.5,
             ease: 'power3.inOut',
           });
-        }, '+=0.15')
+        }, '+=0.1')
 
-        .to(loader, { opacity: 0, duration: 0.5, ease: 'power2.inOut',
+        .to(loader, { opacity: 0, duration: 0.35, ease: 'power2.inOut',
           onComplete: () => {
             loader.style.display = 'none';
             document.body.classList.remove('loading');
           }
-        }, '+=0.5');
+        }, '+=0.3');
     };
     run();
   })();
@@ -954,7 +1091,7 @@
 <nav class="nav" id="nav" role="navigation" aria-label="メインナビゲーション">
   <div class="nav-inner">
     <ul class="nav-links-left">
-      <li><a href="about.html">私たちについて</a></li>
+      <li><a href="about.html">私について</a></li>
       <li><a href="#solution">サービス内容</a></li>
       <li><a href="aeo-geo.html">AEO / GEO</a></li>
     </ul>
@@ -975,7 +1112,7 @@
       </svg>
     </a>
     <ul class="nav-links-right">
-      <li><a href="#solution">制作事例</a></li>
+      <li><a href="#works">制作事例</a></li>
       <li><a href="contact.html" class="nav-contact-link">お問い合わせ
         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a></li>
@@ -989,10 +1126,10 @@
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="モバイルメニュー">
   <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="メニューを閉じる">&times;</button>
   <ul>
-    <li><a href="about.html" onclick="toggleMenu()">私たちについて</a></li>
+    <li><a href="about.html" onclick="toggleMenu()">私について</a></li>
     <li><a href="#solution" onclick="toggleMenu()">サービス内容</a></li>
     <li><a href="aeo-geo.html" onclick="toggleMenu()">AEO / GEO</a></li>
-    <li><a href="#solution" onclick="toggleMenu()">制作事例</a></li>
+    <li><a href="#works" onclick="toggleMenu()">制作事例</a></li>
     <li><a href="contact.html" onclick="toggleMenu()">お問い合わせ</a></li>
   </ul>
 </div>
@@ -1031,7 +1168,7 @@
   <div class="container">
     <div class="about-content reveal">
       <p>
-        <span class="line">企業さまからのご依頼を受け、ホームページの企画・制作を行うほか、個人でもWebアプリやモバイルアプリの開発に取り組んでいます。</span>
+        <span class="line">企業さまからのご依頼を受け、ホームページの企画・制作を行うほか、Webアプリやモバイルアプリの開発にも取り組んでいます。</span>
         <span class="line">また、AIを活用した業務支援のご提案も行っています。</span>
       </p>
       <p>
@@ -1293,7 +1430,7 @@
     </div>
 
     <!-- SERVICE 01: ホームページ制作 -->
-    <div class="service-group reveal">
+    <div class="service-group reveal" id="works">
       <div class="service-group__head">
         <h3 class="service-group__title">ホームページ制作</h3>
         <p class="service-group__desc">コーポレート・店舗・サービスサイトを、検索／AI検索の両方に最適化した設計で。WordPress・レスポンシブ・公開後の運用まで一貫して対応します。</p>
@@ -1470,10 +1607,10 @@
       </svg>
     </p>
     <ul class="footer-nav">
-      <li><a href="about.html">私たちについて</a></li>
+      <li><a href="about.html">私について</a></li>
       <li><a href="#solution">サービス内容</a></li>
       <li><a href="aeo-geo.html">AEO / GEO</a></li>
-      <li><a href="#solution">制作事例</a></li>
+      <li><a href="#works">制作事例</a></li>
       <li><a href="contact.html">お問い合わせ</a></li>
     </ul>
     <address class="footer-address">tsubochihiroyama2230@gmail.com</address>
@@ -1593,6 +1730,21 @@
     };
     applyTileScale();
     window.addEventListener('resize', applyTileScale, { passive: true });
+
+    // ヒーローが画面外に出たらアニメーション停止（CPU節約）
+    if ('IntersectionObserver' in window) {
+      const heroObs = new IntersectionObserver((entries) => {
+        const state = entries[0].isIntersecting ? 'running' : 'paused';
+        tileEls.forEach(t => { t.style.animationPlayState = state; });
+      }, { threshold: 0 });
+      heroObs.observe(frame);
+    }
+
+    // タブが非アクティブのときも停止
+    document.addEventListener('visibilitychange', () => {
+      const state = document.hidden ? 'paused' : 'running';
+      tileEls.forEach(t => { t.style.animationPlayState = state; });
+    });
   })();
 
   // ========== ABOUT: スクロール連動で行ごとに background-position をスライド ==========
@@ -1635,7 +1787,7 @@
     if (!window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
 
-    if (window.SplitType) {
+    if (window.SplitType && !reduceMotion) {
       document.querySelectorAll('[data-split]').forEach((el) => {
         new SplitType(el, { types: 'chars', charClass: 'char' });
       });
@@ -1643,12 +1795,22 @@
 
     const problemItems = gsap.utils.toArray('#problem .problem-item');
 
-    problemItems.forEach((item) => {
-      const chars = item.querySelectorAll('.problem-item__title .char');
-      if (chars.length) {
-        chars.forEach((c) => { c.style.transform = 'none'; c.style.opacity = '1'; });
-      }
-    });
+    // SplitType 文字アニメーション実装（Option A: MutationObserver で is-inview 時に発火）
+    if (window.SplitType && !reduceMotion) {
+      problemItems.forEach((item) => {
+        const chars = Array.from(item.querySelectorAll('.problem-item__title .char'));
+        if (!chars.length) return;
+        gsap.set(chars, { opacity: 0, y: 16 });
+        let animated = false;
+        const mo = new MutationObserver(() => {
+          if (!animated && item.classList.contains('is-inview')) {
+            animated = true;
+            gsap.to(chars, { opacity: 1, y: 0, duration: 0.4, stagger: 0.03, ease: 'power2.out' });
+          }
+        });
+        mo.observe(item, { attributes: true, attributeFilter: ['class'] });
+      });
+    }
 
     // モバイルは通常レイアウト + 各 item ごとに is-inview を付与
     if (window.matchMedia('(max-width: 900px)').matches || problemItems.length < 3) {
@@ -1697,7 +1859,7 @@
       scrollTrigger: {
         trigger: '#problem',
         start: 'top top',
-        end: '+=240%',
+        end: '+=180%',
         pin: true,
         scrub: 1.2,
         anticipatePin: 1,
@@ -1757,6 +1919,196 @@
 
 </script>
 <script src="js/common.js"></script>
+
+
+<script>
+/* ========== SCROLL PROGRESS BAR ========== */
+(() => {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  let rafId = null;
+  window.addEventListener('scroll', () => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+      rafId = null;
+    });
+  }, { passive: true });
+})();
+
+/* ========== GSAP ANIMATIONS ========== */
+window.addEventListener('load', () => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // reduced-motion: 初期状態を即座に表示
+    document.querySelectorAll('.hero-logo,.hero-divider,.hero-tagline,.hero-cta,.section-en,.section-title,.section-desc,.work-card,.service-group__head > *,.aeo-geo-tag,.aeo-geo-text h3,.aeo-geo-text p,.agitate-body p').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- ① ヒーローコンテンツ 入場 stagger ---- */
+  const heroEls = ['.hero-logo', '.hero-divider', '.hero-tagline', '.hero-cta'].map(s => document.querySelector(s)).filter(Boolean);
+  if (heroEls.length) {
+    // ローダーが終わったあとに発火（bodyのloading classが消えるのを監視）
+    const fireHero = () => {
+      gsap.to(heroEls, {
+        opacity: 1, y: 0,
+        duration: 0.7,
+        stagger: 0.13,
+        ease: 'power3.out',
+        delay: 0.15,
+      });
+    };
+    if (!document.body.classList.contains('loading')) {
+      fireHero();
+    } else {
+      const mo = new MutationObserver(() => {
+        if (!document.body.classList.contains('loading')) { mo.disconnect(); fireHero(); }
+      });
+      mo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+  }
+
+  /* ---- ④ セクションヘッド stagger ---- */
+  document.querySelectorAll('.section-head').forEach(head => {
+    const els = [
+      head.querySelector('.section-en'),
+      head.querySelector('.section-title'),
+      head.querySelector('.section-desc'),
+    ].filter(Boolean);
+    if (!els.length) return;
+    ScrollTrigger.create({
+      trigger: head,
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        gsap.to(els, { opacity: 1, y: 0, duration: 0.65, stagger: 0.1, ease: 'power3.out' });
+      },
+    });
+  });
+
+  /* ---- ⑤ Work cards stagger ---- */
+  document.querySelectorAll('.service-group__works').forEach(grid => {
+    const cards = grid.querySelectorAll('.work-card');
+    if (!cards.length) return;
+    ScrollTrigger.create({
+      trigger: grid,
+      start: 'top 82%',
+      once: true,
+      onEnter: () => {
+        gsap.to(cards, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
+      },
+    });
+  });
+
+  /* ---- ⑥ Agitate タイトル SplitType アニメーション ---- */
+  const agitateTitle = document.querySelector('.agitate-title');
+  if (agitateTitle && window.SplitType) {
+    const split = new SplitType(agitateTitle, { types: 'lines', lineClass: 'agl' });
+    gsap.set(split.lines, { opacity: 0, y: 24, clipPath: 'inset(0 0 100% 0)' });
+    ScrollTrigger.create({
+      trigger: agitateTitle,
+      start: 'top 78%',
+      once: true,
+      onEnter: () => {
+        gsap.to(split.lines, {
+          opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)',
+          duration: 0.65, stagger: 0.12, ease: 'power3.out',
+        });
+      },
+    });
+  }
+
+  /* ---- Agitate body p stagger ---- */
+  const agitateParagraphs = document.querySelectorAll('.agitate-body p');
+  if (agitateParagraphs.length) {
+    ScrollTrigger.create({
+      trigger: '.agitate-body',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        gsap.to(agitateParagraphs, { opacity: 1, y: 0, duration: 0.55, stagger: 0.1, ease: 'power3.out' });
+      },
+    });
+  }
+
+  /* ---- ⑧ AEO/GEO テキスト stagger ---- */
+  document.querySelectorAll('.aeo-geo-row').forEach(row => {
+    const els = [
+      row.querySelector('.aeo-geo-tag'),
+      row.querySelector('.aeo-geo-text h3'),
+      row.querySelector('.aeo-geo-text p'),
+    ].filter(Boolean);
+    const illust = row.querySelector('.aeo-geo-illust');
+    if (illust) {
+      gsap.set(illust, { opacity: 0, x: row.classList.contains('aeo-geo-row--reverse') ? -40 : 40, scale: 0.96 });
+    }
+    ScrollTrigger.create({
+      trigger: row,
+      start: 'top 78%',
+      once: true,
+      onEnter: () => {
+        if (illust) gsap.to(illust, { opacity: 1, x: 0, scale: 1, duration: 0.75, ease: 'power3.out' });
+        if (els.length) gsap.to(els, { opacity: 1, y: 0, duration: 0.55, stagger: 0.1, ease: 'power3.out', delay: 0.12 });
+      },
+    });
+  });
+
+  /* ---- ⑩ Service group head stagger ---- */
+  document.querySelectorAll('.service-group__head').forEach(head => {
+    const els = head.querySelectorAll('h3, p, a');
+    if (!els.length) return;
+    ScrollTrigger.create({
+      trigger: head,
+      start: 'top 82%',
+      once: true,
+      onEnter: () => {
+        gsap.to(els, { opacity: 1, y: 0, duration: 0.55, stagger: 0.09, ease: 'power3.out' });
+      },
+    });
+  });
+
+  /* ---- ⑨ マグネティック FAB ---- */
+  const fab = document.querySelector('.fab-contact');
+  if (fab && !window.matchMedia('(pointer: coarse)').matches) {
+    fab.addEventListener('mousemove', (e) => {
+      const r = fab.getBoundingClientRect();
+      const cx = r.left + r.width  / 2;
+      const cy = r.top  + r.height / 2;
+      const dx = (e.clientX - cx) * 0.35;
+      const dy = (e.clientY - cy) * 0.35;
+      gsap.to(fab, { x: dx, y: dy, duration: 0.4, ease: 'power2.out' });
+    });
+    fab.addEventListener('mouseleave', () => {
+      gsap.to(fab, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.5)' });
+    });
+  }
+
+  /* ---- Section EN ライン装飾アニメーション ---- */
+  document.querySelectorAll('.section-en').forEach(el => {
+    if (!el.closest('.section-head')) return;
+    el.style.position = 'relative';
+    el.style.paddingLeft = '0';
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(el,
+          { letterSpacing: '0.05em', opacity: 0 },
+          { letterSpacing: '0.18em', opacity: 1, duration: 0.8, ease: 'power2.out' }
+        );
+      },
+    });
+  });
+
+  ScrollTrigger.refresh();
+});
+</script>
 
 </body>
 </html>

@@ -10,12 +10,16 @@
   // ========== NAV / AT-TOP ==========
   const nav = document.getElementById('nav');
   if (nav) {
+    let rafPending = false;
     const updateScrollState = () => {
       nav.classList.toggle('scrolled', window.scrollY > 50);
       document.body.classList.toggle('at-top', window.scrollY <= 0);
+      rafPending = false;
     };
     updateScrollState();
-    window.addEventListener('scroll', updateScrollState, { passive: true });
+    window.addEventListener('scroll', () => {
+      if (!rafPending) { rafPending = true; requestAnimationFrame(updateScrollState); }
+    }, { passive: true });
   }
 
   // ========== NAV LOGO CLICK TRANSITION ==========
@@ -120,7 +124,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.2, rootMargin: '0px 0px -100px 0px' });
     revealTargets.forEach(el => observer.observe(el));
   }
 
@@ -160,20 +164,6 @@
 
     backdrop.addEventListener('click', closeFooter);
 
-    window.addEventListener('scroll', () => {
-      if (isManualOpen) return;
-      const scrollY = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = maxScroll > 0 ? scrollY / maxScroll : 0;
-
-      if (scrollPercent > 0.98 && scrollY > lastScrollY) {
-        if (!wrapper.classList.contains('auto_open')) openFooter(false);
-      }
-      if (scrollY < lastScrollY && wrapper.classList.contains('auto_open')) {
-        wrapper.classList.remove('auto_open');
-      }
-
-      lastScrollY = scrollY;
-    }, { passive: true });
+    // フッター自動展開は削除（営業ツールとして手動操作のみに）
   }
 })();

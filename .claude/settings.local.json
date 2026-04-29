@@ -39,7 +39,15 @@
       "Bash(gunzip -k d.gz)",
       "Bash(tar -xf d)",
       "WebFetch(domain:www.yamatoen.or.jp)",
-      "Bash(curl -s -L --max-time 20 \"https://www.yamatoen.or.jp/\")"
+      "Bash(curl -s -L --max-time 20 \"https://www.yamatoen.or.jp/\")",
+      "Bash(identify C:/Users/tsubo/MyProject/MyPortfolio/images/ogp.png)",
+      "Bash(curl *)",
+      "Bash(tar -xzf /tmp/page.html -C /tmp/design)",
+      "Bash(mkdir -p \"C:/Users/tsubo/MyProject/MyPortfolio/js/vendor\")",
+      "Bash(cp /tmp/design/linplan-design-system/project/index.html \"C:/Users/tsubo/MyProject/MyPortfolio/index.html\")",
+      "Bash(cp /tmp/design/linplan-design-system/project/js/common.js \"C:/Users/tsubo/MyProject/MyPortfolio/js/common.js\")",
+      "Bash(cp /tmp/design/linplan-design-system/project/js/vendor/gsap.min.js \"C:/Users/tsubo/MyProject/MyPortfolio/js/vendor/gsap.min.js\")",
+      "Bash(cp /tmp/design/linplan-design-system/project/js/vendor/ScrollTrigger.min.js \"C:/Users/tsubo/MyProject/MyPortfolio/js/vendor/ScrollTrigger.min.js\")"
     ]
   }
 }
