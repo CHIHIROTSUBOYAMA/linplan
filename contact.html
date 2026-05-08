@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.replace('no-js','js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>お問い合わせ | LinPlan</title>
 <meta name="description" content="ホームページ・アプリ制作のご相談、お見積りなどお気軽にお問い合わせください。">
@@ -227,6 +228,7 @@
     </a>
     <ul class="nav-links-right">
       <li><a href="index.html#works">制作事例</a></li>
+      <li><a href="index.html#pricing">料金</a></li>
       <li><a href="contact.html" class="nav-contact-link">お問い合わせ
         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a></li>
@@ -244,6 +246,7 @@
     <li><a href="index.html#solution" onclick="toggleMenu()">サービス内容</a></li>
     <li><a href="aeo-geo.html" onclick="toggleMenu()">AEO / GEO</a></li>
     <li><a href="index.html#works" onclick="toggleMenu()">制作事例</a></li>
+    <li><a href="index.html#pricing" onclick="toggleMenu()">料金</a></li>
     <li><a href="contact.html" onclick="toggleMenu()">お問い合わせ</a></li>
   </ul>
 </div>
@@ -284,7 +287,7 @@
             </div>
             <div class="contact-info-text">
               <strong>Phone</strong>
-              <span>080-2937-3646</span>
+              <span><a href="tel:+818029373646">080-2937-3646</a></span>
             </div>
           </li>
         </ul>
@@ -317,8 +320,7 @@
             <select id="inquiry" name="inquiry">
               <option value="homepage">ホームページ制作</option>
               <option value="app">アプリ制作</option>
-              <option value="renewal">サイトリニューアル</option>
-              <option value="consulting">運用・コンサルティング</option>
+              <option value="ai">AIサービス</option>
               <option value="other">その他</option>
             </select>
           </div>
