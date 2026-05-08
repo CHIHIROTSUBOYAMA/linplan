@@ -47,7 +47,11 @@
       "Bash(cp /tmp/design/linplan-design-system/project/index.html \"C:/Users/tsubo/MyProject/MyPortfolio/index.html\")",
       "Bash(cp /tmp/design/linplan-design-system/project/js/common.js \"C:/Users/tsubo/MyProject/MyPortfolio/js/common.js\")",
       "Bash(cp /tmp/design/linplan-design-system/project/js/vendor/gsap.min.js \"C:/Users/tsubo/MyProject/MyPortfolio/js/vendor/gsap.min.js\")",
-      "Bash(cp /tmp/design/linplan-design-system/project/js/vendor/ScrollTrigger.min.js \"C:/Users/tsubo/MyProject/MyPortfolio/js/vendor/ScrollTrigger.min.js\")"
+      "Bash(cp /tmp/design/linplan-design-system/project/js/vendor/ScrollTrigger.min.js \"C:/Users/tsubo/MyProject/MyPortfolio/js/vendor/ScrollTrigger.min.js\")",
+      "Bash(python -c ' *)",
+      "Bash(cwebp -version)",
+      "Bash(python -c \"import PIL; print\\('PIL', PIL.__version__\\); from PIL import Image; im = Image.new\\('RGB',\\(2,2\\)\\); im.save\\('/tmp/_test.webp','webp'\\)\")",
+      "Bash(pip install *)"
     ]
   }
 }

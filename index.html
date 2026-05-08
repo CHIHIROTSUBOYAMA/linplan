@@ -44,8 +44,26 @@
   "name": "LinPlan",
   "description": "ホームページ・アプリ制作を通じて、ブランドの魅力を最大限に引き出します。",
   "url": "https://chihirotsuboyama.github.io/",
-  "serviceType": ["ホームページ制作", "アプリ制作", "WEBデザイン", "WordPress構築", "SEO対策"],
+  "serviceType": ["ホームページ制作", "アプリ制作", "AIサービス", "WEBデザイン", "WordPress構築", "SEO対策"],
   "areaServed": "JP"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "修正は何回まで対応してくれますか？", "acceptedAnswer": {"@type": "Answer", "text": "デザイン段階で2回、実装段階で2回までを目安としています。軽微な修正はその範囲を超えても無料で対応します。"}},
+    {"@type": "Question", "name": "公開後のメンテナンスはお願いできますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。月額1万円〜の運用プランをご用意しています。単発の修正のみでも対応可能です。"}},
+    {"@type": "Question", "name": "WordPress などのCMSは使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。WordPress、Shopify、microCMS など、ご要望に応じて選定します。自分で更新したい範囲をヒアリングして決めます。"}},
+    {"@type": "Question", "name": "既存サイトのリニューアルもお願いできますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。むしろ得意分野です。現状分析から始め、既存の良い部分は活かしながらリニューアルします。"}},
+    {"@type": "Question", "name": "遠方ですが対応できますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。打ち合わせはオンラインで完結できます。全国どこでも対応可能です。"}},
+    {"@type": "Question", "name": "AIサービスとは具体的に何ができますか？", "acceptedAnswer": {"@type": "Answer", "text": "業務マニュアルのAI化、問い合わせ対応の自動化、文書要約・翻訳の効率化、独自データを使ったAIチャットボットなどを提供しています。"}},
+    {"@type": "Question", "name": "ご契約から納品までどのくらいかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "プランによりますが、スターターで4〜8週間、スタンダードで6〜12週間が目安です。お急ぎの場合はご相談ください。"}},
+    {"@type": "Question", "name": "支払い方法は？分割可能ですか？", "acceptedAnswer": {"@type": "Answer", "text": "銀行振込が基本です。分割払いも対応可能ですので、ご相談ください。"}},
+    {"@type": "Question", "name": "個人事業主ですが大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。むしろ個人事業主・小規模事業の方を主なお客様としています。無理のないご予算でのご提案を心がけています。"}}
+  ]
 }
 </script>
 
@@ -126,6 +144,14 @@
     line-height: 2;
     letter-spacing: .04em;
     color: var(--text-light);
+    margin-bottom: 16px;
+  }
+  .hero-subtag {
+    font-family: var(--font);
+    font-size: clamp(.78rem, 1.15vw, .92rem);
+    font-weight: 500;
+    letter-spacing: .08em;
+    color: var(--text-muted);
     margin-bottom: 32px;
   }
   .hero-cta {
@@ -866,6 +892,7 @@
   html.js .hero-logo,
   html.js .hero-divider,
   html.js .hero-tagline,
+  html.js .hero-subtag,
   html.js .hero-cta {
     opacity: 0;
     transform: translateY(20px);
@@ -908,6 +935,675 @@
   /* ============ MAGNETIC BUTTON ============ */
   .fab-contact {
     will-change: transform;
+  }
+
+  /* ============ ABOUT (短縮版・末尾) ============ */
+  .about-short {
+    background: var(--bg-gray);
+    padding: 96px 0;
+    text-align: center;
+  }
+  .about-short-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .about-short .section-en { margin-bottom: 16px; }
+  .about-short h2 {
+    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .about-short-body p {
+    font-size: .92rem;
+    line-height: 2.2;
+    color: var(--text-light);
+    margin-bottom: 14px;
+  }
+  .about-short-body p:last-of-type { margin-bottom: 36px; }
+  .about-short-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-en);
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 1px solid var(--text);
+    padding-bottom: 4px;
+    transition: color .3s, border-color .3s;
+  }
+  .about-short-link:hover { color: var(--accent); border-color: var(--accent); }
+  .about-short-link svg { transition: transform .3s; }
+  .about-short-link:hover svg { transform: translateX(3px); }
+  @media (max-width: 900px) {
+    .about-short { padding: 64px 0; }
+    .about-short-inner { padding: 0 24px; }
+  }
+
+  /* ============ AEO/GEO 対応内容ブロック ============ */
+  .aeo-geo-services {
+    margin-top: 64px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 56px 56px;
+  }
+  .aeo-geo-services h3 {
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .aeo-geo-services-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 36px;
+    margin: 0 0 36px;
+  }
+  .aeo-geo-services-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: .9rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .aeo-geo-services-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 4px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 6.5 l2.5 2.5 l4.5 -5'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .aeo-geo-services-link-wrap { text-align: center; }
+  .aeo-geo-services-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-en);
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 1px solid var(--text);
+    padding-bottom: 4px;
+    transition: color .3s, border-color .3s;
+  }
+  .aeo-geo-services-link:hover { color: var(--accent); border-color: var(--accent); }
+  .aeo-geo-services-link svg { transition: transform .3s; }
+  .aeo-geo-services-link:hover svg { transform: translateX(3px); }
+  @media (max-width: 900px) {
+    .aeo-geo-services { padding: 36px 24px; margin-top: 44px; }
+    .aeo-geo-services-list { grid-template-columns: 1fr; gap: 12px; margin-bottom: 28px; }
+  }
+
+  /* ============ SOLUTION (3サービスカード) ============ */
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .service-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+    border-color: var(--accent);
+  }
+  .service-card__tag {
+    align-self: flex-start;
+    font-family: var(--font-display);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    color: var(--accent);
+    background: rgba(59,162,151,0.1);
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+  .service-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+  .service-card__catch {
+    font-size: .92rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  .service-card__desc {
+    font-size: .85rem;
+    line-height: 2;
+    color: var(--text-light);
+    margin-bottom: 24px;
+  }
+  .service-card__list-label {
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .service-card__list {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+  }
+  .service-card__list li {
+    position: relative;
+    padding-left: 18px;
+    font-size: .85rem;
+    line-height: 1.9;
+    color: var(--text);
+  }
+  .service-card__list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 14px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+  .service-card__meta {
+    margin-top: auto;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .service-card__meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: .82rem;
+  }
+  .service-card__meta-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .service-card__meta-value { color: var(--text); font-weight: 600; }
+  .service-card__price-old {
+    color: var(--text-muted);
+    font-size: .72rem;
+    text-decoration: line-through;
+    margin-right: 6px;
+  }
+  .service-card__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 24px;
+    background: var(--dark);
+    color: #fff;
+    border-radius: 4px;
+    font-size: .85rem;
+    font-weight: 600;
+    transition: opacity .3s, transform .3s;
+  }
+  .service-card__cta:hover { opacity: .85; transform: translateY(-1px); color: #fff; }
+  .service-card__cta svg { transition: transform .3s; }
+  .service-card__cta:hover svg { transform: translateX(3px); }
+  @media (max-width: 900px) {
+    .solution-grid { grid-template-columns: 1fr; gap: 20px; }
+    .service-card { padding: 28px 24px; }
+  }
+
+  /* ============ WHY US ============ */
+  .whyus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 36px;
+  }
+  .whyus-item {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .whyus-num {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    width: 56px; height: 56px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    background: rgba(59,162,151,0.08);
+  }
+  .whyus-body { flex: 1; }
+  .whyus-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .whyus-desc {
+    font-size: .88rem;
+    line-height: 2;
+    color: var(--text-light);
+  }
+  @media (max-width: 900px) {
+    .whyus-grid { grid-template-columns: 1fr; gap: 28px; }
+    .whyus-item { gap: 16px; }
+    .whyus-num { width: 48px; height: 48px; font-size: 1.3rem; }
+  }
+
+  /* ============ WORKS (新規・Original + Practice) ============ */
+  .works-group { margin-top: 64px; }
+  .works-group:first-of-type { margin-top: 0; }
+  .works-group__head {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .works-group__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+    letter-spacing: .04em;
+  }
+  .works-group__desc {
+    font-size: .85rem;
+    line-height: 2;
+    color: var(--text-light);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .works-grid--app { grid-template-columns: repeat(3, 1fr); max-width: 920px; margin: 0 auto; }
+  .works-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 720px; }
+  .work-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, #3ba297 0%, #2d7d75 100%);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-align: center;
+    padding: 24px;
+    letter-spacing: .04em;
+    font-size: 1rem;
+    line-height: 1.5;
+    box-shadow: 0 8px 28px rgba(59,162,151,0.25);
+  }
+  @media (max-width: 900px) {
+    .works-grid, .works-grid--app { grid-template-columns: 1fr; gap: 22px; }
+  }
+
+  /* ============ PROCESS (6ステップ) ============ */
+  .process-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    counter-reset: process;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .process-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .process-item:last-child { border-bottom: none; }
+  .process-num {
+    font-family: var(--font-display);
+    font-size: .68rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: .18em;
+  }
+  .process-num strong {
+    display: block;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+  .process-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .process-duration {
+    display: inline-block;
+    font-size: .72rem;
+    color: var(--accent);
+    background: rgba(59,162,151,0.1);
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+    letter-spacing: .04em;
+  }
+  .process-desc {
+    font-size: .88rem;
+    line-height: 2;
+    color: var(--text-light);
+  }
+  @media (max-width: 900px) {
+    .process-item { grid-template-columns: 1fr; gap: 8px; padding: 22px 0; }
+    .process-num strong { font-size: 1.4rem; }
+  }
+
+  /* ============ PRICING (3プラン・アンカリング) ============ */
+  .pricing-note {
+    background: #fffaeb;
+    border: 1px solid #E8DB80;
+    border-radius: 8px;
+    padding: 18px 24px;
+    text-align: center;
+    font-size: .9rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 56px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pricing-note strong { color: var(--dark); font-weight: 700; }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
+  }
+  .pricing-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+  }
+  .pricing-card--featured {
+    border: 2px solid var(--accent);
+    box-shadow: 0 14px 40px rgba(59,162,151,0.15);
+  }
+  .pricing-card__badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    padding: 6px 18px;
+    border-radius: 100px;
+  }
+  .pricing-card__sub {
+    font-size: .72rem;
+    color: var(--text-muted);
+    letter-spacing: .04em;
+    margin-bottom: 8px;
+  }
+  .pricing-card__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+  .pricing-card__catch {
+    font-size: .85rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 28px;
+  }
+  .pricing-card__price-old {
+    font-size: .85rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .pricing-card__price-label {
+    font-size: .72rem;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: .12em;
+    margin-bottom: 4px;
+  }
+  .pricing-card__price {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 22px;
+  }
+  .pricing-card__price small { font-size: 1rem; font-weight: 600; }
+  .pricing-card__list {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-card__list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: .85rem;
+    line-height: 2;
+    color: var(--text);
+  }
+  .pricing-card__list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 12px;
+    width: 14px; height: 10px;
+    border-left: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(-45deg);
+  }
+  .pricing-card__duration {
+    font-size: .82rem;
+    color: var(--text-light);
+    margin-top: auto;
+  }
+  .pricing-card__duration strong {
+    display: block;
+    font-size: .9rem;
+    color: var(--dark);
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .pricing-notes {
+    margin-top: 36px;
+    text-align: center;
+    font-size: .78rem;
+    color: var(--text-muted);
+    line-height: 2;
+  }
+  @media (max-width: 900px) {
+    .pricing-grid { grid-template-columns: 1fr; gap: 32px; }
+    .pricing-card { padding: 32px 24px; }
+  }
+
+  /* ============ FAQ ============ */
+  .faq-list {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 8px 22px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.7;
+    transition: color .3s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before {
+    content: 'Q';
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: .9rem;
+    font-weight: 700;
+    color: var(--accent);
+    width: 28px;
+    text-align: center;
+    margin-top: 2px;
+  }
+  .faq-item summary::after {
+    content: '';
+    flex-shrink: 0;
+    width: 14px; height: 14px;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+    margin-left: auto;
+    margin-top: 6px;
+    transition: transform .3s var(--ease);
+  }
+  .faq-item[open] summary::after { transform: rotate(-135deg); margin-top: 12px; }
+  .faq-item summary:hover { color: var(--accent); }
+  .faq-answer {
+    padding: 0 8px 24px 46px;
+    font-size: .88rem;
+    line-height: 2;
+    color: var(--text-light);
+  }
+  @media (max-width: 900px) {
+    .faq-item summary { font-size: .9rem; gap: 14px; padding: 20px 4px; }
+    .faq-answer { padding: 0 4px 22px 42px; }
+  }
+
+  /* ============ CTA ブロック ============ */
+  .cta-block {
+    padding: 100px 0;
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+  }
+  .cta-block-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .cta-block h2 {
+    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: .04em;
+    margin-bottom: 22px;
+  }
+  .cta-block p {
+    font-size: .92rem;
+    line-height: 2.2;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 40px;
+  }
+  .cta-block-actions {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cta-block-btn--primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 38px;
+    background: #E8DB80;
+    color: var(--dark) !important;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    box-shadow: 0 6px 20px rgba(232,219,128,0.25);
+    transition: opacity .3s, transform .3s;
+  }
+  .cta-block-btn--primary:hover { opacity: .9; transform: translateY(-2px); color: var(--dark) !important; }
+  .cta-block-btn--primary svg { transition: transform .3s; }
+  .cta-block-btn--primary:hover svg { transform: translateX(3px); }
+  .cta-block-btn--ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 38px;
+    background: transparent;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 4px;
+    font-family: var(--font-display);
+    font-size: .9rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    transition: border-color .3s, background .3s;
+  }
+  .cta-block-btn--ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); color: #fff !important; }
+  @media (max-width: 900px) {
+    .cta-block { padding: 72px 0; }
+    .cta-block-inner { padding: 0 24px; }
+    .cta-block-actions { flex-direction: column; }
+    .cta-block-btn--primary, .cta-block-btn--ghost { justify-content: center; }
   }
 
 </style>
@@ -1113,6 +1809,7 @@
     </a>
     <ul class="nav-links-right">
       <li><a href="#works">制作事例</a></li>
+      <li><a href="#pricing">料金</a></li>
       <li><a href="contact.html" class="nav-contact-link">お問い合わせ
         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a></li>
@@ -1130,6 +1827,7 @@
     <li><a href="#solution" onclick="toggleMenu()">サービス内容</a></li>
     <li><a href="aeo-geo.html" onclick="toggleMenu()">AEO / GEO</a></li>
     <li><a href="#works" onclick="toggleMenu()">制作事例</a></li>
+    <li><a href="#pricing" onclick="toggleMenu()">料金</a></li>
     <li><a href="contact.html" onclick="toggleMenu()">お問い合わせ</a></li>
   </ul>
 </div>
@@ -1158,24 +1856,7 @@
       </div>
       <div class="hero-divider"></div>
       <p class="hero-tagline">見つけられ、選ばれるサイトを。</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ========== ABOUT ========== -->
-<section class="section" id="about">
-  <div class="container">
-    <div class="about-content reveal">
-      <p>
-        <span class="line">企業さまからのご依頼を受け、ホームページの企画・制作を行うほか、Webアプリやモバイルアプリの開発にも取り組んでいます。</span>
-        <span class="line">また、AIを活用した業務支援のご提案も行っています。</span>
-      </p>
-      <p>
-        <span class="line">「システムで、毎日をもっと心地よく。」</span>
-        <span class="line">そんな小さくても確かな変化を届けられるよう、</span>
-        <span class="line">日々つくり続けています。</span>
-      </p>
+      <p class="hero-subtag">中小企業・店舗のための、Web / アプリ / AI 制作スタジオ</p>
     </div>
   </div>
 </section>
@@ -1268,20 +1949,6 @@
           </svg>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ========== AGITATE / Why it matters ========== -->
-<section class="agitate" id="agitate">
-  <div class="agitate-inner reveal">
-    <p class="section-en">Why it matters</p>
-    <h2 class="agitate-title">「あるだけのサイト」が、<br>静かに機会を失っている</h2>
-    <div class="agitate-body">
-      <p>検索結果の一番上は、もはや青いリンクではなくAIの回答です。そこに載らないということは、比較検討の土俵にすら立てないということ。</p>
-      <p>ブランドの魅力が整理されていないサイトは、訪問者に「で、何の会社だっけ」と思われた瞬間に離脱されます。</p>
-      <p>成果につながらないサイトは、毎月の運用費がそのまま損失になる——。</p>
-      <p>ひとつひとつは小さな綻びでも、積み重なれば事業の成長スピードを確実に削ります。</p>
     </div>
   </div>
 </section>
@@ -1417,10 +2084,28 @@
       </div>
     </div>
 
+    <!-- LinPlan の対応内容 -->
+    <div class="aeo-geo-services reveal">
+      <h3>LinPlan が標準で実装する AEO/GEO 対応</h3>
+      <ul class="aeo-geo-services-list">
+        <li>構造化データ（JSON-LD）の網羅的実装</li>
+        <li>FAQ形式での明示的なQ&A設計</li>
+        <li>AIが解釈しやすい見出し階層と意味タグ</li>
+        <li>メタ情報・OGP・canonical の最適化</li>
+        <li>AIクローラを意識した文章構造</li>
+      </ul>
+      <div class="aeo-geo-services-link-wrap">
+        <a href="aeo-geo.html" class="aeo-geo-services-link">
+          AEO / GEO についてもっと詳しく
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ========== SOLUTION (Service + Works 統合) ========== -->
+<!-- ========== SOLUTION (3サービスカード) ========== -->
 <section class="section section-gray" id="solution">
   <div class="container">
     <div class="section-head section-head--center reveal">
@@ -1429,159 +2114,502 @@
       <p class="section-desc">目的と課題に合わせて、必要なものだけを丁寧に。<br>3つのサービスでご支援します。</p>
     </div>
 
-    <!-- SERVICE 01: ホームページ制作 -->
-    <div class="service-group reveal" id="works">
-      <div class="service-group__head">
-        <h3 class="service-group__title">ホームページ制作</h3>
-        <p class="service-group__desc">コーポレート・店舗・サービスサイトを、検索／AI検索の両方に最適化した設計で。WordPress・レスポンシブ・公開後の運用まで一貫して対応します。</p>
-        <p class="service-group__note">※ 公開できる案件のみ掲載しています。</p>
-      </div>
-      <div class="service-group__works">
-        <article class="work-card">
-          <div class="monitor">
-            <div class="monitor-screen">
-              <img src="images/airbnb.png" alt="Airbnb 模写サイト">
-            </div>
-            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
+    <div class="solution-grid reveal">
+      <!-- SERVICE 01: ホームページ制作 -->
+      <article class="service-card">
+        <span class="service-card__tag">WEB</span>
+        <h3 class="service-card__title">ホームページ制作</h3>
+        <p class="service-card__catch">検索にも、AIにも、ちゃんと届くサイト。</p>
+        <p class="service-card__desc">コーポレート・店舗・サービスサイトを、AEO/GEO標準対応で制作。WordPress・レスポンシブ・公開後の運用までワンストップ。</p>
+        <p class="service-card__list-label">こんな方におすすめ</p>
+        <ul class="service-card__list">
+          <li>古いサイトをそのままにしている</li>
+          <li>自分で更新できないままになっている</li>
+          <li>集客の入口を強化したい</li>
+        </ul>
+        <div class="service-card__meta">
+          <div class="service-card__meta-row">
+            <span class="service-card__meta-label">料金</span>
+            <span class="service-card__meta-value"><span class="service-card__price-old">通常 60万円〜</span>35万円〜</span>
           </div>
-          <div class="monitor-stand"></div>
-          <div class="monitor-base"></div>
-          <div class="work-info">
-            <p class="work-category">Practice</p>
-            <h3 class="work-name">Airbnb 模写サイト</h3>
-            <div class="work-tags"><span class="work-tag">HTML / CSS</span><span class="work-tag">レスポンシブ</span><span class="work-tag">模写</span></div>
+          <div class="service-card__meta-row">
+            <span class="service-card__meta-label">納期</span>
+            <span class="service-card__meta-value">4〜8週間</span>
           </div>
-        </article>
-        <article class="work-card">
-          <div class="monitor">
-            <div class="monitor-screen">
-              <img src="images/airbnb2.png" alt="Airbnb2 模写サイト">
-            </div>
-            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
-          </div>
-          <div class="monitor-stand"></div>
-          <div class="monitor-base"></div>
-          <div class="work-info">
-            <p class="work-category">Practice</p>
-            <h3 class="work-name">Airbnb2 模写サイト</h3>
-            <div class="work-tags"><span class="work-tag">HTML / CSS</span><span class="work-tag">レスポンシブ</span><span class="work-tag">模写</span></div>
-          </div>
-        </article>
-        <article class="work-card">
-          <div class="monitor">
-            <div class="monitor-screen">
-              <img src="images/fukuyamarinshou.png" alt="福山臨床 模写サイト">
-            </div>
-            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
-          </div>
-          <div class="monitor-stand"></div>
-          <div class="monitor-base"></div>
-          <div class="work-info">
-            <p class="work-category">Practice</p>
-            <h3 class="work-name">福山臨床 模写サイト</h3>
-            <div class="work-tags"><span class="work-tag">HTML / CSS</span><span class="work-tag">レスポンシブ</span><span class="work-tag">模写</span></div>
-          </div>
-        </article>
-        <article class="work-card">
-          <div class="monitor">
-            <div class="monitor-screen">
-              <img src="images/monoshop.png" alt="monoshop 模写サイト">
-            </div>
-            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
-          </div>
-          <div class="monitor-stand"></div>
-          <div class="monitor-base"></div>
-          <div class="work-info">
-            <p class="work-category">Practice</p>
-            <h3 class="work-name">monoshop 模写サイト</h3>
-            <div class="work-tags"><span class="work-tag">HTML / CSS</span><span class="work-tag">レスポンシブ</span><span class="work-tag">模写</span></div>
-          </div>
-        </article>
-        <article class="work-card">
-          <div class="monitor">
-            <div class="monitor-screen">
-              <img src="images/rbrain.png" alt="rbrain 模写サイト">
-            </div>
-            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
-          </div>
-          <div class="monitor-stand"></div>
-          <div class="monitor-base"></div>
-          <div class="work-info">
-            <p class="work-category">Practice</p>
-            <h3 class="work-name">rbrain 模写サイト</h3>
-            <div class="work-tags"><span class="work-tag">HTML / CSS</span><span class="work-tag">レスポンシブ</span><span class="work-tag">模写</span></div>
-          </div>
-        </article>
-        <article class="work-card">
-          <div class="monitor">
-            <div class="monitor-screen">
-              <img src="images/toukyuribaburu.png" alt="東急リバブル 模写サイト">
-            </div>
-            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
-          </div>
-          <div class="monitor-stand"></div>
-          <div class="monitor-base"></div>
-          <div class="work-info">
-            <p class="work-category">Practice</p>
-            <h3 class="work-name">東急リバブル 模写サイト</h3>
-            <div class="work-tags"><span class="work-tag">HTML / CSS</span><span class="work-tag">レスポンシブ</span><span class="work-tag">模写</span></div>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <!-- SERVICE 02: アプリ制作 -->
-    <div class="service-group reveal">
-      <div class="service-group__head">
-        <h3 class="service-group__title">アプリ制作</h3>
-        <p class="service-group__desc">iOS/Androidのモバイルアプリ、業務Webアプリを企画〜開発まで。使いやすいUI/UXと安定した動作で、現場の課題を解決します。</p>
-        <p class="service-group__note">※ 公開できる案件のみ掲載しています。</p>
-      </div>
-      <div class="service-group__works service-group__works-2col">
-        <article class="work-card">
-          <div class="monitor">
-            <div class="monitor-screen">
-              <img src="images/studyreport.png" alt="勉強時間記録アプリ StudyReport">
-            </div>
-            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
-          </div>
-          <div class="monitor-stand"></div>
-          <div class="monitor-base"></div>
-          <div class="work-info">
-            <p class="work-category">App</p>
-            <h3 class="work-name">勉強時間記録アプリ StudyReport</h3>
-            <div class="work-tags"><span class="work-tag">React</span><span class="work-tag">UI/UX</span><span class="work-tag">学習管理</span></div>
-          </div>
-        </article>
-        <article class="work-card">
-          <div class="monitor">
-            <div class="monitor-screen">
-              <img src="images/tsukimi.png" alt="家計簿管理アプリ Tsukimi">
-            </div>
-            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
-          </div>
-          <div class="monitor-stand"></div>
-          <div class="monitor-base"></div>
-          <div class="work-info">
-            <p class="work-category">App</p>
-            <h3 class="work-name">家計簿管理アプリ Tsukimi</h3>
-            <div class="work-tags"><span class="work-tag">React</span><span class="work-tag">UI/UX</span><span class="work-tag">家計簿</span></div>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <!-- SERVICE 03: AIサービス -->
-    <div class="service-group reveal">
-      <div class="service-group__head">
-        <h3 class="service-group__title">AIサービス</h3>
-        <p class="service-group__desc">ChatGPT・生成AIを活用した業務効率化、AIチャットボット導入支援。業務フローに合わせたワンストップのご提案を行います。</p>
-        <a href="ai-service.html" class="service-group__cta">
+        </div>
+        <a href="#works" class="service-card__cta">
           詳しく見る
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
         </a>
+      </article>
+
+      <!-- SERVICE 02: アプリ制作 -->
+      <article class="service-card">
+        <span class="service-card__tag">APP</span>
+        <h3 class="service-card__title">アプリ制作</h3>
+        <p class="service-card__catch">業務の手間を、ひとつのアプリにまとめる。</p>
+        <p class="service-card__desc">iOS/Androidのモバイルアプリ、業務Webアプリを企画から開発まで。使いやすいUI/UXと安定した動作で、現場の課題を解決します。</p>
+        <p class="service-card__list-label">こんな方におすすめ</p>
+        <ul class="service-card__list">
+          <li>業務の一部をデジタル化したい</li>
+          <li>社内ツールを内製したい</li>
+          <li>アイデアを形にしたい</li>
+        </ul>
+        <div class="service-card__meta">
+          <div class="service-card__meta-row">
+            <span class="service-card__meta-label">料金</span>
+            <span class="service-card__meta-value"><span class="service-card__price-old">通常 150万円〜</span>80万円〜</span>
+          </div>
+          <div class="service-card__meta-row">
+            <span class="service-card__meta-label">納期</span>
+            <span class="service-card__meta-value">8〜16週間</span>
+          </div>
+        </div>
+        <a href="#works" class="service-card__cta">
+          詳しく見る
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <!-- SERVICE 03: AI業務支援 -->
+      <article class="service-card">
+        <span class="service-card__tag">AI</span>
+        <h3 class="service-card__title">AI業務支援</h3>
+        <p class="service-card__catch">ChatGPTを、本気で業務に組み込む。</p>
+        <p class="service-card__desc">ChatGPT・生成AIを活用した業務効率化、AIチャットボット導入支援。業務フローに合わせたワンストップのご提案を行います。</p>
+        <p class="service-card__list-label">こんな方におすすめ</p>
+        <ul class="service-card__list">
+          <li>AIを導入したいが何から始めるか分からない</li>
+          <li>問い合わせ対応を自動化したい</li>
+          <li>文書作成・要約を効率化したい</li>
+        </ul>
+        <div class="service-card__meta">
+          <div class="service-card__meta-row">
+            <span class="service-card__meta-label">料金</span>
+            <span class="service-card__meta-value">30万円〜</span>
+          </div>
+          <div class="service-card__meta-row">
+            <span class="service-card__meta-label">納期</span>
+            <span class="service-card__meta-value">4〜12週間</span>
+          </div>
+        </div>
+        <a href="ai-service.html" class="service-card__cta">
+          詳しく見る
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== WHY US ========== -->
+<section class="section" id="whyus">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">Why LinPlan</p>
+      <h2 class="section-title">LinPlan が選ばれる4つの理由</h2>
+      <p class="section-desc">大きな会社にはない、ひとりの作り手だからこその強みがあります。</p>
+    </div>
+
+    <div class="whyus-grid reveal">
+      <div class="whyus-item">
+        <div class="whyus-num">01</div>
+        <div class="whyus-body">
+          <h3 class="whyus-title">ひとりで全部やる、だから速い</h3>
+          <p class="whyus-desc">ヒアリング・設計・デザイン・実装・運用まで窓口ひとつ。意思決定の遅延も伝言ゲームのミスもありません。</p>
+        </div>
+      </div>
+      <div class="whyus-item">
+        <div class="whyus-num">02</div>
+        <div class="whyus-body">
+          <h3 class="whyus-title">AEO/GEO 対応が標準装備</h3>
+          <p class="whyus-desc">「AIに選ばれる」ための設計を、追加料金なしですべての制作に。これからの時代の標準を、今から手に入れられます。</p>
+        </div>
+      </div>
+      <div class="whyus-item">
+        <div class="whyus-num">03</div>
+        <div class="whyus-body">
+          <h3 class="whyus-title">Web もアプリも AI も、ワンストップ</h3>
+          <p class="whyus-desc">事業を伸ばすために必要なデジタル領域を、まとめて相談できる。複数の会社に発注する手間がいりません。</p>
+        </div>
+      </div>
+      <div class="whyus-item">
+        <div class="whyus-num">04</div>
+        <div class="whyus-body">
+          <h3 class="whyus-title">中小規模に最適化した価格</h3>
+          <p class="whyus-desc">大手代理店の半額〜1/3で、同等以上の品質を。「規模に合った投資で、最大の成果を」がLinPlanの基本方針です。</p>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ========== WORKS (Original Products + Real Works + Practice Works) ========== -->
+<section class="section section-gray" id="works">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">Works</p>
+      <h2 class="section-title">これまでの成果物</h2>
+      <p class="section-desc">自分で企画・運営している自社プロダクト、これから掲載していく実案件、そして技術・デザイン研鑽のための模写作品の3カテゴリでご紹介します。</p>
+    </div>
+
+    <!-- Original Products -->
+    <div class="works-group reveal">
+      <div class="works-group__head">
+        <h3 class="works-group__title">Original Products｜自社プロダクト</h3>
+        <p class="works-group__desc">依頼ではなく、自分で課題を見つけて企画・設計・実装まで完結させたプロダクトです。継続的に運用・改善しています。</p>
+      </div>
+      <div class="works-grid works-grid--app works-grid--2">
+        <article class="work-card">
+          <div class="monitor">
+            <div class="monitor-screen">
+              <img src="images/studyreport.webp" alt="学習時間記録アプリ StudyReport" loading="lazy" decoding="async">
+            </div>
+            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
+          </div>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+          <div class="work-info">
+            <p class="work-category">Original</p>
+            <h3 class="work-name">学習時間記録アプリ StudyReport</h3>
+            <div class="work-tags"><span class="work-tag">React</span><span class="work-tag">TypeScript</span><span class="work-tag">Firebase</span></div>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="monitor">
+            <div class="monitor-screen">
+              <img src="images/tsukimi.webp" alt="家計簿管理アプリ Tsukimi" loading="lazy" decoding="async">
+            </div>
+            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
+          </div>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+          <div class="work-info">
+            <p class="work-category">Original</p>
+            <h3 class="work-name">家計簿管理アプリ Tsukimi</h3>
+            <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Supabase</span><span class="work-tag">TypeScript</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Real Works (placeholder) -->
+    <div class="works-group reveal">
+      <div class="works-group__head">
+        <h3 class="works-group__title">Real Works｜制作実績</h3>
+        <p class="works-group__desc">クライアント様向けの実案件は現在準備中です。順次掲載していきます。</p>
+      </div>
+      <!-- 案件が増えたらここにカードを追加 -->
+    </div>
+
+    <!-- Practice Works -->
+    <div class="works-group reveal">
+      <div class="works-group__head">
+        <h3 class="works-group__title">Practice Works｜模写・学習作品</h3>
+        <p class="works-group__desc">新しい技術やデザインパターンを学ぶために制作した模写作品です。今後、知人や見本制作の実案件と順次差し替え、本格的な制作実績として育てていく予定です。</p>
+      </div>
+      <div class="works-grid">
+        <article class="work-card">
+          <div class="monitor">
+            <div class="monitor-screen">
+              <img src="images/airbnb.webp" alt="Hospitality 模写サイト" loading="lazy" decoding="async">
+            </div>
+            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
+          </div>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+          <div class="work-info">
+            <p class="work-category">Hospitality</p>
+            <h3 class="work-name">Hospitality 模写サイト</h3>
+            <div class="work-tags"><span class="work-tag">コーポレート</span><span class="work-tag">レスポンシブ</span><span class="work-tag">予約導線</span></div>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="monitor">
+            <div class="monitor-screen">
+              <img src="images/airbnb2.webp" alt="Hospitality 模写サイト②" loading="lazy" decoding="async">
+            </div>
+            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
+          </div>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+          <div class="work-info">
+            <p class="work-category">Hospitality</p>
+            <h3 class="work-name">Hospitality 模写サイト②</h3>
+            <div class="work-tags"><span class="work-tag">サービスサイト</span><span class="work-tag">予約システム</span><span class="work-tag">AEO/GEO対応</span></div>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="monitor">
+            <div class="monitor-screen">
+              <img src="images/fukuyamarinshou.webp" alt="Medical 模写サイト" loading="lazy" decoding="async">
+            </div>
+            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
+          </div>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+          <div class="work-info">
+            <p class="work-category">Medical</p>
+            <h3 class="work-name">Medical 模写サイト</h3>
+            <div class="work-tags"><span class="work-tag">医療・クリニック</span><span class="work-tag">コーポレート</span><span class="work-tag">AEO/GEO対応</span></div>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="monitor">
+            <div class="monitor-screen">
+              <img src="images/monoshop.webp" alt="E-Commerce 模写サイト" loading="lazy" decoding="async">
+            </div>
+            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
+          </div>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+          <div class="work-info">
+            <p class="work-category">E-Commerce</p>
+            <h3 class="work-name">E-Commerce 模写サイト</h3>
+            <div class="work-tags"><span class="work-tag">EC</span><span class="work-tag">物販</span><span class="work-tag">レスポンシブ</span></div>
+          </div>
+        </article>
+        <article class="work-card">
+          <div class="monitor">
+            <div class="monitor-screen">
+              <img src="images/rbrain.webp" alt="SaaS 模写サイト" loading="lazy" decoding="async">
+            </div>
+            <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
+          </div>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+          <div class="work-info">
+            <p class="work-category">SaaS</p>
+            <h3 class="work-name">SaaS 模写サイト</h3>
+            <div class="work-tags"><span class="work-tag">SaaS</span><span class="work-tag">コーポレート</span><span class="work-tag">アニメーション</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== PROCESS ========== -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">Process</p>
+      <h2 class="section-title">ご相談から納品までの流れ</h2>
+      <p class="section-desc">はじめての方でも安心してお任せいただけるよう、各ステップを明確にしています。</p>
+    </div>
+
+    <div class="process-list reveal">
+      <div class="process-item">
+        <div class="process-num">STEP<strong>01</strong></div>
+        <div class="process-body">
+          <h3>無料相談（30分）</h3>
+          <span class="process-duration">所要時間 約30分</span>
+          <p class="process-desc">オンラインまたは対面で、現状の課題・目的・理想のイメージをお聞きします。お見積り前の段階なので、お気軽にどうぞ。</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">STEP<strong>02</strong></div>
+        <div class="process-body">
+          <h3>ご提案・お見積り</h3>
+          <span class="process-duration">1週間以内</span>
+          <p class="process-desc">要件整理、サイト構成案、概算お見積りをご提示します。納得いただいてからご契約のため、無理な営業はありません。</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">STEP<strong>03</strong></div>
+        <div class="process-body">
+          <h3>ご契約・キックオフ</h3>
+          <p class="process-desc">契約後、本格的なヒアリングと要件定義に入ります。コミュニケーションツール（Slack等）で密に連携します。</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">STEP<strong>04</strong></div>
+        <div class="process-body">
+          <h3>設計・デザイン</h3>
+          <span class="process-duration">2〜3週間</span>
+          <p class="process-desc">ワイヤーフレーム → デザインの順でご確認をいただきます。途中の修正は柔軟に対応します。</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">STEP<strong>05</strong></div>
+        <div class="process-body">
+          <h3>実装・公開</h3>
+          <span class="process-duration">2〜4週間</span>
+          <p class="process-desc">コーディング・動作確認 → 公開作業 → 運用方法の引き継ぎまでを担当します。</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">STEP<strong>06</strong></div>
+        <div class="process-body">
+          <h3>公開後サポート（任意）</h3>
+          <p class="process-desc">月額契約で、運用・更新・改善を継続的にサポート。契約なしの個別ご相談も承ります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== PRICING ========== -->
+<section class="section section-gray" id="pricing">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">Pricing</p>
+      <h2 class="section-title">料金プラン</h2>
+    </div>
+
+    <div class="pricing-note reveal">
+      現在、LinPlan は実績拡大期につき、<strong>先着10件限定の特別価格</strong>でご提供しています。<br>通常価格は、業界の一般相場を踏まえた価格設定です。
+    </div>
+
+    <div class="pricing-grid reveal">
+      <!-- スターター -->
+      <article class="pricing-card">
+        <p class="pricing-card__sub">個人事業主・小規模店舗向け</p>
+        <h3 class="pricing-card__title">スターター</h3>
+        <p class="pricing-card__catch">まずは「ちゃんと届くサイト」を持ちたい方へ</p>
+        <p class="pricing-card__price-old">通常 60万円〜</p>
+        <p class="pricing-card__price-label">実績拡大記念</p>
+        <p class="pricing-card__price">35<small>万円〜</small></p>
+        <ul class="pricing-card__list">
+          <li>5〜8ページ</li>
+          <li>レスポンシブ対応</li>
+          <li>基本SEO ＋ AEO/GEO標準対応</li>
+          <li>お問い合わせフォーム</li>
+          <li>公開作業まで</li>
+        </ul>
+        <p class="pricing-card__duration">納期<strong>4〜8週間</strong></p>
+      </article>
+
+      <!-- スタンダード（おすすめ） -->
+      <article class="pricing-card pricing-card--featured">
+        <span class="pricing-card__badge">人気 No.1</span>
+        <p class="pricing-card__sub">中小企業向け</p>
+        <h3 class="pricing-card__title">スタンダード</h3>
+        <p class="pricing-card__catch">事業の武器として、本格的に成果を出したい方へ</p>
+        <p class="pricing-card__price-old">通常 120万円〜</p>
+        <p class="pricing-card__price-label">実績拡大記念</p>
+        <p class="pricing-card__price">70<small>万円〜</small></p>
+        <ul class="pricing-card__list">
+          <li>10〜20ページ</li>
+          <li>レスポンシブ対応</li>
+          <li>AEO/GEO 完全対応</li>
+          <li>お問い合わせ・予約・会員機能等</li>
+          <li>構造化データ実装</li>
+          <li>公開後30日間の無料調整</li>
+        </ul>
+        <p class="pricing-card__duration">納期<strong>6〜12週間</strong></p>
+      </article>
+
+      <!-- カスタム -->
+      <article class="pricing-card">
+        <p class="pricing-card__sub">業務システム・アプリ・AI導入</p>
+        <h3 class="pricing-card__title">カスタム</h3>
+        <p class="pricing-card__catch">業務に深く組み込むシステムが必要な方へ</p>
+        <p class="pricing-card__price-label">個別お見積り</p>
+        <p class="pricing-card__price">80<small>万円〜</small></p>
+        <ul class="pricing-card__list">
+          <li>アプリ開発（iOS/Android/Web）</li>
+          <li>業務システム構築</li>
+          <li>AI業務支援導入</li>
+          <li>既存システムとの連携</li>
+        </ul>
+        <p class="pricing-card__duration">納期<strong>要相談</strong></p>
+      </article>
+    </div>
+
+    <p class="pricing-notes reveal">
+      ※ 初回ヒアリング・お見積りは無料です<br>
+      ※ 実績拡大記念価格は先着10件まで<br>
+      ※ 分割対応も可能です。お気軽にご相談ください
+    </p>
+  </div>
+</section>
+
+
+<!-- ========== FAQ ========== -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">FAQ</p>
+      <h2 class="section-title">よくあるご質問</h2>
+    </div>
+
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>修正は何回まで対応してくれますか？</summary>
+        <div class="faq-answer">デザイン段階で2回、実装段階で2回までを目安としています。軽微な修正はその範囲を超えても無料で対応します。</div>
+      </details>
+      <details class="faq-item">
+        <summary>公開後のメンテナンスはお願いできますか？</summary>
+        <div class="faq-answer">はい。月額1万円〜の運用プランをご用意しています。単発の修正のみでも対応可能です。</div>
+      </details>
+      <details class="faq-item">
+        <summary>WordPress などのCMSは使えますか？</summary>
+        <div class="faq-answer">はい。WordPress、Shopify、microCMS など、ご要望に応じて選定します。自分で更新したい範囲をヒアリングして決めます。</div>
+      </details>
+      <details class="faq-item">
+        <summary>既存サイトのリニューアルもお願いできますか？</summary>
+        <div class="faq-answer">はい。むしろ得意分野です。現状分析から始め、既存の良い部分は活かしながらリニューアルします。</div>
+      </details>
+      <details class="faq-item">
+        <summary>遠方ですが対応できますか？</summary>
+        <div class="faq-answer">はい。打ち合わせはオンラインで完結できます。全国どこでも対応可能です。</div>
+      </details>
+      <details class="faq-item">
+        <summary>AIサービスとは具体的に何ができますか？</summary>
+        <div class="faq-answer">業務マニュアルのAI化、問い合わせ対応の自動化、文書要約・翻訳の効率化、独自データを使ったAIチャットボットなどを提供しています。</div>
+      </details>
+      <details class="faq-item">
+        <summary>ご契約から納品までどのくらいかかりますか？</summary>
+        <div class="faq-answer">プランによりますが、スターターで4〜8週間、スタンダードで6〜12週間が目安です。お急ぎの場合はご相談ください。</div>
+      </details>
+      <details class="faq-item">
+        <summary>支払い方法は？分割可能ですか？</summary>
+        <div class="faq-answer">銀行振込が基本です。分割払いも対応可能ですので、ご相談ください。</div>
+      </details>
+      <details class="faq-item">
+        <summary>個人事業主ですが大丈夫ですか？</summary>
+        <div class="faq-answer">はい。むしろ個人事業主・小規模事業の方を主なお客様としています。無理のないご予算でのご提案を心がけています。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== CTA ブロック ========== -->
+<section class="cta-block reveal">
+  <div class="cta-block-inner">
+    <h2>まずは話を聞かせてください</h2>
+    <p>初回ヒアリングは30分・無料・オンラインOK<br>ご返信は24時間以内にいたします</p>
+    <div class="cta-block-actions">
+      <a href="contact.html" class="cta-block-btn--primary">
+        無料で相談する
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#pricing" class="cta-block-btn--ghost">
+        料金を確認する
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT (短縮版・末尾) ========== -->
+<section class="about-short" id="about">
+  <div class="about-short-inner reveal">
+    <p class="section-en">About</p>
+    <h2>ひとりで、本気で、つくっています</h2>
+    <div class="about-short-body">
+      <p>LinPlan は、Web / アプリ / AI を中心に、中小企業・店舗のデジタル支援を行っているひとり制作スタジオです。</p>
+      <p>「規模は小さくても、本物のサイトを」をモットーに、依頼から運用まで責任を持ってお引き受けしています。</p>
+    </div>
+    <a href="about.html" class="about-short-link">
+      LinPlan について、もっと詳しく
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </a>
   </div>
 </section>
 
@@ -1942,7 +2970,7 @@ window.addEventListener('load', () => {
   if (!window.gsap || !window.ScrollTrigger) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     // reduced-motion: 初期状態を即座に表示
-    document.querySelectorAll('.hero-logo,.hero-divider,.hero-tagline,.hero-cta,.section-en,.section-title,.section-desc,.work-card,.service-group__head > *,.aeo-geo-tag,.aeo-geo-text h3,.aeo-geo-text p,.agitate-body p').forEach(el => {
+    document.querySelectorAll('.hero-logo,.hero-divider,.hero-tagline,.hero-subtag,.hero-cta,.section-en,.section-title,.section-desc,.work-card,.service-group__head > *,.aeo-geo-tag,.aeo-geo-text h3,.aeo-geo-text p').forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
@@ -1951,7 +2979,7 @@ window.addEventListener('load', () => {
   gsap.registerPlugin(ScrollTrigger);
 
   /* ---- ① ヒーローコンテンツ 入場 stagger ---- */
-  const heroEls = ['.hero-logo', '.hero-divider', '.hero-tagline', '.hero-cta'].map(s => document.querySelector(s)).filter(Boolean);
+  const heroEls = ['.hero-logo', '.hero-divider', '.hero-tagline', '.hero-subtag', '.hero-cta'].map(s => document.querySelector(s)).filter(Boolean);
   if (heroEls.length) {
     // ローダーが終わったあとに発火（bodyのloading classが消えるのを監視）
     const fireHero = () => {
@@ -1992,7 +3020,7 @@ window.addEventListener('load', () => {
   });
 
   /* ---- ⑤ Work cards stagger ---- */
-  document.querySelectorAll('.service-group__works').forEach(grid => {
+  document.querySelectorAll('.works-grid, .service-group__works').forEach(grid => {
     const cards = grid.querySelectorAll('.work-card');
     if (!cards.length) return;
     ScrollTrigger.create({
