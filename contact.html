@@ -8,6 +8,8 @@
 <meta name="description" content="ホームページ・アプリ制作のご相談、お見積りなどお気軽にお問い合わせください。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://chihirotsuboyama.github.io/contact.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='10' fill='%2332373c'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8v36h12'/%3E%3Cpath d='M26 16v28'/%3E%3Cpath d='M34 44V28c0-8 14-8 14 0v16'/%3E%3Ccircle cx='26' cy='10' r='3' fill='%23fff' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='10' fill='%2332373c'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8v36h12'/%3E%3Cpath d='M26 16v28'/%3E%3Cpath d='M34 44V28c0-8 14-8 14 0v16'/%3E%3Ccircle cx='26' cy='10' r='3' fill='%23fff' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="お問い合わせ | LinPlan">
@@ -190,6 +192,11 @@
   .form-submit svg { transition: transform .3s; }
   .form-submit:hover svg { transform: translateX(3px); }
 
+  .field-error {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 3px rgba(231,76,60,.1) !important;
+  }
+
   /* ============ RESPONSIVE (page-specific) ============ */
   @media (max-width: 900px) {
     .contact-hero { padding: 140px 0 60px; }
@@ -304,7 +311,10 @@
 
       <!-- RIGHT: FORM -->
       <div class="reveal">
-        <form class="contact-form" id="contactForm" novalidate>
+        <!-- Formspree: action の YOUR_FORM_ID を実際のフォームIDに置き換えてください -->
+        <form class="contact-form" id="contactForm"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="name">お名前 <span class="req">必須</span></label>
@@ -313,6 +323,16 @@
             <div class="form-group">
               <label for="email">メールアドレス <span class="req">必須</span></label>
               <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">会社名・屋号 <span class="req">必須</span></label>
+              <input type="text" id="company" name="company" placeholder="株式会社○○ / 個人の場合は「個人」" required autocomplete="organization">
+            </div>
+            <div class="form-group">
+              <label for="phone">電話番号 <span class="req">必須</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="090-0000-0000" required autocomplete="tel">
             </div>
           </div>
           <div class="form-group">
@@ -324,15 +344,47 @@
               <option value="other">その他</option>
             </select>
           </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="budget">ご予算感（任意）</label>
+              <select id="budget" name="budget">
+                <option value="">選択してください</option>
+                <option value="under30">〜30万円</option>
+                <option value="30to50">30〜50万円</option>
+                <option value="50to100">50〜100万円</option>
+                <option value="100to200">100〜200万円</option>
+                <option value="over200">200万円〜</option>
+                <option value="unknown">まだ未定</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="timeline">ご希望時期（任意）</label>
+              <select id="timeline" name="timeline">
+                <option value="">選択してください</option>
+                <option value="asap">できるだけ早く</option>
+                <option value="1month">1ヶ月以内</option>
+                <option value="3months">3ヶ月以内</option>
+                <option value="6months">半年以内</option>
+                <option value="undecided">未定</option>
+              </select>
+            </div>
+          </div>
           <div class="form-group">
             <label for="message">メッセージ</label>
             <textarea id="message" name="message" placeholder="ご相談内容をお聞かせください..."></textarea>
           </div>
-          <button type="submit" class="form-submit">
+          <button type="submit" class="form-submit" id="formSubmit">
             送信する
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </form>
+        <div id="formSuccess" style="display:none; padding: 40px; text-align: center; background: var(--bg-gray); border: 1px solid var(--border); border-radius: 4px;">
+          <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">送信しました！</p>
+          <p style="color: var(--text-light); font-size: .92rem; line-height: 2;">お問い合わせありがとうございます。<br>24時間以内にメールでご返信いたします。</p>
+        </div>
+        <div id="formError" style="display:none; padding: 20px; text-align: center; background: #fff0f0; border: 1px solid #f5c6c6; border-radius: 4px; color: #c0392b; font-size: .88rem; margin-top: 12px;">
+          送信に失敗しました。お手数ですが、メールまたはお電話にてご連絡ください。
+        </div>
       </div>
 
     </div>
@@ -404,9 +456,65 @@
 
 <script src="js/common.js"></script>
 <script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  // URLクエリパラメータでフォームの選択肢を自動設定
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const serviceMap = { web: 'homepage', app: 'app', ai: 'ai' };
+    const service = params.get('service');
+    if (service && serviceMap[service]) {
+      const sel = document.getElementById('inquiry');
+      if (sel) sel.value = serviceMap[service];
+    }
+  })();
+
+  // フォーム送信処理（Formspree）
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    alert('送信ありがとうございます！');
+    const form = this;
+    const btn = document.getElementById('formSubmit');
+    const successEl = document.getElementById('formSuccess');
+    const errorEl = document.getElementById('formError');
+
+    // バリデーション
+    const required = ['name', 'email', 'company', 'phone'];
+    let valid = true;
+    required.forEach(function(id) {
+      const el = document.getElementById(id);
+      if (!el || !el.value.trim()) {
+        valid = false;
+        el && el.classList.add('field-error');
+      } else {
+        el && el.classList.remove('field-error');
+      }
+    });
+    if (!valid) {
+      errorEl.textContent = '必須項目を入力してください。';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+    errorEl.style.display = 'none';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+      } else {
+        throw new Error('response not ok');
+      }
+    } catch (_) {
+      errorEl.textContent = '送信に失敗しました。お手数ですが、メールまたはお電話にてご連絡ください。';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = '送信する <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    }
   });
 </script>
 
