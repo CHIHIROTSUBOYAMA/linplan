@@ -10,6 +10,8 @@
 <meta name="author" content="LinPlan">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://chihirotsuboyama.github.io/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='10' fill='%2332373c'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8v36h12'/%3E%3Cpath d='M26 16v28'/%3E%3Cpath d='M34 44V28c0-8 14-8 14 0v16'/%3E%3Ccircle cx='26' cy='10' r='3' fill='%23fff' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='10' fill='%2332373c'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8v36h12'/%3E%3Cpath d='M26 16v28'/%3E%3Cpath d='M34 44V28c0-8 14-8 14 0v16'/%3E%3Ccircle cx='26' cy='10' r='3' fill='%23fff' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="LinPlan | ホームページ・アプリ制作">
@@ -62,7 +64,10 @@
     {"@type": "Question", "name": "AIサービスとは具体的に何ができますか？", "acceptedAnswer": {"@type": "Answer", "text": "業務マニュアルのAI化、問い合わせ対応の自動化、文書要約・翻訳の効率化、独自データを使ったAIチャットボットなどを提供しています。"}},
     {"@type": "Question", "name": "ご契約から納品までどのくらいかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "プランによりますが、スターターで4〜8週間、スタンダードで6〜12週間が目安です。お急ぎの場合はご相談ください。"}},
     {"@type": "Question", "name": "支払い方法は？分割可能ですか？", "acceptedAnswer": {"@type": "Answer", "text": "銀行振込が基本です。分割払いも対応可能ですので、ご相談ください。"}},
-    {"@type": "Question", "name": "個人事業主ですが大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。むしろ個人事業主・小規模事業の方を主なお客様としています。無理のないご予算でのご提案を心がけています。"}}
+    {"@type": "Question", "name": "個人事業主ですが大丈夫ですか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。むしろ個人事業主・小規模事業の方を主なお客様としています。無理のないご予算でのご提案を心がけています。"}},
+    {"@type": "Question", "name": "契約後のやり取りはどんなツールで行いますか？", "acceptedAnswer": {"@type": "Answer", "text": "ヒアリング・打ち合わせはZoom / Google Meetなどオンラインで完結します。資料共有はGoogle Drive、進捗管理はNotionを基本としていますが、お客様の使い慣れたツールがあればご相談ください。"}},
+    {"@type": "Question", "name": "途中でスタッフが変わることはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "LinPlanは坪山ひろやまひとりで運営しています。ヒアリングから納品まで一貫して同じ担当者が対応します。万が一のときもコード・データは全権お渡しするため、他の制作会社への引き継ぎもスムーズに行えます。"}},
+    {"@type": "Question", "name": "他社で見積もり済みですが、相見積もりとして相談できますか？", "acceptedAnswer": {"@type": "Answer", "text": "もちろんです。比較検討は大歓迎です。他社のお見積りをご提示いただければ、内容・価格・納期を踏まえてLinPlanならではのご提案をお伝えします。"}}
   ]
 }
 </script>
@@ -148,9 +153,9 @@
   }
   .hero-subtag {
     font-family: var(--font);
-    font-size: clamp(.78rem, 1.15vw, .92rem);
+    font-size: clamp(1.05rem, 1.6vw, 1.4rem);
     font-weight: 500;
-    letter-spacing: .08em;
+    letter-spacing: .06em;
     color: var(--text-muted);
     margin-bottom: 32px;
   }
@@ -262,31 +267,8 @@
     margin-bottom: 36px;
   }
   .about-content p:last-child { margin-bottom: 0; }
-  .about-content .line {
-    display: block;
-    color: #d0d0d0;
-    background-image: linear-gradient(
-      to right,
-      var(--text) 0%,
-      var(--text) 50%,
-      #d0d0d0 50%,
-      #d0d0d0 100%
-    );
-    background-size: 200% 100%;
-    background-position: 100% center;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    will-change: background-position;
-  }
   @media (max-width: 900px) {
     .about-content p { font-size: 1.05rem; margin-bottom: 28px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .about-content .line {
-      background-position: 0% center;
-    }
   }
 
   /* ============ PROBLEM ============ */
@@ -716,16 +698,6 @@
     background: var(--bg-gray);
     padding: 4px 10px;
     border-radius: 3px;
-  }
-
-  /* ============ JS/GSAP 非ロード時フォールバック ============ */
-  /* no-js: About を最初から濃い色で表示 */
-  html.no-js .about-content .line {
-    background-position: 0% center;
-  }
-  /* GSAPがロードされなかった場合も同様 */
-  html.js:not(.gsap-ready) .about-content .line {
-    background-position: 0% center;
   }
 
   /* ============ RESPONSIVE (page-specific) ============ */
@@ -1452,6 +1424,9 @@
     font-size: .82rem;
     color: var(--text-light);
     margin-top: auto;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
   }
   .pricing-card__duration strong {
     display: block;
@@ -1459,6 +1434,27 @@
     color: var(--dark);
     font-weight: 700;
     margin-top: 2px;
+  }
+  .pricing-card__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px 20px;
+    background: var(--dark);
+    color: #fff;
+    border-radius: 4px;
+    font-size: .88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity .3s, transform .3s;
+  }
+  .pricing-card__cta:hover { opacity: .85; transform: translateY(-1px); color: #fff; }
+  .pricing-card__cta svg { transition: transform .3s; }
+  .pricing-card__cta:hover svg { transform: translateX(3px); }
+  .pricing-card--featured .pricing-card__cta {
+    background: var(--accent);
   }
   .pricing-notes {
     margin-top: 36px;
@@ -1694,8 +1690,8 @@
 
     // 2回目以降の訪問はローダーをスキップ（localStorage）
     //  ↓ 「毎回フル再生したい」ため一時的に無効化中。
-    //    再度初回限定にしたい場合は、下の if (false) を if (true) に戻す。
-    if (false) {
+    //    再度毎回再生にしたい場合は、下の if (true) を if (false) に変更。
+    if (true) {
       try {
         if (localStorage.getItem('lpVisited')) {
           const skipEl = document.getElementById('lp-loader');
@@ -2137,8 +2133,8 @@
             <span class="service-card__meta-value">4〜8週間</span>
           </div>
         </div>
-        <a href="#works" class="service-card__cta">
-          詳しく見る
+        <a href="contact.html?service=web" class="service-card__cta">
+          無料で相談する
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
         </a>
       </article>
@@ -2165,8 +2161,8 @@
             <span class="service-card__meta-value">8〜16週間</span>
           </div>
         </div>
-        <a href="#works" class="service-card__cta">
-          詳しく見る
+        <a href="contact.html?service=app" class="service-card__cta">
+          無料で相談する
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
         </a>
       </article>
@@ -2193,8 +2189,8 @@
             <span class="service-card__meta-value">4〜12週間</span>
           </div>
         </div>
-        <a href="ai-service.html" class="service-card__cta">
-          詳しく見る
+        <a href="contact.html?service=ai" class="service-card__cta">
+          無料で相談する
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
         </a>
       </article>
@@ -2239,6 +2235,13 @@
         <div class="whyus-body">
           <h3 class="whyus-title">中小規模に最適化した価格</h3>
           <p class="whyus-desc">大手代理店の半額〜1/3で、同等以上の品質を。「規模に合った投資で、最大の成果を」がLinPlanの基本方針です。</p>
+        </div>
+      </div>
+      <div class="whyus-item">
+        <div class="whyus-num">05</div>
+        <div class="whyus-body">
+          <h3 class="whyus-title">コード・データは全権お客様へ</h3>
+          <p class="whyus-desc">契約終了後も、制作物のコードやデータは全てお客様のものです。NDA対応・請求書発行・インボイス制度対応も完備。安心してお任せいただけます。</p>
         </div>
       </div>
     </div>
@@ -2314,7 +2317,7 @@
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/airbnb.webp" alt="Hospitality 模写サイト" loading="lazy" decoding="async">
+              <img src="images/practice-hospitality.webp" alt="Hospitality 模写サイト" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2329,7 +2332,7 @@
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/airbnb2.webp" alt="Hospitality 模写サイト②" loading="lazy" decoding="async">
+              <img src="images/practice-hospitality2.webp" alt="Hospitality 模写サイト②" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2344,7 +2347,7 @@
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/fukuyamarinshou.webp" alt="Medical 模写サイト" loading="lazy" decoding="async">
+              <img src="images/practice-medical.webp" alt="Medical 模写サイト" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2359,7 +2362,7 @@
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/monoshop.webp" alt="E-Commerce 模写サイト" loading="lazy" decoding="async">
+              <img src="images/practice-ecommerce.webp" alt="E-Commerce 模写サイト" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2374,7 +2377,7 @@
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/rbrain.webp" alt="SaaS 模写サイト" loading="lazy" decoding="async">
+              <img src="images/practice-saas.webp" alt="SaaS 模写サイト" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2462,7 +2465,7 @@
     </div>
 
     <div class="pricing-note reveal">
-      現在、LinPlan は実績拡大期につき、<strong>先着10件限定の特別価格</strong>でご提供しています。<br>通常価格は、業界の一般相場を踏まえた価格設定です。
+      現在、LinPlan はローンチ記念につき、<strong>先着10件限定の特別価格</strong>でご提供しています。<br>通常価格は、業界の一般相場（制作会社のスタンダードプラン相場）を踏まえた価格設定です。
     </div>
 
     <div class="pricing-grid reveal">
@@ -2472,7 +2475,7 @@
         <h3 class="pricing-card__title">スターター</h3>
         <p class="pricing-card__catch">まずは「ちゃんと届くサイト」を持ちたい方へ</p>
         <p class="pricing-card__price-old">通常 60万円〜</p>
-        <p class="pricing-card__price-label">実績拡大記念</p>
+        <p class="pricing-card__price-label">ローンチ記念</p>
         <p class="pricing-card__price">35<small>万円〜</small></p>
         <ul class="pricing-card__list">
           <li>5〜8ページ</li>
@@ -2482,6 +2485,10 @@
           <li>公開作業まで</li>
         </ul>
         <p class="pricing-card__duration">納期<strong>4〜8週間</strong></p>
+        <a href="contact.html?plan=starter" class="pricing-card__cta">
+          このプランで相談する
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
       </article>
 
       <!-- スタンダード（おすすめ） -->
@@ -2491,7 +2498,7 @@
         <h3 class="pricing-card__title">スタンダード</h3>
         <p class="pricing-card__catch">事業の武器として、本格的に成果を出したい方へ</p>
         <p class="pricing-card__price-old">通常 120万円〜</p>
-        <p class="pricing-card__price-label">実績拡大記念</p>
+        <p class="pricing-card__price-label">ローンチ記念</p>
         <p class="pricing-card__price">70<small>万円〜</small></p>
         <ul class="pricing-card__list">
           <li>10〜20ページ</li>
@@ -2502,6 +2509,10 @@
           <li>公開後30日間の無料調整</li>
         </ul>
         <p class="pricing-card__duration">納期<strong>6〜12週間</strong></p>
+        <a href="contact.html?plan=standard" class="pricing-card__cta">
+          このプランで相談する
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
       </article>
 
       <!-- カスタム -->
@@ -2518,12 +2529,16 @@
           <li>既存システムとの連携</li>
         </ul>
         <p class="pricing-card__duration">納期<strong>要相談</strong></p>
+        <a href="contact.html?plan=custom" class="pricing-card__cta">
+          このプランで相談する
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
       </article>
     </div>
 
     <p class="pricing-notes reveal">
       ※ 初回ヒアリング・お見積りは無料です<br>
-      ※ 実績拡大記念価格は先着10件まで<br>
+      ※ ローンチ記念価格は先着10件まで<br>
       ※ 分割対応も可能です。お気軽にご相談ください
     </p>
   </div>
@@ -2574,6 +2589,18 @@
       <details class="faq-item">
         <summary>個人事業主ですが大丈夫ですか？</summary>
         <div class="faq-answer">はい。むしろ個人事業主・小規模事業の方を主なお客様としています。無理のないご予算でのご提案を心がけています。</div>
+      </details>
+      <details class="faq-item" id="faq-tool">
+        <summary>契約後のやり取りはどんなツールで行いますか？</summary>
+        <div class="faq-answer">ヒアリング・打ち合わせはZoom / Google Meetなどオンラインで完結します。資料共有はGoogle Drive、進捗管理はNotionを基本としていますが、お客様の使い慣れたツールがあればご相談ください。</div>
+      </details>
+      <details class="faq-item" id="faq-continuity">
+        <summary>途中でスタッフが変わることはありますか？</summary>
+        <div class="faq-answer">LinPlanは坪山ひろやまひとりで運営しています。ヒアリングから納品まで一貫して同じ担当者が対応します。万が一のときもコード・データは全権お渡しするため、他の制作会社への引き継ぎもスムーズに行えます。</div>
+      </details>
+      <details class="faq-item" id="faq-competitive">
+        <summary>他社で見積もり済みですが、相見積もりとして相談できますか？</summary>
+        <div class="faq-answer">もちろんです。比較検討は大歓迎です。他社のお見積りをご提示いただければ、内容・価格・納期を踏まえてLinPlanならではのご提案をお伝えします。</div>
       </details>
     </div>
   </div>
@@ -2688,19 +2715,11 @@
       [13, 60, 72, '#E8DB80', 7.8, 1.2, 'save'],
       [22, 15, 80, '#E8543A', 5.9, 0.5, 'wifi'],
       [2,  38, 68, '#3BA297', 8.1, 2.0, 'lock'],
-      [35, 5,  76, '#F5A623', 7.0, 0.8, 'plugin'],
-      [48, 70, 82, '#5BA4CF', 6.5, 1.5, 'printer'],
       [58, 8,  100,'#E8543A', 9.0, 0.3, 'folder'],
       [72, 55, 74, '#2C5364', 7.3, 2.5, 'settings'],
       [82, 10, 80, '#3BA297', 6.8, 1.0, 'monitor'],
-      [88, 38, 70, '#E8DB80', 8.4, 0.7, 'server'],
-      [6,  80, 74, '#B0B8C1', 7.6, 1.8, 'trash'],
-      [25, 72, 68, '#5BA4CF', 6.3, 0.4, 'camera'],
-      [19, 40, 78, '#F5A623', 8.7, 2.2, 'game'],
       [62, 72, 72, '#E8543A', 7.1, 1.6, 'globe'],
-      [76, 78, 80, '#3BA297', 6.6, 0.9, 'usb'],
       [90, 68, 70, '#2C5364', 8.2, 2.8, 'cpu'],
-      [35, 52, 68, '#B0B8C1', 7.4, 0.6, 'battery'],
     ];
 
     const icons = {
@@ -2775,36 +2794,6 @@
     });
   })();
 
-  // ========== ABOUT: スクロール連動で行ごとに background-position をスライド ==========
-  // (yamatoen.or.jp と同じ実装：文字分解せず、行 <span> の background-clip:text で
-  //  グラデーションを左→右にスライドさせて文字色をグレー→黒に見せる)
-  window.addEventListener('load', () => {
-    const aboutSection = document.getElementById('about');
-    if (!aboutSection) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (!window.gsap || !window.ScrollTrigger) return;
-    gsap.registerPlugin(ScrollTrigger);
-
-    const lines = Array.from(aboutSection.querySelectorAll('.about-content .line'));
-    if (!lines.length) return;
-    const total = lines.length;
-
-    ScrollTrigger.create({
-      trigger: aboutSection,
-      start: 'top 75%',
-      end: 'bottom 40%',
-      scrub: true,
-      onUpdate: (self) => {
-        // 全体進捗を行数で分割して、行ごとに -100% → 0% へ順番に動かす
-        const overall = self.progress * total;
-        lines.forEach((line, i) => {
-          const lineP = Math.max(0, Math.min(1, overall - i));
-          line.style.backgroundPosition = (100 - lineP * 100) + '% center';
-        });
-      },
-    });
-  });
-
   // ========== PROBLEM: GSAP + ScrollTrigger + SplitType ==========
   window.addEventListener('load', () => {
     const problemSection = document.getElementById('problem');
@@ -2853,95 +2842,14 @@
       return;
     }
 
-    // ========== デスクトップ: スタック→スライド ==========
-    const stack = problemSection.querySelector('.problem-stack');
-    stack.classList.add('is-stacked');
-
-    // is-stacked 適用後に最初の item の高さを測ってコンテナに反映
-    const measureHeight = () => {
-      let maxH = 0;
-      problemItems.forEach((it) => { maxH = Math.max(maxH, it.offsetHeight); });
-      stack.style.height = (maxH + 60) + 'px';
-    };
-    measureHeight();
-    window.addEventListener('resize', () => {
-      measureHeight();
-      ScrollTrigger.refresh();
-    }, { passive: true });
-
-    // 初期スタック状態: item 1 が前面、2/3 はわずかに下にずれて背面に重なる
-    gsap.set(problemItems[0], { y: 0, scale: 1, opacity: 1, zIndex: 3 });
-    gsap.set(problemItems[1], {
-      y: 24, scale: 0.97, opacity: 0.95, zIndex: 2,
-      boxShadow: '0 8px 24px rgba(0,0,0,0.04)',
+    // デスクトップ: 各 item をスクロールで順番に is-inview 付与（pin なし）
+    problemItems.forEach((item) => {
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top 78%',
+        onEnter: () => item.classList.add('is-inview'),
+      });
     });
-    gsap.set(problemItems[2], {
-      y: 48, scale: 0.94, opacity: 0.9, zIndex: 1,
-      boxShadow: '0 8px 24px rgba(0,0,0,0.04)',
-    });
-
-    // 1枚目はすぐ is-inview を付与
-    problemItems[0].classList.add('is-inview');
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '#problem',
-        start: 'top top',
-        end: '+=180%',
-        pin: true,
-        scrub: 1.2,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          const p = self.progress;
-          // タイミングに応じて is-inview を切り替え
-          problemItems[1].classList.toggle('is-inview', p > 0.18);
-          problemItems[2].classList.toggle('is-inview', p > 0.55);
-        },
-      }
-    });
-
-    const backShadow = '0 8px 24px rgba(0,0,0,0.04)';
-
-    tl
-      // ===== Phase 1: item1 → 裏, item2 → 前面, item3 → 中段 =====
-      // item1 が一度上に持ち上がり、裏に回って下へ降りる
-      .to(problemItems[0], {
-        y: -60, duration: 0.7, ease: 'power2.in',
-      }, 0)
-      .set(problemItems[0], { zIndex: 1, boxShadow: backShadow }, 0.7)
-      .to(problemItems[0], {
-        y: 48, scale: 0.94, opacity: 0.9, duration: 0.9, ease: 'power2.out',
-      }, 0.7)
-      // item2 が前面に上がる
-      .to(problemItems[1], {
-        y: 0, scale: 1, opacity: 1, duration: 1.6, ease: 'power2.inOut',
-      }, 0)
-      .set(problemItems[1], { zIndex: 3, boxShadow: 'none' }, 0.7)
-      // item3 が中段へ
-      .to(problemItems[2], {
-        y: 24, scale: 0.97, opacity: 0.95, duration: 1.6, ease: 'power2.inOut',
-      }, 0)
-      .set(problemItems[2], { zIndex: 2 }, 0.7)
-
-      // ===== Phase 2: item2 → 裏, item3 → 前面, item1 → 中段 =====
-      .to(problemItems[1], {
-        y: -60, duration: 0.7, ease: 'power2.in',
-      }, 1.8)
-      .set(problemItems[1], { zIndex: 1, boxShadow: backShadow }, 2.5)
-      .to(problemItems[1], {
-        y: 48, scale: 0.94, opacity: 0.9, duration: 0.9, ease: 'power2.out',
-      }, 2.5)
-
-      .to(problemItems[2], {
-        y: 0, scale: 1, opacity: 1, duration: 1.6, ease: 'power2.inOut',
-      }, 1.8)
-      .set(problemItems[2], { zIndex: 3, boxShadow: 'none' }, 2.5)
-
-      .to(problemItems[0], {
-        y: 24, scale: 0.97, opacity: 0.95, duration: 1.6, ease: 'power2.inOut',
-      }, 1.8)
-      .set(problemItems[0], { zIndex: 2 }, 2.5);
-
     ScrollTrigger.refresh();
   });
 
