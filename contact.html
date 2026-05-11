@@ -205,6 +205,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-color: #e74c3c !important;
     box-shadow: 0 0 0 3px rgba(231,76,60,.1) !important;
   }
+  .form-privacy-note {
+    margin: 4px 0 16px;
+    font-size: .78rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    text-align: center;
+  }
+  .form-privacy-note a {
+    color: var(--dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+  }
+  .form-privacy-note a:hover { text-decoration-thickness: 2px; }
 
   /* ============ RESPONSIVE (page-specific) ============ */
   @media (max-width: 900px) {
@@ -386,8 +400,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label for="message">メッセージ</label>
             <textarea id="message" name="message" placeholder="ご相談内容をお聞かせください..."></textarea>
           </div>
+          <p class="form-privacy-note">
+            送信内容の取扱いについては <a href="privacy.html">プライバシーポリシー</a> をご確認のうえ、ご同意いただけましたら送信してください。
+          </p>
           <button type="submit" class="form-submit" id="formSubmit">
-            送信する
+            同意して送信する
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </form>
@@ -431,6 +448,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="aeo-geo.html">AEO / GEO</a></li>
       <li><a href="index.html#works">制作事例</a></li>
       <li><a href="contact.html">お問い合わせ</a></li>
+      <li><a href="privacy.html">プライバシーポリシー</a></li>
     </ul>
     <address class="footer-address">tsubochihiroyama2230@gmail.com</address>
     <p class="footer-copy">&copy; 2026 LinPlan. All Rights Reserved.</p>
@@ -530,6 +548,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.disabled = true;
     btn.textContent = '送信中...';
     errorEl.style.display = 'none';
+    errorEl.textContent = '';
 
     try {
       const res = await fetch(form.action, {
@@ -547,7 +566,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       errorEl.textContent = '送信に失敗しました。お手数ですが、メールまたはお電話にてご連絡ください。';
       errorEl.style.display = 'block';
       btn.disabled = false;
-      btn.innerHTML = '送信する <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      btn.innerHTML = '同意して送信する <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
     }
   });
 </script>
