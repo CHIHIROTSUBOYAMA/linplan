@@ -168,44 +168,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     color: var(--text-muted);
     margin-bottom: 32px;
   }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
   .hero-cta {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 13px 32px;
-    background: #E8DB80;
-    color: var(--dark);
+    padding: 14px 36px;
+    background: var(--dark);
+    color: #fff;
     border-radius: 4px;
-    font-family: var(--font-display);
-    font-size: .86rem;
+    font-family: var(--font);
+    font-size: .92rem;
     font-weight: 600;
-    letter-spacing: .02em;
+    letter-spacing: .04em;
     text-decoration: none;
-    box-shadow: 0 4px 14px rgba(232, 219, 128, 0.4);
+    box-shadow: 0 6px 20px rgba(50, 55, 60, 0.18);
     transition: opacity .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
   }
-  .hero-cta:hover { opacity: .9; transform: translateY(-1px); color: var(--dark); box-shadow: 0 6px 20px rgba(232, 219, 128, 0.55); }
+  .hero-cta:hover { opacity: .92; transform: translateY(-1px); color: #fff; box-shadow: 0 10px 28px rgba(50, 55, 60, 0.28); }
   .hero-cta svg { transition: transform .3s var(--ease); }
   .hero-cta:hover svg { transform: translateX(3px); }
+  .hero-sublink {
+    font-family: var(--font);
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color .3s var(--ease), border-color .3s var(--ease);
+  }
+  .hero-sublink:hover { color: var(--text); border-color: var(--text); }
 
-  /* Float animations for hero tiles */
-  @keyframes heroFloat0  { 0%,100%{transform:translate(0,0) rotate(-4deg)} 50%{transform:translate(18px,-22px) rotate(-2deg)} }
-  @keyframes heroFloat1  { 0%,100%{transform:translate(0,0) rotate(3deg)}  50%{transform:translate(-14px,20px) rotate(5deg)} }
-  @keyframes heroFloat2  { 0%,100%{transform:translate(0,0) rotate(-2deg)} 50%{transform:translate(20px,16px) rotate(0deg)} }
-  @keyframes heroFloat3  { 0%,100%{transform:translate(0,0) rotate(5deg)}  50%{transform:translate(-20px,-18px) rotate(3deg)} }
-  @keyframes heroFloat4  { 0%,100%{transform:translate(0,0) rotate(-6deg)} 50%{transform:translate(16px,12px) rotate(-4deg)} }
-  @keyframes heroFloat5  { 0%,100%{transform:translate(0,0) rotate(2deg)}  50%{transform:translate(-10px,-24px) rotate(4deg)} }
-  @keyframes heroFloat6  { 0%,100%{transform:translate(0,0) rotate(-3deg)} 50%{transform:translate(22px,-12px) rotate(-1deg)} }
-  @keyframes heroFloat7  { 0%,100%{transform:translate(0,0) rotate(4deg)}  50%{transform:translate(-18px,18px) rotate(6deg)} }
-  @keyframes heroFloat8  { 0%,100%{transform:translate(0,0) rotate(-5deg)} 50%{transform:translate(12px,-20px) rotate(-3deg)} }
-  @keyframes heroFloat9  { 0%,100%{transform:translate(0,0) rotate(1deg)}  50%{transform:translate(-22px,10px) rotate(3deg)} }
-  @keyframes heroFloat10 { 0%,100%{transform:translate(0,0) rotate(-2deg)} 50%{transform:translate(18px,22px) rotate(0deg)} }
-  @keyframes heroFloat11 { 0%,100%{transform:translate(0,0) rotate(6deg)}  50%{transform:translate(-16px,-16px) rotate(4deg)} }
-  @keyframes heroFloat12 { 0%,100%{transform:translate(0,0) rotate(-4deg)} 50%{transform:translate(10px,18px) rotate(-2deg)} }
-  @keyframes heroFloat13 { 0%,100%{transform:translate(0,0) rotate(3deg)}  50%{transform:translate(-20px,-10px) rotate(5deg)} }
-  @keyframes heroFloat14 { 0%,100%{transform:translate(0,0) rotate(-1deg)} 50%{transform:translate(14px,-18px) rotate(1deg)} }
-  @keyframes heroFloat15 { 0%,100%{transform:translate(0,0) rotate(5deg)}  50%{transform:translate(-12px,20px) rotate(3deg)} }
-  @keyframes heroFloat16 { 0%,100%{transform:translate(0,0) rotate(-3deg)} 50%{transform:translate(20px,8px) rotate(-1deg)} }
+  /* Float animations for hero tiles (現在9個) */
+  @keyframes heroFloat0 { 0%,100%{transform:translate(0,0) rotate(-4deg)} 50%{transform:translate(18px,-22px) rotate(-2deg)} }
+  @keyframes heroFloat1 { 0%,100%{transform:translate(0,0) rotate(3deg)}  50%{transform:translate(-14px,20px) rotate(5deg)} }
+  @keyframes heroFloat2 { 0%,100%{transform:translate(0,0) rotate(-2deg)} 50%{transform:translate(20px,16px) rotate(0deg)} }
+  @keyframes heroFloat3 { 0%,100%{transform:translate(0,0) rotate(5deg)}  50%{transform:translate(-20px,-18px) rotate(3deg)} }
+  @keyframes heroFloat4 { 0%,100%{transform:translate(0,0) rotate(-6deg)} 50%{transform:translate(16px,12px) rotate(-4deg)} }
+  @keyframes heroFloat5 { 0%,100%{transform:translate(0,0) rotate(2deg)}  50%{transform:translate(-10px,-24px) rotate(4deg)} }
+  @keyframes heroFloat6 { 0%,100%{transform:translate(0,0) rotate(-3deg)} 50%{transform:translate(22px,-12px) rotate(-1deg)} }
+  @keyframes heroFloat7 { 0%,100%{transform:translate(0,0) rotate(4deg)}  50%{transform:translate(-18px,18px) rotate(6deg)} }
+  @keyframes heroFloat8 { 0%,100%{transform:translate(0,0) rotate(-5deg)} 50%{transform:translate(12px,-20px) rotate(-3deg)} }
 
   /* ============ BUTTONS ============ */
   .btn-dark {
@@ -280,6 +290,83 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .about-content p { font-size: 1.05rem; margin-bottom: 28px; }
   }
 
+  /* ============ ABOUT INLINE (Hero直下) ============ */
+  .about-inline {
+    padding: 72px 0;
+    background: var(--bg-gray);
+  }
+  .about-inline__inner {
+    max-width: 880px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .about-inline__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #2d7d75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(59, 162, 151, 0.25);
+  }
+  .about-inline__kicker {
+    font-family: var(--font-display);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .about-inline__lead {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .about-inline__lead strong { color: var(--dark); }
+  .about-inline__desc {
+    font-size: .88rem;
+    line-height: 2;
+    color: var(--text-light);
+    margin-bottom: 14px;
+  }
+  .about-inline__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-muted);
+    padding-bottom: 2px;
+    transition: border-color .3s, gap .3s;
+  }
+  .about-inline__link:hover { border-color: var(--dark); gap: 12px; }
+  @media (max-width: 720px) {
+    .about-inline { padding: 56px 0; }
+    .about-inline__inner {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: center;
+    }
+    .about-inline__avatar {
+      margin: 0 auto;
+      width: 96px; height: 96px; font-size: 2.4rem;
+    }
+    .about-inline__link { display: inline-flex; }
+  }
+
   /* ============ PROBLEM ============ */
   #problem {
     position: relative;
@@ -302,43 +389,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   .problem-stack {
-    margin-top: 40px;
+    margin-top: 32px;
     position: relative;
   }
 
   .problem-item {
     position: relative;
     display: grid;
-    grid-template-columns: 72px 1fr 240px;
-    gap: 40px;
+    grid-template-columns: 64px 1fr 200px;
+    gap: 32px;
     align-items: center;
-    padding: 56px 0;
+    padding: 40px 0;
     border-top: 1px solid var(--border);
     isolation: isolate;
   }
   .problem-item:last-child {
     border-bottom: 1px solid var(--border);
-  }
-
-  /* スタック→スライド用 (デスクトップのみ) */
-  @media (min-width: 901px) {
-    .problem-stack.is-stacked {
-      /* JS が height を測定して付与 */
-    }
-    .problem-stack.is-stacked .problem-item {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-top: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 48px 40px;
-      will-change: transform, opacity;
-    }
-    .problem-stack.is-stacked .problem-item__line { display: none; }
   }
 
   .problem-item__line {
@@ -652,6 +718,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     overflow-x: hidden;
     background: #fff;
     border-radius: 4px 4px 0 0;
+    position: relative;
+  }
+  /* スクロール可能ヒント：下端のフェード（常時表示・薄め） */
+  .monitor-screen::after {
+    content: '';
+    position: sticky;
+    left: 0; right: 0; bottom: 0;
+    display: block;
+    height: 36px;
+    margin-top: -36px;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.08));
+    pointer-events: none;
+  }
+  /* スクロール可能ヒント：ホバー時にバッジ表示 */
+  .monitor::before {
+    content: '↕ Scroll';
+    position: absolute;
+    right: 18px;
+    bottom: 40px;
+    z-index: 2;
+    font-family: var(--font-display);
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    padding: 4px 9px;
+    background: rgba(26, 26, 26, 0.78);
+    color: #fff;
+    border-radius: 3px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s var(--ease), transform .3s var(--ease);
+    transform: translateY(4px);
+  }
+  .work-card:hover .monitor::before {
+    opacity: 1;
+    transform: translateY(0);
   }
   .monitor-screen::-webkit-scrollbar { width: 5px; }
   .monitor-screen::-webkit-scrollbar-track { background: #f1f1f1; }
@@ -1035,6 +1137,75 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ============ SOLUTION (3サービスカード) ============ */
+  .solution-map {
+    max-width: 880px;
+    margin: 0 auto 56px;
+    padding: 28px 32px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .solution-map__title {
+    font-size: .92rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 18px;
+    text-align: center;
+    letter-spacing: .04em;
+  }
+  .solution-map__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .solution-map__item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--bg-gray);
+    border-radius: 6px;
+  }
+  .solution-map__case {
+    font-size: .88rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .solution-map__answer {
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .solution-map__tag {
+    font-family: var(--font-display);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    padding: 3px 8px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 3px;
+  }
+  .solution-map__note {
+    text-align: center;
+    font-size: .8rem;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+  @media (max-width: 720px) {
+    .solution-map { padding: 22px 18px; }
+    .solution-map__item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .solution-map__answer { white-space: normal; }
+  }
   .solution-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1113,6 +1284,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     border-radius: 50%;
     background: var(--accent);
     opacity: 0.5;
+  }
+  .service-card__fit {
+    margin: 0 0 20px;
+    padding: 10px 14px;
+    background: var(--bg-gray);
+    border-left: 2px solid var(--border);
+    border-radius: 0 4px 4px 0;
+    font-size: .76rem;
+    line-height: 1.7;
+    color: var(--text-light);
   }
   .service-card__meta {
     margin-top: auto;
@@ -1227,6 +1408,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     max-width: 540px;
     margin: 0 auto;
   }
+  .works-real-placeholder {
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    text-align: center;
+    background: var(--white);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+  }
+  .works-real-placeholder__lead {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .works-real-placeholder__sub {
+    font-size: .85rem;
+    color: var(--text-light);
+    margin-bottom: 24px;
+  }
+  .works-real-placeholder__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--dark);
+    color: #fff;
+    border-radius: 4px;
+    font-size: .85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity .3s, transform .3s;
+  }
+  .works-real-placeholder__cta:hover { opacity: .88; transform: translateY(-1px); color: #fff; }
+  .works-real-placeholder__cta svg { transition: transform .3s; }
+  .works-real-placeholder__cta:hover svg { transform: translateX(3px); }
   .works-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1333,6 +1552,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     margin-right: auto;
   }
   .pricing-note strong { color: var(--dark); font-weight: 700; }
+  .pricing-note__badge {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent);
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .pricing-note__small {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: .78rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1820,7 +2059,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <ul class="nav-links-right">
       <li><a href="#works">制作事例</a></li>
       <li><a href="#pricing">料金</a></li>
-      <li><a href="contact.html" class="nav-contact-link">お問い合わせ
+      <li><a href="contact.html" class="nav-contact-link">無料相談
         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a></li>
     </ul>
@@ -1838,15 +2077,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="aeo-geo.html" onclick="toggleMenu()">AEO / GEO</a></li>
     <li><a href="#works" onclick="toggleMenu()">制作事例</a></li>
     <li><a href="#pricing" onclick="toggleMenu()">料金</a></li>
-    <li><a href="contact.html" onclick="toggleMenu()">お問い合わせ</a></li>
+    <li><a href="contact.html" onclick="toggleMenu()">無料相談</a></li>
   </ul>
 </div>
 
 <!-- ========== HERO ========== -->
 <section class="hero" id="top">
-  <div class="hero-frame" id="heroFrame" aria-hidden="true">
-    <!-- Floating tiles are injected by JS -->
-    <div class="hero-overlay"></div>
+  <div class="hero-frame" id="heroFrame">
+    <!-- Floating tiles are injected by JS (装飾) -->
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="hero-logo" role="img" aria-label="LinPlan">
         <svg class="lp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" aria-hidden="true">
@@ -1867,6 +2106,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="hero-divider"></div>
       <p class="hero-tagline">見つけられ、選ばれるサイトを。</p>
       <p class="hero-subtag">中小企業・店舗のための、Web / アプリ / AI 制作スタジオ</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="hero-cta">
+          無料で相談する
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#solution" class="hero-sublink">サービスを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== ABOUT INLINE (Hero直下：作り手の顔出し) ========== -->
+<section class="about-inline reveal" id="about-inline">
+  <div class="container">
+    <div class="about-inline__inner">
+      <div class="about-inline__avatar" aria-hidden="true">
+        <span>T</span>
+      </div>
+      <div class="about-inline__text">
+        <p class="about-inline__kicker">Who is making this?</p>
+        <p class="about-inline__lead">こんにちは、LinPlan 代表の <strong>坪山ひろやま</strong> です。</p>
+        <p class="about-inline__desc">
+          中小企業・店舗向けの Web / アプリ / AI を、企画から運用まで一人で担当しています。<br>
+          意思決定が早く、伝言ゲームのミスがなく、コード・データもすべてお客様のもの。
+          NDA・適格請求書発行・インボイス制度にも対応しています。
+        </p>
+        <a href="about.html" class="about-inline__link">
+          詳しいプロフィールを見る
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -2124,6 +2395,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="section-desc">目的と課題に合わせて、必要なものだけを丁寧に。<br>3つのサービスでご支援します。</p>
     </div>
 
+    <!-- Solution Map：迷ったら？ -->
+    <div class="solution-map reveal">
+      <p class="solution-map__title">どのサービスを選べばいい？</p>
+      <div class="solution-map__grid">
+        <div class="solution-map__item">
+          <p class="solution-map__case">「サイトを作りたい・整えたい」</p>
+          <p class="solution-map__answer"><span class="solution-map__tag">WEB</span> ホームページ制作</p>
+        </div>
+        <div class="solution-map__item">
+          <p class="solution-map__case">「業務の手間を減らしたい・社内ツールがほしい」</p>
+          <p class="solution-map__answer"><span class="solution-map__tag">APP</span> アプリ制作</p>
+        </div>
+        <div class="solution-map__item">
+          <p class="solution-map__case">「AI を業務に取り入れたい・自動化したい」</p>
+          <p class="solution-map__answer"><span class="solution-map__tag">AI</span> AI業務支援</p>
+        </div>
+      </div>
+      <p class="solution-map__note">迷ったら、初回30分の無料相談で適性をご一緒に判断します。複数サービスの組み合わせも可能です。</p>
+    </div>
+
     <div class="solution-grid reveal">
       <!-- SERVICE 01: ホームページ制作 -->
       <article class="service-card">
@@ -2137,6 +2428,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>自分で更新できないままになっている</li>
           <li>集客の入口を強化したい</li>
         </ul>
+        <p class="service-card__fit">向かない場合：数千ページ規模の大規模サイト／不動産・ECなど業界特化CMSが必須の場合は、専門会社をおすすめします。</p>
         <div class="service-card__meta">
           <div class="service-card__meta-row">
             <span class="service-card__meta-label">料金</span>
@@ -2165,6 +2457,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>社内ツールを内製したい</li>
           <li>アイデアを形にしたい</li>
         </ul>
+        <p class="service-card__fit">向かない場合：大規模ユーザー数（数十万人〜）を前提とするコンシューマー向けアプリ、医療・金融など高度な認可が必要な領域は別途相談ください。</p>
         <div class="service-card__meta">
           <div class="service-card__meta-row">
             <span class="service-card__meta-label">料金</span>
@@ -2193,6 +2486,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>問い合わせ対応を自動化したい</li>
           <li>文書作成・要約を効率化したい</li>
         </ul>
+        <p class="service-card__fit">向かない場合：自社固有モデルの開発・大規模学習データの準備が前提の案件は、AI研究開発企業をおすすめします。</p>
         <div class="service-card__meta">
           <div class="service-card__meta-row">
             <span class="service-card__meta-label">料金</span>
@@ -2255,7 +2549,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="whyus-num">05</div>
         <div class="whyus-body">
           <h3 class="whyus-title">コード・データは全権お客様へ</h3>
-          <p class="whyus-desc">契約終了後も、制作物のコードやデータは全てお客様のものです。NDA対応・請求書発行・インボイス制度対応も完備。安心してお任せいただけます。</p>
+          <p class="whyus-desc">契約終了後も、制作物のコードやデータは全てお客様のものです。<strong>適格請求書発行事業者として登録済み</strong>のため、インボイス制度にも完全対応。NDA（ひな形あり・お客様ひな形対応可）、請求書発行も完備しており、社内決裁や経理処理もスムーズに進みます。</p>
         </div>
       </div>
     </div>
@@ -2276,7 +2570,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="works-group reveal">
       <div class="works-group__head">
         <h3 class="works-group__title">Original Products｜自社プロダクト</h3>
-        <p class="works-group__desc">依頼ではなく、自分で課題を見つけて企画・設計・実装まで完結させたプロダクトです。継続的に運用・改善しています。</p>
+        <p class="works-group__desc">依頼ではなく、自分で課題を見つけて企画・設計・実装まで完結させたプロダクトです。継続的に運用・改善しています。<br><strong>同じ作り手・同じ品質で、お客様の事業向けの開発にも対応します。</strong></p>
       </div>
       <div class="works-grid works-grid--app works-grid--2">
         <article class="work-card">
@@ -2316,9 +2610,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="works-group reveal">
       <div class="works-group__head">
         <h3 class="works-group__title">Real Works｜制作実績</h3>
-        <p class="works-group__desc">クライアント様向けの実案件は現在準備中です。順次掲載していきます。</p>
+        <p class="works-group__desc">クライアント様向けの第1号案件を制作中です。完成次第こちらに掲載いたします。<br>ご検討段階で参考実例をご覧になりたい方には、ご相談時に類似のデモ・原型を個別にお見せいたします。</p>
       </div>
-      <!-- 案件が増えたらここにカードを追加 -->
+      <div class="works-real-placeholder">
+        <p class="works-real-placeholder__lead">Coming Soon</p>
+        <p class="works-real-placeholder__sub">第1号案件の公開準備中</p>
+        <a href="contact.html" class="works-real-placeholder__cta">
+          個別にデモを依頼する
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
 
     <!-- Practice Works -->
@@ -2479,7 +2780,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="pricing-note reveal">
-      現在、LinPlan はローンチ記念につき、<strong>先着10件限定の特別価格</strong>でご提供しています。<br>通常価格は、業界の一般相場（制作会社のスタンダードプラン相場）を踏まえた価格設定です。
+      <span class="pricing-note__badge">Limited Offer</span>
+      現在、LinPlan はローンチ記念につき、<strong>先着10件限定の特別価格</strong>でご提供しています。<br>
+      通常価格は、中小企業向けWeb制作の市場相場（複数の制作会社のスタンダードプランを参考）を踏まえた設定です。<br>
+      <span class="pricing-note__small">※ お申込み完了順に枠を消化していきます。残数の最新状況はお気軽にお問い合わせください。</span>
     </div>
 
     <div class="pricing-grid reveal">
@@ -2712,7 +3016,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<a href="contact.html" class="fab-contact" aria-label="お問い合わせページへ">
+<a href="contact.html" class="fab-contact" aria-label="無料相談ページへ">
   <span>Contact</span>
   <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 </a>
@@ -2764,11 +3068,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const [l, top, , bg, dur, delay, icon] = t;
       const tile = document.createElement('div');
       tile.className = 'hero-tile';
+      tile.setAttribute('aria-hidden', 'true');
       tile.style.left = l + '%';
       tile.style.top = top + '%';
       tile.style.background = bg;
       tile.style.animation = `heroFloat${i} ${dur}s ease-in-out ${delay}s infinite`;
-      tile.innerHTML = `<svg viewBox="0 0 40 40" fill="none">${icons[icon] || ''}</svg>`;
+      tile.innerHTML = `<svg viewBox="0 0 40 40" fill="none" aria-hidden="true">${icons[icon] || ''}</svg>`;
       fragment.appendChild(tile);
       tileEls.push(tile);
     });

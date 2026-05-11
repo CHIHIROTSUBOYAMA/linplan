@@ -250,7 +250,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <ul class="nav-links-right">
       <li><a href="index.html#works">制作事例</a></li>
       <li><a href="index.html#pricing">料金</a></li>
-      <li><a href="contact.html" class="nav-contact-link">お問い合わせ
+      <li><a href="contact.html" class="nav-contact-link">無料相談
         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a></li>
     </ul>
@@ -268,7 +268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="aeo-geo.html" onclick="toggleMenu()">AEO / GEO</a></li>
     <li><a href="index.html#works" onclick="toggleMenu()">制作事例</a></li>
     <li><a href="index.html#pricing" onclick="toggleMenu()">料金</a></li>
-    <li><a href="contact.html" onclick="toggleMenu()">お問い合わせ</a></li>
+    <li><a href="contact.html" onclick="toggleMenu()">無料相談</a></li>
   </ul>
 </div>
 
@@ -462,21 +462,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<a href="contact.html" class="fab-contact" aria-label="お問い合わせページへ">
+<a href="contact.html" class="fab-contact" aria-label="無料相談ページへ">
   <span>Contact</span>
   <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 </a>
 
 <script src="js/common.js"></script>
 <script>
-  // URLクエリパラメータでフォームの選択肢を自動設定
+  // URLクエリパラメータでフォームの選択肢・下書きを自動設定
   (function() {
     const params = new URLSearchParams(window.location.search);
+
+    // ?service=web|app|ai → 相談内容セレクトを切り替え
     const serviceMap = { web: 'homepage', app: 'app', ai: 'ai' };
     const service = params.get('service');
     if (service && serviceMap[service]) {
       const sel = document.getElementById('inquiry');
       if (sel) sel.value = serviceMap[service];
+    }
+
+    // ?plan=starter|standard|custom → メッセージ欄に下書き挿入
+    const planMap = {
+      starter:  { label: 'スタータープラン',  inquiry: 'homepage' },
+      standard: { label: 'スタンダードプラン', inquiry: 'homepage' },
+      custom:   { label: 'カスタムプラン',     inquiry: 'other'    },
+    };
+    const plan = params.get('plan');
+    if (plan && planMap[plan]) {
+      const msgEl = document.getElementById('message');
+      if (msgEl && !msgEl.value) {
+        msgEl.value = '【' + planMap[plan].label + '】についてご相談したいです。\n\n';
+      }
+      // service 未指定時のみ inquiry を設定（service 優先）
+      if (!service) {
+        const inqEl = document.getElementById('inquiry');
+        if (inqEl) inqEl.value = planMap[plan].inquiry;
+      }
     }
   })();
 
