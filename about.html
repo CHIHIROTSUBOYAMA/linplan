@@ -14,7 +14,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>私について | LinPlan</title>
-<meta name="description" content="LinPlanの制作ポリシーと、つくり手の想い。システムで、毎日をもっと心地よく。">
+<meta name="description" content="LinPlan 代表 坪山ひろやまのプロフィール。経歴・対応領域・技術スタック・取引体制（NDA・適格請求書・インボイス対応）をご紹介します。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://chihirotsuboyama.github.io/about.html">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='10' fill='%2332373c'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8v36h12'/%3E%3Cpath d='M26 16v28'/%3E%3Cpath d='M34 44V28c0-8 14-8 14 0v16'/%3E%3Ccircle cx='26' cy='10' r='3' fill='%23fff' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="私について | LinPlan">
-<meta property="og:description" content="LinPlanの制作ポリシーと、つくり手の想い。">
+<meta property="og:description" content="LinPlan 代表 坪山ひろやまのプロフィール。経歴・対応領域・取引体制をご紹介します。">
 <meta property="og:url" content="https://chihirotsuboyama.github.io/about.html">
 <meta property="og:site_name" content="LinPlan">
 <meta property="og:locale" content="ja_JP">
@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="私について | LinPlan">
-<meta name="twitter:description" content="LinPlanの制作ポリシーと、つくり手の想い。">
+<meta name="twitter:description" content="LinPlan 代表 坪山ひろやまのプロフィール。経歴・対応領域・取引体制をご紹介します。">
 <meta name="twitter:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,44 +69,377 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin: 0 auto;
   }
 
-  /* ============ ABOUT BODY ============ */
-  .about-body { padding: 20px 0 120px; }
-  .about-content {
+  /* ============ ABOUT 共通 ============ */
+  .about-section { padding: 96px 0; }
+  .section-gray { background: var(--bg-gray); }
+  .about-section__head { text-align: center; margin-bottom: 48px; }
+  .about-section__en {
+    font-family: var(--font-display);
+    font-size: .7rem; font-weight: 600;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .about-section__title {
+    font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: .04em;
+    color: var(--dark);
+    margin-bottom: 14px;
+  }
+  .about-section__desc {
+    font-size: .85rem;
+    line-height: 2;
+    color: var(--text-light);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* ============ PROFILE ============ */
+  .about-profile { padding-top: 64px; }
+  .about-profile__inner {
+    max-width: 880px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 44px;
+    align-items: center;
+  }
+  .about-profile__avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #2d7d75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: 0 10px 28px rgba(59, 162, 151, 0.28);
+  }
+  .about-profile__role {
+    font-family: var(--font-display);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .about-profile__name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+    letter-spacing: .04em;
+    line-height: 1.5;
+  }
+  .about-profile__name span {
+    display: block;
+    font-family: var(--font-display);
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: .08em;
+    margin-top: 4px;
+  }
+  .about-profile__lead {
+    font-size: .92rem;
+    line-height: 2.1;
+    color: var(--text);
+  }
+
+  /* ============ STRENGTHS ============ */
+  .about-strengths__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .about-strengths__item {
+    padding: 32px 28px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .about-strengths__num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: .04em;
+    margin-bottom: 12px;
+  }
+  .about-strengths__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .about-strengths__desc {
+    font-size: .85rem;
+    line-height: 2;
+    color: var(--text-light);
+  }
+
+  /* ============ CAREER ============ */
+  .about-career__list {
+    max-width: 720px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    counter-reset: career;
+  }
+  .about-career__item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 28px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-career__item:first-child { border-top: 1px solid var(--border); }
+  .about-career__year {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: .04em;
+    padding-top: 4px;
+  }
+  .about-career__body h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .about-career__body p {
+    font-size: .84rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* ============ TECH STACK ============ */
+  .about-stack__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .about-stack__col {
+    padding: 28px 24px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .about-stack__col-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-stack__tag {
+    font-family: var(--font-display);
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: #fff;
+    background: var(--accent);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .about-stack__tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .about-stack__tags li {
+    font-size: .78rem;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg-gray);
+    padding: 6px 12px;
+    border-radius: 3px;
+  }
+
+  /* ============ STORY ============ */
+  .about-story__body {
     max-width: 720px;
     margin: 0 auto;
   }
-  .about-content p {
+  .about-story__body p {
     font-size: .98rem;
     line-height: 2.3;
     color: var(--text);
+    margin-bottom: 24px;
+  }
+  .about-story__body p:last-child { margin-bottom: 0; }
+
+  /* ============ SERVICE AREAS ============ */
+  .about-areas__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .about-areas__card {
+    display: block;
+    padding: 28px 24px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  }
+  .about-areas__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .about-areas__tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: #fff;
+    background: var(--accent);
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+  .about-areas__card h3 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .about-areas__card p {
+    font-size: .82rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* ============ TRADE TERMS ============ */
+  .about-terms__list {
+    max-width: 760px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .about-terms__item {
+    padding: 22px 24px;
+    background: var(--bg-gray);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+  }
+  .about-terms__item h3 {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .about-terms__item p {
+    font-size: .82rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* ============ CTA BLOCK ============ */
+  .about-cta-block {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .about-cta-block h2 {
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+    letter-spacing: .04em;
+  }
+  .about-cta-block p {
+    font-size: .92rem;
+    line-height: 2.1;
+    color: var(--text-light);
     margin-bottom: 28px;
   }
-  .about-content p:first-child {
-    font-weight: 500;
+  .about-cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .about-cta {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin-top: 24px;
     padding: 16px 40px;
     background: var(--dark);
     color: #fff;
     font-size: .92rem;
     font-weight: 600;
     border-radius: 4px;
-    transition: opacity .3s, transform .3s;
+    text-decoration: none;
+    transition: opacity .3s, transform .3s, color .3s, background .3s;
   }
-  .about-cta:hover { opacity: .85; transform: translateY(-1px); color: #fff; }
+  .about-cta:hover { opacity: .9; transform: translateY(-1px); color: #fff; }
   .about-cta svg { transition: transform .3s; }
   .about-cta:hover svg { transform: translateX(3px); }
-  .about-cta-wrap { text-align: center; margin-top: 24px; }
+  .about-cta--ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .about-cta--ghost:hover {
+    background: transparent;
+    color: var(--dark);
+    border-color: var(--dark);
+  }
 
   /* ============ RESPONSIVE (page-specific) ============ */
   @media (max-width: 900px) {
     .page-hero { padding: 140px 0 60px; }
-    .about-body { padding: 20px 0 80px; }
-    .about-content p { font-size: .94rem; line-height: 2.2; }
+    .about-section { padding: 64px 0; }
+    .about-profile { padding-top: 48px; }
+    .about-profile__inner {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      text-align: center;
+    }
+    .about-profile__avatar {
+      margin: 0 auto;
+      width: 130px; height: 130px; font-size: 3.2rem;
+    }
+    .about-strengths__grid,
+    .about-stack__grid,
+    .about-areas__grid {
+      grid-template-columns: 1fr;
+    }
+    .about-terms__list { grid-template-columns: 1fr; }
+    .about-career__item {
+      grid-template-columns: 64px 1fr;
+      gap: 16px;
+    }
   }
 </style>
 </head>
@@ -172,23 +505,245 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="page-en reveal">About</p>
     <h1 class="reveal">私について</h1>
     <p class="page-hero-desc reveal">
-      枠を超える。紡ぐ糸となる。<br>
-      システムで、毎日をもっと心地よく。
+      LinPlan 代表・坪山ひろやま。<br>
+      Web・アプリ・AI を、ひとりで企画から運用まで担当しています。
     </p>
   </div>
 </section>
 
-<!-- ========== ABOUT BODY ========== -->
-<section class="about-body">
+<!-- ========== PROFILE ========== -->
+<section class="about-section about-profile">
   <div class="container">
-    <div class="about-content reveal">
-      <p>LinPlanの坪山です。<br>普段はシステムエンジニアとして働きながら、Web制作やアプリ開発を手がけています。</p>
-      <p>企業さまからのご依頼を受け、ホームページの企画・制作を行うほか、Webアプリやモバイルアプリの開発にも取り組んでいます。<br>また、AIを活用した業務支援のご提案も行っています。</p>
-      <p>「システムで、毎日をもっと心地よく。」<br>そんな小さくても確かな変化を届けられるよう、日々つくり続けています。</p>
-      <div class="about-cta-wrap">
+    <div class="about-profile__inner reveal">
+      <div class="about-profile__avatar" aria-hidden="true">
+        <!-- ユーザー差し替え予定：images/avatar.webp 等の顔写真に差し替え -->
+        <span>T</span>
+      </div>
+      <div class="about-profile__text">
+        <p class="about-profile__role">LinPlan 代表 / Web・アプリ・AI 制作</p>
+        <h2 class="about-profile__name">坪山 ひろやま <span>Hiroyama Tsuboyama</span></h2>
+        <p class="about-profile__lead">
+          中小企業・店舗の Web、アプリ、AI 業務支援を、企画から運用までひとりで担当しています。
+          意思決定が早く、伝言ゲームのミスがなく、コード・データは契約終了後もすべてお客様のもの。
+          NDA・適格請求書・インボイス制度にも対応しています。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STRENGTHS ========== -->
+<section class="about-section about-strengths section-gray">
+  <div class="container">
+    <div class="about-section__head reveal">
+      <p class="about-section__en">Strengths</p>
+      <h2 class="about-section__title">3つの強み</h2>
+    </div>
+    <div class="about-strengths__grid reveal">
+      <div class="about-strengths__item">
+        <p class="about-strengths__num">01</p>
+        <h3 class="about-strengths__title">ひとりで企画から運用まで</h3>
+        <p class="about-strengths__desc">
+          ヒアリング・設計・デザイン・実装・公開後の運用まで、すべて一人で担当します。複数会社への発注や伝言ゲームのミスがなく、意思決定が早いのが強みです。
+        </p>
+      </div>
+      <div class="about-strengths__item">
+        <p class="about-strengths__num">02</p>
+        <h3 class="about-strengths__title">AEO/GEO を標準装備</h3>
+        <p class="about-strengths__desc">
+          Google 検索だけでなく、ChatGPT・Gemini などの AI 検索でも候補に挙がる設計を、追加料金なしで全制作に標準搭載します。
+        </p>
+      </div>
+      <div class="about-strengths__item">
+        <p class="about-strengths__num">03</p>
+        <h3 class="about-strengths__title">Web も アプリ も AI も</h3>
+        <p class="about-strengths__desc">
+          サイト・モバイル/業務アプリ・生成AI を組み合わせた業務改善まで、まとめて相談できます。事業フェーズに応じて必要なものだけを提案します。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CAREER (ダミー) ========== -->
+<section class="about-section about-career">
+  <div class="container">
+    <div class="about-section__head reveal">
+      <p class="about-section__en">Career</p>
+      <h2 class="about-section__title">経歴</h2>
+      <p class="about-section__desc">※ 以下は枠のみのダミー表記です。実際の経歴に差し替え予定。</p>
+    </div>
+    <ol class="about-career__list reveal">
+      <li class="about-career__item">
+        <span class="about-career__year">20XX</span>
+        <div class="about-career__body">
+          <h3>〇〇大学 〇〇学部 卒業</h3>
+          <p>〇〇を専攻。〇〇に関する研究で〇〇賞を受賞。</p>
+        </div>
+      </li>
+      <li class="about-career__item">
+        <span class="about-career__year">20XX</span>
+        <div class="about-career__body">
+          <h3>株式会社〇〇 入社（システムエンジニア）</h3>
+          <p>〇〇業界向けのシステム開発・保守を担当。バックエンドからフロントエンドまで幅広く経験。</p>
+        </div>
+      </li>
+      <li class="about-career__item">
+        <span class="about-career__year">20XX</span>
+        <div class="about-career__body">
+          <h3>Web 制作・アプリ開発を副業として開始</h3>
+          <p>知人の事業者向けにホームページ制作・業務アプリ開発を継続的に提供。</p>
+        </div>
+      </li>
+      <li class="about-career__item">
+        <span class="about-career__year">20XX</span>
+        <div class="about-career__body">
+          <h3>自社プロダクト StudyReport / Tsukimi 公開</h3>
+          <p>自分自身の課題感から企画・実装した学習時間記録アプリと家計簿アプリを継続運用・改善中。</p>
+        </div>
+      </li>
+      <li class="about-career__item">
+        <span class="about-career__year">2026</span>
+        <div class="about-career__body">
+          <h3>LinPlan 始動</h3>
+          <p>中小企業・店舗向けに、Web・アプリ・AI を一気通貫で提供する制作スタジオを立ち上げ。</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========== TECH STACK (ダミー) ========== -->
+<section class="about-section about-stack section-gray">
+  <div class="container">
+    <div class="about-section__head reveal">
+      <p class="about-section__en">Tech Stack</p>
+      <h2 class="about-section__title">技術スタック</h2>
+      <p class="about-section__desc">※ 以下は枠のみのダミー表記です。実際の取扱技術に差し替え予定。</p>
+    </div>
+    <div class="about-stack__grid reveal">
+      <div class="about-stack__col">
+        <h3 class="about-stack__col-title"><span class="about-stack__tag">WEB</span>ホームページ・Webサイト</h3>
+        <ul class="about-stack__tags">
+          <li>HTML / CSS</li>
+          <li>JavaScript / TypeScript</li>
+          <li>WordPress</li>
+          <li>Shopify</li>
+          <li>microCMS</li>
+          <li>AEO / GEO 設計</li>
+        </ul>
+      </div>
+      <div class="about-stack__col">
+        <h3 class="about-stack__col-title"><span class="about-stack__tag">APP</span>アプリ・業務システム</h3>
+        <ul class="about-stack__tags">
+          <li>React / Next.js</li>
+          <li>React Native</li>
+          <li>Node.js</li>
+          <li>Firebase</li>
+          <li>Supabase</li>
+          <li>PostgreSQL</li>
+        </ul>
+      </div>
+      <div class="about-stack__col">
+        <h3 class="about-stack__col-title"><span class="about-stack__tag">AI</span>AI業務支援</h3>
+        <ul class="about-stack__tags">
+          <li>ChatGPT API</li>
+          <li>Claude API</li>
+          <li>Gemini API</li>
+          <li>RAG / ベクトル検索</li>
+          <li>Dify / LangChain</li>
+          <li>Zapier / Make 連携</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STORY (ダミー) ========== -->
+<section class="about-section about-story">
+  <div class="container">
+    <div class="about-section__head reveal">
+      <p class="about-section__en">Story</p>
+      <h2 class="about-section__title">なぜ LinPlan を始めたか</h2>
+      <p class="about-section__desc">※ 以下は枠のみのダミー文です。実際のストーリーに差し替え予定。</p>
+    </div>
+    <div class="about-story__body reveal">
+      <p>システムエンジニアとして〇〇年、現場では「業務に効くシステム」と「見栄えのいいサイト」が分かれて発注され、結局どちらも事業の武器になりきれていない場面を何度も見てきました。</p>
+      <p>一方で、ChatGPT のような AI 検索の登場で、サイトの作り方そのものが変わろうとしています。中小企業・店舗にこそ、Web・アプリ・AI を「ひとつの戦略」として届ける必要があると感じました。</p>
+      <p>大手代理店の半額〜1/3 で、AEO/GEO まで含めて一気通貫で。<br>規模に合った投資で、最大の成果を。<br>それが LinPlan の基本方針です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICE AREAS ========== -->
+<section class="about-section about-areas section-gray">
+  <div class="container">
+    <div class="about-section__head reveal">
+      <p class="about-section__en">Service Areas</p>
+      <h2 class="about-section__title">対応領域</h2>
+    </div>
+    <div class="about-areas__grid reveal">
+      <a href="index.html#solution" class="about-areas__card">
+        <span class="about-areas__tag">WEB</span>
+        <h3>ホームページ制作</h3>
+        <p>コーポレート・店舗・サービスサイト。AEO/GEO 標準対応。</p>
+      </a>
+      <a href="index.html#solution" class="about-areas__card">
+        <span class="about-areas__tag">APP</span>
+        <h3>アプリ・業務システム</h3>
+        <p>iOS/Android アプリ、業務 Web アプリの企画〜開発。</p>
+      </a>
+      <a href="ai-service.html" class="about-areas__card">
+        <span class="about-areas__tag">AI</span>
+        <h3>AI 業務支援</h3>
+        <p>ChatGPT・生成AI を活用した業務自動化、AIチャットボット導入支援。</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== B2B TRADE TERMS ========== -->
+<section class="about-section about-terms">
+  <div class="container">
+    <div class="about-section__head reveal">
+      <p class="about-section__en">Trade Terms</p>
+      <h2 class="about-section__title">取引体制</h2>
+      <p class="about-section__desc">法人・個人事業主どちらとも、安心してお取引いただける体制を整えています。</p>
+    </div>
+    <ul class="about-terms__list reveal">
+      <li class="about-terms__item">
+        <h3>NDA（秘密保持契約）対応</h3>
+        <p>当方ひな形のほか、お客様ひな形での締結にも対応します。</p>
+      </li>
+      <li class="about-terms__item">
+        <h3>適格請求書発行事業者として登録</h3>
+        <p>インボイス制度に完全対応。仕入税額控除の対象としてご利用いただけます。</p>
+      </li>
+      <li class="about-terms__item">
+        <h3>請求書発行・銀行振込</h3>
+        <p>標準は銀行振込・月末締め翌月末払い。分割払いもご相談いただけます。</p>
+      </li>
+      <li class="about-terms__item">
+        <h3>納品物の権利は全権お客様へ</h3>
+        <p>契約終了後、制作物のコード・データはすべてお客様にお渡しします。他社への引き継ぎもスムーズです。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="about-section about-cta-section section-gray">
+  <div class="container">
+    <div class="about-cta-block reveal">
+      <h2>まずは話を聞かせてください</h2>
+      <p>初回ヒアリングは30分・無料・オンラインOK<br>ご返信は24時間以内にいたします</p>
+      <div class="about-cta-actions">
         <a href="contact.html" class="about-cta">
-          お問い合わせ
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          無料で相談する
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="index.html#pricing" class="about-cta about-cta--ghost">
+          料金を確認する
         </a>
       </div>
     </div>
@@ -222,6 +777,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="aeo-geo.html">AEO / GEO</a></li>
       <li><a href="index.html#works">制作事例</a></li>
       <li><a href="contact.html">お問い合わせ</a></li>
+      <li><a href="privacy.html">プライバシーポリシー</a></li>
     </ul>
     <address class="footer-address">tsubochihiroyama2230@gmail.com</address>
     <p class="footer-copy">&copy; 2026 LinPlan. All Rights Reserved.</p>
