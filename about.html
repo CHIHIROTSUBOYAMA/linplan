@@ -101,24 +101,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .about-profile__inner {
     max-width: 880px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 44px;
-    align-items: center;
-  }
-  .about-profile__avatar {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #2d7d75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 4rem;
-    font-weight: 700;
-    color: #fff;
-    box-shadow: 0 10px 28px rgba(59, 162, 151, 0.28);
   }
   .about-profile__role {
     font-family: var(--font-display);
@@ -183,44 +165,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: .85rem;
     line-height: 2;
     color: var(--text-light);
-  }
-
-  /* ============ CAREER ============ */
-  .about-career__list {
-    max-width: 720px;
-    margin: 0 auto;
-    list-style: none;
-    padding: 0;
-    counter-reset: career;
-  }
-  .about-career__item {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 28px;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .about-career__item:first-child { border-top: 1px solid var(--border); }
-  .about-career__year {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: .04em;
-    padding-top: 4px;
-  }
-  .about-career__body h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 6px;
-    line-height: 1.6;
-  }
-  .about-career__body p {
-    font-size: .84rem;
-    line-height: 1.9;
-    color: var(--text-light);
-    margin: 0;
   }
 
   /* ============ TECH STACK ============ */
@@ -421,25 +365,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .page-hero { padding: 140px 0 60px; }
     .about-section { padding: 64px 0; }
     .about-profile { padding-top: 48px; }
-    .about-profile__inner {
-      grid-template-columns: 1fr;
-      gap: 24px;
-      text-align: center;
-    }
-    .about-profile__avatar {
-      margin: 0 auto;
-      width: 130px; height: 130px; font-size: 3.2rem;
-    }
     .about-strengths__grid,
     .about-stack__grid,
     .about-areas__grid {
       grid-template-columns: 1fr;
     }
     .about-terms__list { grid-template-columns: 1fr; }
-    .about-career__item {
-      grid-template-columns: 64px 1fr;
-      gap: 16px;
-    }
   }
 </style>
 </head>
@@ -515,10 +446,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="about-section about-profile">
   <div class="container">
     <div class="about-profile__inner reveal">
-      <div class="about-profile__avatar" aria-hidden="true">
-        <!-- ユーザー差し替え予定：images/avatar.webp 等の顔写真に差し替え -->
-        <span>T</span>
-      </div>
       <div class="about-profile__text">
         <p class="about-profile__role">LinPlan 代表 / Web・アプリ・AI 制作</p>
         <h2 class="about-profile__name">坪山 ひろやま <span>Hiroyama Tsuboyama</span></h2>
@@ -565,56 +492,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ========== CAREER (ダミー) ========== -->
-<section class="about-section about-career">
-  <div class="container">
-    <div class="about-section__head reveal">
-      <p class="about-section__en">Career</p>
-      <h2 class="about-section__title">経歴</h2>
-      <p class="about-section__desc">※ 以下は枠のみのダミー表記です。実際の経歴に差し替え予定。</p>
-    </div>
-    <ol class="about-career__list reveal">
-      <li class="about-career__item">
-        <span class="about-career__year">20XX</span>
-        <div class="about-career__body">
-          <h3>〇〇大学 〇〇学部 卒業</h3>
-          <p>〇〇を専攻。〇〇に関する研究で〇〇賞を受賞。</p>
-        </div>
-      </li>
-      <li class="about-career__item">
-        <span class="about-career__year">20XX</span>
-        <div class="about-career__body">
-          <h3>株式会社〇〇 入社（システムエンジニア）</h3>
-          <p>〇〇業界向けのシステム開発・保守を担当。バックエンドからフロントエンドまで幅広く経験。</p>
-        </div>
-      </li>
-      <li class="about-career__item">
-        <span class="about-career__year">20XX</span>
-        <div class="about-career__body">
-          <h3>Web 制作・アプリ開発を副業として開始</h3>
-          <p>知人の事業者向けにホームページ制作・業務アプリ開発を継続的に提供。</p>
-        </div>
-      </li>
-      <li class="about-career__item">
-        <span class="about-career__year">20XX</span>
-        <div class="about-career__body">
-          <h3>自社プロダクト StudyReport / Tsukimi 公開</h3>
-          <p>自分自身の課題感から企画・実装した学習時間記録アプリと家計簿アプリを継続運用・改善中。</p>
-        </div>
-      </li>
-      <li class="about-career__item">
-        <span class="about-career__year">2026</span>
-        <div class="about-career__body">
-          <h3>LinPlan 始動</h3>
-          <p>中小企業・店舗向けに、Web・アプリ・AI を一気通貫で提供する制作スタジオを立ち上げ。</p>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
 <!-- ========== TECH STACK (ダミー) ========== -->
-<section class="about-section about-stack section-gray">
+<section class="about-section about-stack">
   <div class="container">
     <div class="about-section__head reveal">
       <p class="about-section__en">Tech Stack</p>
@@ -660,7 +539,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ========== STORY (ダミー) ========== -->
-<section class="about-section about-story">
+<section class="about-section about-story section-gray">
   <div class="container">
     <div class="about-section__head reveal">
       <p class="about-section__en">Story</p>
@@ -676,7 +555,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ========== SERVICE AREAS ========== -->
-<section class="about-section about-areas section-gray">
+<section class="about-section about-areas">
   <div class="container">
     <div class="about-section__head reveal">
       <p class="about-section__en">Service Areas</p>
@@ -703,7 +582,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ========== B2B TRADE TERMS ========== -->
-<section class="about-section about-terms">
+<section class="about-section about-terms section-gray">
   <div class="container">
     <div class="about-section__head reveal">
       <p class="about-section__en">Trade Terms</p>
@@ -732,7 +611,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ========== CTA ========== -->
-<section class="about-section about-cta-section section-gray">
+<section class="about-section about-cta-section">
   <div class="container">
     <div class="about-cta-block reveal">
       <h2>まずは話を聞かせてください</h2>
