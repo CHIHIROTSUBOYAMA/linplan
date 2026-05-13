@@ -205,20 +205,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-color: #e74c3c !important;
     box-shadow: 0 0 0 3px rgba(231,76,60,.1) !important;
   }
-  .form-privacy-note {
+  .form-privacy-consent {
     margin: 4px 0 16px;
-    font-size: .78rem;
-    line-height: 1.8;
-    color: var(--text-light);
     text-align: center;
   }
-  .form-privacy-note a {
+  .form-privacy-consent-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .82rem;
+    line-height: 1.6;
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .form-privacy-consent-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--dark);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .form-privacy-consent-label a {
     color: var(--dark);
     text-decoration: underline;
     text-underline-offset: 3px;
     font-weight: 600;
   }
-  .form-privacy-note a:hover { text-decoration-thickness: 2px; }
+  .form-privacy-consent-label a:hover { text-decoration-thickness: 2px; }
+  .form-privacy-consent-label input.field-error {
+    outline: 2px solid #e74c3c;
+    outline-offset: 2px;
+  }
 
   /* ============ RESPONSIVE (page-specific) ============ */
   @media (max-width: 900px) {
@@ -400,11 +418,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label for="message">メッセージ</label>
             <textarea id="message" name="message" placeholder="ご相談内容をお聞かせください..."></textarea>
           </div>
-          <p class="form-privacy-note">
-            送信内容の取扱いについては <a href="privacy.html">プライバシーポリシー</a> をご確認のうえ、ご同意いただけましたら送信してください。
-          </p>
+          <div class="form-privacy-consent">
+            <label class="form-privacy-consent-label">
+              <input type="checkbox" id="privacyConsent" name="privacy_consent" required>
+              <span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意します</span>
+            </label>
+          </div>
           <button type="submit" class="form-submit" id="formSubmit">
-            同意して送信する
+            送信する
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </form>
@@ -539,6 +560,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         el && el.classList.remove('field-error');
       }
     });
+    // プライバシー同意チェック
+    const consentEl = document.getElementById('privacyConsent');
+    if (!consentEl.checked) {
+      valid = false;
+      consentEl.classList.add('field-error');
+    } else {
+      consentEl.classList.remove('field-error');
+    }
     if (!valid) {
       errorEl.textContent = '必須項目を入力してください。';
       errorEl.style.display = 'block';
@@ -566,7 +595,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       errorEl.textContent = '送信に失敗しました。お手数ですが、メールまたはお電話にてご連絡ください。';
       errorEl.style.display = 'block';
       btn.disabled = false;
-      btn.innerHTML = '同意して送信する <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      btn.innerHTML = '送信する <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
     }
   });
 </script>
