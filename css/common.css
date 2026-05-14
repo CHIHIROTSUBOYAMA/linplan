@@ -10,7 +10,7 @@
   --bg-gray: #f6f6f4;
   --text: #313131;
   --text-light: #6b6b6b;
-  --text-muted: #a0a0a0;
+  --text-muted: #6b7178;
   --dark: #32373c;
   --accent: #3ba297;
   --border: #e5e5e3;
@@ -117,8 +117,6 @@ a { color: inherit; text-decoration: none; }
 
 /* JS 無効時: アニメーション前提の要素を最初から表示する */
 html.no-js .reveal { opacity: 1; transform: none; }
-html.no-js #lp-loader { display: none !important; }
-html.no-js body.loading { overflow: visible; }
 
 /* ============ FOOTER (expanding panel) ============ */
 .footer-wrapper {
