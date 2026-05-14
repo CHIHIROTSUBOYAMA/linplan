@@ -116,6 +116,14 @@
     const isOpen = menu.classList.toggle('open');
     if (hamburger) hamburger.setAttribute('aria-expanded', isOpen);
   };
+  // ESC キーでモバイルメニューを閉じる
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    const menu = document.getElementById('mobileMenu');
+    if (menu && menu.classList.contains('open')) {
+      window.toggleMenu();
+    }
+  });
 
   // ========== REVEAL ==========
   const revealTargets = document.querySelectorAll('.reveal');
