@@ -28,7 +28,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://chihirotsuboyama.github.io/">
 <meta property="og:site_name" content="LinPlan">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
+<meta property="og:image" content="https://chihirotsuboyama.github.io/images/ogp-index.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="LinPlan | ホームページ・アプリ制作">
@@ -36,12 +36,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LinPlan | ホームページ・アプリ制作">
 <meta name="twitter:description" content="丁寧なヒアリングと確かなデザインで、長く愛されるサイトをつくります。">
-<meta name="twitter:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
+<meta name="twitter:image" content="https://chihirotsuboyama.github.io/images/ogp-index.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Klee+One:wght@400;600&family=Caveat:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/common.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" href="css/common.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/common.css"></noscript>
 
 <!-- アニメーション用ライブラリ（ローカルバンドル） -->
 <script defer src="js/vendor/gsap.min.js"></script>
@@ -77,6 +78,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {"@type": "Question", "name": "契約後のやり取りはどんなツールで行いますか？", "acceptedAnswer": {"@type": "Answer", "text": "ヒアリング・打ち合わせはZoom / Google Meetなどオンラインで完結します。資料共有はGoogle Drive、進捗管理はNotionを基本としていますが、お客様の使い慣れたツールがあればご相談ください。"}},
     {"@type": "Question", "name": "途中でスタッフが変わることはありますか？", "acceptedAnswer": {"@type": "Answer", "text": "LinPlanは坪山ひろやまひとりで運営しています。ヒアリングから納品まで一貫して同じ担当者が対応します。万が一のときもコード・データは全権お渡しするため、他の制作会社への引き継ぎもスムーズに行えます。"}},
     {"@type": "Question", "name": "他社で見積もり済みですが、相見積もりとして相談できますか？", "acceptedAnswer": {"@type": "Answer", "text": "もちろんです。比較検討は大歓迎です。他社のお見積りをご提示いただければ、内容・価格・納期を踏まえてLinPlanならではのご提案をお伝えします。"}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "坪山 ひろやま",
+  "givenName": "ひろやま",
+  "familyName": "坪山",
+  "alternateName": "Hiroyama Tsuboyama",
+  "jobTitle": "LinPlan 代表 / Web ・ アプリ ・ AI 制作",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "LinPlan",
+    "url": "https://chihirotsuboyama.github.io/"
+  },
+  "url": "https://chihirotsuboyama.github.io/about.html",
+  "email": "mailto:tsubochihiroyama2230@gmail.com",
+  "knowsAbout": [
+    "Web 制作",
+    "アプリ開発",
+    "AI 業務自動化",
+    "AEO / GEO（生成AI最適化）",
+    "システムエンジニアリング"
   ]
 }
 </script>
@@ -277,7 +304,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin: 0 auto;
   }
   .about-content p {
-    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    font-family: var(--font);
     font-weight: 500;
     font-size: clamp(1.05rem, 2.2vw, 1.6rem);
     line-height: 200%;
@@ -775,6 +802,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     line-height: 1.6;
     margin-bottom: 10px;
   }
+  .work-card__value {
+    font-size: .85rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin: -4px 0 12px;
+  }
   .work-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .work-tag {
     font-size: .7rem;
@@ -794,12 +827,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hero-actions { flex-direction: column; }
   }
 
-  /* ============ SECTION FONT (Problem 以下は Zen Maru Gothic に統一) ============ */
+  /* ============ SECTION FONT (Problem 以下は本文フォントに統一) ============ */
   #problem,
   .agitate,
   #solution,
   #aeo-geo {
-    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    font-family: var(--font);
   }
 
 </style>
@@ -1011,7 +1044,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   .about-short .section-en { margin-bottom: 16px; }
   .about-short h2 {
-    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    font-family: var(--font);
     font-size: clamp(1.4rem, 2.6vw, 1.85rem);
     font-weight: 700;
     letter-spacing: .04em;
@@ -1257,6 +1290,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     border-radius: 50%;
     background: var(--accent);
     opacity: 0.5;
+  }
+  .service-card__example {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: var(--bg-gray);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+  }
+  .service-card__example-label {
+    font-family: var(--font-display);
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .service-card__example-text {
+    font-size: .82rem;
+    line-height: 1.7;
+    color: var(--text-light);
   }
   .service-card__fit {
     margin: 0 0 20px;
@@ -1545,6 +1599,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     color: var(--text-light);
     line-height: 1.7;
   }
+  .pricing-counter {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 14px;
+    background: #fff7c2;
+    border: 1px solid var(--accent);
+    border-radius: 20px;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--dark);
+    vertical-align: middle;
+  }
+  .pricing-counter strong { color: #c87a00; font-weight: 700; }
+  @media (max-width: 600px) {
+    .pricing-counter { display: block; margin: 10px auto 0; max-width: max-content; }
+  }
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1768,7 +1838,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     padding: 0 40px;
   }
   .cta-block h2 {
-    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    font-family: var(--font);
     font-size: clamp(1.6rem, 3.2vw, 2.2rem);
     font-weight: 700;
     line-height: 1.7;
@@ -1827,7 +1897,347 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .cta-block-actions { flex-direction: column; }
     .cta-block-btn--primary, .cta-block-btn--ghost { justify-content: center; }
   }
+  .cta-block-download {
+    margin-top: 28px;
+    text-align: center;
+    font-size: .88rem;
+    color: rgba(255,255,255,.7);
+  }
+  .cta-block-download-link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 600;
+    transition: color .2s;
+  }
+  .cta-block-download-link:hover { color: #fff; }
+  .cta-block-download-link svg { vertical-align: -2px; margin-right: 4px; }
 
+  /* ============ COMPARISON (競合比較表) ============ */
+  .comparison-section { padding: 96px 0; }
+  .comparison-table-wrap {
+    overflow-x: auto;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .88rem;
+    min-width: 760px;
+    background: #fff;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .comparison-table thead th {
+    background: var(--bg-gray);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: .92rem;
+    color: var(--dark);
+    border-bottom: 2px solid var(--border);
+  }
+  .comparison-table thead th.is-self {
+    background: var(--accent);
+    color: #fff;
+  }
+  .comparison-table tbody th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--bg-gray);
+    width: 26%;
+    font-size: .86rem;
+  }
+  .comparison-table td {
+    color: var(--text-light);
+  }
+  .comparison-table td.is-self {
+    background: rgba(59,162,151,.08);
+    color: var(--dark);
+    font-weight: 700;
+  }
+  .comparison-note {
+    text-align: center;
+    font-size: .78rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    line-height: 1.7;
+  }
+  @media (max-width: 768px) {
+    .comparison-section { padding: 72px 0; }
+    .comparison-table { font-size: .8rem; }
+    .comparison-table th, .comparison-table td { padding: 12px 8px; }
+  }
+
+  /* ============ SERVICE MAP (3サービス全体マップ) ============ */
+  .service-map-section { padding: 96px 0; }
+  .service-map {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 16px;
+    margin: 48px 0 32px;
+    flex-wrap: wrap;
+  }
+  .service-map__node {
+    flex: 1;
+    min-width: 220px;
+    max-width: 280px;
+    padding: 28px 20px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .service-map__node:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  }
+  .service-map__node--web { border-top: 4px solid #5BA4CF; }
+  .service-map__node--app { border-top: 4px solid var(--accent); }
+  .service-map__node--ai  { border-top: 4px solid var(--dark); }
+  .service-map__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    background: var(--bg-gray);
+    border-radius: 50%;
+    color: var(--dark);
+  }
+  .service-map__label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .service-map__role {
+    font-size: .8rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .service-map__arrow {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    color: var(--text-muted);
+  }
+  .service-map__note {
+    text-align: center;
+    font-size: .9rem;
+    color: var(--text-light);
+    line-height: 1.9;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .service-map__note strong { color: var(--dark); }
+  @media (max-width: 900px) {
+    .service-map-section { padding: 72px 0; }
+    .service-map { flex-direction: column; gap: 12px; }
+    .service-map__node { max-width: none; }
+    .service-map__arrow { transform: rotate(90deg); margin: 0 auto; }
+  }
+
+  /* ============ SCHEDULE (ガント風スケジュール) ============ */
+  .schedule {
+    margin-top: 64px;
+    padding: 32px;
+    background: var(--bg-gray);
+    border-radius: 8px;
+  }
+  .schedule__title {
+    font-size: 1rem;
+    margin-bottom: 24px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .schedule__chart {
+    display: grid;
+    gap: 10px;
+  }
+  .schedule__row {
+    display: grid;
+    grid-template-columns: 200px repeat(12, 1fr);
+    align-items: center;
+    gap: 6px;
+  }
+  .schedule__label {
+    font-size: .82rem;
+    color: var(--text-light);
+  }
+  .schedule__bar {
+    height: 14px;
+    background: var(--accent);
+    border-radius: 7px;
+  }
+  .schedule__bar--optional {
+    background: repeating-linear-gradient(
+      45deg,
+      var(--accent),
+      var(--accent) 6px,
+      rgba(59,162,151,.35) 6px,
+      rgba(59,162,151,.35) 12px
+    );
+  }
+  .schedule__weeks {
+    display: grid;
+    grid-template-columns: 200px repeat(12, 1fr);
+    gap: 6px;
+    margin-top: 12px;
+    font-size: .7rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  .schedule__weeks span:first-child {
+    grid-column: 1 / 2;
+    text-align: left;
+  }
+  .schedule__note {
+    margin-top: 18px;
+    font-size: .8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .schedule { padding: 20px; }
+    .schedule__row,
+    .schedule__weeks { grid-template-columns: 110px repeat(12, 1fr); gap: 4px; }
+    .schedule__label { font-size: .72rem; }
+    .schedule__weeks { font-size: .62rem; }
+    .schedule__bar { height: 10px; }
+  }
+
+  /* ============ AUDIENCE (向き/不向き) ============ */
+  .audience-section { padding: 96px 0; }
+  .audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .audience-col {
+    padding: 32px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+  }
+  .audience-col--fit { border-top: 4px solid var(--accent); }
+  .audience-col--nofit { border-top: 4px solid var(--text-muted); }
+  .audience-col__label {
+    font-family: var(--font-display);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .audience-col--fit .audience-col__label { color: var(--accent); }
+  .audience-col--nofit .audience-col__label { color: var(--text-muted); }
+  .audience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .audience-list li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 14px;
+    font-size: .92rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .audience-col--fit .audience-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .audience-col--nofit .audience-list li::before {
+    content: '\2014';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+  .audience-col__nofit-note {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    font-size: .82rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  @media (max-width: 768px) {
+    .audience-section { padding: 72px 0; }
+    .audience-grid { grid-template-columns: 1fr; gap: 20px; }
+    .audience-col { padding: 24px; }
+  }
+
+  /* ============ NUMBERS (数字で見るLinPlan) ============ */
+  .numbers-section { padding: 96px 0; }
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .numbers-item {
+    text-align: center;
+    padding: 40px 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .numbers-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  }
+  .numbers-value {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.8vw, 3.6rem);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .numbers-unit {
+    font-size: 0.45em;
+    margin-left: 4px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+  .numbers-label {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .numbers-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  @media (max-width: 900px) {
+    .numbers-section { padding: 72px 0; }
+    .numbers-grid { grid-template-columns: 1fr; gap: 16px; }
+    .numbers-item { padding: 28px 20px; }
+  }
 </style>
 
 <script>
@@ -2113,13 +2523,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 
+<!-- ========== SERVICE MAP (3サービス全体マップ) ========== -->
+<section class="section service-map-section" id="service-map">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">Service Map</p>
+      <h2 class="section-title">3 サービスの組み合わせで、事業を伸ばす</h2>
+      <p class="section-desc">単発の制作で終わらず、段階的に組み合わせていくことで効果が最大化します。</p>
+    </div>
+    <div class="service-map reveal">
+      <div class="service-map__node service-map__node--web">
+        <div class="service-map__icon">
+          <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="6" y="10" width="36" height="28" rx="2"/>
+            <path d="M6 18h36"/>
+            <circle cx="10" cy="14" r="1" fill="currentColor"/>
+            <circle cx="14" cy="14" r="1" fill="currentColor"/>
+          </svg>
+        </div>
+        <p class="service-map__label">Web サイト</p>
+        <p class="service-map__role">事業の窓口・新規接点</p>
+      </div>
+      <div class="service-map__arrow" aria-hidden="true">→</div>
+      <div class="service-map__node service-map__node--app">
+        <div class="service-map__icon">
+          <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="14" y="6" width="20" height="36" rx="3"/>
+            <circle cx="24" cy="38" r="1.5" fill="currentColor"/>
+            <line x1="20" y1="12" x2="28" y2="12"/>
+          </svg>
+        </div>
+        <p class="service-map__label">業務アプリ</p>
+        <p class="service-map__role">顧客との継続接点・業務効率化</p>
+      </div>
+      <div class="service-map__arrow" aria-hidden="true">→</div>
+      <div class="service-map__node service-map__node--ai">
+        <div class="service-map__icon">
+          <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="24" cy="24" r="16"/>
+            <path d="M16 24h16M24 16v16"/>
+          </svg>
+        </div>
+        <p class="service-map__label">AI 業務支援</p>
+        <p class="service-map__role">業務時間を圧縮、空いた時間を成長へ</p>
+      </div>
+    </div>
+    <p class="service-map__note reveal">
+      Web サイトで新規を獲得し、業務アプリで継続接点をつくり、AI で業務を効率化する。
+      <strong>3 つを組み合わせる</strong>ことで「集客 × 継続 × 効率」のサイクルが完成します。
+      <br>もちろん、1 サービスだけのご依頼も歓迎です。
+    </p>
+  </div>
+</section>
+
+
 <!-- ========== PROBLEM ========== -->
 <section class="section" id="problem">
   <div class="container">
     <div class="section-head section-head--center reveal">
       <p class="section-en">Problem</p>
       <h2 class="section-title">そのサイト、AI時代も戦えていますか？</h2>
-      <p class="section-desc">検索行動の半分は、もう AI に移っています。<br>これまでの作りのままでは、見えない場所で機会を逃しています。</p>
+      <p class="section-desc">AI 時代の検索変化、そして中小企業ならではの悩み。<br>サイトを取り巻く 6 つの課題を、ひとつずつ整理していきます。</p>
     </div>
 
     <div class="problem-stack">
@@ -2197,6 +2661,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <circle cx="104" cy="90" r="4" fill="#3ba297"/>
             <circle cx="128" cy="76" r="4" fill="#3ba297"/>
             <circle cx="152" cy="108" r="5" fill="#E8543A"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="problem-item" data-index="4">
+        <div class="problem-item__line" aria-hidden="true"></div>
+        <div class="problem-item__num" aria-hidden="true" data-parallax="1.25">
+          <span>04</span>
+        </div>
+        <div class="problem-item__body">
+          <p class="problem-item__label">PROBLEM 04</p>
+          <h3 class="problem-item__title" data-split>制作費が高くて踏み切れない</h3>
+          <p class="problem-item__desc">大手制作会社の見積もりは 100 万円超。「本当にそれだけの価値があるのか」と感じて先送りになっていませんか。中小規模の事業に最適化した価格と範囲で、必要なものだけを作ることができます。</p>
+        </div>
+        <div class="problem-item__illust" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="100" fill="#e6f4f2"/>
+            <circle cx="100" cy="100" r="48" fill="#fff7c2" stroke="#3ba297" stroke-width="4"/>
+            <text x="100" y="116" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="44" font-weight="700" fill="#3ba297">¥</text>
+            <line x1="58" y1="58" x2="142" y2="142" stroke="#E8543A" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="60" cy="142" r="10" fill="#b0b8c1" opacity="0.6"/>
+            <circle cx="140" cy="58" r="10" fill="#b0b8c1" opacity="0.6"/>
+          </svg>
+        </div>
+      </article>
+
+      <article class="problem-item" data-index="5">
+        <div class="problem-item__line" aria-hidden="true"></div>
+        <div class="problem-item__num" aria-hidden="true" data-parallax="1.5">
+          <span>05</span>
+        </div>
+        <div class="problem-item__body">
+          <p class="problem-item__label">PROBLEM 05</p>
+          <h3 class="problem-item__title" data-split>何から始めればいいか分からない</h3>
+          <p class="problem-item__desc">Webサイト、アプリ、AI 業務自動化。どれをどの順番でやれば成果が出るか、そもそも自社にどれが必要か、整理がついていない状態。ヒアリングから入って、本当に必要なものから一緒に決めていきます。</p>
+        </div>
+        <div class="problem-item__illust" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="100" fill="#e6f4f2"/>
+            <circle cx="100" cy="100" r="10" fill="#3ba297"/>
+            <path d="M100 100 L60 50" stroke="#3ba297" stroke-width="4" stroke-linecap="round"/>
+            <polygon points="60,50 70,52 62,60" fill="#3ba297"/>
+            <path d="M100 100 L150 60" stroke="#b0b8c1" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 4"/>
+            <polygon points="150,60 142,58 148,68" fill="#b0b8c1"/>
+            <path d="M100 100 L150 150" stroke="#b0b8c1" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 4"/>
+            <polygon points="150,150 142,148 148,142" fill="#b0b8c1"/>
+            <path d="M100 100 L50 150" stroke="#b0b8c1" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 4"/>
+            <polygon points="50,150 58,148 52,142" fill="#b0b8c1"/>
+            <text x="100" y="48" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="#3ba297">?</text>
+          </svg>
+        </div>
+      </article>
+
+      <article class="problem-item" data-index="6">
+        <div class="problem-item__line" aria-hidden="true"></div>
+        <div class="problem-item__num" aria-hidden="true" data-parallax="1.75">
+          <span>06</span>
+        </div>
+        <div class="problem-item__body">
+          <p class="problem-item__label">PROBLEM 06</p>
+          <h3 class="problem-item__title" data-split>業者に丸投げで、成果が見えない</h3>
+          <p class="problem-item__desc">納品されたものの、その後どう運用していけばいいか分からない。アクセス数も改善方法も誰も教えてくれない。LinPlan は公開後の運用まで視野に入れた設計で、データを見ながら一緒に改善していきます。</p>
+        </div>
+        <div class="problem-item__illust" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="100" fill="#e6f4f2"/>
+            <rect x="44" y="56" width="112" height="80" rx="6" fill="#fff" stroke="#b0b8c1" stroke-width="3"/>
+            <line x1="44" y1="74" x2="156" y2="74" stroke="#b0b8c1" stroke-width="2"/>
+            <circle cx="54" cy="65" r="2.5" fill="#b0b8c1"/>
+            <circle cx="62" cy="65" r="2.5" fill="#b0b8c1"/>
+            <rect x="56" y="86" width="36" height="40" rx="3" fill="#e6f4f2" stroke="#b0b8c1" stroke-width="2"/>
+            <rect x="108" y="86" width="36" height="40" rx="3" fill="#e6f4f2" stroke="#b0b8c1" stroke-width="2"/>
+            <text x="74" y="113" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="#b0b8c1">?</text>
+            <text x="126" y="113" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="#b0b8c1">?</text>
+            <line x1="68" y1="148" x2="132" y2="148" stroke="#E8543A" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
       </article>
@@ -2398,6 +2937,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>自分で更新できないままになっている</li>
           <li>集客の入口を強化したい</li>
         </ul>
+        <div class="service-card__example">
+          <p class="service-card__example-label">想定ケース</p>
+          <p class="service-card__example-text">例：飲食店オーナー様。古い無料テンプレートのサイトで運用してきたが、AI に引用されず新規来店が伸びない。最新の構造化対応のサイトに刷新し、月の予約数が安定する設計に。</p>
+        </div>
         <p class="service-card__fit">向かない場合：数千ページ規模の大規模サイト／不動産・ECなど業界特化CMSが必須の場合は、専門会社をおすすめします。</p>
         <div class="service-card__meta">
           <div class="service-card__meta-row">
@@ -2427,6 +2970,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>社内ツールを内製したい</li>
           <li>アイデアを形にしたい</li>
         </ul>
+        <div class="service-card__example">
+          <p class="service-card__example-label">想定ケース</p>
+          <p class="service-card__example-text">例：整体院オーナー様。予約管理を紙＋電話で運用しており、転記ミス・ダブルブッキングが発生。LINE 連携の予約管理アプリを導入し、スタッフの作業時間を週 10 時間削減。</p>
+        </div>
         <p class="service-card__fit">向かない場合：大規模ユーザー数（数十万人〜）を前提とするコンシューマー向けアプリ、医療・金融など高度な認可が必要な領域は別途相談ください。</p>
         <div class="service-card__meta">
           <div class="service-card__meta-row">
@@ -2456,6 +3003,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>問い合わせ対応を自動化したい</li>
           <li>文書作成・要約を効率化したい</li>
         </ul>
+        <div class="service-card__example">
+          <p class="service-card__example-label">想定ケース</p>
+          <p class="service-card__example-text">例：建設業の事務担当者様。週 20 時間を見積書作成に使っていた。過去資料を学習させた AI アシスタントを導入し、見積書作成時間を週 3 時間に短縮。</p>
+        </div>
         <p class="service-card__fit">向かない場合：自社固有モデルの開発・大規模学習データの準備が前提の案件は、AI研究開発企業をおすすめします。</p>
         <div class="service-card__meta">
           <div class="service-card__meta-row">
@@ -2472,6 +3023,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
         </a>
       </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== NUMBERS (数字で見る LinPlan) ========== -->
+<section class="section numbers-section" id="numbers">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">By the Numbers</p>
+      <h2 class="section-title">数字で見る LinPlan</h2>
+      <p class="section-desc">小さな制作スタジオですが、できることは多角的に。</p>
+    </div>
+    <div class="numbers-grid reveal">
+      <div class="numbers-item">
+        <p class="numbers-value">3<span class="numbers-unit">領域</span></p>
+        <p class="numbers-label">Web ・ アプリ ・ AI</p>
+        <p class="numbers-note">企画から運用まで一気通貫で対応します。</p>
+      </div>
+      <div class="numbers-item">
+        <p class="numbers-value">24<span class="numbers-unit">時間</span></p>
+        <p class="numbers-label">以内の返信目安</p>
+        <p class="numbers-note">お問い合わせから1営業日以内にご返信します。</p>
+      </div>
+      <div class="numbers-item">
+        <p class="numbers-value">100<span class="numbers-unit">%</span></p>
+        <p class="numbers-label">権利お渡し</p>
+        <p class="numbers-note">コード・データはすべて納品物としてお渡しします。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -2527,6 +3107,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 
+<!-- ========== AUDIENCE (向き/不向き) ========== -->
+<section class="section section-gray audience-section" id="audience">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">Who we serve</p>
+      <h2 class="section-title">こんな方のお役に立てます</h2>
+      <p class="section-desc">商談前に「自分が対象か」を判断していただくため、向いている方・向いていない方を明示しています。</p>
+    </div>
+    <div class="audience-grid reveal">
+      <div class="audience-col audience-col--fit">
+        <p class="audience-col__label">向いている方</p>
+        <ul class="audience-list">
+          <li>中小規模・個人事業・店舗で、Web / アプリ / AI を伸ばしたい方</li>
+          <li>窓口ひとつでヒアリングから運用まで任せたい方</li>
+          <li>意思決定の速さ・伝達ロスのなさを重視する方</li>
+          <li>制作物の権利をすべて自社で持ちたい方</li>
+          <li>AI 業務自動化を段階的に導入したい方</li>
+        </ul>
+      </div>
+      <div class="audience-col audience-col--nofit">
+        <p class="audience-col__label">向いていない方</p>
+        <ul class="audience-list">
+          <li>大規模システム（数千ユーザー以上・ミッションクリティカル）の発注</li>
+          <li>多人数チーム体制を前提とした案件</li>
+          <li>24 時間 365 日の常時運用保守を必須とする案件</li>
+          <li>制作費だけで「とにかく安く」を最優先する案件</li>
+        </ul>
+        <p class="audience-col__nofit-note">
+          上記の場合は、適切な制作会社をご紹介できることもございます。お気軽にご相談ください。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ========== WORKS (Original Products + Real Works + Practice Works) ========== -->
 <section class="section section-gray" id="works">
   <div class="container">
@@ -2546,7 +3162,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/studyreport.webp" alt="学習時間記録アプリ StudyReport" loading="lazy" decoding="async">
+              <img src="images/studyreport.webp" alt="学習時間記録アプリ StudyReport" width="1600" height="1000" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2555,13 +3171,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="work-info">
             <p class="work-category">Original</p>
             <h3 class="work-name">学習時間記録アプリ StudyReport</h3>
+            <p class="work-card__value">毎日の学習時間を可視化し、続ける動機をつくる学習記録アプリです。</p>
             <div class="work-tags"><span class="work-tag">React</span><span class="work-tag">TypeScript</span><span class="work-tag">Firebase</span></div>
           </div>
         </article>
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/tsukimi.webp" alt="家計簿管理アプリ Tsukimi" loading="lazy" decoding="async">
+              <img src="images/tsukimi.webp" alt="家計簿管理アプリ Tsukimi" width="1600" height="1000" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2570,6 +3187,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="work-info">
             <p class="work-category">Original</p>
             <h3 class="work-name">家計簿管理アプリ Tsukimi</h3>
+            <p class="work-card__value">夫婦・カップルで共有する家計簿。お金の話を始めやすくします。</p>
             <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Supabase</span><span class="work-tag">TypeScript</span></div>
           </div>
         </article>
@@ -2602,7 +3220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/practice-hospitality.webp" alt="Hospitality 模写サイト" loading="lazy" decoding="async">
+              <img src="images/practice-hospitality.webp" alt="Hospitality 模写サイト" width="1600" height="1000" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2617,7 +3235,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/practice-hospitality2.webp" alt="Hospitality 模写サイト②" loading="lazy" decoding="async">
+              <img src="images/practice-hospitality2.webp" alt="Hospitality 模写サイト②" width="1600" height="1000" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2632,7 +3250,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/practice-medical.webp" alt="Medical 模写サイト" loading="lazy" decoding="async">
+              <img src="images/practice-medical.webp" alt="Medical 模写サイト" width="1600" height="1000" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2647,7 +3265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/practice-ecommerce.webp" alt="E-Commerce 模写サイト" loading="lazy" decoding="async">
+              <img src="images/practice-ecommerce.webp" alt="E-Commerce 模写サイト" width="1600" height="1000" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2662,7 +3280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="work-card">
           <div class="monitor">
             <div class="monitor-screen">
-              <img src="images/practice-saas.webp" alt="SaaS 模写サイト" loading="lazy" decoding="async">
+              <img src="images/practice-saas.webp" alt="SaaS 模写サイト" width="1600" height="1000" loading="lazy" decoding="async">
             </div>
             <div class="monitor-chin"><span class="monitor-chin-dot"></span></div>
           </div>
@@ -2737,6 +3355,121 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
+
+    <div class="schedule reveal">
+      <h3 class="schedule__title">スタンダードプランの場合の進行イメージ</h3>
+      <div class="schedule__chart">
+        <div class="schedule__row">
+          <div class="schedule__label">Step 01 ヒアリング</div>
+          <div class="schedule__bar" style="grid-column: 2 / 3;"></div>
+        </div>
+        <div class="schedule__row">
+          <div class="schedule__label">Step 02 ご提案</div>
+          <div class="schedule__bar" style="grid-column: 3 / 4;"></div>
+        </div>
+        <div class="schedule__row">
+          <div class="schedule__label">Step 03 契約・キックオフ</div>
+          <div class="schedule__bar" style="grid-column: 4 / 5;"></div>
+        </div>
+        <div class="schedule__row">
+          <div class="schedule__label">Step 04 デザイン</div>
+          <div class="schedule__bar" style="grid-column: 5 / 7;"></div>
+        </div>
+        <div class="schedule__row">
+          <div class="schedule__label">Step 05 実装・公開</div>
+          <div class="schedule__bar" style="grid-column: 7 / 10;"></div>
+        </div>
+        <div class="schedule__row">
+          <div class="schedule__label">Step 06 公開後サポート</div>
+          <div class="schedule__bar schedule__bar--optional" style="grid-column: 10 / 14;"></div>
+        </div>
+        <div class="schedule__weeks">
+          <span>Week</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+        </div>
+      </div>
+      <p class="schedule__note">
+        ※ 上記はスタンダードプランの目安です。スターターは 4〜8 週間、カスタムはご相談に応じます。
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== COMPARISON (他の選択肢との比較) ========== -->
+<section class="section comparison-section" id="comparison">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <p class="section-en">Comparison</p>
+      <h2 class="section-title">他の選択肢との比較</h2>
+      <p class="section-desc">どのオプションがご自身の事業に合うか、判断材料としてご覧ください。</p>
+    </div>
+    <div class="comparison-table-wrap reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th scope="col">比較項目</th>
+            <th scope="col" class="is-self">LinPlan</th>
+            <th scope="col">大手代理店</th>
+            <th scope="col">クラウドソーシング</th>
+            <th scope="col">他フリーランス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">制作費（コーポレートサイト目安）</th>
+            <td class="is-self">35〜80 万円</td>
+            <td>100〜500 万円</td>
+            <td>10〜50 万円</td>
+            <td>20〜100 万円</td>
+          </tr>
+          <tr>
+            <th scope="row">納期目安</th>
+            <td class="is-self">1〜3 ヶ月</td>
+            <td>3〜6 ヶ月</td>
+            <td>2 週間〜2 ヶ月</td>
+            <td>1〜3 ヶ月</td>
+          </tr>
+          <tr>
+            <th scope="row">窓口担当</th>
+            <td class="is-self">代表が一気通貫</td>
+            <td>営業＋PM＋制作チーム</td>
+            <td>都度マッチング</td>
+            <td>担当 1 名</td>
+          </tr>
+          <tr>
+            <th scope="row">AEO / GEO（AI最適化）対応</th>
+            <td class="is-self">標準装備</td>
+            <td>オプション</td>
+            <td>基本なし</td>
+            <td>担当による</td>
+          </tr>
+          <tr>
+            <th scope="row">Web だけでなくアプリ・AI も対応</th>
+            <td class="is-self">○</td>
+            <td>○（追加費用）</td>
+            <td>△（別人材）</td>
+            <td>△（専門領域による）</td>
+          </tr>
+          <tr>
+            <th scope="row">納品物の権利</th>
+            <td class="is-self">全権お客様へ</td>
+            <td>契約による</td>
+            <td>契約による</td>
+            <td>契約による</td>
+          </tr>
+          <tr>
+            <th scope="row">NDA・インボイス対応</th>
+            <td class="is-self">対応済み</td>
+            <td>対応済み</td>
+            <td>事業者による</td>
+            <td>事業者による</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="comparison-note">
+      ※ 価格・納期は 2026 年 5 月時点の一般的な相場感です。各社の実際の見積もりとは異なる場合があります。
+    </p>
   </div>
 </section>
 
@@ -2751,7 +3484,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="pricing-note reveal">
       <span class="pricing-note__badge">Limited Offer</span>
-      現在、LinPlan はローンチ記念につき、<strong>先着10件限定の特別価格</strong>でご提供しています。<br>
+      現在、LinPlan はローンチ記念につき、<strong>先着10件限定の特別価格</strong>でご提供しています。
+      <span class="pricing-counter">現在 <strong>0/10</strong> 件 受付中</span><br>
       通常価格は、中小企業向けWeb制作の市場相場（複数の制作会社のスタンダードプランを参考）を踏まえた設定です。<br>
       <span class="pricing-note__small">※ お申込み完了順に枠を消化していきます。残数の最新状況はお気軽にお問い合わせください。</span>
     </div>
@@ -2909,6 +3643,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         料金を確認する
       </a>
     </div>
+    <p class="cta-block-download">
+      または
+      <a href="files/linplan-service-introduction-v1.pdf" download class="cta-block-download-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        サービス紹介資料（PDF）をダウンロード
+      </a>
+    </p>
   </div>
 </section>
 
@@ -2954,6 +3695,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="#solution">サービス内容</a></li>
       <li><a href="aeo-geo.html">AEO / GEO</a></li>
       <li><a href="#works">制作事例</a></li>
+      <li><a href="updates.html">更新履歴</a></li>
       <li><a href="contact.html">お問い合わせ</a></li>
       <li><a href="privacy.html">プライバシーポリシー</a></li>
     </ul>
