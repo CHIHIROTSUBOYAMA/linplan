@@ -98,11 +98,7 @@
           }, 450);
         }, 950);
       } else {
-        // 別ページから index.html へ — 即リロード、到着後に拡大アニメーション再生
-        try {
-          sessionStorage.setItem('lpSkipLoader', '1');
-          sessionStorage.setItem('lpNavLogoFly', '1');
-        } catch (_) {}
+        // 別ページから index.html へ — 通常リンク遷移（ローダー廃止に伴い、到着後の拡大アニメは行わない）
         window.location.href = href || 'index.html';
       }
     });
