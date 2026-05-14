@@ -15,10 +15,10 @@
   --accent: #3ba297;
   --border: #e5e5e3;
   --font: 'Noto Sans JP', "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", Arial, sans-serif;
-  --font-en: 'DM Sans', sans-serif;
+  --font-en: 'Space Grotesk', sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
   --font-hand: 'Klee One', 'Noto Sans JP', "游ゴシック", "Yu Gothic", sans-serif;
-  --font-hand-en: 'Caveat', 'DM Sans', cursive;
+  --font-hand-en: 'Klee One', sans-serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --container: 1080px;
 }
@@ -387,4 +387,78 @@ body.at-top .fab-contact { transform: translateY(20px); }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1 !important; transform: none !important; }
   .lp-nav-loader-bg, .lp-nav-logo-fly { transition: none !important; }
+}
+
+/* ============ ACCESSIBILITY (Focus Ring) ============ */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--dark);
+  outline-offset: 3px;
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+/* スキップリンク（任意導入） */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--dark);
+  color: #fff;
+  padding: 12px 20px;
+  font-size: .9rem;
+  font-weight: 600;
+  z-index: 1000;
+  transition: top .2s;
+}
+.skip-link:focus { top: 0; }
+
+/* ============ PRINT STYLES ============ */
+@media print {
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  body { font-size: 11pt; line-height: 1.7; }
+  .nav, .fab-contact,
+  .footer-wrapper, .footer-backdrop, .footer-spacer,
+  .lp-loader, .lp-nav-loader-bg, .lp-nav-logo-fly,
+  #scroll-progress, .scroll-progress,
+  .hero-floating-tiles, .floating-tiles,
+  .mobile-menu, .hamburger,
+  .nav-contact-link, .nav-contact-btn,
+  .cta-block-btn--primary, .cta-block-btn--ghost,
+  .cta-block-actions, .about-cta-actions,
+  .about-cta, .page-cta-wrap,
+  .pricing-card__cta, .service-card__cta,
+  .works-real-placeholder__cta,
+  .next-page-link {
+    display: none !important;
+  }
+  body, html { background: #fff; color: #000; }
+  section { page-break-inside: avoid; padding: 24px 0; }
+  h1, h2, h3, h4 { page-break-after: avoid; }
+  img { max-width: 100%; height: auto; page-break-inside: avoid; }
+  a[href^="http"]:after,
+  a[href^="https"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #666;
+    word-break: break-all;
+  }
+  a[href^="#"]:after,
+  a[href^="mailto:"]:after,
+  a[href^="tel:"]:after { content: ""; }
+  .reveal { opacity: 1 !important; transform: none !important; }
 }

@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://chihirotsuboyama.github.io/about.html">
 <meta property="og:site_name" content="LinPlan">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
+<meta property="og:image" content="https://chihirotsuboyama.github.io/images/ogp-about.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="LinPlan | 私について">
@@ -34,12 +34,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="私について | LinPlan">
 <meta name="twitter:description" content="LinPlan 代表 坪山ひろやまのプロフィール。経歴・対応領域・取引体制をご紹介します。">
-<meta name="twitter:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
+<meta name="twitter:image" content="https://chihirotsuboyama.github.io/images/ogp-about.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Klee+One:wght@400;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/common.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" href="css/common.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/common.css"></noscript>
 
 <style>
 
@@ -309,6 +310,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   /* ============ CTA BLOCK ============ */
+  .next-page-link {
+    text-align: center;
+    margin: 0 auto 48px;
+    padding: 20px;
+    max-width: 640px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-gray);
+  }
+  .next-page-link__label {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .next-page-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--accent);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: gap .2s, color .2s;
+  }
+  .next-page-link a:hover { gap: 14px; color: var(--dark); }
+
   .about-cta-block {
     text-align: center;
     max-width: 640px;
@@ -613,6 +646,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ========== CTA ========== -->
 <section class="about-section about-cta-section">
   <div class="container">
+    <div class="next-page-link reveal">
+      <p class="next-page-link__label">Next</p>
+      <a href="index.html#solution">
+        サービス内容を見る
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
     <div class="about-cta-block reveal">
       <h2>まずは話を聞かせてください</h2>
       <p>初回ヒアリングは30分・無料・オンラインOK<br>ご返信は24時間以内にいたします</p>
@@ -655,6 +695,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="index.html#solution">サービス内容</a></li>
       <li><a href="aeo-geo.html">AEO / GEO</a></li>
       <li><a href="index.html#works">制作事例</a></li>
+      <li><a href="updates.html">更新履歴</a></li>
       <li><a href="contact.html">お問い合わせ</a></li>
       <li><a href="privacy.html">プライバシーポリシー</a></li>
     </ul>
