@@ -46,6 +46,60 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><link rel="stylesheet" href="css/common.min.css"></noscript>
 
 <style>
+  /* ============ PAGE LOADER ============ */
+  .lp-loader {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100001;
+    transition: opacity .5s ease, visibility .5s ease;
+  }
+  .lp-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .lp-loader__inner { text-align: center; }
+  .lp-loader__logo {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #32373c;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: lpLoaderFadeIn .5s .1s forwards;
+  }
+  .lp-loader__logo span { color: #E8DB80; }
+  .lp-loader__dots {
+    display: inline-flex;
+    gap: 8px;
+    opacity: 0;
+    animation: lpLoaderFadeIn .5s .3s forwards;
+  }
+  .lp-loader__dots span {
+    width: 8px; height: 8px;
+    background: #32373c;
+    border-radius: 50%;
+    animation: lpLoaderDot 1.4s infinite ease-in-out;
+  }
+  .lp-loader__dots span:nth-child(1) { animation-delay: 0s; }
+  .lp-loader__dots span:nth-child(2) { animation-delay: 0.2s; }
+  .lp-loader__dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes lpLoaderFadeIn { to { opacity: 1; } }
+  @keyframes lpLoaderDot {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+  html.no-js .lp-loader { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .lp-loader__dots span { animation: none; opacity: 0.6; }
+    .lp-loader__logo { animation: none; opacity: 1; }
+  }
+
   /* Critical CSS (ファーストビュー: page-hero) */
   .page-hero { padding: 180px 0 80px; text-align: center; }
   .page-en { font-family: var(--font-display); font-size: .7rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; }
@@ -223,6 +277,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 </head>
 <body>
+
+<!-- ========== PAGE LOADER ========== -->
+<div class="lp-loader" id="lpLoader" aria-hidden="true">
+  <div class="lp-loader__inner">
+    <div class="lp-loader__logo">Lin<span>Plan</span></div>
+    <div class="lp-loader__dots" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  if(sessionStorage.getItem('lp-visited')){
+    document.getElementById('lpLoader').style.display='none';
+  } else {
+    document.body.classList.add('loading');
+  }
+})();
+</script>
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S"

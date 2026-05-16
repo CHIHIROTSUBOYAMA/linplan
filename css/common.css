@@ -385,6 +385,9 @@ body.at-top .fab-contact { transform: translateY(20px); }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1 !important; transform: none !important; }
   .lp-nav-loader-bg, .lp-nav-logo-fly { transition: none !important; }
+  .lp-loader { transition: none !important; }
+  .lp-loader__logo { animation: none !important; opacity: 1; }
+  .lp-loader__dots span { animation: none !important; opacity: 0.6; }
 }
 
 /* ============ ACCESSIBILITY (Focus Ring) ============ */
