@@ -7,6 +7,42 @@
    ============================================================ */
 
 (() => {
+  // ========== PAGE LOADER ==========
+  const lpLoader = document.getElementById('lpLoader');
+  if (lpLoader && lpLoader.style.display !== 'none') {
+    const MIN_DISPLAY = 1200;
+    const MAX_DISPLAY = 3000;
+    const loaderStart = performance.now();
+    let hidden = false;
+
+    const hideLoader = () => {
+      if (hidden) return;
+      hidden = true;
+      const elapsed = performance.now() - loaderStart;
+      const remaining = Math.max(0, MIN_DISPLAY - elapsed);
+      setTimeout(() => {
+        lpLoader.classList.add('is-hidden');
+        sessionStorage.setItem('lp-visited', '1');
+        setTimeout(() => {
+          lpLoader.style.display = 'none';
+          document.body.classList.remove('loading');
+        }, 500);
+      }, remaining);
+    };
+
+    if (document.readyState === 'complete') {
+      hideLoader();
+    } else {
+      window.addEventListener('load', hideLoader);
+    }
+    setTimeout(hideLoader, MAX_DISPLAY);
+
+    const escHandler = (e) => {
+      if (e.key === 'Escape') { hideLoader(); document.removeEventListener('keydown', escHandler); }
+    };
+    document.addEventListener('keydown', escHandler);
+  }
+
   // ========== NAV / AT-TOP ==========
   const nav = document.getElementById('nav');
   if (nav) {
