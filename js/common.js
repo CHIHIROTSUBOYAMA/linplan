@@ -10,19 +10,26 @@
   // ========== PAGE LOADER ==========
   const lpLoader = document.getElementById('lpLoader');
   if (lpLoader && lpLoader.style.display !== 'none') {
-    const MIN_DISPLAY = 1200;
-    const MAX_DISPLAY = 3000;
+    const isQuick = lpLoader.hasAttribute('data-quick');
+    const MIN_DISPLAY = isQuick ? 0 : 1200;
+    const MAX_DISPLAY = isQuick ? 1500 : 3000;
     const loaderStart = performance.now();
     let hidden = false;
 
     const hideLoader = () => {
       if (hidden) return;
       hidden = true;
+      sessionStorage.setItem('lp-visited', '1');
+      if (isQuick) {
+        // 再訪問: CSS 読み込み後に即座に非表示（FOUC 防止）
+        lpLoader.style.display = 'none';
+        document.body.classList.remove('loading');
+        return;
+      }
       const elapsed = performance.now() - loaderStart;
       const remaining = Math.max(0, MIN_DISPLAY - elapsed);
       setTimeout(() => {
         lpLoader.classList.add('is-hidden');
-        sessionStorage.setItem('lp-visited', '1');
         setTimeout(() => {
           lpLoader.style.display = 'none';
           document.body.classList.remove('loading');
@@ -37,10 +44,12 @@
     }
     setTimeout(hideLoader, MAX_DISPLAY);
 
-    const escHandler = (e) => {
-      if (e.key === 'Escape') { hideLoader(); document.removeEventListener('keydown', escHandler); }
-    };
-    document.addEventListener('keydown', escHandler);
+    if (!isQuick) {
+      const escHandler = (e) => {
+        if (e.key === 'Escape') { hideLoader(); document.removeEventListener('keydown', escHandler); }
+      };
+      document.addEventListener('keydown', escHandler);
+    }
   }
 
   // ========== NAV / AT-TOP ==========

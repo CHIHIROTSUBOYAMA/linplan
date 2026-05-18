@@ -305,8 +305,6 @@ body.at-top .fab-contact { transform: translateY(20px); }
 .footer-brand h3 .lp-logo { --lp-accent: #c8a800; }
 .footer-toggle-open .lp-logo { --lp-accent: currentColor; vertical-align: -0.16em; }
 
-/* テキストロゴ時代の遺物セレクタ（span 内文字色）— SVG 化後は無効だが、互換のため残置 */
-
 /* ============ NAV ロゴ クリック時の拡大トランジション ============ */
 .lp-nav-loader-bg {
   position: fixed;
@@ -408,21 +406,6 @@ select:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
-/* スキップリンク（任意導入） */
-.skip-link {
-  position: absolute;
-  top: -100px;
-  left: 0;
-  background: var(--dark);
-  color: #fff;
-  padding: 12px 20px;
-  font-size: .9rem;
-  font-weight: 600;
-  z-index: 1000;
-  transition: top .2s;
-}
-.skip-link:focus { top: 0; }
-
 /* ============ PRINT STYLES ============ */
 @media print {
   *, *::before, *::after {
@@ -436,7 +419,6 @@ select:focus-visible {
   .footer-wrapper, .footer-backdrop, .footer-spacer,
   .lp-loader, .lp-nav-loader-bg, .lp-nav-logo-fly,
   #scroll-progress, .scroll-progress,
-  .hero-floating-tiles, .floating-tiles,
   .mobile-menu, .hamburger,
   .nav-contact-link, .nav-contact-btn,
   .cta-block-btn--primary, .cta-block-btn--ghost,
