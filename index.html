@@ -110,59 +110,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 
 <style>
-  /* ============ PAGE LOADER ============ */
-  .lp-loader {
+  /* ============ PAGE LOADER (GSAP lemon animation) ============ */
+  #lp-loader {
     position: fixed;
     inset: 0;
-    background: #fff;
+    background: #f8f8f6;
+    z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100001;
-    transition: opacity .5s ease, visibility .5s ease;
+    overflow: hidden;
   }
-  .lp-loader.is-hidden {
+  #lp-loader-inner {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lp-lemon-half {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    top: 0; left: 0;
+  }
+  .lp-lemon-left  { transform-origin: right center; }
+  .lp-lemon-right { transform-origin: left center; }
+  #lp-loader-logo {
+    position: absolute;
+    color: #E8DB80;
+    --lp-accent: #E8DB80;
     opacity: 0;
-    visibility: hidden;
+    transform: scale(0.6);
     pointer-events: none;
+    width: 180px;
   }
-  .lp-loader__inner { text-align: center; }
-  .lp-loader__logo {
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
-    font-size: clamp(2rem, 7vw, 3.2rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #32373c;
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: lpLoaderFadeIn .5s .1s forwards;
+  #lp-loader-logo svg {
+    width: 100%;
+    height: auto;
   }
-  .lp-loader__logo span { color: #E8DB80; }
-  .lp-loader__dots {
-    display: inline-flex;
-    gap: 8px;
-    opacity: 0;
-    animation: lpLoaderFadeIn .5s .3s forwards;
-  }
-  .lp-loader__dots span {
-    width: 8px; height: 8px;
-    background: #32373c;
-    border-radius: 50%;
-    animation: lpLoaderDot 1.4s infinite ease-in-out;
-  }
-  .lp-loader__dots span:nth-child(1) { animation-delay: 0s; }
-  .lp-loader__dots span:nth-child(2) { animation-delay: 0.2s; }
-  .lp-loader__dots span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes lpLoaderFadeIn { to { opacity: 1; } }
-  @keyframes lpLoaderDot {
-    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-    40% { transform: scale(1); opacity: 1; }
-  }
-  html.no-js .lp-loader { display: none; }
-  @media (prefers-reduced-motion: reduce) {
-    .lp-loader__dots span { animation: none; opacity: 0.6; }
-    .lp-loader__logo { animation: none; opacity: 1; }
-  }
+  html.no-js #lp-loader { display: none; }
 
   /* ============ HERO (floating flat-design icon tiles) ============ */
   .hero {
@@ -2145,32 +2133,71 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body>
 
-<!-- ========== PAGE LOADER ========== -->
-<div class="lp-loader" id="lpLoader" aria-hidden="true">
-  <div class="lp-loader__inner">
-    <div class="lp-loader__logo">Lin<span>Plan</span></div>
-    <div class="lp-loader__dots" aria-hidden="true">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-</div>
-<script>
-(function(){
-  if(sessionStorage.getItem('lp-visited')){
-    document.getElementById('lpLoader').style.display='none';
-  } else {
-    document.body.classList.add('loading');
-  }
-})();
-</script>
-
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- ========== SCROLL PROGRESS ========== -->
+<!-- ========== LOADING SCREEN ========== -->
 <div id="scroll-progress"></div>
+
+<div id="lp-loader">
+  <div id="lp-loader-inner">
+    <!-- レモン（左半分） -->
+    <div class="lp-lemon-half lp-lemon-left">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <clipPath id="leftClip"><rect x="0" y="0" width="60" height="120"/></clipPath>
+        <g clip-path="url(#leftClip)">
+          <ellipse cx="60" cy="65" rx="52" ry="46" fill="#E8DB80"/>
+          <ellipse cx="60" cy="65" rx="44" ry="38" fill="#F0E5A8"/>
+          <path d="M60 27 L60 103" stroke="#c8a800" stroke-width="1.5" opacity="0.4"/>
+          <path d="M20 45 Q60 55 60 65" stroke="#c8a800" stroke-width="1.5" opacity="0.4" fill="none"/>
+          <path d="M16 75 Q40 72 60 65" stroke="#c8a800" stroke-width="1.5" opacity="0.4" fill="none"/>
+          <ellipse cx="60" cy="18" rx="8" ry="9" fill="#E8DB80"/>
+          <ellipse cx="60" cy="112" rx="6" ry="7" fill="#E8DB80"/>
+        </g>
+        <path d="M60 0 L55 20 L62 35 L54 55 L63 75 L54 95 L60 120" stroke="#c8a800" stroke-width="2" fill="none" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- レモン（右半分） -->
+    <div class="lp-lemon-half lp-lemon-right">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <clipPath id="rightClip"><rect x="60" y="0" width="60" height="120"/></clipPath>
+        <g clip-path="url(#rightClip)">
+          <ellipse cx="60" cy="65" rx="52" ry="46" fill="#E8DB80"/>
+          <ellipse cx="60" cy="65" rx="44" ry="38" fill="#F0E5A8"/>
+          <path d="M60 27 L60 103" stroke="#c8a800" stroke-width="1.5" opacity="0.4"/>
+          <path d="M100 45 Q60 55 60 65" stroke="#c8a800" stroke-width="1.5" opacity="0.4" fill="none"/>
+          <path d="M104 75 Q80 72 60 65" stroke="#c8a800" stroke-width="1.5" opacity="0.4" fill="none"/>
+          <ellipse cx="60" cy="18" rx="8" ry="9" fill="#E8DB80"/>
+          <ellipse cx="60" cy="112" rx="6" ry="7" fill="#E8DB80"/>
+        </g>
+        <path d="M60 0 L65 20 L58 35 L66 55 L57 75 L66 95 L60 120" stroke="#c8a800" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        <path d="M68 12 Q88 -2 96 10 Q80 22 68 12Z" fill="#5AB552"/>
+        <path d="M68 12 Q85 8 96 10" stroke="#3a8c34" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+
+    <!-- ロゴ（レモンの中から出てくる） -->
+    <div id="lp-loader-logo">
+      <svg class="lp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 52" role="img" aria-label="LinPlan">
+        <g class="lp-lin" fill="currentColor" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path fill="none" d="M3.5 8V48H24.5"/>
+          <path fill="none" d="M37 20V48"/>
+          <path fill="none" d="M49.5 48V30C49.5 17 72.5 17 72.5 30V48"/>
+          <circle cx="37" cy="12" r="4" stroke="none"/>
+        </g>
+        <g class="lp-plan" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M86.5 48V28H102.5C112.5 28 112.5 8 102.5 8H86.5"/>
+          <path d="M124.5 8V48"/>
+          <path d="M156.5 20C141.5 20 136.5 26 136.5 34C136.5 42 141.5 48 156.5 48V20"/>
+          <path d="M168.5 48V30C168.5 17 191.5 17 191.5 30V48"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
 
 <style>
   /* ============ SCROLL PROGRESS BAR ============ */
@@ -2195,6 +2222,192 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     transform: translateY(20px);
   }
 </style>
+
+<script>
+  (function() {
+    // ローダー表示中は hero アニメーションを待機させるため loading クラスを付与
+    document.body.classList.add('loading');
+
+    // nav-logo クリックでこのページへ来た場合は冒頭ローダーをスキップし、
+    // 代わりに nav-logo → hero-logo の拡大アニメーションを再生する
+    try {
+      if (sessionStorage.getItem('lpSkipLoader')) {
+        sessionStorage.removeItem('lpSkipLoader');
+        const skipLoader = document.getElementById('lp-loader');
+        const skipInner = document.getElementById('lp-loader-inner');
+        const playFly = sessionStorage.getItem('lpNavLogoFly');
+        if (playFly) sessionStorage.removeItem('lpNavLogoFly');
+
+        if (!playFly) {
+          if (skipLoader) skipLoader.style.display = 'none';
+          document.body.classList.remove('loading');
+          return;
+        }
+
+        // ローダー本体（レモン）を隠して背景レイヤーとしてのみ利用
+        if (skipInner) skipInner.style.display = 'none';
+
+        const playGrowth = () => {
+          const navLogoEl = document.querySelector('.nav-logo');
+          const heroLogoEl = document.querySelector('.hero-logo');
+          const navEl = document.getElementById('nav');
+          if (!navLogoEl || !heroLogoEl) {
+            if (skipLoader) skipLoader.style.display = 'none';
+            document.body.classList.remove('loading');
+            return;
+          }
+          const navSvg = navLogoEl.querySelector('svg');
+          const heroSvg = heroLogoEl.querySelector('svg') || heroLogoEl;
+          if (!navSvg) {
+            if (skipLoader) skipLoader.style.display = 'none';
+            document.body.classList.remove('loading');
+            return;
+          }
+          const navRect = navSvg.getBoundingClientRect();
+          const heroRect = heroSvg.getBoundingClientRect();
+
+          navLogoEl.style.opacity = '0';
+          if (navEl) navEl.classList.add('lp-loader-active');
+
+          const clone = document.createElement('div');
+          clone.className = 'lp-nav-logo-fly';
+          clone.innerHTML = navSvg.outerHTML;
+          clone.style.left = navRect.left + 'px';
+          clone.style.top = navRect.top + 'px';
+          clone.style.width = navRect.width + 'px';
+          clone.style.height = navRect.height + 'px';
+          document.body.appendChild(clone);
+
+          requestAnimationFrame(() => {
+            clone.style.left = heroRect.left + 'px';
+            clone.style.top = heroRect.top + 'px';
+            clone.style.width = heroRect.width + 'px';
+            clone.style.height = heroRect.height + 'px';
+          });
+
+          setTimeout(() => {
+            clone.style.opacity = '0';
+            if (skipLoader) {
+              skipLoader.style.transition = 'opacity 0.45s ease';
+              skipLoader.style.opacity = '0';
+            }
+            setTimeout(() => {
+              clone.remove();
+              if (skipLoader) skipLoader.style.display = 'none';
+              navLogoEl.style.opacity = '';
+              if (navEl) navEl.classList.remove('lp-loader-active');
+              document.body.classList.remove('loading');
+            }, 450);
+          }, 950);
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', playGrowth);
+        } else {
+          playGrowth();
+        }
+        return;
+      }
+    } catch (_) {}
+
+    // 2回目以降の訪問はローダーをスキップ（localStorage）
+    //  ↓ 「毎回フル再生したい」ため一時的に無効化中。
+    //    再度毎回再生にしたい場合は、下の if (true) を if (false) に変更。
+    if (true) {
+      try {
+        if (localStorage.getItem('lpVisited')) {
+          const skipEl = document.getElementById('lp-loader');
+          // CSS 読み込み完了後にローダーを消す（FOUC 防止）
+          const quickHide = () => {
+            if (skipEl) skipEl.style.display = 'none';
+            document.body.classList.remove('loading');
+          };
+          if (document.readyState === 'complete') {
+            quickHide();
+          } else {
+            window.addEventListener('load', quickHide);
+          }
+          return;
+        }
+        localStorage.setItem('lpVisited', '1');
+      } catch (_) {}
+    }
+
+    // ESC キーでスキップ
+    document.addEventListener('keydown', function skipOnEsc(e) {
+      if (e.key !== 'Escape') return;
+      document.removeEventListener('keydown', skipOnEsc);
+      const skipEl = document.getElementById('lp-loader');
+      if (!skipEl || skipEl.style.display === 'none') return;
+      skipEl.style.transition = 'opacity 0.3s ease';
+      skipEl.style.opacity = '0';
+      setTimeout(() => { skipEl.style.display = 'none'; document.body.classList.remove('loading'); }, 300);
+    });
+
+    // GSAP タイムアウト対策: 3秒（60回×50ms）でローダーを強制終了
+    let retries = 0;
+    const run = () => {
+      if (!window.gsap) {
+        if (++retries > 60) {
+          const loader = document.getElementById('lp-loader');
+          if (loader) loader.style.display = 'none';
+          document.body.classList.remove('loading');
+          return;
+        }
+        setTimeout(run, 50);
+        return;
+      }
+      const loader    = document.getElementById('lp-loader');
+      const inner     = document.getElementById('lp-loader-inner');
+      const lLeft     = document.querySelector('.lp-lemon-left');
+      const lRight    = document.querySelector('.lp-lemon-right');
+      const logoEl    = document.getElementById('lp-loader-logo');
+      const heroLogo  = document.querySelector('.hero-logo');
+
+      document.documentElement.classList.add('gsap-ready');
+      gsap.set(inner, { y: -300, scale: 0.5, opacity: 0 });
+
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl
+        .to(inner, { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: 'bounce.out' })
+
+        .to(inner, { rotation: -5, duration: 0.06, ease: 'power1.inOut' })
+        .to(inner, { rotation:  5, duration: 0.06, ease: 'power1.inOut' })
+        .to(inner, { rotation:  0, duration: 0.06, ease: 'power1.inOut' })
+
+        .to(lLeft,  { x: -90, rotation: -15, opacity: 0.6, duration: 0.4, ease: 'back.out(1.2)' }, '+=0.05')
+        .to(lRight, { x:  90, rotation:  15, opacity: 0.6, duration: 0.4, ease: 'back.out(1.2)' }, '<')
+
+        .to(logoEl, { opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(1.6)' }, '-=0.15')
+
+        .to([lLeft, lRight], { opacity: 0, duration: 0.2 }, '+=0.1')
+
+        .add(() => {
+          if (!heroLogo) return;
+          const heroRect  = heroLogo.getBoundingClientRect();
+          const loaderRect = logoEl.getBoundingClientRect();
+          const dx = (heroRect.left + heroRect.width  / 2) - (loaderRect.left + loaderRect.width  / 2);
+          const dy = (heroRect.top  + heroRect.height / 2) - (loaderRect.top  + loaderRect.height / 2);
+          const scale = heroRect.width / loaderRect.width;
+          gsap.to(logoEl, {
+            x: dx, y: dy,
+            scale: scale,
+            duration: 0.5,
+            ease: 'power3.inOut',
+          });
+        }, '+=0.1')
+
+        .to(loader, { opacity: 0, duration: 0.35, ease: 'power2.inOut',
+          onComplete: () => {
+            loader.style.display = 'none';
+            document.body.classList.remove('loading');
+          }
+        }, '+=0.3');
+    };
+    run();
+  })();
+</script>
 
 <!-- ========== NAV ========== -->
 <nav class="nav" id="nav" role="navigation" aria-label="メインナビゲーション">

@@ -983,10 +983,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <script>
 (function(){
+  document.body.classList.add('loading');
   if(sessionStorage.getItem('lp-visited')){
-    document.getElementById('lpLoader').style.display='none';
-  } else {
-    document.body.classList.add('loading');
+    document.getElementById('lpLoader').dataset.quick='';
   }
 })();
 </script>
