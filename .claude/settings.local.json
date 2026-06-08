@@ -51,7 +51,12 @@
       "Bash(python -c ' *)",
       "Bash(cwebp -version)",
       "Bash(python -c \"import PIL; print\\('PIL', PIL.__version__\\); from PIL import Image; im = Image.new\\('RGB',\\(2,2\\)\\); im.save\\('/tmp/_test.webp','webp'\\)\")",
-      "Bash(pip install *)"
+      "Bash(pip install *)",
+      "Bash(grep -oE '<img src=\"[^\"]{0,60}' index.html)",
+      "Bash(rm -rf design2)",
+      "Bash(mkdir -p design2)",
+      "Bash(tar -xzf webfetch-1780883668942-utvc0c.bin -C design2)",
+      "Bash(grep -nE '<link[^>]*\\\\.css|<script[^>]*src=|tweaks-root|linplan-edit|unpkg.com|data-inlined|<style' __TRACKED_VAR__.html)"
     ]
   }
 }
