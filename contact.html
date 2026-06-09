@@ -3,7 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5DVGF39S');</script>
+<!-- End Google Tag Manager -->
 <title>お問い合わせ ｜ LinPlan</title>
+<link rel="canonical" href="https://chihirotsuboyama.github.io/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LinPlan">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="お問い合わせ ｜ LinPlan">
+<meta property="og:description" content="LinPlan へのお問い合わせ。初回ヒアリングは30分・無料・オンラインOK。ご返信は24時間以内。Web・アプリ・AIのご相談はお気軽にどうぞ。">
+<meta property="og:url" content="https://chihirotsuboyama.github.io/contact.html">
+<meta property="og:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="お問い合わせ ｜ LinPlan">
+<meta name="twitter:description" content="LinPlan へのお問い合わせ。初回ヒアリングは30分・無料・オンラインOK。ご返信は24時間以内。Web・アプリ・AIのご相談はお気軽にどうぞ。">
+<meta name="twitter:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
 <meta name="description" content="LinPlan へのお問い合わせ。初回ヒアリングは30分・無料・オンラインOK。ご返信は24時間以内。Web・アプリ・AIのご相談はお気軽にどうぞ。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -457,6 +476,10 @@ a { color: inherit; text-decoration: none; }
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div id="lp-loader" aria-hidden="true">
   <div class="lp-loader__inner">
     <div class="lp-loader__logo">Lin<b>Plan</b></div>
@@ -497,7 +520,7 @@ setTimeout(hide,3000);
   <div class="site-nav__inner">
     <a href="index.html" class="site-nav__logo" aria-label="LinPlan ホーム"><span class="lp-logo-type">Lin<b>Plan</b></span></a>
     <div class="site-nav__links">
-      <a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a>
+      <a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a>
       <a href="contact.html" class="btn site-nav__cta">無料で相談！</a>
     </div>
     <button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
@@ -505,7 +528,7 @@ setTimeout(hide,3000);
 </nav>
 <div class="mobile-menu">
   <button class="mobile-menu__close" aria-label="閉じる">×</button>
-  <a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="contact.html" class="btn site-nav__cta">無料で相談！</a>
+  <a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a><a href="contact.html" class="btn site-nav__cta">無料で相談！</a>
 </div>
 
 <header class="phero" style="padding-bottom:30px">
@@ -519,7 +542,7 @@ setTimeout(hide,3000);
 
 <section class="section" style="padding-top:30px">
   <div class="container">
-    <form class="form reveal" id="contactForm" novalidate>
+    <form class="form reveal" id="contactForm" action="https://formspree.io/f/xvzldalg" method="POST" novalidate>
       <div class="field">
         <label>ご相談内容<span class="req">必須</span></label>
         <div class="chips">
@@ -564,10 +587,11 @@ setTimeout(hide,3000);
       </div>
       <button type="submit" class="btn btn--primary hand" style="width:100%;justify-content:center;transform:none;font-size:1.1rem">送信する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
       <p class="form__note">送信いただいた内容は、ご相談対応の目的のみに使用します。<a href="privacy.html" style="color:var(--orange-deep)">プライバシーポリシー</a></p>
+      <p id="formError" style="display:none;color:#C0392B;font-size:.88rem;text-align:center;margin-top:14px">送信に失敗しました。お手数ですが <a href="mailto:tsubochihiroyama2230@gmail.com" style="color:#C0392B;text-decoration:underline">メール</a> で直接ご連絡ください。</p>
       <div id="formDone" style="display:none;text-align:center;padding:20px 0">
         <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#2FA98F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 14px"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
         <h3 class="hand" style="font-size:1.3rem">送信ありがとうございます！</h3>
-        <p style="color:var(--ink-soft);font-size:.92rem;margin-top:8px">24時間以内にご返信します。少々お待ちください。<br class="dt"><small>（※これはデモ表示です。実際の送信処理は公開時に接続します）</small></p>
+        <p style="color:var(--ink-soft);font-size:.92rem;margin-top:8px">24時間以内にご返信します。少々お待ちください。</p>
       </div>
     </form>
 
@@ -671,9 +695,23 @@ setTimeout(hide,3000);
     if (form) form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
-      form.querySelectorAll('.field, button[type=submit], .form__note').forEach(function (el) { el.style.display = 'none'; });
-      document.getElementById('formDone').style.display = 'block';
-      window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' });
+      var btn = form.querySelector('button[type=submit]');
+      var errEl = document.getElementById('formError');
+      var btnHTML = btn ? btn.innerHTML : '';
+      if (errEl) errEl.style.display = 'none';
+      if (btn) { btn.disabled = true; btn.textContent = '送信中…'; }
+      function showDone() {
+        form.querySelectorAll('.field, button[type=submit], .form__note').forEach(function (el) { el.style.display = 'none'; });
+        document.getElementById('formDone').style.display = 'block';
+        window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' });
+      }
+      function showError() {
+        if (errEl) errEl.style.display = 'block';
+        if (btn) { btn.disabled = false; btn.innerHTML = btnHTML; }
+      }
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(function (res) { if (res.ok) { showDone(); } else { showError(); } })
+        .catch(showError);
     });
   })();
 </script>
