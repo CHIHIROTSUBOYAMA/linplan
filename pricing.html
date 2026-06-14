@@ -16,14 +16,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:site_name" content="LinPlan">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="料金プラン ｜ LinPlan">
-<meta property="og:description" content="LinPlan の料金プラン。中小規模に最適化した価格で、大手の半額〜1/3。スターター35万円〜・スタンダード70万円〜・カスタム80万円〜。ローンチ記念価格（先着10件）。">
+<meta property="og:description" content="LinPlan の料金プラン。月額9,900円〜で気軽にはじめるか、買い切り35万円〜で資産として持つか。大手代理店の半額〜1/3。ローンチ記念価格（先着10件）受付中。">
 <meta property="og:url" content="https://chihirotsuboyama.github.io/pricing.html">
 <meta property="og:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="料金プラン ｜ LinPlan">
-<meta name="twitter:description" content="LinPlan の料金プラン。中小規模に最適化した価格で、大手の半額〜1/3。スターター35万円〜・スタンダード70万円〜・カスタム80万円〜。ローンチ記念価格（先着10件）。">
+<meta name="twitter:description" content="LinPlan の料金プラン。月額9,900円〜で気軽にはじめるか、買い切り35万円〜で資産として持つか。大手代理店の半額〜1/3。ローンチ記念価格（先着10件）受付中。">
 <meta name="twitter:image" content="https://chihirotsuboyama.github.io/images/ogp.png">
-<meta name="description" content="LinPlan の料金プラン。中小規模に最適化した価格で、大手の半額〜1/3。スターター35万円〜・スタンダード70万円〜・カスタム80万円〜。ローンチ記念価格（先着10件）。">
+<meta name="description" content="LinPlan の料金プラン。月額9,900円〜で気軽にはじめるか、買い切り35万円〜で資産として持つか。大手代理店の半額〜1/3。ローンチ記念価格（先着10件）受付中。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
@@ -282,6 +282,8 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- pricing ---------- */
 .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.price-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto; }
+.section__lead { font-size: .92rem; color: var(--ink-soft); line-height: 1.9; margin: 14px auto 0; max-width: 560px; }
 .price-card { background: #fff; border-radius: 20px; padding: 36px 30px; box-shadow: 0 8px 24px rgba(44,39,34,.08);
   position: relative; transition: transform .35s var(--ease); }
 .price-card:hover { transform: translateY(-6px); }
@@ -535,14 +537,43 @@ setTimeout(hide,3000);
   <svg class="blob float-a" width="200" height="200" viewBox="-90 -90 180 180" style="top:70px;left:8%;opacity:.7" aria-hidden="true"><path d="M44.6,-55.6C56.4,-46.3,63.5,-31.1,66.8,-15.2C70.1,0.7,69.6,17.3,62.4,30.6C55.2,43.9,41.3,53.9,26,59.8C10.7,65.7,-6,67.5,-21.9,63.3C-37.8,59.1,-52.9,48.9,-61.4,34.6C-69.9,20.3,-71.8,1.9,-67.5,-14.4C-63.2,-30.7,-52.7,-44.9,-39.3,-54C-25.9,-63.1,-13,-67.1,1.4,-68.8C15.7,-70.5,32.8,-64.9,44.6,-55.6Z" fill="#DCEFE9"/></svg>
   <div class="container">
     <span class="eyebrow">Pricing</span>
-    <h1>規模に合った投資で、<br>最大の成果を。</h1>
-    <p>中小規模に最適化した価格設定。大手代理店の半額〜1/3で、同等以上の品質をご提供します。</p>
+    <h1>無理のない予算で、<br>最大の成果を。</h1>
+    <p>月々払いで気軽にはじめるか、買い切りで資産として持つか。ご予算とご希望に合わせて選べます。大手代理店の半額〜1/3の価格です。</p>
     <div class="hand" style="display:inline-block;background:var(--yellow);color:var(--ink);font-weight:600;font-size:.95rem;padding:7px 20px;transform:rotate(-1.5deg);margin-top:24px;box-shadow:0 4px 10px rgba(0,0,0,.1)">🎉 ローンチ記念価格（先着10件）受付中</div>
   </div>
 </header>
 
+<!-- 月額プラン -->
 <section class="section section--white">
   <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Monthly</span><h2>月額ではじめる</h2><p class="section__lead">初期費用を抑えて、月々のお支払いで。更新も保守も、困ったときも、ぜんぶお任せ。船橋近郊なら直接伺います。</p></div>
+    <div class="price-grid price-grid--2">
+      <div class="price-card reveal">
+        <h3>ライト</h3>
+        <div class="price-card__term" style="margin:14px 0 4px">店舗・個人事業の方に</div>
+        <div class="price-card__now en">¥9,900<small>/月（税別）</small></div>
+        <div class="price-card__term">初期費用 27,500円／最低12ヶ月</div>
+        <ul><li>5ページ程度のサイト制作</li><li>スマホ対応・AEO/GEO対応</li><li>お問い合わせフォーム</li><li>サーバー・ドメイン・SSL管理</li><li>月1回までの更新代行</li><li>不具合対応・電話/メールサポート</li></ul>
+        <a href="contact.html?plan=monthly-light" class="btn btn--ink hand" style="margin-top:22px;width:100%;justify-content:center">このプランで相談する</a>
+      </div>
+      <div class="price-card is-popular reveal reveal-d1">
+        <div class="price-card__badge hand">おすすめ</div>
+        <h3>スタンダード</h3>
+        <div class="price-card__term" style="margin:14px 0 4px">集客を伸ばしたい方に</div>
+        <div class="price-card__now en">¥16,500<small>/月（税別）</small></div>
+        <div class="price-card__term">初期費用 55,000円／最低12ヶ月</div>
+        <ul><li>ライトの全内容</li><li>10ページ程度・CMS付き</li><li>ブログ・お知らせ機能</li><li>月2回までの更新代行</li><li>Googleマップ（MEO）運用</li><li>AI活用の相談・優先サポート</li></ul>
+        <a href="contact.html?plan=monthly-standard" class="btn btn--primary hand" style="margin-top:22px;width:100%;justify-content:center;transform:none">このプランで相談する</a>
+      </div>
+    </div>
+    <p class="svc-note reveal" style="margin-top:36px">ドメイン（ネット上の住所）はお客様名義でご用意します。続けたい場合はデータごとのお引き渡しも可能です。囲い込みはしません。大きな改修・新機能の追加は別途お見積もりとなります。</p>
+  </div>
+</section>
+
+<!-- 買い切りプラン -->
+<section class="section">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">One-time</span><h2>買い切りで持つ</h2><p class="section__lead">自社の資産として所有したい方へ。コード・データを100%お渡しします。</p></div>
     <div class="price-grid">
       <div class="price-card reveal">
         <h3>スターター</h3>
