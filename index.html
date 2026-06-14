@@ -1724,6 +1724,44 @@ window.addEventListener('resize',update);update();
   update();
 })();
 </script>
+<script>
+/* Problem — チェックした不安の件数表示 & 相談リンク出現（contact.html へ引き継ぎ） */
+(function(){
+  var cbs = Array.prototype.slice.call(document.querySelectorAll('.prob-card__cb'));
+  if(!cbs.length) return;
+  var cta = document.getElementById('probCta');
+  var label = document.getElementById('probCtaLabel');
+  if(!cta || !label) return;
+  function checked(){ return cbs.filter(function(c){ return c.checked; }); }
+  function update(){
+    var n = checked().length;
+    if(n === 0){
+      cta.classList.remove('is-on');
+      cta.setAttribute('aria-hidden','true');
+      cta.setAttribute('tabindex','-1');
+      label.textContent = 'チェックした不安を相談する';
+    } else {
+      cta.classList.add('is-on');
+      cta.removeAttribute('aria-hidden');
+      cta.setAttribute('tabindex','0');
+      label.textContent = 'この' + n + '件の不安を相談する';
+    }
+  }
+  cbs.forEach(function(c){ c.addEventListener('change', update); });
+  cta.addEventListener('click', function(){
+    try{
+      var worries = checked().map(function(c){
+        var card = c.closest('.prob-card');
+        var h = card && card.querySelector('h3');
+        return (h ? h.textContent : (c.getAttribute('aria-label') || '')).trim();
+      }).filter(Boolean);
+      localStorage.setItem('linplan_worries', JSON.stringify(worries));
+    }catch(e){}
+    /* 既定の遷移（contact.html）はそのまま実行させ、上のデータを引き継ぐ */
+  });
+  update();
+})();
+</script>
 
 </body>
 </html>
