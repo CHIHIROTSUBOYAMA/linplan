@@ -557,9 +557,15 @@ setTimeout(hide,3000);
         <label for="plan">ご検討中のプラン</label>
         <select id="plan" name="plan">
           <option value="">選択しない / 未定</option>
-          <option value="starter">スターター（35万円〜）</option>
-          <option value="standard">スタンダード（70万円〜）</option>
-          <option value="custom">カスタム（80万円〜）</option>
+          <optgroup label="月額プラン">
+            <option value="monthly-light">ライト（月額9,900円〜）</option>
+            <option value="monthly-standard">スタンダード（月額16,500円〜）</option>
+          </optgroup>
+          <optgroup label="買い切りプラン">
+            <option value="starter">スターター（35万円〜）</option>
+            <option value="standard">スタンダード（70万円〜）</option>
+            <option value="custom">カスタム（80万円〜）</option>
+          </optgroup>
         </select>
       </div>
       <div class="field">
