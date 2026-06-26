@@ -816,81 +816,13 @@ a { color: inherit; text-decoration: none; }
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<!-- ===== LOADER (C案：ターミナル) ===== -->
-<div id="lp-loader" data-theme="terminal" aria-hidden="true">
-  <div class="lpl-term">
-    <span class="lpl-prompt">&gt;</span>
-    <span class="lpl-word"><span class="lpl-typed" id="lpl-typed"></span><span class="lpl-swash" id="lpl-swash"></span></span>
-    <span class="lpl-caret" id="lpl-caret"></span>
-  </div>
-</div>
-<style>
-#lp-loader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
-  background:#272320;background-image:radial-gradient(rgba(255,255,255,.05) 1.3px,transparent 1.3px);background-size:24px 24px;
-  --lpl-lin:#FBF8F1;--lpl-plan:#F6C445;--lpl-prompt:#F6C445;--lpl-caret:#F6C445;
-  transition:opacity .55s cubic-bezier(.2,.8,.2,1),clip-path .7s cubic-bezier(.2,.8,.2,1),visibility .7s;clip-path:inset(0 0 0 0)}
-/* paper テーマにしたい場合は上の div を data-theme="paper" にして下の1行を有効化:
-   #lp-loader[data-theme="paper"]{background:#FBF8F1;background-image:radial-gradient(rgba(86,71,48,.13) 1.4px,transparent 1.4px);--lpl-lin:#2C2722;--lpl-plan:#B07D0A;--lpl-prompt:#B07D0A} */
-#lp-loader.done{opacity:0;visibility:hidden;pointer-events:none;clip-path:inset(0 0 100% 0)}
-.lpl-term{display:inline-flex;align-items:baseline;font-family:'Klee One',sans-serif;font-weight:600;
-  font-size:clamp(2.6rem,9vw,5rem);line-height:1;letter-spacing:-.01em;white-space:nowrap}
-.lpl-prompt{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--lpl-prompt);margin-right:.16em;opacity:1;transform:none}
-#lp-loader.playing .lpl-prompt{animation:lplPrompt .4s cubic-bezier(.2,.8,.2,1) both}
-.lpl-word{position:relative;display:inline-block}
-.lpl-typed{color:var(--lpl-lin)}
-.lpl-typed .lpl-pl{color:var(--lpl-plan)}
-.lpl-swash{position:absolute;left:-.04em;right:-.05em;bottom:-.1em;height:.16em;border-radius:.1em;transform:scaleX(0);transform-origin:left center;transition:transform .5s cubic-bezier(.2,.8,.2,1);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 16' preserveAspectRatio='none'%3E%3Cpath d='M5 10C55 4 130 14 215 7' fill='none' stroke='%23F6C445' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
-.lpl-swash.draw{transform:scaleX(1)}
-.lpl-caret{display:inline-block;width:.46em;height:.92em;background:var(--lpl-caret);margin-left:.12em;align-self:center;border-radius:1px;opacity:1}
-#lp-loader.playing .lpl-caret{animation:lplBlink 1.05s steps(1) infinite}
-.lpl-caret.solid{animation:none;opacity:1}
-@keyframes lplPrompt{from{opacity:0;transform:translateX(-.15em)}to{opacity:1;transform:none}}
-@keyframes lplBlink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
-@media (prefers-reduced-motion:reduce){.lpl-prompt{opacity:1;transform:none;animation:none}.lpl-caret{opacity:1;animation:none}.lpl-swash{transform:scaleX(1)}}
-</style>
+<noscript><style>.hero.anim .hero__badge,.hero.anim .hero__title,.hero.anim .hero__sub,.hero.anim .hero__actions,.hero.anim .hero__maker{opacity:1;translate:0 0}.hero.anim .hero__actions .btn--primary{opacity:1;scale:1}.hero.anim .hero__title .mark svg path{stroke-dashoffset:0}</style></noscript>
 <script>
-/* 初回訪問はアニメを最後まで再生してから開く。サイト内のページ遷移（同一セッション2回目以降）では表示しない */
+/* エントランス：読み込み時にヒーローをフェードアップ表示（ローダー廃止） */
 (function(){
-  var l=document.getElementById('lp-loader');
-  function revealHero(){var h=document.querySelector('.hero');if(h)h.classList.remove('anim');}
-  function whenReady(fn){if(document.readyState!=='loading')fn();else document.addEventListener('DOMContentLoaded',fn);}
-  if(!l){whenReady(revealHero);return;}
-  var skip=false;try{skip=!!sessionStorage.getItem('lpLoaded');}catch(e){}
-  if(skip){if(l.parentNode)l.parentNode.removeChild(l);whenReady(revealHero);setTimeout(function(){whenReady(forceHero);},2600);return;}
-  var typed=document.getElementById('lpl-typed'),caret=document.getElementById('lpl-caret'),swash=document.getElementById('lpl-swash');
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var CHARS=[{c:'L'},{c:'i'},{c:'n'},{c:'P',pl:1},{c:'l',pl:1},{c:'a',pl:1},{c:'n',pl:1}];
-  var done=false;
-  function finish(){
-    if(done)return;done=true;
-    l.classList.add('done');
-    try{sessionStorage.setItem('lpLoaded','1');}catch(e){}
-    whenReady(revealHero);
-    setTimeout(function(){if(l.parentNode)l.parentNode.removeChild(l);},800);
-  }
-  l.classList.add('playing');
-  if(reduce){
-    typed.innerHTML='Lin<span class="lpl-pl">Plan</span>';
-    caret.classList.add('solid');swash.classList.add('draw');
-    setTimeout(finish,900);
-  }else{
-    var start=520;
-    CHARS.forEach(function(ch,i){setTimeout(function(){
-      var s=document.createElement('span');if(ch.pl)s.className='lpl-pl';s.textContent=ch.c;typed.appendChild(s);
-    },start+i*92);});
-    var dt=start+CHARS.length*92;                 /* typing 完了 */
-    setTimeout(function(){caret.classList.add('solid');swash.classList.add('draw');},dt+220);
-    setTimeout(finish,dt+1000);                    /* 約2.2秒後に画面が開く */
-  }
-  /* 念のための保険：何があってもヒーローは必ず最終状態で表示する */
-  function forceHero(){
-    var h=document.querySelector('.hero'); if(!h) return;
-    h.classList.remove('anim');
-    h.querySelectorAll('.hero__badge,.hero__title,.hero__sub,.hero__actions,.hero__maker').forEach(function(el){
-      el.style.transition='none'; el.style.opacity='1'; el.style.translate='0 0';
-    });
-  }
-  setTimeout(function(){whenReady(forceHero);},4200);
+  function play(){var h=document.querySelector('.hero.anim');if(!h)return;requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.remove('anim');});});}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',play);else play();
+  setTimeout(function(){var h=document.querySelector('.hero.anim');if(h)h.classList.remove('anim');},2600);
 })();
 </script>
 
