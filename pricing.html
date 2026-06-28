@@ -284,6 +284,13 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- pricing ---------- */
 .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.opt-wrap { max-width: 720px; margin: 0 auto; }
+.opt-cat { font-family: var(--hand); font-size: 1.15rem; font-weight: 600; margin: 30px 0 12px; padding-bottom: 8px; border-bottom: 2px dashed var(--line); }
+.opt-cat:first-child { margin-top: 0; }
+.opt-table { width: 100%; border-collapse: collapse; font-size: .92rem; margin-bottom: 6px; }
+.opt-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.opt-table td.opt-price { text-align: right; white-space: nowrap; font-family: var(--en); font-weight: 600; color: var(--orange-deep); width: 38%; }
+.opt-table tr:hover { background: var(--paper); }
 .price-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto; }
 .section__lead { font-size: .92rem; color: var(--ink-soft); line-height: 1.9; margin: 14px auto 0; max-width: 560px; }
 .price-card { background: #fff; border-radius: 20px; padding: 36px 30px; box-shadow: 0 8px 24px rgba(44,39,34,.08);
@@ -527,7 +534,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>ライト</h3>
         <div class="price-card__term" style="margin:14px 0 4px">店舗・個人事業の方に</div>
         <div class="price-card__now en">¥9,900<small>/月（税別）</small></div>
-        <div class="price-card__term">初期費用 27,500円／最低12ヶ月</div>
+        <div class="price-card__term">初期費用 5,500円／最低12ヶ月</div>
         <ul><li>5ページ程度のサイト制作</li><li>スマホ対応・AEO/GEO対応</li><li>お問い合わせフォーム</li><li>サーバー・ドメイン・SSL管理</li><li>月1回までの更新代行</li><li>不具合対応・電話/メールサポート</li></ul>
         <a href="contact.html?plan=monthly-light" class="btn btn--ink hand" style="margin-top:22px;width:100%;justify-content:center">このプランで相談する</a>
       </div>
@@ -536,7 +543,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3>スタンダード</h3>
         <div class="price-card__term" style="margin:14px 0 4px">集客を伸ばしたい方に</div>
         <div class="price-card__now en">¥16,500<small>/月（税別）</small></div>
-        <div class="price-card__term">初期費用 55,000円／最低12ヶ月</div>
+        <div class="price-card__term">初期費用 11,000円／最低12ヶ月</div>
         <ul><li>ライトの全内容</li><li>10ページ程度・CMS付き</li><li>ブログ・お知らせ機能</li><li>月2回までの更新代行</li><li>Googleマップ（MEO）運用</li><li>AI活用の相談・優先サポート</li></ul>
         <a href="contact.html?plan=monthly-standard" class="btn btn--primary hand" style="margin-top:22px;width:100%;justify-content:center;transform:none">このプランで相談する</a>
       </div>
@@ -577,6 +584,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <p class="svc-note reveal" style="margin-top:36px">表示はすべて税別の目安です。ご予算が限られる場合も、優先順位をつけて「今できる範囲」をご提案します。お気軽にご相談ください。</p>
+  </div>
+</section>
+
+<!-- オプションメニュー -->
+<section class="section section--white">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Options</span><h2>オプションで、育てていける</h2><p class="section__lead">サイトはシンプルに始めて、必要なものを後から足せます。「作るだけ」ならベースプランだけでOK。やりたいことが増えたら、その分だけ。</p></div>
+
+    <div class="opt-wrap reveal">
+      <h3 class="opt-cat">制作（一回のお支払い）</h3>
+      <table class="opt-table">
+        <tbody>
+          <tr><td>ロゴ作成</td><td class="opt-price">30,000円〜</td></tr>
+          <tr><td>名刺デザイン</td><td class="opt-price">10,000円〜</td></tr>
+          <tr><td>チラシ・パンフレット</td><td class="opt-price">30,000円〜</td></tr>
+          <tr><td>ランディングページ（LP）追加</td><td class="opt-price">50,000円〜</td></tr>
+          <tr><td>写真撮影・取材</td><td class="opt-price">20,000円〜</td></tr>
+          <tr><td>原稿（文章）作成代行</td><td class="opt-price">1ページ 5,000円〜</td></tr>
+          <tr><td>ページ追加</td><td class="opt-price">1ページ 10,000円〜</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="opt-cat">取得・設定（一回のお支払い）</h3>
+      <table class="opt-table">
+        <tbody>
+          <tr><td>独自ドメイン取得・設定代行</td><td class="opt-price">5,500円〜</td></tr>
+          <tr><td>独自ドメインメール設定（hello@お店.com など）</td><td class="opt-price">5,500円〜</td></tr>
+          <tr><td>Googleビジネスプロフィール初期設定</td><td class="opt-price">11,000円〜</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="opt-cat">運用（月額）</h3>
+      <table class="opt-table">
+        <tbody>
+          <tr><td>MEO対策（Googleマップ・口コミ運用）</td><td class="opt-price">月 11,000円〜</td></tr>
+          <tr><td>SNS運用代行（投稿作成・更新）</td><td class="opt-price">月 16,500円〜</td></tr>
+          <tr><td>集客のご相談（コンサル）</td><td class="opt-price">月 11,000円〜</td></tr>
+          <tr><td>広告運用代行</td><td class="opt-price">月 16,500円〜</td></tr>
+          <tr><td>ブログ記事制作（AIに引用される記事）</td><td class="opt-price">1本 5,500円〜</td></tr>
+          <tr><td>更新代行の回数追加</td><td class="opt-price">月 3,300円〜</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="svc-note reveal" style="margin-top:28px">表示はすべて税別の目安です。内容により前後しますので、まずはお気軽にご相談ください。必要なものだけ、無理なく組み合わせられます。</p>
   </div>
 </section>
 
