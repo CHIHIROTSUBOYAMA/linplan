@@ -34,22 +34,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    ============================================================ */
 
 :root {
-  --ink:        #2C2722;
-  --ink-soft:   #6E655B;
-  --ink-faint:  #A89E92;
-  --paper:      #FBF8F1;
-  --paper2:     #F4EEE2;
+  --ink:        #1F2838;
+  --ink-soft:   #56607A;
+  --ink-faint:  #828A9C;
+  --paper:      #FDFBF5;
+  --paper2:     #EFE7D5;
   --white:      #FFFFFF;
-  --line:       #E7DFD1;
+  --line:       #E4D9C2;
 
-  --orange:     #F6C445;
-  --orange-deep:#B07D0A;
-  --orange-soft:#FBEDC4;
-  --on-accent:  #2C2722;
-  --yellow:     #F6C445;
-  --yellow-soft:#FBEDC4;
-  --teal:       #2FA98F;
-  --teal-soft:  #DCEFE9;
+  --orange:     #B6926A;
+  --orange-deep:#8C6A3F;
+  --orange-soft:#ECDFCD;
+  --on-accent:  #1F2838;
+  --yellow:     #B6926A;
+  --yellow-soft:#ECDFCD;
+  --teal:       #6B6A40;
+  --teal-soft:  #E6E3CF;
 
   --font:   'Noto Sans JP', "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
   --hand:   'Klee One', 'Noto Sans JP', sans-serif;
@@ -63,7 +63,7 @@ html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body {
   font-family: var(--font);
   color: var(--ink);
-  background-color: #EDE4D2;
+  background-color: #F0E9DA;
   background-image: radial-gradient(rgba(86,71,48,.16) 1.5px, transparent 1.5px);
   background-size: 23px 23px;
   line-height: 1.9;
@@ -91,7 +91,7 @@ a { color: inherit; text-decoration: none; }
 .btn--primary {
   background: var(--orange); color: var(--on-accent); font-size: 1.05rem;
   padding: 15px 34px; border-radius: 100px; transform: rotate(-1.5deg);
-  box-shadow: 0 10px 24px rgba(176,125,10,.32);
+  box-shadow: 0 10px 24px rgba(162,58,38,.32);
 }
 .btn--primary:hover { transform: rotate(-1.5deg) translateY(-3px); color: var(--on-accent); }
 .btn--ink {
@@ -122,9 +122,9 @@ a { color: inherit; text-decoration: none; }
 
 .tape {
   position: absolute; width: 84px; height: 26px; z-index: 3;
-  background: rgba(47,169,143,.45); box-shadow: 0 1px 3px rgba(0,0,0,.12);
+  background: rgba(107,106,64,.45); box-shadow: 0 1px 3px rgba(0,0,0,.12);
 }
-.tape--yellow { background: rgba(246,196,69,.6); }
+.tape--yellow { background: rgba(182,146,106,.6); }
 
 /* ---------- nav ---------- */
 .site-nav {
@@ -137,7 +137,7 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: center; justify-content: space-between; }
 .site-nav__logo { font-family: var(--en); font-size: 1.4rem; font-weight: 700; display:inline-flex; align-items:center; gap:9px; }
 .lp-logo-mark{flex:0 0 auto;display:block}
-.lp-logo-type{font-family:var(--hand);font-weight:600;line-height:1;position:relative;display:inline-block;padding-bottom:3px}.lp-logo-type::after{content:"";position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 16' preserveAspectRatio='none'%3E%3Cpath d='M5 10C55 4 130 14 215 7' fill='none' stroke='%23F6C445' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
+.lp-logo-type{font-family:var(--hand);font-weight:600;line-height:1;position:relative;display:inline-block;padding-bottom:3px}.lp-logo-type::after{content:"";position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 16' preserveAspectRatio='none'%3E%3Cpath d='M5 10C55 4 130 14 215 7' fill='none' stroke='%23B6926A' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
 .site-nav__logo b { color: var(--orange); font-weight: 700; }
 .site-nav__links { display: flex; align-items: center; gap: 26px; }
 .site-nav__links a { font-family: var(--hand); font-size: .95rem; color: var(--ink); position: relative; }
@@ -146,7 +146,7 @@ a { color: inherit; text-decoration: none; }
 .site-nav__links a:not(.btn):hover::after { transform: scaleX(1); transform-origin: left; }
 .site-nav__cta { background: var(--orange); color: var(--on-accent) !important; font-family: var(--hand); font-weight: 600;
   font-size: .9rem; padding: 9px 20px; border-radius: 100px; transform: rotate(-2deg);
-  box-shadow: 0 5px 14px rgba(176,125,10,.32); transition: transform .25s var(--ease); }
+  box-shadow: 0 5px 14px rgba(162,58,38,.32); transition: transform .25s var(--ease); }
 .site-nav__cta:hover { transform: rotate(-2deg) translateY(-2px); }
 .site-nav__cta::after { display: none !important; }
 .hamburger { display: flex; flex-direction: column; justify-content: space-between; align-items: stretch;
@@ -157,9 +157,9 @@ a { color: inherit; text-decoration: none; }
 .hamburger span { display: block; position: relative; width: 100%; height: 6px; border-radius: 3px;
   background-color: transparent; background-repeat: repeat-x; background-position: 0 50%; background-size: 20px 6px;
   transition: transform .4s var(--ease), opacity .25s var(--ease), background-color .25s; }
-.hamburger span:nth-child(1){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%232C2722' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.2s linear infinite; }
+.hamburger span:nth-child(1){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%231F2838' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.2s linear infinite; }
 .hamburger span:nth-child(2){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%23F07C33' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.8s linear infinite .35s; }
-.hamburger span:nth-child(3){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%232C2722' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.5s linear infinite .18s; }
+.hamburger span:nth-child(3){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%231F2838' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.5s linear infinite .18s; }
 @keyframes hamWave { from { background-position-x: 0; } to { background-position-x: -20px; } }
 .hamburger.open { transform: none; opacity: 1; }
 .hamburger.open span { animation: none; background-image: none !important; background-color: var(--ink);
@@ -321,7 +321,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- CTA ---------- */
 .cta-band { padding: 60px 0 90px; }
 .cta-box { background: var(--orange); border-radius: 26px; padding: 64px 48px; text-align: center; position: relative;
-  overflow: hidden; transform: rotate(-.6deg); box-shadow: 0 16px 40px rgba(176,125,10,.3); }
+  overflow: hidden; transform: rotate(-.6deg); box-shadow: 0 16px 40px rgba(162,58,38,.3); }
 .cta-box h2 { font-family: var(--hand); font-size: clamp(1.8rem, 3.6vw, 2.3rem); font-weight: 600; color: var(--on-accent); margin: 0; position: relative; }
 .cta-box p { font-size: .95rem; color: color-mix(in srgb, var(--on-accent) 88%, transparent); margin-top: 14px; position: relative; }
 .cta-box .btn { margin-top: 28px; position: relative; }
@@ -340,7 +340,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- fab ---------- */
 .fab { position: fixed; bottom: 26px; right: 22px; z-index: 90; display: inline-flex; align-items: center; gap: 8px;
   background: var(--orange); color: var(--on-accent) !important; font-family: var(--hand); font-weight: 600; font-size: .9rem;
-  padding: 13px 24px; border-radius: 100px; box-shadow: 0 8px 22px rgba(176,125,10,.4); transform: rotate(-2deg);
+  padding: 13px 24px; border-radius: 100px; box-shadow: 0 8px 22px rgba(162,58,38,.4); transform: rotate(-2deg);
   transition: transform .25s var(--ease); }
 .fab:hover { transform: rotate(-2deg) translateY(-3px); }
 @media (max-width:920px){
@@ -476,6 +476,7 @@ a { color: inherit; text-decoration: none; }
 .polaroid__shot .scroll-hint,.browser__shot .scroll-hint{position:sticky;float:right;top:calc(100% - 28px);right:8px;margin-right:8px;display:inline-flex;align-items:center;gap:4px;background:rgba(44,39,34,.62);color:#fff;font-family:'Klee One',sans-serif;font-size:.62rem;line-height:1;padding:4px 10px;border-radius:100px;pointer-events:none;opacity:1;transition:opacity .35s;z-index:2}
 .polaroid__shot.scrolled .scroll-hint,.browser__shot.scrolled .scroll-hint{opacity:0}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -493,7 +494,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="site-nav">
   <div class="site-nav__inner">
-    <a href="index.html" class="site-nav__logo" aria-label="LinPlan ホーム"><span class="lp-logo-type">Lin<b>Plan</b></span></a>
+    <a href="index.html" class="site-nav__logo" aria-label="LinPlan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>linplan<span style="color:var(--orange)">.</span></span></a>
     <div class="site-nav__links">
       <a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a><a href="blog/index.html">相談室</a>
       <a href="contact.html" class="btn site-nav__cta">無料で相談！</a>
@@ -508,7 +509,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- PAGE HERO -->
 <header class="phero">
-  <svg class="blob float-a" width="200" height="200" viewBox="-90 -90 180 180" style="top:80px;left:8%;opacity:.7" aria-hidden="true"><path d="M44.6,-55.6C56.4,-46.3,63.5,-31.1,66.8,-15.2C70.1,0.7,69.6,17.3,62.4,30.6C55.2,43.9,41.3,53.9,26,59.8C10.7,65.7,-6,67.5,-21.9,63.3C-37.8,59.1,-52.9,48.9,-61.4,34.6C-69.9,20.3,-71.8,1.9,-67.5,-14.4C-63.2,-30.7,-52.7,-44.9,-39.3,-54C-25.9,-63.1,-13,-67.1,1.4,-68.8C15.7,-70.5,32.8,-64.9,44.6,-55.6Z" fill="#DCEFE9"/></svg>
+  <svg class="blob float-a" width="200" height="200" viewBox="-90 -90 180 180" style="top:80px;left:8%;opacity:.7" aria-hidden="true"><path d="M44.6,-55.6C56.4,-46.3,63.5,-31.1,66.8,-15.2C70.1,0.7,69.6,17.3,62.4,30.6C55.2,43.9,41.3,53.9,26,59.8C10.7,65.7,-6,67.5,-21.9,63.3C-37.8,59.1,-52.9,48.9,-61.4,34.6C-69.9,20.3,-71.8,1.9,-67.5,-14.4C-63.2,-30.7,-52.7,-44.9,-39.3,-54C-25.9,-63.1,-13,-67.1,1.4,-68.8C15.7,-70.5,32.8,-64.9,44.6,-55.6Z" fill="#E6E3CF"/></svg>
   <div class="container">
     <span class="eyebrow">About</span>
     <h1>ひとりで、ちゃんと作る。</h1>
@@ -521,9 +522,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="profile reveal">
       <figure class="profile__photo">
-        <div class="ph-img">
-          <svg width="150" height="150" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="58" r="30" fill="#F6D2A8"/><path d="M18 52a32 32 0 0 1 64 0c0-22-15-32-32-32S18 30 18 52Z" fill="#2C2722"/><circle cx="40" cy="56" r="3.5" fill="#2C2722"/><circle cx="60" cy="56" r="3.5" fill="#2C2722"/><path d="M42 67c5 5 11 5 16 0" fill="none" stroke="#2C2722" stroke-width="2.6" stroke-linecap="round"/><circle cx="34" cy="64" r="4" fill="#F07C33" opacity=".5"/><circle cx="66" cy="64" r="4" fill="#F07C33" opacity=".5"/></svg>
-        </div>
+        <div class="ph-img"><img src="images/profile.png" alt="坪山ひろやま" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:inherit"></div>
         <figcaption>坪山ひろやま</figcaption>
       </figure>
       <div>
@@ -599,7 +598,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="site-footer__meta">全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
   <div class="site-footer__copy">© 2025 LinPlan — Web・アプリ・AI、ひとりで一気通貫。</div>
 </footer>
-<a href="contact.html" class="fab">無料で相談<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+
 <script>
 /* LinPlan サイト共通スクリプト（軽量・依存なし） */
 (function () {
@@ -675,6 +674,7 @@ window.addEventListener('scroll',update,{passive:true});
 window.addEventListener('resize',update);update();
 })();
 </script>
-<script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='\u21C5 \u30b9\u30af\u30ed\u30fc\u30eb';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
+<script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='⇅ スクロール';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
+<script src="theme.js"></script>
 </body>
 </html>

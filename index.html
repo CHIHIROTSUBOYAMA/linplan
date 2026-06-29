@@ -34,22 +34,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    ============================================================ */
 
 :root {
-  --ink:        #2C2722;
-  --ink-soft:   #6E655B;
-  --ink-faint:  #A89E92;
-  --paper:      #FBF8F1;
-  --paper2:     #F4EEE2;
+  --ink:        #1F2838;
+  --ink-soft:   #56607A;
+  --ink-faint:  #828A9C;
+  --paper:      #FDFBF5;
+  --paper2:     #EFE7D5;
   --white:      #FFFFFF;
-  --line:       #E7DFD1;
+  --line:       #E4D9C2;
 
-  --orange:     #F6C445;
-  --orange-deep:#B07D0A;
-  --orange-soft:#FBEDC4;
-  --on-accent:  #2C2722;
-  --yellow:     #F6C445;
-  --yellow-soft:#FBEDC4;
-  --teal:       #2FA98F;
-  --teal-soft:  #DCEFE9;
+  --orange:     #B6926A;
+  --orange-deep:#8C6A3F;
+  --orange-soft:#ECDFCD;
+  --on-accent:  #1F2838;
+  --yellow:     #B6926A;
+  --yellow-soft:#ECDFCD;
+  --teal:       #6B6A40;
+  --teal-soft:  #E6E3CF;
 
   --font:   'Noto Sans JP', "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
   --hand:   'Klee One', 'Noto Sans JP', sans-serif;
@@ -63,7 +63,7 @@ html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body {
   font-family: var(--font);
   color: var(--ink);
-  background-color: #EDE4D2;
+  background-color: #F0E9DA;
   background-image: radial-gradient(rgba(86,71,48,.16) 1.5px, transparent 1.5px);
   background-size: 23px 23px;
   line-height: 1.9;
@@ -91,7 +91,7 @@ a { color: inherit; text-decoration: none; }
 .btn--primary {
   background: var(--orange); color: var(--on-accent); font-size: 1.05rem;
   padding: 15px 34px; border-radius: 100px; transform: rotate(-1.5deg);
-  box-shadow: 0 10px 24px rgba(176,125,10,.32);
+  box-shadow: 0 10px 24px rgba(162,58,38,.32);
 }
 .btn--primary:hover { transform: rotate(-1.5deg) translateY(-3px); color: var(--on-accent); }
 .btn--ink {
@@ -122,9 +122,9 @@ a { color: inherit; text-decoration: none; }
 
 .tape {
   position: absolute; width: 84px; height: 26px; z-index: 3;
-  background: rgba(47,169,143,.45); box-shadow: 0 1px 3px rgba(0,0,0,.12);
+  background: rgba(107,106,64,.45); box-shadow: 0 1px 3px rgba(0,0,0,.12);
 }
-.tape--yellow { background: rgba(246,196,69,.6); }
+.tape--yellow { background: rgba(182,146,106,.6); }
 
 /* ---------- nav ---------- */
 .site-nav {
@@ -138,7 +138,7 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: center; justify-content: flex-end; }
 .site-nav__logo { font-family: var(--en); font-size: 1.4rem; font-weight: 700; display:inline-flex; align-items:center; gap:9px; }
 .lp-logo-mark{flex:0 0 auto;display:block}
-.lp-logo-type{font-family:var(--hand);font-weight:600;line-height:1;position:relative;display:inline-block;padding-bottom:3px}.lp-logo-type::after{content:"";position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 16' preserveAspectRatio='none'%3E%3Cpath d='M5 10C55 4 130 14 215 7' fill='none' stroke='%23F6C445' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
+.lp-logo-type{font-family:var(--hand);font-weight:600;line-height:1;position:relative;display:inline-block;padding-bottom:3px}.lp-logo-type::after{content:"";position:absolute;left:-2px;right:-2px;bottom:-4px;height:7px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 16' preserveAspectRatio='none'%3E%3Cpath d='M5 10C55 4 130 14 215 7' fill='none' stroke='%23B6926A' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
 .site-nav__logo b { color: var(--orange); font-weight: 700; }
 .site-nav__links { display: flex; align-items: center; gap: 26px; }
 .site-nav__links a { font-family: var(--hand); font-size: .95rem; color: var(--ink); position: relative; }
@@ -147,7 +147,7 @@ a { color: inherit; text-decoration: none; }
 .site-nav__links a:not(.btn):hover::after { transform: scaleX(1); transform-origin: left; }
 .site-nav__cta { background: var(--orange); color: var(--on-accent) !important; font-family: var(--hand); font-weight: 600;
   font-size: .9rem; padding: 9px 20px; border-radius: 100px; transform: rotate(-2deg);
-  box-shadow: 0 5px 14px rgba(176,125,10,.32); transition: transform .25s var(--ease); }
+  box-shadow: 0 5px 14px rgba(162,58,38,.32); transition: transform .25s var(--ease); }
 .site-nav__cta:hover { transform: rotate(-2deg) translateY(-2px); }
 .site-nav__cta::after { display: none !important; }
 .hamburger { display: flex; flex-direction: column; justify-content: space-between; align-items: stretch;
@@ -158,9 +158,9 @@ a { color: inherit; text-decoration: none; }
 .hamburger span { display: block; position: relative; width: 100%; height: 6px; border-radius: 3px;
   background-color: transparent; background-repeat: repeat-x; background-position: 0 50%; background-size: 20px 6px;
   transition: transform .4s var(--ease), opacity .25s var(--ease), background-color .25s; }
-.hamburger span:nth-child(1){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%232C2722' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.2s linear infinite; }
-.hamburger span:nth-child(2){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%23B07D0A' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.8s linear infinite .35s; }
-.hamburger span:nth-child(3){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%232C2722' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.5s linear infinite .18s; }
+.hamburger span:nth-child(1){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%231F2838' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.2s linear infinite; }
+.hamburger span:nth-child(2){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%238C6A3F' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.8s linear infinite .35s; }
+.hamburger span:nth-child(3){ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q2.5 1 5 3 T10 3 T15 3 T20 3' fill='none' stroke='%231F2838' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); animation: hamWave 3.5s linear infinite .18s; }
 @keyframes hamWave { from { background-position-x: 0; } to { background-position-x: -20px; } }
 /* when the menu is open, hide the hamburger entirely so no stray × is left
    in the nav bar — the mobile menu has its own × close button */
@@ -257,7 +257,7 @@ a { color: inherit; text-decoration: none; }
   background:
     repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 2px, transparent 2px 7px),
     linear-gradient(180deg, rgba(255,255,255,.32), rgba(255,255,255,0) 55%),
-    rgba(246,196,69,.52);
+    rgba(182,146,106,.52);
   box-shadow:0 3px 7px rgba(58,46,30,.16);
   -webkit-mask: linear-gradient(90deg, transparent 0, #000 4px, #000 calc(100% - 4px), transparent 100%);
           mask: linear-gradient(90deg, transparent 0, #000 4px, #000 calc(100% - 4px), transparent 100%);
@@ -268,7 +268,7 @@ a { color: inherit; text-decoration: none; }
 .section:not(:has(.cta-box)) > .container::after{  right:38px; transform:rotate(21deg); background:
     repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 2px, transparent 2px 7px),
     linear-gradient(180deg, rgba(255,255,255,.30), rgba(255,255,255,0) 55%),
-    rgba(47,169,143,.44); }
+    rgba(107,106,64,.44); }
 /* nested teal growth-path card: soften it so it reads as a note ON the paper */
 .section > .container .gp{ box-shadow: 0 10px 26px -12px rgba(47,118,99,.4); }
 
@@ -280,7 +280,7 @@ a { color: inherit; text-decoration: none; }
 .cta-band > .container::before{
   content:""; position:absolute; top:-15px; left:50%; width:30px; height:30px;
   margin-left:-15px; border-radius:50%;
-  background: radial-gradient(circle at 35% 28%, #FFEDB2 0 15%, #F6C445 47%, #CF8F18 100%);
+  background: radial-gradient(circle at 35% 28%, #FFEDB2 0 15%, #B6926A 47%, #CF8F18 100%);
   box-shadow:
     0 8px 12px -4px rgba(58,46,30,.5),
     inset -2px -3px 5px rgba(150,98,12,.5),
@@ -298,7 +298,7 @@ a { color: inherit; text-decoration: none; }
 }
 /* closing CTA uses a teal push-pin instead of the yellow one */
 .cta-band > .container::before{
-  background: radial-gradient(circle at 35% 28%, #BCEADE 0 15%, #2FA98F 47%, #1C6E5B 100%);
+  background: radial-gradient(circle at 35% 28%, #BCEADE 0 15%, #6B6A40 47%, #1C6E5B 100%);
   box-shadow:
     0 8px 12px -4px rgba(20,52,44,.5),
     inset -2px -3px 5px rgba(18,92,76,.5),
@@ -397,10 +397,10 @@ a { color: inherit; text-decoration: none; }
 
 /* the lifted LinPlan card sits BEHIND its column cells */
 .cmpb__lane { z-index: 0; background: #fff; border: 1.5px solid var(--orange);
-  border-radius: 18px; box-shadow: 0 26px 54px rgba(176,125,10,.28); margin: -22px -7px -14px; }
+  border-radius: 18px; box-shadow: 0 26px 54px rgba(162,58,38,.28); margin: -22px -7px -14px; }
 .cmpb__lane::before { content: ''; position: absolute; top: -12px; left: 50%;
   width: 96px; height: 26px; transform: translateX(-50%) rotate(-3deg);
-  background: rgba(246,196,69,.62); box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+  background: rgba(182,146,106,.62); box-shadow: 0 1px 3px rgba(0,0,0,.1); }
 
 /* generic cells */
 .cmpb__cell { position: relative; z-index: 1; padding: 17px 16px; display: flex;
@@ -418,7 +418,7 @@ a { color: inherit; text-decoration: none; }
 .cmpb__head--lp { z-index: 1; flex-direction: column; gap: 7px; align-items: center; justify-content: center;
   background: var(--orange); border-radius: 16px 16px 0 0; padding: 15px 12px; border-bottom: none; }
 .cmpb__pick { font-family: var(--hand); font-weight: 600; font-size: .76rem; color: var(--ink);
-  background: #fff; padding: 2px 13px; border-radius: 100px; box-shadow: 0 2px 5px rgba(176,125,10,.25);
+  background: #fff; padding: 2px 13px; border-radius: 100px; box-shadow: 0 2px 5px rgba(162,58,38,.25);
   transform: rotate(-1.5deg); }
 .cmpb__lp { font-family: var(--en); font-weight: 700; font-size: 1.34rem; color: var(--ink); line-height: 1; }
 .cmpb__lp b { color: var(--orange-deep); }
@@ -426,7 +426,7 @@ a { color: inherit; text-decoration: none; }
   padding: 17px 15px; border-bottom: 1px dashed var(--orange-soft); }
 .cmpb__cell--lp.is-last { border-bottom: none; }
 .cmpb__check { flex: 0 0 auto; width: 21px; height: 21px; border-radius: 50%; background: var(--teal);
-  display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(47,169,143,.4); }
+  display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(107,106,64,.4); }
 .cmpb__check svg { width: 12px; height: 12px; stroke: #fff; }
 
 /* ---------- comparison: mobile stacked cards ---------- */
@@ -518,7 +518,7 @@ a { color: inherit; text-decoration: none; }
 .flow-step__node { grid-column: 2; justify-self: center; }
 .flow-step__n { font-family: var(--en); font-weight: 700; font-size: 1.05rem; color: var(--on-accent); background: var(--orange);
   width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  transform: rotate(-4deg); box-shadow: 0 6px 15px rgba(176,125,10,.32); border: 3px solid var(--paper2); }
+  transform: rotate(-4deg); box-shadow: 0 6px 15px rgba(162,58,38,.32); border: 3px solid var(--paper2); }
 /* the step card — alternates left / right of the spine */
 .flow-step__card { position: relative; background: #fff; border-radius: 16px; padding: 17px 21px;
   box-shadow: 0 9px 22px rgba(44,39,34,.08); }
@@ -579,7 +579,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- CTA ---------- */
 .cta-band { padding: 60px 0 90px; }
 .cta-box { background: var(--orange); border-radius: 26px; padding: 64px 48px; text-align: center; position: relative;
-  overflow: hidden; transform: rotate(calc(var(--tilt,1) * -.6deg)); box-shadow: 0 16px 40px rgba(176,125,10,.3); }
+  overflow: hidden; transform: rotate(calc(var(--tilt,1) * -.6deg)); box-shadow: 0 16px 40px rgba(162,58,38,.3); }
 .cta-box h2 { font-family: var(--hand); font-size: clamp(1.8rem, 3.6vw, 2.3rem); font-weight: 600; color: var(--on-accent); margin: 0; position: relative; }
 .cta-box p { font-size: .95rem; color: color-mix(in srgb, var(--on-accent) 88%, transparent); margin-top: 14px; position: relative; }
 .cta-box .btn { margin-top: 28px; position: relative; }
@@ -598,7 +598,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- fab ---------- */
 .fab { position: fixed; bottom: 26px; right: 22px; z-index: 90; display: inline-flex; align-items: center; gap: 8px;
   background: var(--orange); color: var(--on-accent) !important; font-family: var(--hand); font-weight: 600; font-size: .9rem;
-  padding: 13px 24px; border-radius: 100px; box-shadow: 0 8px 22px rgba(176,125,10,.4);
+  padding: 13px 24px; border-radius: 100px; box-shadow: 0 8px 22px rgba(162,58,38,.4);
   opacity: 0; visibility: hidden; transform: translateY(22px);
   transition: opacity .4s var(--ease), transform .4s var(--ease), visibility .4s; }
 .fab.is-revealed { opacity: 1; visibility: visible; transform: none; }
@@ -756,7 +756,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 </style>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='12' fill='%23F6C445'/%3E%3Ctext x='26' y='37' font-family='sans-serif' font-size='30' font-weight='700' fill='%232C2722' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='12' fill='%23B6926A'/%3E%3Ctext x='26' y='37' font-family='sans-serif' font-size='30' font-weight='700' fill='%231F2838' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 <style>@media(max-width:560px){br.dt{display:none}}</style>
 <style>@media(max-width:560px){.cta-box{padding:46px 22px}.btn{white-space:normal}.cta-box .btn{max-width:100%}}</style>
 <style id="scrollshot">
@@ -810,6 +810,7 @@ a { color: inherit; text-decoration: none; }
 /* decorative blobs/stars fade with the playfulness control */
 .blob{opacity:calc(.12 + var(--tilt,1) * .62) !important}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -829,7 +830,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== NAV ===== -->
 <nav class="site-nav">
   <div class="site-nav__inner">
-    <a href="index.html" class="site-nav__logo" aria-label="LinPlan ホーム"><span class="lp-logo-type">Lin<b>Plan</b></span></a>
+    <a href="index.html" class="site-nav__logo" aria-label="LinPlan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>linplan<span style="color:var(--orange)">.</span></span></a>
     <div class="site-nav__links">
       <a href="about.html">私について</a>
       <a href="services.html">サービス</a>
@@ -858,146 +859,136 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ===== HERO ===== -->
-<header class="hero anim" style="padding: 250px 0px 96px">
-  <svg class="blob float-a" width="250" height="250" viewBox="-90 -90 180 180" style="top:90px;left:5%;opacity:.85" aria-hidden="true"><path d="M44.6,-55.6C56.4,-46.3,63.5,-31.1,66.8,-15.2C70.1,0.7,69.6,17.3,62.4,30.6C55.2,43.9,41.3,53.9,26,59.8C10.7,65.7,-6,67.5,-21.9,63.3C-37.8,59.1,-52.9,48.9,-61.4,34.6C-69.9,20.3,-71.8,1.9,-67.5,-14.4C-63.2,-30.7,-52.7,-44.9,-39.3,-54C-25.9,-63.1,-13,-67.1,1.4,-68.8C15.7,-70.5,32.8,-64.9,44.6,-55.6Z" fill="#FBEDC4"/></svg>
-  <svg class="blob float-b" width="190" height="190" viewBox="-90 -90 180 180" style="bottom:30px;right:7%;opacity:.9" aria-hidden="true"><path d="M41.3,-50.4C52.5,-41.9,60,-28.3,63.6,-13.3C67.2,1.7,66.9,18.1,59.7,30.6C52.5,43.1,38.4,51.7,23.3,57.4C8.2,63.1,-7.9,65.9,-22.6,61.8C-37.3,57.7,-50.6,46.7,-58.3,32.6C-66,18.5,-68.1,1.3,-64.1,-14.2C-60.1,-29.7,-50,-43.5,-37.1,-51.9C-24.2,-60.3,-8.5,-63.3,3.9,-68C16.3,-72.7,30.1,-58.9,41.3,-50.4Z" fill="#DCEFE9"/></svg>
-  <svg class="blob bob" width="26" height="26" viewBox="0 0 40 40" style="top:130px;right:18%" aria-hidden="true"><path d="M20 2l4 12 13 1-10 8 3 13-13-7-13 7 3-13-10-8 13-1z" fill="#B07D0A"/></svg>
-  <svg class="blob bob" width="20" height="20" viewBox="0 0 40 40" style="bottom:90px;left:16%" aria-hidden="true"><path d="M20 2l4 12 13 1-10 8 3 13-13-7-13 7 3-13-10-8 13-1z" fill="#F6C445"/></svg>
-
-  <div class="container hero__inner">
-    <h1 class="hero__title">
-      <span class="hero__badge" style="font-size: 30px; margin: 0px; padding: 12px 22px">AI時代の<br class="bdt">小さな制作スタジオ</span>Web・アプリ・AI、<br>
-      <span class="mark">ひとりで<svg viewBox="0 0 130 92" preserveAspectRatio="none" style="position:absolute;left:-30px;top:-20px;width:calc(100% + 46px);height:calc(100% + 64px);pointer-events:none" aria-hidden="true"><path d="M54 86C28 83 9 66 10 44 11 22 35 8 65 8 96 8 122 23 122 46 123 70 112 92 82 95" fill="none" stroke="#F6C445" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" data-comment-anchor="7a0843c71a-path"/></svg></span><span class="mark" style="margin-left:6px">一気通貫。<svg width="250" height="16" viewBox="0 0 220 16" preserveAspectRatio="none" style="position:absolute;left:-8px;bottom:-2px;width:calc(100% + 16px);height:15px" aria-hidden="true"><path d="M4 11C50 5 120 4 216 9" fill="none" stroke="#2FA98F" stroke-width="9" stroke-linecap="round"/></svg></span>
-    </h1>
-    <p class="hero__sub" style="font-family: &quot;Klee One&quot;; text-align: center">中小企業・店舗のための、AIにも選ばれるサイトを。</p>
-    <div class="hero__actions">
-      <a href="contact.html" class="btn btn--primary" style="padding: 15px 34px; width: 213px; align-items: center; transform: none">無料で相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+<header class="lnhero">
+  <div class="container lnhero__grid">
+    <div class="lnhero__copy">
+      <div class="lnhero__kicker">
+        <span class="lnhero__hand">ひとりでていねいに</span>
+      </div>
+      <h1 class="lnhero__title">ちいさな計画から、<br><span class="lnwave">ずっと続くサイトを</span>。</h1>
+      <p class="lnhero__sub">船橋でひとり、Webサイトをつくっています。お店の想いをじっくり聞いて、「らしさ」のあるサイトに。
+公開してからも、長くいっしょに育てます。</p>
+      <div class="lnhero__actions">
+        <a href="works.html" class="btn btn--outline">制作実績を見る</a>
+      </div>
+    </div>
+    <div class="lnhero__art">
+      <figure class="lncard">
+        <span class="lncard__tape" aria-hidden="true"></span>
+        <img src="images/hero-consult.png" alt="お客様とノートパソコンを見ながら相談している様子のイラスト">
+        <figcaption>made at home, with care</figcaption>
+      </figure>
     </div>
   </div>
-  <button class="hero__scroll" aria-label="下へスクロール" onclick="window.scrollBy({top:window.innerHeight*0.92,behavior:'smooth'})">
-    <span>もっと見る</span>
-    <svg width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><path d="M3 4L14 12 25 4" fill="none" stroke="#2FA98F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
 </header>
 
 <!-- ===== ABOUT INLINE ===== -->
 <section class="section section--white" style="position:relative">
-  <svg class="blob float-b" width="170" height="170" viewBox="-90 -90 180 180" style="top:40px;right:4%;opacity:.6" aria-hidden="true"><path d="M41.3,-50.4C52.5,-41.9,60,-28.3,63.6,-13.3C67.2,1.7,66.9,18.1,59.7,30.6C52.5,43.1,38.4,51.7,23.3,57.4C8.2,63.1,-7.9,65.9,-22.6,61.8C-37.3,57.7,-50.6,46.7,-58.3,32.6C-66,18.5,-68.1,1.3,-64.1,-14.2C-60.1,-29.7,-50,-43.5,-37.1,-51.9C-24.2,-60.3,-8.5,-63.3,3.9,-68C16.3,-72.7,30.1,-58.9,41.3,-50.4Z" fill="#FBEDC4"/></svg>
+  <svg class="blob float-b" width="170" height="170" viewBox="-90 -90 180 180" style="top:40px;right:4%;opacity:.6" aria-hidden="true"><path d="M41.3,-50.4C52.5,-41.9,60,-28.3,63.6,-13.3C67.2,1.7,66.9,18.1,59.7,30.6C52.5,43.1,38.4,51.7,23.3,57.4C8.2,63.1,-7.9,65.9,-22.6,61.8C-37.3,57.7,-50.6,46.7,-58.3,32.6C-66,18.5,-68.1,1.3,-64.1,-14.2C-60.1,-29.7,-50,-43.5,-37.1,-51.9C-24.2,-60.3,-8.5,-63.3,3.9,-68C16.3,-72.7,30.1,-58.9,41.3,-50.4Z" fill="#ECDFCD"/></svg>
   <div class="container" style="position:relative;z-index:1">
     <div class="profile reveal">
       <figure class="profile__photo">
         <span class="tape tape--yellow" style="top:-13px;left:50%;transform:translateX(-50%) rotate(-3deg)" aria-hidden="true"></span>
-        <div class="ph-img">
-          <svg width="150" height="150" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="58" r="30" fill="#F6D2A8"/><path d="M18 52a32 32 0 0 1 64 0c0-22-15-32-32-32S18 30 18 52Z" fill="#2C2722"/><circle cx="40" cy="56" r="3.5" fill="#2C2722"/><circle cx="60" cy="56" r="3.5" fill="#2C2722"/><path d="M42 67c5 5 11 5 16 0" fill="none" stroke="#2C2722" stroke-width="2.6" stroke-linecap="round"/><circle cx="34" cy="64" r="4" fill="#F07C33" opacity=".5"/><circle cx="66" cy="64" r="4" fill="#F07C33" opacity=".5"/></svg>
-        </div>
+        <div class="ph-img"><img src="images/profile.png" alt="坪山ひろやま" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:inherit"></div>
         <figcaption>坪山ひろやま</figcaption>
       </figure>
       <div>
-        <svg width="104" height="15" viewBox="0 0 120 18" style="display:block;margin-bottom:14px" aria-hidden="true"><path d="M3 9c8-10 18 10 26 0s18 10 26 0 18 10 26 0 18 10 26 0" fill="none" stroke="#2FA98F" stroke-width="3.5" stroke-linecap="round"/></svg>
+        
         <span class="eyebrow" style="display:block;margin-bottom:10px">About me</span>
-        <h2 style="line-height:1.55">こんにちは。<br>LinPlan 代表の坪山ひろやま です。</h2>
-        <p style="margin-top:18px">中小企業・店舗向けの Web / アプリ / AI を、企画から運用まで一人で担当しています。<br>意思決定が早く、伝言ゲームのような行き違いがなく、コード・データもすべてお客様のもの。<br>NDA・適格請求書発行・インボイス制度にも対応しています。</p>
+        <h2 style="line-height:1.55">こんにちは。<br>LinPlan 代表の坪山ひろやまです。</h2>
+        <p style="margin-top:18px">中小企業・店舗向けの Web・アプリ・AI を、企画から運用まで一人で担当しています。<br>意思決定が早く、伝言ゲームのような行き違いがなく、コード・データもすべてお客様のもの。<br>NDA・適格請求書発行・インボイス制度にも対応しています。</p>
         <a href="about.html" class="btn btn--ghost hand" style="margin-top:26px">詳しいプロフィールを見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== SERVICE MAP (成長ストーリー) ===== -->
+<!-- ===== SERVICE MAP (成長ストーリー｜縦タイムライン) ===== -->
 <style>
-.gp{max-width:620px;margin:0 auto;background:var(--teal-soft);border-radius:30px;padding:42px 36px;position:relative;overflow:hidden;}
-.gp__seed{position:absolute;top:-30px;right:-30px;opacity:.5;pointer-events:none;}
-.gp-step{display:flex;align-items:center;gap:22px;background:#fff;border-radius:20px;padding:22px 26px;box-shadow:0 8px 20px rgba(44,39,34,.08);position:relative;z-index:1;}
-.gp-step__badge{flex:0 0 auto;width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.gp-step__num{display:block;font-family:var(--en);font-size:.72rem;font-weight:700;letter-spacing:.16em;}
-.gp-step__txt h3{font-family:var(--hand);font-size:1.18rem;font-weight:600;margin:4px 0 6px;line-height:1.4;}
-.gp-step__txt h3 small{font-family:var(--font);font-size:.78rem;font-weight:500;color:var(--ink-faint);}
-.gp-step__txt p{font-size:.86rem;color:var(--ink-soft);line-height:1.85;}
-.gp-arrow{display:flex;justify-content:center;padding:7px 0;}
-.gp-goal{margin-top:12px;text-align:center;background:var(--yellow);color:var(--ink);font-family:var(--hand);font-weight:600;font-size:1.1rem;line-height:1.6;padding:18px 22px;border-radius:18px;box-shadow:0 10px 24px rgba(246,196,69,.34);position:relative;z-index:1;}
-.gp-goal b{color:var(--orange-deep);font-weight:600;}
+.smc-wrap{max-width:600px;margin:0 auto;position:relative;}
+.smc-vine{position:absolute;left:14px;top:24px;height:calc(100% - 54px);width:40px;z-index:0;pointer-events:none;overflow:visible;}
+.smc-step{display:grid;grid-template-columns:68px 1fr;gap:24px;align-items:start;margin-bottom:30px;position:relative;}
+.smc-step:last-of-type{margin-bottom:0;}
+.smc-disc{width:68px;height:68px;border-radius:65% 35% 58% 42% / 55% 45% 55% 45%;display:flex;align-items:center;justify-content:center;z-index:1;border:3px solid var(--paper);}
+.smc-step__txt{padding-top:4px;}
+.smc-num{display:block;font-family:var(--font);font-size:.72rem;font-weight:700;letter-spacing:.14em;margin-bottom:3px;}
+.smc-step h3{font-family:var(--hand);font-size:1.2rem;font-weight:600;margin:0 0 7px;line-height:1.4;color:var(--ink);}
+.smc-step p{font-size:.9rem;color:var(--ink-soft);line-height:1.95;}
+.smc-goal{margin:34px auto 0;max-width:560px;text-align:center;background:var(--orange-soft);color:var(--ink);font-family:var(--hand);font-weight:600;font-size:1.12rem;line-height:1.6;padding:18px 24px;border-radius:18px;}
+.smc-goal b{color:var(--orange-deep);font-weight:600;}
+.grow-band{margin:50px auto 0;max-width:560px;text-align:center;position:relative;}
+.grow-vine{display:block;width:210px;height:auto;margin:0 auto 6px;}
+.grow-kicker{font-family:var(--hand);font-size:1.02rem;color:var(--ink-soft);letter-spacing:.06em;margin:0 0 8px;}
+.grow-line{font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);line-height:1.5;margin:0;}
+.grow-line b{color:var(--orange-deep);font-weight:600;}
+@media(max-width:560px){.grow-line{font-size:1.22rem;}}
 @media(max-width:560px){
-  .gp{padding:30px 16px}
-  .gp-step{gap:15px;padding:18px 16px}
-  .gp-step__badge{width:66px;height:66px}
-  .gp-step__badge svg{width:40px;height:40px}
-  .gp-step__txt h3{font-size:1.05rem}
-}
-@media(min-width:768px){
-  .gp{max-width:1100px;padding:54px 60px 50px;}
-  .gp-flow{display:flex;align-items:stretch;justify-content:center;gap:0;}
-  .gp-step{flex:1 1 0;min-width:0;flex-direction:column;text-align:center;align-items:center;gap:16px;padding:34px 26px;}
-  .gp-step__badge{width:84px;height:84px;}
-  .gp-step__txt h3{font-size:1.18rem;}
-  .gp-step__txt h3 small{display:block;margin-top:2px;}
-  .gp-step__txt br{display:none;}
-  .gp-arrow{flex:0 0 auto;align-items:center;padding:0 10px;}
-  .gp-arrow svg{transform:rotate(-90deg);}
-  .gp-goal{max-width:680px;margin:30px auto 0;}
+  .smc-vine{left:8px;}
+  .smc-step{grid-template-columns:56px 1fr;gap:18px;}
+  .smc-disc{width:56px;height:56px;}
+  .smc-disc svg{width:34px;height:34px;}
 }
 </style>
 <section class="section">
   <div class="container">
     <div class="section__head reveal">
-      <svg width="120" height="18" viewBox="0 0 120 18" style="position:absolute;left:50%;top:-22px;transform:translateX(-50%)" aria-hidden="true"><path d="M3 9c8-10 18 10 26 0s18 10 26 0 18 10 26 0 18 10 26 0" fill="none" stroke="#2FA98F" stroke-width="3.5" stroke-linecap="round"/></svg>
       <span class="eyebrow">Service Map</span>
-      <h2>3つ組み合わせると、もっと伸びる</h2>
-      <p class="section__desc" style="margin-top:10px">事業は、出会って・つながって・伸びていくもの。<br>私はその成長を、段階ごとにそばで支えます。</p>
+      <h2>芽から、森へ育てる。</h2>
+      <p class="section__desc" style="margin-top:10px">事業は、お客さまと出会って、つながって、ゆっくり伸びていくもの。<br>その成長を、段階ごとに、そばで支えていけたらと思っています。</p>
     </div>
 
-    <div class="gp reveal reveal-d1">
-      <svg class="gp__seed float-a" width="150" height="150" viewBox="-90 -90 180 180" aria-hidden="true"><path d="M44.6,-55.6C56.4,-46.3,63.5,-31.1,66.8,-15.2C70.1,0.7,69.6,17.3,62.4,30.6C55.2,43.9,41.3,53.9,26,59.8C10.7,65.7,-6,67.5,-21.9,63.3C-37.8,59.1,-52.9,48.9,-61.4,34.6C-69.9,20.3,-71.8,1.9,-67.5,-14.4C-63.2,-30.7,-52.7,-44.9,-39.3,-54C-25.9,-63.1,-13,-67.1,1.4,-68.8C15.7,-70.5,32.8,-64.9,44.6,-55.6Z" fill="rgba(255,255,255,.45)"/></svg>
-
-      <div class="gp-flow">
-      <!-- STEP 1 : 芽 -->
-      <div class="gp-step">
-        <div class="gp-step__badge" style="background:var(--orange-soft)">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#B07D0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 42V24"/><path d="M24 28c0-7-5-12-13-12-1 8 4 13 13 12Z"/><path d="M24 23c0-8 6-13 14-12 1 8-5 13-14 12Z"/><path d="M11 42H37" opacity=".55"/></svg>
+    <div class="smc-wrap reveal reveal-d1">
+      <svg class="smc-vine" viewBox="0 0 40 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path d="M20 0 C44 16 -4 33 20 50 C44 67 -4 84 20 100" stroke="#6B6A40" stroke-width="2.4" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        <path d="M20 25 C28 20 36 22 40 16 C33 16 26 19 20 25Z" fill="#6B6A40" opacity=".55"/>
+        <path d="M20 58 C12 53 4 55 0 49 C7 49 14 52 20 58Z" fill="#6B6A40" opacity=".55"/>
+        <path d="M20 83 C28 78 36 80 40 74 C33 74 26 77 20 83Z" fill="#6B6A40" opacity=".55"/>
+      </svg>
+      <div class="smc-step">
+        <div class="smc-disc" style="background:var(--teal-soft)">
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#6B6A40" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 40h20"/><path d="M20 40c11-5 1.6-12.8 6-20"/><path d="M19 18.8c2.2 1.6 3.6 4.4 4.6 7.4-4 .8-7 .8-9.6-.6-2.4-1.2-4.6-3.8-6-8.4 5.6-1 8.8 0 11 1.6Z"/><path d="M28.2 12a14 14 0 0 0-2.2 8c3.8-.2 6.6-1.2 8.6-2.8 2-2 3.2-4.6 3.4-9.2-5.4.2-8 2-9.8 4Z"/></svg>
         </div>
-        <div class="gp-step__txt">
-          <span class="gp-step__num" style="color:var(--orange)">STEP 01 ・ 集客</span>
-          <h3>Webサイトで、出会う</h3>
-          <p style="text-align: left">新しいお客様との接点をつくり、
-見つけてもらう。
-すべての始まりの「種まき」です。</p>
-        </div>
-      </div>
-
-      <div class="gp-arrow">
-        <svg width="32" height="46" viewBox="0 0 32 46" fill="none" stroke="#2FA98F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4C12 16 20 28 16 40"/><path d="M8 32l8 9 8-9"/></svg>
-      </div>
-
-      <!-- STEP 2 : 若葉 -->
-      <div class="gp-step">
-        <div class="gp-step__badge" style="background:var(--teal-soft)">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#2FA98F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5A6.1 6.1 0 0 1 33.4 9.1 6.1 6.1 0 0 1 35.7 18.5 6.1 6.1 0 0 1 29.2 25.9 6.1 6.1 0 0 1 18.8 25.9 6.1 6.1 0 0 1 12.3 18.5 6.1 6.1 0 0 1 14.6 9.1 6.1 6.1 0 0 1 24 5Z"/><path d="M24 27V42"/><path d="M8 42H40" opacity=".55"/></svg>
-        </div>
-        <div class="gp-step__txt">
-          <span class="gp-step__num" style="color:var(--teal)">STEP 02 ・ 継続</span>
-          <h3>業務アプリで、つながり続ける</h3>
-          <p>一度きりで終わらせない。<br>再来店や予約・会員の仕組みで関係を育て、<br>日々の業務もラクにします。</p>
+        <div class="smc-step__txt">
+          <span class="smc-num" style="color:var(--teal)">STEP 01 ・ 集客 / Web</span>
+          <h3>まず、出会う</h3>
+          <p>Webサイトで見つけてもらい、新しいお客さまとの最初の接点を。ここが種まきです。</p>
         </div>
       </div>
 
-      <div class="gp-arrow">
-        <svg width="32" height="46" viewBox="0 0 32 46" fill="none" stroke="#2FA98F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4C12 16 20 28 16 40"/><path d="M8 32l8 9 8-9"/></svg>
-      </div>
-
-      <!-- STEP 3 : 樹木 -->
-      <div class="gp-step">
-        <div class="gp-step__badge" style="background:var(--yellow-soft)">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#B07D0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 7.6A4.1 4.1 0 0 1 30.3 10.4 4.1 4.1 0 0 1 31.8 16.6 4.1 4.1 0 0 1 27.5 21.6 4.1 4.1 0 0 1 20.5 21.6 4.1 4.1 0 0 1 16.2 16.6 4.1 4.1 0 0 1 17.7 10.4 4.1 4.1 0 0 1 24 7.6Z"/><path d="M24 22.5V42"/><path d="M11 22.9A3.9 3.9 0 0 1 16.7 26 3.9 3.9 0 0 1 16.7 32 3.9 3.9 0 0 1 11 35.1 3.9 3.9 0 0 1 5.3 32 3.9 3.9 0 0 1 5.3 26 3.9 3.9 0 0 1 11 22.9Z"/><path d="M11 35V42"/><path d="M37 21.9A3.9 3.9 0 0 1 42.7 25 3.9 3.9 0 0 1 42.7 31 3.9 3.9 0 0 1 37 34.1 3.9 3.9 0 0 1 31.3 31 3.9 3.9 0 0 1 31.3 25 3.9 3.9 0 0 1 37 21.9Z"/><path d="M37 34V42"/><path d="M7 42H41" opacity=".55"/></svg>
+      <div class="smc-step">
+        <div class="smc-disc" style="background:var(--yellow-soft)">
+          <svg width="42" height="42" viewBox="0 0 48 48" fill="none" stroke="#8C6A3F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5A6.1 6.1 0 0 1 33.4 9.1 6.1 6.1 0 0 1 35.7 18.5 6.1 6.1 0 0 1 29.2 25.9 6.1 6.1 0 0 1 18.8 25.9 6.1 6.1 0 0 1 12.3 18.5 6.1 6.1 0 0 1 14.6 9.1 6.1 6.1 0 0 1 24 5Z"/><path d="M24 27V42"/><path d="M8 42H40" opacity=".55"/></svg>
         </div>
-        <div class="gp-step__txt">
-          <span class="gp-step__num" style="color:var(--orange-deep)">STEP 03 ・ 効率</span>
-          <h3>AI業務支援で、ぐんぐん伸ばす</h3>
-          <p>手作業をAIで減らし、生まれた時間を事業の成長へ。<br>木が森になるように、大きく育てていきます。</p>
+        <div class="smc-step__txt">
+          <span class="smc-num" style="color:#8C6A3F">STEP 02 ・ 継続 / アプリ</span>
+          <h3>つながり続ける</h3>
+          <p>予約・会員などの業務アプリで関係を育てる。幹を太くしていく段階です。</p>
         </div>
       </div>
+
+      <div class="smc-step">
+        <div class="smc-disc" style="background:var(--orange-soft)">
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#C24A33" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 7.6A4.1 4.1 0 0 1 30.3 10.4 4.1 4.1 0 0 1 31.8 16.6 4.1 4.1 0 0 1 27.5 21.6 4.1 4.1 0 0 1 20.5 21.6 4.1 4.1 0 0 1 16.2 16.6 4.1 4.1 0 0 1 17.7 10.4 4.1 4.1 0 0 1 24 7.6Z"/><path d="M24 22.5V42"/><path d="M11 22.9A3.9 3.9 0 0 1 16.7 26 3.9 3.9 0 0 1 16.7 32 3.9 3.9 0 0 1 11 35.1 3.9 3.9 0 0 1 5.3 32 3.9 3.9 0 0 1 5.3 26 3.9 3.9 0 0 1 11 22.9Z"/><path d="M11 35V42"/><path d="M37 21.9A3.9 3.9 0 0 1 42.7 25 3.9 3.9 0 0 1 42.7 31 3.9 3.9 0 0 1 37 34.1 3.9 3.9 0 0 1 31.3 31 3.9 3.9 0 0 1 31.3 25 3.9 3.9 0 0 1 37 21.9Z"/><path d="M37 34V42"/><path d="M7 42H41" opacity=".55"/></svg>
+        </div>
+        <div class="smc-step__txt">
+          <span class="smc-num" style="color:var(--orange-deep)">STEP 03 ・ 効率 / AI</span>
+          <h3>大きく広げる</h3>
+          <p>AIで手間を減らし、空いた時間を成長へ。木が森になるように、事業を育てます。</p>
+        </div>
       </div>
 
-      <div class="gp-goal" style="padding: 18px 22px; margin: 30px auto 0px; font-size: 25px">集客 × 継続 × 効率 の
-サイクルが、回りはじめる。</div>
+      </div>
+    </div>
+
+    <div class="grow-band reveal reveal-d2">
+      <svg class="grow-vine" viewBox="0 0 220 56" fill="none" aria-hidden="true">
+        <path d="M10 50 C55 46 80 26 120 22 C158 18 188 14 210 8" stroke="#6B6A40" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M74 34 C68 28 68 21 75 17 C80 23 79 30 74 34Z" fill="#6B6A40" opacity=".5"/>
+        <path d="M122 22 C129 16 137 17 143 11 C136 10 128 13 122 22Z" fill="#6B6A40" opacity=".5"/>
+        <path d="M172 16 C166 10 167 4 174 1 C178 7 177 13 172 16Z" fill="#6B6A40" opacity=".5"/>
+      </svg>
+      <p class="grow-kicker">集客 × 継続 × 効率</p>
+      <p class="grow-line">3つがめぐって、<b>事業が育っていく。</b></p>
     </div>
 
     <p class="svc-note reveal reveal-d2">もちろん、まずは1つだけのご依頼も大歓迎。今の事業に必要な「次の一歩」から始めましょう。</p>
@@ -1050,8 +1041,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </style>
 
 <!-- ===== PROBLEM ===== -->
-<section class="section section--white">
-  <div class="container">
+<section class="section section--white" style="padding: 54px 0px">
+  <div class="container" style="position:relative">
     <div class="section__head reveal">
       <span class="eyebrow">Problem</span>
       <h2>そのサイト、AI時代も戦えていますか？</h2>
@@ -1122,22 +1113,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="contact.html" class="btn btn--ghost prob-cta" id="probCta" tabindex="-1" aria-hidden="true"><span id="probCtaLabel">チェックした不安を相談する</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
     </div>
   </div>
-</section>
 
-<!-- ===== AEO/GEO TEASER ===== -->
-<section class="section">
-  <div class="container">
-    <div class="cta-box" style="background:var(--teal)">
-      <svg class="blob float-c" width="200" height="200" viewBox="-90 -90 180 180" style="left:-30px;bottom:-50px;opacity:.4" aria-hidden="true"><path d="M44.6,-55.6C56.4,-46.3,63.5,-31.1,66.8,-15.2C70.1,0.7,69.6,17.3,62.4,30.6C55.2,43.9,41.3,53.9,26,59.8C10.7,65.7,-6,67.5,-21.9,63.3C-37.8,59.1,-52.9,48.9,-61.4,34.6C-69.9,20.3,-71.8,1.9,-67.5,-14.4C-63.2,-30.7,-52.7,-44.9,-39.3,-54C-25.9,-63.1,-13,-67.1,1.4,-68.8C15.7,-70.5,32.8,-64.9,44.6,-55.6Z" fill="rgba(255,255,255,.18)"/></svg>
-      <div class="reveal" style="position:relative">
-        <span class="hand" style="display:inline-block;background:var(--yellow);color:var(--ink);font-size:.85rem;font-weight:600;padding:5px 16px;transform:rotate(-2deg);margin-bottom:18px">これからの標準を、今から。</span>
-        <h2 style="color:#fff">AEO / GEO、追加料金なしで標準装備。</h2>
-        <p style="max-width:600px;margin-left:auto;margin-right:auto">「AIに選ばれる」ための構造化データ・FAQ設計・見出し階層を、すべてのプランで標準対応。これからの検索に、今から備えられます。</p>
-        <a href="aeo-geo.html" class="btn btn--white" style="margin-top:26px">AEO・GEOの取り組みを見る<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
+    <img src="images/problem-pointing.png" class="prob-figure" alt="未来の入口を指さす人物のイラスト" aria-hidden="true">
+  </section>
 
 <!-- ===== SERVICES DETAIL ===== -->
 <section class="section section--white">
@@ -1251,7 +1229,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="why2-card reveal reveal-d2">
         <span class="why2-card__check" aria-hidden="true"></span>
         <div class="why2-card__body">
-          <h3>Web/アプリ/AIワンストップ</h3>
+          <h3>Web・アプリ・AIワンストップ</h3>
           <p>必要なデジタル領域をまとめて相談できる。複数の会社に発注する手間がいりません。</p>
         </div>
       </div>
@@ -1295,14 +1273,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="works-group reveal">
       <div class="works-group__head"><h3>Original Products｜自社プロダクト</h3><p>自分で課題を見つけ、企画・設計・実装まで完結させたプロダクト。同じ作り手・同じ品質で、お客様の開発にも対応します。</p></div>
-      <div class="works-grid" style="grid-template-columns:repeat(2,1fr);max-width:760px;margin:0 auto">
+      <div class="works-grid is-pair">
         <div class="polaroid"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/studyreport.webp" loading="lazy" decoding="async" alt="学習時間記録アプリ StudyReport"></div><div class="polaroid__name">学習時間記録 StudyReport</div><div class="polaroid__tags"><span>React</span><span>Firebase</span></div></div>
         <div class="polaroid"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/tsukimi.webp" loading="lazy" decoding="async" alt="家計簿アプリ Tsukimi"></div><div class="polaroid__name">家計簿アプリ Tsukimi</div><div class="polaroid__tags"><span>Next.js</span><span>Supabase</span></div></div>
       </div>
     </div>
 
     <div class="works-group reveal">
-      <div class="works-group__head"><h3>Real Works｜制作実績</h3><p>ご相談の際に完成イメージを掴んでいただけるよう、実際の案件と同じ品質で見本サイトを制作しました。デザインから実装、AEO・GEO 対応まで一気通貫で仕上げています。</p></div>
+      <div class="works-group__head"><h3>Real Works｜制作実績</h3><p>ご相談の際に完成イメージを掴んでいただけるよう、実際の案件と同じ品質で見本サイトを制作しました。デザインから実装、AEO/GEO対応まで一気通貫で仕上げています。</p></div>
       <div class="works-grid">
         <div class="polaroid"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/yui.webp" loading="lazy" decoding="async" alt="和食店 結 -yui- 見本サイト"></div><div class="polaroid__name"><a href="https://chihirotsuboyama.github.io/Yui" target="_blank" rel="noopener">和食 -結 Yui-</a></div><div class="polaroid__tags"><span>和食・飲食店</span><span>見本サイト</span></div></div>
         <div class="polaroid"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(2deg)"></div><div class="polaroid__shot"><img src="images/akarito.webp" loading="lazy" decoding="async" alt="照明・電気工事会社 アカリトの見本サイト"></div><div class="polaroid__name"><a href="https://chihirotsuboyama.github.io/Akarito" target="_blank" rel="noopener">アカリト Akarito</a></div><div class="polaroid__tags"><span>照明・電気工事</span><span>見本サイト</span></div></div>
@@ -1349,114 +1327,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="flow-step__card"><span class="flow-step__week">継続</span><h3>運用・改善</h3><p>公開後もKPIを見ながら一緒に改善。月額1万円〜の運用プランもご用意。</p></div>
       </div>
       <div class="flow__goal reveal reveal-d1">
-        <svg width="40" height="44" viewBox="0 0 40 44" fill="none" aria-hidden="true"><path d="M20 43V18" stroke="#2FA98F" stroke-width="2.6" stroke-linecap="round"/><path d="M20 22C20 14 13 9 5 10c-1 8 5 14 15 13Z" fill="#DCEFE9" stroke="#2FA98F" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 17C20 9 27 3 35 4c1 8-6 14-15 14Z" fill="#FBEDC4" stroke="#B07D0A" stroke-width="2.2" stroke-linejoin="round"/></svg>
+        <svg width="40" height="44" viewBox="0 0 40 44" fill="none" aria-hidden="true"><path d="M20 43V18" stroke="#6B6A40" stroke-width="2.6" stroke-linecap="round"/><path d="M20 22C20 14 13 9 5 10c-1 8 5 14 15 13Z" fill="#E6E3CF" stroke="#6B6A40" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 17C20 9 27 3 35 4c1 8-6 14-15 14Z" fill="#ECDFCD" stroke="#8C6A3F" stroke-width="2.2" stroke-linejoin="round"/></svg>
         <span class="flow__goal-tag">公開して、ここから一緒に育てる</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== COMPARISON ===== -->
-<section class="section">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">Comparison</span>
-      <h2>他の選択肢との違い</h2>
-      <p class="section__desc">選ぶときの判断材料になるよう、正直に比べてみました。</p>
-    </div>
-    <!-- desktop: highlighted board -->
-    <div class="cmpb reveal">
-      <div class="cmpb__grid">
-        <!-- LinPlan column (explicitly placed, sits on the lifted card) -->
-        <div class="cmpb__lane" style="grid-column:5;grid-row:1/-1"></div>
-        <div class="cmpb__head cmpb__head--lp" style="grid-column:5;grid-row:1">
-          <span class="cmpb__lp">Lin<b>Plan</b></span>
-        </div>
-        <div class="cmpb__cell cmpb__cell--lp" style="grid-column:5;grid-row:2"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>大手の半額〜1/3</div>
-        <div class="cmpb__cell cmpb__cell--lp" style="grid-column:5;grid-row:3"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>4〜12週間で明確</div>
-        <div class="cmpb__cell cmpb__cell--lp" style="grid-column:5;grid-row:4"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>標準・追加料金なし</div>
-        <div class="cmpb__cell cmpb__cell--lp" style="grid-column:5;grid-row:5"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>ひとりで一気通貫</div>
-        <div class="cmpb__cell cmpb__cell--lp is-last" style="grid-column:5;grid-row:6"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>100%お渡し</div>
-
-        <!-- columns 1-4 auto-flow row by row -->
-        <div class="cmpb__corner"></div>
-        <div class="cmpb__head">大手制作会社</div>
-        <div class="cmpb__head">クラウド<wbr>ソーシング</div>
-        <div class="cmpb__head">他のフリーランス</div>
-
-        <div class="cmpb__cell cmpb__cell--label">価格</div>
-        <div class="cmpb__cell cmpb__cell--other">100〜500万円</div>
-        <div class="cmpb__cell cmpb__cell--other">低価格〜不安定</div>
-        <div class="cmpb__cell cmpb__cell--other">まちまち</div>
-
-        <div class="cmpb__cell cmpb__cell--label">納期</div>
-        <div class="cmpb__cell cmpb__cell--other">3〜6ヶ月</div>
-        <div class="cmpb__cell cmpb__cell--other">バラつき</div>
-        <div class="cmpb__cell cmpb__cell--other">個人差</div>
-
-        <div class="cmpb__cell cmpb__cell--label">AEO/GEO対応</div>
-        <div class="cmpb__cell cmpb__cell--other">オプション</div>
-        <div class="cmpb__cell cmpb__cell--other">非対応が多い</div>
-        <div class="cmpb__cell cmpb__cell--other">非対応が多い</div>
-
-        <div class="cmpb__cell cmpb__cell--label">Web/アプリ/AI<br>一気通貫</div>
-        <div class="cmpb__cell cmpb__cell--other">部署ごと</div>
-        <div class="cmpb__cell cmpb__cell--other">都度発注</div>
-        <div class="cmpb__cell cmpb__cell--other">Web中心が多い</div>
-
-        <div class="cmpb__cell cmpb__cell--label is-last">コード・データ<br>所有権</div>
-        <div class="cmpb__cell cmpb__cell--other is-last">制約あり</div>
-        <div class="cmpb__cell cmpb__cell--other is-last">まちまち</div>
-        <div class="cmpb__cell cmpb__cell--other is-last">まちまち</div>
-      </div>
-    </div>
-
-    <!-- mobile: stacked cards, LinPlan first & highlighted -->
-    <div class="cmpm reveal">
-      <div class="cmpm-card">
-        <div class="cmpm-card__h"><span class="num">01</span>価格</div>
-        <div class="cmpm-lp"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="cmpm-lp__val">大手の半額〜1/3</span><span class="cmpm-lp__tag">LinPlan</span></div>
-        <div class="cmpm-others">
-          <div class="cmpm-o"><span class="cmpm-o__name">大手制作会社</span><span class="cmpm-o__val">100〜500万円</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">クラウドソーシング</span><span class="cmpm-o__val">低価格〜不安定</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">他のフリーランス</span><span class="cmpm-o__val">まちまち</span></div>
-        </div>
-      </div>
-      <div class="cmpm-card">
-        <div class="cmpm-card__h"><span class="num">02</span>納期</div>
-        <div class="cmpm-lp"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="cmpm-lp__val">4〜12週間で明確</span><span class="cmpm-lp__tag">LinPlan</span></div>
-        <div class="cmpm-others">
-          <div class="cmpm-o"><span class="cmpm-o__name">大手制作会社</span><span class="cmpm-o__val">3〜6ヶ月</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">クラウドソーシング</span><span class="cmpm-o__val">バラつき</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">他のフリーランス</span><span class="cmpm-o__val">個人差</span></div>
-        </div>
-      </div>
-      <div class="cmpm-card">
-        <div class="cmpm-card__h"><span class="num">03</span>AEO/GEO対応</div>
-        <div class="cmpm-lp"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="cmpm-lp__val">標準・追加料金なし</span><span class="cmpm-lp__tag">LinPlan</span></div>
-        <div class="cmpm-others">
-          <div class="cmpm-o"><span class="cmpm-o__name">大手制作会社</span><span class="cmpm-o__val">オプション</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">クラウドソーシング</span><span class="cmpm-o__val">非対応が多い</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">他のフリーランス</span><span class="cmpm-o__val">非対応が多い</span></div>
-        </div>
-      </div>
-      <div class="cmpm-card">
-        <div class="cmpm-card__h"><span class="num">04</span>Web/アプリ/AI一気通貫</div>
-        <div class="cmpm-lp"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="cmpm-lp__val">ひとりで一気通貫</span><span class="cmpm-lp__tag">LinPlan</span></div>
-        <div class="cmpm-others">
-          <div class="cmpm-o"><span class="cmpm-o__name">大手制作会社</span><span class="cmpm-o__val">部署ごと</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">クラウドソーシング</span><span class="cmpm-o__val">都度発注</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">他のフリーランス</span><span class="cmpm-o__val">Web中心が多い</span></div>
-        </div>
-      </div>
-      <div class="cmpm-card">
-        <div class="cmpm-card__h"><span class="num">05</span>コード・データ所有権</div>
-        <div class="cmpm-lp"><span class="cmpb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="cmpm-lp__val">100%お渡し</span><span class="cmpm-lp__tag">LinPlan</span></div>
-        <div class="cmpm-others">
-          <div class="cmpm-o"><span class="cmpm-o__name">大手制作会社</span><span class="cmpm-o__val">制約あり</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">クラウドソーシング</span><span class="cmpm-o__val">まちまち</span></div>
-          <div class="cmpm-o"><span class="cmpm-o__name">他のフリーランス</span><span class="cmpm-o__val">まちまち</span></div>
-        </div>
       </div>
     </div>
   </div>
@@ -1520,14 +1392,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ===== CLOSING CTA ===== -->
-<section class="cta-band">
-  <div class="container">
-    <div class="cta-box reveal">
-      <svg class="blob bob" width="26" height="26" viewBox="0 0 40 40" style="top:30px;left:60px;opacity:.7" aria-hidden="true"><path d="M20 2l4 12 13 1-10 8 3 13-13-7-13 7 3-13-10-8 13-1z" fill="#fff"/></svg>
-      <svg class="blob bob" width="32" height="32" viewBox="0 0 40 40" style="bottom:30px;right:70px" aria-hidden="true"><path d="M20 2l4 12 13 1-10 8 3 13-13-7-13 7 3-13-10-8 13-1z" fill="#B07D0A"/></svg>
-      <h2>まずは、話を聞かせてください！</h2>
-      <p>初回ヒアリングは 無料・オンラインOK ／ ご返信は 24時間以内</p>
-      <a href="contact.html" class="btn btn--white">無料で相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+<section class="closing-cta">
+  <style>
+    .closing-cta{background:var(--bg-surface,#F7F1E4);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:74px 24px;margin-top:24px;text-align:center;position:relative;}
+    .closing-cta::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:linear-gradient(90deg,var(--teal),var(--orange));opacity:.5;}
+    .closing-cta__inner{max-width:720px;margin:0 auto;position:relative;}
+    .closing-cta__eyebrow{font-family:var(--font);font-weight:700;letter-spacing:.14em;font-size:12px;color:var(--orange);}
+    .closing-cta__title{font-family:var(--hand);font-weight:600;font-size:clamp(1.6rem,3.4vw,2.15rem);line-height:1.42;margin:8px 0 14px;color:var(--ink);letter-spacing:-.01em;}
+    .closing-cta__sub{color:var(--ink-soft);font-size:.96rem;line-height:1.95;margin:0 auto 28px;max-width:46ch;}
+    .closing-cta__actions{display:flex;gap:14px 20px;justify-content:center;align-items:center;flex-wrap:wrap;}
+    .closing-cta__link{font-family:var(--font);font-weight:600;font-size:.92rem;color:var(--ink-soft);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--border-strong,#D6C8AC);}
+    .closing-cta__link:hover{color:var(--orange-deep);}
+  </style>
+  <div class="closing-cta__inner reveal">
+    <div class="closing-cta__eyebrow">CONTACT</div>
+    <h2 class="closing-cta__title">まずは、話を聞かせてください。</h2>
+    <p class="closing-cta__sub">どんな小さなことでも大丈夫です。初回ヒアリングは無料・オンラインOK、ご返信は24時間以内。いっしょに「次の一歩」を考えましょう。</p>
+    <div class="closing-cta__actions">
+      <a href="contact.html" class="btn btn--primary">無料で相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      <a href="works.html" class="closing-cta__link">まずは実績を見る</a>
     </div>
   </div>
 </section>
@@ -1552,7 +1435,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="site-footer__copy">© 2025 LinPlan — Web・アプリ・AI、ひとりで一気通貫。</div>
 </footer>
 
-<a href="contact.html" class="fab">無料で相談<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+
 
 <script>
 /* LinPlan サイト共通スクリプト（軽量・依存なし） */
@@ -1696,5 +1579,6 @@ window.addEventListener('resize',update);update();
 })();
 </script>
 
+<script src="theme.js"></script>
 </body>
 </html>
