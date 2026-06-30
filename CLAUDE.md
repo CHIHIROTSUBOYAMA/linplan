@@ -31,6 +31,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - `Klee One`（`--hand`）= 手書き風の見出し・ボタン・ロゴ
   - `Zen Kaku Gothic New`（`--font` / `--en`）= 本文・英字ラベル
 - **Google Tag Manager（GTM）** — 全 18 ページの `<head>`（viewport 直後）に計測スニペット、`<body>` 直後に noscript 版を設置。コンテナ ID は `GTM-5DVGF39S`。**新規ページを追加するときは、この 2 スニペットを必ず同じ位置に入れる**（入れ忘れると計測が欠落する）。
+- **メインランドマーク（`<main>`）** — 全 18 ページとも、本文を `<main>` で囲む（モバイルメニュー閉じ `</div>` の直後に `<main>`、`<footer class="site-footer">` の直前に `</main>`）。ナビ（`.site-nav`）・モバイルメニュー・フッターは `<main>` の**外**に置く（ランドマークを入れ子にしない）。**新規ページ追加時も必ず入れる**（無いと Lighthouse の「Document does not have a main landmark」で減点される）。`<main>` はブロック要素なので見た目は変わらない。
 - GSAP / SplitType / ScrollTrigger などの外部ライブラリは **使用しない**（旧 `css/` `js/vendor/` は撤去済み。リビールは自前の `IntersectionObserver` で実装）。
 
 ## ページ一覧（18 ページ）
