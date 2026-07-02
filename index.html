@@ -13,17 +13,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>こんにちは。</title>
 <link rel="canonical" href="https://linplan.jp/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="LinPlan">
+<meta property="og:site_name" content="linplan">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="LinPlan ｜ Web・アプリ・AI、ひとりで一気通貫。">
-<meta property="og:description" content="中小企業・店舗のための、AIにも選ばれるサイトを。LinPlanは企画から運用までひとりで一気通貫。AEO/GEO標準対応で、Web・アプリ・AI業務支援をワンストップでご提供します。">
+<meta property="og:title" content="linplan ｜ Web・アプリ・AI、ひとりで一気通貫。">
+<meta property="og:description" content="中小企業・店舗のための、AIにも選ばれるサイトを。linplanは企画から運用までひとりで一気通貫。AEO/GEO標準対応で、Web・アプリ・AI業務支援をワンストップでご提供します。">
 <meta property="og:url" content="https://linplan.jp/">
 <meta property="og:image" content="https://linplan.jp/images/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="LinPlan ｜ Web・アプリ・AI、ひとりで一気通貫。">
-<meta name="twitter:description" content="中小企業・店舗のための、AIにも選ばれるサイトを。LinPlanは企画から運用までひとりで一気通貫。AEO/GEO標準対応で、Web・アプリ・AI業務支援をワンストップでご提供します。">
+<meta name="twitter:title" content="linplan ｜ Web・アプリ・AI、ひとりで一気通貫。">
+<meta name="twitter:description" content="中小企業・店舗のための、AIにも選ばれるサイトを。linplanは企画から運用までひとりで一気通貫。AEO/GEO標準対応で、Web・アプリ・AI業務支援をワンストップでご提供します。">
 <meta name="twitter:image" content="https://linplan.jp/images/ogp.png">
-<meta name="description" content="中小企業・店舗のための、AIにも選ばれるサイトを。LinPlanは企画から運用までひとりで一気通貫。AEO/GEO標準対応で、Web・アプリ・AI業務支援をワンストップでご提供します。">
+<meta name="description" content="中小企業・店舗のための、AIにも選ばれるサイトを。linplanは企画から運用までひとりで一気通貫。AEO/GEO標準対応で、Web・アプリ・AI業務支援をワンストップでご提供します。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
@@ -178,7 +178,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   transition: background .35s var(--ease), box-shadow .35s var(--ease),
     opacity .65s var(--ease), translate .65s var(--ease);
 }
-.lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__actions,.lnhero__art{
+.lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__actions,.lnhero__art,.about-me .profile{
   transition: opacity .72s var(--ease), translate .72s var(--ease);
 }
 .lnhero__kicker  { transition-delay: .12s; }
@@ -186,6 +186,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .lnhero__sub     { transition-delay: .42s; }
 .lnhero__actions { transition-delay: .56s; }
 .lnhero__art     { transition-delay: .48s; }
+.about-me .profile { transition-delay: .68s; }
 
 /* hidden state while waiting to play */
 .site-nav.anim { opacity: 0; translate: 0 -14px; }
@@ -194,13 +195,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .lnhero.anim .lnhero__sub,
 .lnhero.anim .lnhero__actions { opacity: 0; translate: 0 24px; }
 .lnhero.anim .lnhero__art { opacity: 0; translate: 0 18px; }
+.about-me.anim .profile { opacity: 0; translate: 0 24px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__actions,.lnhero__art{ transition: none; }
+  .lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__actions,.lnhero__art,.about-me .profile{ transition: none; }
   .site-nav{ transition: background .35s var(--ease), box-shadow .35s var(--ease); }
   .site-nav.anim{ opacity: 1; translate: none; }
   .lnhero.anim .lnhero__kicker,.lnhero.anim .lnhero__title,.lnhero.anim .lnhero__sub,
-  .lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art{ opacity: 1; translate: none; }
+  .lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art,.about-me.anim .profile{ opacity: 1; translate: none; }
 }
 </style>
 <link rel="stylesheet" href="theme.css">
@@ -210,11 +212,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<noscript><style>.site-nav.anim{opacity:1;translate:none}.lnhero.anim .lnhero__kicker,.lnhero.anim .lnhero__title,.lnhero.anim .lnhero__sub,.lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art{opacity:1;translate:none}</style></noscript>
+<noscript><style>.site-nav.anim{opacity:1;translate:none}.lnhero.anim .lnhero__kicker,.lnhero.anim .lnhero__title,.lnhero.anim .lnhero__sub,.lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art,.about-me.anim .profile{opacity:1;translate:none}</style></noscript>
 <script>
 /* エントランス：読み込み時にナビ＋ヒーローをフェード表示（ローダー廃止） */
 (function(){
-  function clear(){document.querySelectorAll('.site-nav.anim,.lnhero.anim').forEach(function(el){el.classList.remove('anim');});}
+  function clear(){document.querySelectorAll('.site-nav.anim,.lnhero.anim,.about-me.anim').forEach(function(el){el.classList.remove('anim');});}
   function play(){requestAnimationFrame(function(){requestAnimationFrame(clear);});}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',play);else play();
   setTimeout(clear,2600);
@@ -224,7 +226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===== NAV ===== -->
 <nav class="site-nav anim">
   <div class="site-nav__inner">
-    <a href="index.html" class="site-nav__logo" aria-label="LinPlan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>linplan<span style="color:var(--orange)">.</span></span></a>
+    <a href="index.html" class="site-nav__logo" aria-label="linplan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>linplan<span style="color:var(--orange)">.</span></span></a>
     <div class="site-nav__links">
       <a href="about.html">私について</a>
       <a href="services.html">サービス</a>
@@ -270,7 +272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="lnhero__art">
       <figure class="lncard">
         <span class="lncard__tape" aria-hidden="true"></span>
-        <img src="images/hero-consult.png" alt="お客様とノートパソコンを見ながら相談している様子のイラスト">
+        <img src="images/hero-consult.webp" decoding="async" alt="お客様とノートパソコンを見ながら相談している様子のイラスト">
         <figcaption>made at home, with care</figcaption>
       </figure>
     </div>
@@ -278,19 +280,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <!-- ===== ABOUT INLINE ===== -->
-<section class="section section--white" style="position:relative">
+<section class="section section--white about-me anim" style="position:relative">
   <svg class="blob float-b" width="170" height="170" viewBox="-90 -90 180 180" style="top:40px;right:4%;opacity:.6" aria-hidden="true"><path d="M41.3,-50.4C52.5,-41.9,60,-28.3,63.6,-13.3C67.2,1.7,66.9,18.1,59.7,30.6C52.5,43.1,38.4,51.7,23.3,57.4C8.2,63.1,-7.9,65.9,-22.6,61.8C-37.3,57.7,-50.6,46.7,-58.3,32.6C-66,18.5,-68.1,1.3,-64.1,-14.2C-60.1,-29.7,-50,-43.5,-37.1,-51.9C-24.2,-60.3,-8.5,-63.3,3.9,-68C16.3,-72.7,30.1,-58.9,41.3,-50.4Z" fill="#ECDFCD"/></svg>
   <div class="container" style="position:relative;z-index:1">
-    <div class="profile reveal">
+    <div class="profile">
       <figure class="profile__photo">
         <span class="tape tape--yellow" style="top:-13px;left:50%;transform:translateX(-50%) rotate(-3deg)" aria-hidden="true"></span>
-        <div class="ph-img"><img src="images/profile.png" alt="坪山ちひろ" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:inherit"></div>
+        <div class="ph-img"><img src="images/profile.webp" loading="lazy" decoding="async" alt="坪山ちひろ" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:inherit"></div>
         <figcaption>坪山ちひろ</figcaption>
       </figure>
       <div>
         
         <span class="eyebrow" style="display:block;margin-bottom:10px">About me</span>
-        <h2 style="line-height:1.55">こんにちは。<br class="dt">LinPlan 代表の坪山ちひろです。</h2>
+        <h2 style="line-height:1.55">こんにちは。<br class="dt">linplan 代表の坪山ちひろです。</h2>
         <p style="margin-top:18px">HP制作会社で腕を磨いた後、独立。<br>現在はシステムエンジニアとしての知識を生かしつつHP制作中。<br>ホームページ制作だけでなく、業務アプリの制作やAI業務支援なども行っています。<br>制作は、お客様と出来るだけ「対面」でコミュニケーションを取ることを、大切にしています。</p>
         <a href="about.html" class="btn btn--ghost hand" style="margin-top:26px">詳しいプロフィールを見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       </div>
@@ -615,9 +617,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="section section--paper">
   <div class="container">
     <div class="section__head reveal">
-      <span class="eyebrow">Why LinPlan</span>
+      <span class="eyebrow">Why linplan</span>
       <h2>その不安、ぜんぶ解消できます。</h2>
-      <p class="section__desc">さきほどの「困った」を、ひとつずつ仕組みで解決していきます。<br>LinPlanを選ぶ、<b>6つの理由</b>です。</p>
+      <p class="section__desc">さきほどの「困った」を、ひとつずつ仕組みで解決していきます。<br>linplanを選ぶ、<b>6つの理由</b>です。</p>
     </div>
     <div class="why2-grid">
 
@@ -763,7 +765,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-item"><div class="faq-q">公開後のメンテナンスはお願いできますか？</div><div class="faq-a"><div>はい。月額1万円〜の運用プランをご用意しています。単発の修正のみでも対応可能です。</div></div></div>
       <div class="faq-item"><div class="faq-q">既存サイトのリニューアルもお願いできますか？</div><div class="faq-a"><div>はい。むしろ得意分野です。現状分析から始め、既存の良い部分は活かしながらリニューアルします。</div></div></div>
       <div class="faq-item"><div class="faq-q">遠方ですが対応できますか？</div><div class="faq-a"><div>はい。打ち合わせはオンラインで完結できます。全国どこでも対応可能です。</div></div></div>
-      <div class="faq-item"><div class="faq-q">途中で担当者が変わることはありますか？</div><div class="faq-a"><div>LinPlanは坪山ちひろひとりで運営しています。ヒアリングから納品まで一貫して同じ担当者が対応します。コード・データは全権お渡しするため、引き継ぎもスムーズです。</div></div></div>
+      <div class="faq-item"><div class="faq-q">途中で担当者が変わることはありますか？</div><div class="faq-a"><div>linplanは坪山ちひろひとりで運営しています。ヒアリングから納品まで一貫して同じ担当者が対応します。コード・データは全権お渡しするため、引き継ぎもスムーズです。</div></div></div>
       <div class="faq-item"><div class="faq-q">支払い方法は？分割は可能ですか？</div><div class="faq-a"><div>銀行振込が基本です。分割払いも対応可能ですので、ご相談ください。</div></div></div>
     </div>
     <div style="text-align:center;margin-top:40px" class="reveal"><a href="faq.html" class="btn btn--ghost hand">よくある質問をすべて見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
@@ -836,7 +838,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 
 <footer class="site-footer">
-  <div class="site-footer__logo en"><span>Lin<b style="color:var(--orange-deep)">Plan</b></span></div>
+  <div class="site-footer__logo en"><span>linplan<b style="color:var(--orange-deep)">.</b></span></div>
   <div class="site-footer__tag">一緒に育てていけるサイト作りを。</div>
   <nav class="site-footer__nav">
     <a href="about.html">私について</a>
@@ -851,13 +853,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="tokushoho.html">特定商取引法に基づく表記</a>
   </nav>
   <div class="site-footer__meta">全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
-  <div class="site-footer__copy">© 2026 LinPlan — Web・アプリ・AI、ひとりで一気通貫。</div>
+  <div class="site-footer__copy">© 2026 linplan — Web・アプリ・AI、ひとりで一気通貫。</div>
 </footer>
 
 
 
 <script>
-/* LinPlan サイト共通スクリプト（軽量・依存なし） */
+/* linplan サイト共通スクリプト（軽量・依存なし） */
 (function () {
   'use strict';
 
