@@ -85,6 +85,12 @@ body {
 .site-nav__links { display: flex; align-items: center; gap: 20px; }
 .site-nav__links a:not(.btn) { font-family: var(--font); font-size: 0.9rem; font-weight: 500; color: var(--ink-soft); }
 .site-nav__links a:not(.btn):hover { color: var(--orange-deep); }
+/* 現在ページ：インクを濃くし、手書き風のテラコッタ下線（theme.js が .is-current を付与） */
+.site-nav__links a:not(.btn).is-current { color: var(--ink); position: relative; }
+.site-nav__links a:not(.btn).is-current::after {
+  content: ""; position: absolute; left: 1px; right: 1px; bottom: -5px; height: 2.5px;
+  background: var(--orange); border-radius: 999px; transform: rotate(-1.2deg);
+}
 .site-nav__cta { border-radius: 999px; transform: none; font-family: var(--font) !important; box-shadow: none; }
 .hamburger { display: none; }
 
@@ -221,13 +227,11 @@ body {
 @media (max-width: 880px) {
   .lnhero { padding: 120px 0 50px; }
   .lnhero__grid { grid-template-columns: 1fr; gap: 36px; }
-  .lnhero__art { max-width: 420px; }
+  /* 1カラムに積まれる幅ではイラストカードを出さない（直下の About のイラストと重複し、1画面分スクロールが増えるため） */
+  .lnhero__art { display: none; }
 }
 
 /* QA: works "pair" grid (2 self-products) — 2-up desktop, 1-up mobile */
-.prob-figure { position: absolute; right: 19%; top: 96px; width: clamp(120px, 10.5vw, 162px); height: auto; pointer-events: none; opacity: .96; user-select: none; }
-@media (max-width: 1240px) { .prob-figure { right: 5%; top: 84px; width: 120px; } }
-@media (max-width: 920px) { .prob-figure { display: none; } }
 .works-grid.is-pair { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto; }
 @media (max-width: 560px) { .works-grid.is-pair { grid-template-columns: 1fr; max-width: 360px; } }
 
