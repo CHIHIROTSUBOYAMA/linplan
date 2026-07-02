@@ -6,9 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 概要
 
-日本語の Web デザイン・アプリ・AI 制作スタジオ「LinPlan」のポートフォリオサイト。静的 HTML のみで構成され、ビルドツールやパッケージマネージャーは利用しない。
+日本語の Web デザイン・アプリ・AI 制作スタジオ「linplan」のポートフォリオサイト。静的 HTML のみで構成され、ビルドツールやパッケージマネージャーは利用しない。**ブランド表記はすべて小文字の「linplan」で統一**（旧「LinPlan」表記は廃止。ロゴ・フッター・タイトル・OGP・JSON-LD すべて小文字）。
 
-**実際に表示されるデザインは LinPlan デザインシステム（DS）の「クリーム紙（lifted cream paper）」**＝落ち着いたクリーム背景＋ドット、手書き風見出し（Klee One）、テラコッタ／オリーブ／タンの配色、フラットで柔らかいカード。これは **2 層構成**で実現している：
+**実際に表示されるデザインは linplan デザインシステム（DS）の「クリーム紙（lifted cream paper）」**＝落ち着いたクリーム背景＋ドット、手書き風見出し（Klee One）、テラコッタ／オリーブ／タンの配色、フラットで柔らかいカード。これは **2 層構成**で実現している：
 
 1. 各 HTML に残る旧「V4 スクラップブック」由来の共通コンポーネント CSS を、**共有 `base.css`** に集約（全ページが読み込む）。
 2. その後に読む **共有 `theme.css`（DS スキン）** がカスケード順（最後に読込）で上書きし、スクラップブックの washi テープ／ポラロイド傾け／blob 等を打ち消してクリーム紙の見た目を出す。
@@ -75,7 +75,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ├─ CLAUDE.md
 ├─ sitemap.xml / robots.txt
 ├─ images/
-│   ├─ *.webp             制作物画像（studyreport / tsukimi / practice-* 等。HTML はすべて WebP を参照）
+│   ├─ *.webp             制作物・イラスト画像（studyreport / tsukimi / practice-* / hero-consult / profile 等。HTML はすべて WebP を参照）
 │   └─ ogp.png            OGP 共有用（PNG 必須のため残す）
 └─ 分析送信用/ + 分析送信用.zip   旧サイトの分析用アーカイブ（編集不要・サイト本体とは無関係）
 ```
@@ -86,7 +86,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **共通コンポーネント（ナビ・モバイルメニュー・FAB・フッター・リビール・各種カード）の CSS は `base.css` に集約**。共通部分を直すときは `base.css` 1 ファイルだけ直せばよい（旧来の「18 ファイルにインライン重複」は解消済み）。最終的な見た目の調整・上書きは `theme.css`。
 - **ページ固有の CSS だけ**を各 HTML のインライン `<style>` に残す（例：`pricing` のオプション表、`index` の hero／flow-step／menu、`blog` の記事本文スタイル）。
-- **ローダー（`#lp-loader`）はページの `<body>` 内インライン**（`base.css` ではない。ページごとに微差あり）。
+- **エントランスアニメーションはページの `<body>` 冒頭のインライン `<style>`**（ローダー `#lp-loader` は全ページ廃止済み）。トップは transition ＋ `.anim` クラス解除方式（ナビ・ヒーロー・About Me）、サブページは keyframes（`lpEnterNav`＝ナビ、`lpEnter`＝ページ見出し）で、いずれも「ナビが上から降り、見出しが下からフェードアップ」する同じ演出。
 - `!important` は **`base.css` と `theme.css` 合わせて 2 個まで削減済み**（`.site-nav__cta` が高詳細度の `.site-nav__links a` を上書きする必要分のみ）。むやみに増やさない。
 
 JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoaded` 後に起動。`prefers-reduced-motion` 尊重）＋ 共通の `theme.js`（ナビのスクロール状態）。
@@ -115,7 +115,7 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 ### 共通コンポーネントパターン
 
-- **ローダー（`#lp-loader`）** — 全ページ共通。ターミナル風に "LinPlan" をタイプし、下線（swash）を描いてから開く。再訪・即時読込でも最後まで再生してからヒーローを表示する保険ロジック付き。
+- **エントランスアニメーション** — 全ページ共通（ローダーは廃止）。読み込み時にナビが上からフェードイン、ページ見出し（トップは `.lnhero__*`＋About Me、サブページは `.phero` / `.post-head` / `.blog-hero`）が下から時差フェードアップ。`prefers-reduced-motion` では無効。
 - **ナビ（`.site-nav`）** — `position: fixed`。`theme.css` により **PC では中央寄せのフローティング「ピル」型ヘッダー（ロゴ＋テキストリンク）**、狭幅（≤1040px）ではロゴ＋ハンバーガー（`.hamburger`）に切り替わる。スクロール状態は `.scrolled`（インライン JS）と `.past-hero`（共通 `theme.js`）で管理。`.site-nav__cta` の文字色（クリーム）と本文フォントは `base.css` / `theme.css` 双方の `!important` で確定（高詳細度の `.site-nav__links a` を上書きするため）。
 - **モバイルメニュー（`.mobile-menu`）** — 全画面オーバーレイ。ハンバーガーで開閉し、リンク／× ／ Esc で閉じる。
 - **フローティング Contact ボタン（`.fab`）** — 右下に fixed。ヒーローを抜けると `.is-revealed` で出現。
@@ -163,7 +163,7 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 ## 画像の取り扱い
 
-- HTML から参照しているのは `images/*.webp` のみ（`index.html` / `works.html` の作品画像）。
+- HTML から参照しているのは `images/*.webp` のみ（`index.html` / `works.html` の作品画像、`index.html` / `about.html` のヒーロー・プロフィールイラスト）。
 - `ogp.png` は OGP / Twitter Card 用に残す（PNG 必須のクライアントが存在するため）。
 - 新規画像は WebP に変換し、`loading="lazy"` `decoding="async"` を付ける。
 - ファビコンは各ページとも data-URI の SVG（外部ファイル不要）。
