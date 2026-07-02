@@ -1,4 +1,4 @@
-/* LinPlan — nav state: floating pill at top, wavy hamburger past the hero */
+/* Linplan — nav state: floating pill at top, wavy hamburger past the hero */
 (function () {
   function ready(fn) { document.readyState !== 'loading' ? fn() : document.addEventListener('DOMContentLoaded', fn); }
   ready(function () {
