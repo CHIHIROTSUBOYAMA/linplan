@@ -821,7 +821,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="../tokushoho.html">特定商取引法に基づく表記</a>
   </nav>
   <div class="site-footer__meta">全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
-  <div class="site-footer__copy">© 2025 LinPlan — Web・アプリ・AI、ひとりで一気通貫。</div>
+  <div class="site-footer__copy">© 2026 LinPlan — Web・アプリ・AI、ひとりで一気通貫。</div>
 </footer>
 
 
@@ -891,45 +891,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })();
 
 </script>
-<script>
-(function(){var fab=document.querySelector('.fab');if(!fab)return;
-var hero=document.querySelector('.hero,.phero');
-function update(){
-var t=hero?(hero.offsetTop+hero.offsetHeight-90):420;
-if(window.scrollY>t)fab.classList.add('is-revealed');else fab.classList.remove('is-revealed');}
-window.addEventListener('scroll',update,{passive:true});
-window.addEventListener('resize',update);update();
-})();
-</script>
 <script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='\u21C5 \u30b9\u30af\u30ed\u30fc\u30eb';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
-<script>
-/* できることメニュー — 選択チェック & 件数・見積もりリンク連動 */
-(function(){
-  var menu = document.querySelector('.menu'); if(!menu) return;
-  var items = Array.prototype.slice.call(menu.querySelectorAll('.menu-item'));
-  var count = document.getElementById('menuCount');
-  var cta = document.getElementById('menuCta');
-  function update(){
-    var chosen = items.filter(function(i){ return i.classList.contains('is-on'); });
-    var n = chosen.length;
-    if(n === 0){
-      count.innerHTML = '気になる項目はありますか？<small>選んでいただければ、最適な組み合わせとお見積もりをご提案します。</small>';
-      cta.href = 'contact.html';
-    } else {
-      count.innerHTML = '<b>' + n + '</b>件を選択中<small>この組み合わせで、まとめてお見積もりします。</small>';
-      var labels = chosen.map(function(i){ return i.querySelector('.menu-item__txt').textContent; });
-      cta.href = 'contact.html?items=' + encodeURIComponent(labels.join('、'));
-    }
-  }
-  items.forEach(function(i){
-    i.setAttribute('role','button'); i.setAttribute('tabindex','0'); i.setAttribute('aria-pressed','false');
-    function toggle(){ i.classList.toggle('is-on'); i.setAttribute('aria-pressed', i.classList.contains('is-on')); update(); }
-    i.addEventListener('click', toggle);
-    i.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggle(); } });
-  });
-  update();
-})();
-</script>
 
 
 <script src="../theme.js"></script>
