@@ -217,7 +217,7 @@ body {
 .lnhero__hand { font-family: var(--hand); font-size: 1.25rem; color: var(--teal); }
 .lnhero__title { font-family: var(--hand); font-weight: 600; font-size: clamp(2.4rem, 4.6vw, 3.5rem); line-height: 1.28; letter-spacing: -.01em; color: var(--ink); margin: 0; }
 .lnwave { padding-bottom: .3em; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M2 9 Q9 2 16 9 T30 9 T44 9 T58 9 T72 9 T86 9 T100 9 T114 9 T128 9 T142 9 T156 9 T170 9 T184 9 T198 9' fill='none' stroke='%236B6A40' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: left bottom; background-size: 100% 0.5em; }
-.lnhero__sub { color: var(--ink-soft); font-size: 1.02rem; line-height: 2; margin-top: 24px; max-width: 42ch; }
+.lnhero__sub { color: var(--ink-soft); font-size: 1.02rem; line-height: 2; margin-top: 24px; max-width: 55ch; }
 .lnhero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
 .lncard {
   position: relative; margin: 0;
