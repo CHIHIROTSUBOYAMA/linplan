@@ -84,9 +84,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 各 HTML の `<head>` の読込順は **`base.css` → そのページ固有のインライン `<style>`（数ブロック）→ `theme.css`** で、この順序＝カスケードがデザインを決める。`theme.css` が最後なので、同詳細度なら `theme.css` が勝つ（旧スクラップブックを打ち消して DS の見た目を出す）。
 
-- **共通コンポーネント（ナビ・モバイルメニュー・FAB・フッター・リビール・各種カード）の CSS は `base.css` に集約**。共通部分を直すときは `base.css` 1 ファイルだけ直せばよい（旧来の「18 ファイルにインライン重複」は解消済み）。最終的な見た目の調整・上書きは `theme.css`。
-- **ページ固有の CSS だけ**を各 HTML のインライン `<style>` に残す（例：`pricing` のオプション表、`index` の hero／flow-step／menu、`blog` の記事本文スタイル）。
-- **ローダー（`#lp-loader`）はページの `<body>` 内インライン**（`base.css` ではない。ページごとに微差あり）。
+- **共通コンポーネント（ナビ・モバイルメニュー・フッター・リビール・各種カード）の CSS は `base.css` に集約**。共通部分を直すときは `base.css` 1 ファイルだけ直せばよい（旧来の「18 ファイルにインライン重複」は解消済み）。最終的な見た目の調整・上書きは `theme.css`。
+- **ページ固有の CSS だけ**を各 HTML のインライン `<style>` に残す（例：`pricing` のオプション表、`index` の hero／flow-step、`blog` の記事本文スタイル）。
+- **旧ローダー（`#lp-loader`）と FAB（`.fab`）は全ページから撤去済み**。ページ表示時の演出は各ページ先頭の軽量なエントランスアニメーション（`lpEnter` ／ index はナビ＋ヒーローのフェード）のみ。
 - `!important` は **`base.css` と `theme.css` 合わせて 2 個まで削減済み**（`.site-nav__cta` が高詳細度の `.site-nav__links a` を上書きする必要分のみ）。むやみに増やさない。
 
 JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoaded` 後に起動。`prefers-reduced-motion` 尊重）＋ 共通の `theme.js`（ナビのスクロール状態）。
@@ -115,14 +115,13 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 ### 共通コンポーネントパターン
 
-- **ローダー（`#lp-loader`）** — 全ページ共通。ターミナル風に "LinPlan" をタイプし、下線（swash）を描いてから開く。再訪・即時読込でも最後まで再生してからヒーローを表示する保険ロジック付き。
+- **エントランスアニメーション** — ローダーは廃止済み。下層ページは `.phero` の見出しを `lpEnter` キーフレームでフェードアップ、`index` はナビ＋ヒーローを `.anim` クラスの付け外しでフェード表示する。
 - **ナビ（`.site-nav`）** — `position: fixed`。`theme.css` により **PC では中央寄せのフローティング「ピル」型ヘッダー（ロゴ＋テキストリンク）**、狭幅（≤1040px）ではロゴ＋ハンバーガー（`.hamburger`）に切り替わる。スクロール状態は `.scrolled`（インライン JS）と `.past-hero`（共通 `theme.js`）で管理。`.site-nav__cta` の文字色（クリーム）と本文フォントは `base.css` / `theme.css` 双方の `!important` で確定（高詳細度の `.site-nav__links a` を上書きするため）。
 - **モバイルメニュー（`.mobile-menu`）** — 全画面オーバーレイ。ハンバーガーで開閉し、リンク／× ／ Esc で閉じる。
-- **フローティング Contact ボタン（`.fab`）** — 右下に fixed。ヒーローを抜けると `.is-revealed` で出現。
 - **フッター（`.site-footer`）** — ロゴ＋タグライン＋ナビ＋連絡先。
 - **リビールアニメーション** — `.reveal` 要素が `IntersectionObserver`（閾値 12%）で `.is-visible` を取得しフェードイン。`.reveal-d1` / `.reveal-d2` でディレイ。
-- **スクラップブック装飾は `theme.css` が打ち消し済み** — `base.css` には旧 V4 の washi テープ（`.tape`）／紙シート／押しピン／blob／ポラロイド傾けの定義が残っているが、`theme.css` がこれらを無効化（`display:none` やフラット化）し、**フラットなクリーム紙カード**として描画する。装飾を復活させたい場合は `theme.css` 側の打ち消しを外す。
-- **ポラロイド / ブラウザフレーム** — Works の作品カード（`theme.css` で傾きを除去しフラット化）。`.polaroid__shot` / `.browser__shot` はスクロール可能で、`scroll-hint` バッジを JS で付与する。
+- **スクラップブック装飾は `theme.css` が打ち消し済み** — `base.css` には旧 V4 の washi テープ（`.tape`）／blob／ポラロイド傾けの定義が残っているが（マークアップが参照するため）、`theme.css` がこれらを無効化（`display:none` やフラット化）し、**フラットなクリーム紙カード**として描画する。装飾を復活させたい場合は `theme.css` 側の打ち消しを外す。紙シート／押しピン等マークアップから参照されないデッド CSS は削除済み。
+- **ポラロイド** — Works の作品カード（`theme.css` で傾きを除去しフラット化）。`.polaroid__shot` はスクロール可能で、`scroll-hint` バッジを JS で付与する。
 
 ### FAQ アコーディオン
 
