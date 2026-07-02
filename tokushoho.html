@@ -47,41 +47,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div id="lp-loader" aria-hidden="true">
-  <div class="lp-loader__inner">
-    <div class="lp-loader__logo">Lin<b>Plan</b></div>
-    <svg class="lp-loader__line" width="170" height="16" viewBox="0 0 220 16" preserveAspectRatio="none" aria-hidden="true"><path d="M4 11C50 5 120 4 216 9" fill="none" stroke="#6B6A40" stroke-width="9" stroke-linecap="round"/></svg>
-    <div class="lp-loader__dots"><i></i><i></i><i></i></div>
-  </div>
-</div>
+<!-- エントランスアニメーション（ローダー廃止：読み込み時に見出しをフェードアップ） -->
 <style>
-#lp-loader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#FDFBF5;background-image:radial-gradient(#E4D9C2 1.3px,transparent 1.3px);background-size:24px 24px;transition:opacity .55s ease,visibility .55s ease}
-#lp-loader.done{opacity:0;visibility:hidden;pointer-events:none}
-.lp-loader__inner{text-align:center;transform:translateY(-8px);animation:lpLoadFloat 3s ease-in-out infinite}
-.lp-loader__logo{font-family:'Klee One',sans-serif;font-weight:600;font-size:2.7rem;color:#1F2838;letter-spacing:.01em}
-.lp-loader__mark{display:block;margin:0 auto 14px}
-.lp-loader__logo b{color:#F07C33}
-.lp-loader__line{display:block;margin:4px auto 0}
-.lp-loader__line path{stroke-dasharray:240;stroke-dashoffset:240;animation:lpLoadDraw 1.05s cubic-bezier(.6,0,.2,1) forwards .15s}
-@keyframes lpLoadDraw{to{stroke-dashoffset:0}}
-@keyframes lpLoadFloat{0%,100%{transform:translateY(-8px)}50%{transform:translateY(-2px)}}
-.lp-loader__dots{display:flex;gap:11px;justify-content:center;margin-top:26px}
-.lp-loader__dots i{width:11px;height:11px;border-radius:50%;display:block;animation:lpLoadBob .82s ease-in-out infinite}
-.lp-loader__dots i:nth-child(1){background:#F07C33}
-.lp-loader__dots i:nth-child(2){background:#6B6A40;animation-delay:.14s}
-.lp-loader__dots i:nth-child(3){background:#B6926A;animation-delay:.28s}
-@keyframes lpLoadBob{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(-11px);opacity:1}}
-@media (prefers-reduced-motion:reduce){.lp-loader__line path{animation:none;stroke-dashoffset:0}.lp-loader__dots i,.lp-loader__inner{animation:none}}
+.phero .eyebrow,.post-head__cat,.blog-hero__kicker{animation:lpEnter .7s var(--ease) both}
+.phero h1,.post-head__title,.blog-hero__title{animation:lpEnter .78s var(--ease) .12s both}
+.phero p,.post-head__meta,.blog-hero__lead{animation:lpEnter .78s var(--ease) .26s both}
+@keyframes lpEnter{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:reduce){.phero .eyebrow,.phero h1,.phero p,.post-head__cat,.post-head__title,.post-head__meta,.blog-hero__kicker,.blog-hero__title,.blog-hero__lead{animation:none}}
 </style>
-<script>
-(function(){var l=document.getElementById('lp-loader');if(!l)return;
-if(sessionStorage.getItem('lpLoaded')){l.parentNode.removeChild(l);return;}
-var done=false;function hide(){if(done)return;done=true;l.classList.add('done');try{sessionStorage.setItem('lpLoaded','1');}catch(e){}setTimeout(function(){if(l.parentNode)l.parentNode.removeChild(l);},650);}
-var min=1400,start=Date.now();
-window.addEventListener('load',function(){var el=Date.now()-start;setTimeout(hide,Math.max(0,min-el));});
-setTimeout(hide,3000);
-})();
-</script>
 
 <nav class="site-nav">
   <div class="site-nav__inner">
@@ -143,7 +116,7 @@ setTimeout(hide,3000);
   <div class="site-footer__tag">規模は小さくても、本物のサイトを。</div>
   <nav class="site-footer__nav"><a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a><a href="blog/index.html">相談室</a><a href="contact.html">お問い合わせ</a><a href="privacy.html">プライバシーポリシー</a><a href="tokushoho.html">特定商取引法に基づく表記</a></nav>
   <div class="site-footer__meta">全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
-  <div class="site-footer__copy">© 2025 LinPlan — Web・アプリ・AI、ひとりで一気通貫。</div>
+  <div class="site-footer__copy">© 2026 LinPlan — Web・アプリ・AI、ひとりで一気通貫。</div>
 </footer>
 
 <script>
@@ -209,17 +182,6 @@ setTimeout(hide,3000);
   });
 })();
 
-</script>
-<script>
-(function(){var fab=document.querySelector('.fab');if(!fab)return;
-var hero=document.querySelector('.hero,.phero');
-function isMobile(){return window.matchMedia('(max-width:920px)').matches;}
-function update(){if(!isMobile()){fab.classList.add('is-revealed');return;}
-var t=hero?(hero.offsetTop+hero.offsetHeight-90):420;
-if(window.scrollY>t)fab.classList.add('is-revealed');else fab.classList.remove('is-revealed');}
-window.addEventListener('scroll',update,{passive:true});
-window.addEventListener('resize',update);update();
-})();
 </script>
 <script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='⇅ スクロール';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
 <script src="theme.js"></script>
