@@ -74,28 +74,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   transition: opacity .3s var(--ease), transform .3s var(--ease), color .3s var(--ease);
   animation: closeWobble 4s var(--ease) infinite; }
 .mobile-menu.open .mobile-menu__close { pointer-events: auto; }
-/* ---------- hero ---------- */
-.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column;
-  justify-content: flex-start; padding: clamp(220px, 30vh, 330px) 0 96px; overflow: hidden; }
-.hero__scroll { position: absolute; left: 50%; bottom: 30px; z-index: 3; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 7px; background: none; border: none; padding: 6px 10px;
-  cursor: pointer; font-family: var(--hand); font-size: .82rem; color: var(--ink-soft); opacity: .72;
-  -webkit-tap-highlight-color: transparent; transition: opacity .3s var(--ease), color .3s var(--ease);
-  animation: heroScrollBob 2.2s var(--ease) infinite; }
-.hero__scroll:hover { opacity: 1; color: var(--orange-deep); }
-.hero__scroll svg { display: block; }
-@keyframes heroScrollBob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(7px); } }
-@media (prefers-reduced-motion: reduce) { .hero__scroll { animation: none; } }
-@media (max-height: 640px) { .hero__scroll { display: none; } }
-.hero__badge { position: absolute; top: -4.7rem; left: -.25rem; z-index: 4;
-  background: var(--yellow); color: var(--ink); font-family: var(--hand); font-size: clamp(1.3rem, 2.7vw, 2.4rem);
-  font-weight: 600; line-height: 1.32; padding: 12px 22px; transform: rotate(calc(var(--tilt,1) * -2.5deg));
-  box-shadow: 3px 6px 0 rgba(44,39,34,.12); white-space: nowrap; }
-.hero__badge .bdt { display: none; }
-.hero__title { position: relative; font-family: var(--hand); font-size: clamp(2.7rem, 7vw, 5.4rem); font-weight: 600; line-height: 1.26; margin: 0; letter-spacing: -.01em; }
-.hero__sub { font-size: clamp(1rem, 1.4vw, 1.18rem); color: var(--ink-soft); margin-top: 34px; line-height: 2; max-width: 660px; }
-.hero__maker { font-family: var(--hand); display: inline-flex; align-items: center; gap: 14px; margin-top: 46px;
-  background: #fff; padding: 10px 22px 10px 12px; transform: rotate(calc(var(--tilt,1) * -1deg)); box-shadow: 0 8px 20px rgba(44,39,34,.12); }
 /* ---------- section : white paper sheets taped onto the dotted scrapbook page ---------- */
 .section { padding: 54px 0; position: relative; }
 .section--white, .section--paper { background: transparent; }
@@ -188,7 +166,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .svc-card h3 { font-family: var(--hand); font-size: 1.28rem; font-weight: 600; margin: 18px 0 12px; }
 .svc-card p { font-size: .88rem; color: var(--ink-soft); line-height: 1.95; text-align: left; }
 .svc-note { font-family: var(--hand); text-align: center; margin-top: 44px; font-size: 1rem; color: var(--ink-soft); }
+.svc-note--em { font-size: 1.24rem; font-weight: 600; color: var(--ink); line-height: 2; }
+.svc-note--em b { color: var(--orange-deep); font-weight: 600; position: relative; z-index: 0; }
+.svc-note--em b::after { content: ""; position: absolute; left: -.06em; right: -.06em; bottom: .1em; height: .45em;
+  background: rgba(182,146,106,.28); border-radius: 3px; z-index: -1;
+  transform: scaleX(0); transform-origin: left center; transition: transform .55s var(--ease) .7s; }
+.svc-note--em.is-visible b::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) { .svc-note--em b::after { transform: none; transition: none; } }
 @media(max-width:760px){
+  .svc-note--em { font-size: 1.08rem; }
   .svc-flow { grid-template-columns: 1fr; }
   .svc-card { border-left: none; border-top: 1px solid var(--line); padding: 28px 0 !important; }
   .svc-card:first-child { border-top: none; padding-top: 6px !important; }
@@ -405,49 +391,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 @media (max-width: 680px) {
   .section { padding: 64px 0; }
-  .hero { padding: 48px 0 72px; }
-  .hero__badge { left: 50%; top: auto; bottom: calc(100% + 14px); transform: translateX(-50%) rotate(-2deg); text-align: center; }
   .works-grid, .why-grid, .price-grid { grid-template-columns: 1fr; }
   .numbers { gap: 32px; }
   .cmp { font-size: .78rem; }
   .cmp th, .cmp td { padding: 12px 10px; }
-}
-@media (max-width: 560px) {
-  /* ---- HERO mobile-first optimization (iPhone 14 etc.) ---- */
-  /* content is vertically centred in the viewport so there is no dead space */
-  .hero { min-height: 100svh; padding: 100px 24px 80px; justify-content: center; }
-  .hero__inner { padding-left: 0; padding-right: 0; width: 100%; }
-  /* badge: small, level, always one line, anchored just below the nav */
-  .hero__badge { font-size: .92rem !important; padding: 7px 15px !important; white-space: nowrap;
-    top: auto; bottom: calc(100% + 12px); line-height: 1.2; box-shadow: 2px 4px 0 rgba(44,39,34,.12); }
-  .hero__title { font-size: 1.66rem; line-height: 1.58; letter-spacing: 0; width: 100%; }
-  /* decorations follow the (smaller) text instead of fixed desktop sizes */
-  .hero__title .mark { display: inline-block; }
-  .hero__title .mark:nth-of-type(1) svg {
-    left: -14px !important; top: -8px !important; right: auto !important; bottom: auto !important;
-    width: calc(100% + 28px) !important; height: calc(100% + 16px) !important; transform: none !important; }
-  .hero__title .mark:nth-of-type(2) svg {
-    width: 112% !important; height: 12px !important;
-    left: 50% !important; bottom: -4px !important; top: auto !important;
-    transform: translateX(-50%); }
-  .hero__sub { font-size: .98rem !important; line-height: 1.9; margin-top: 30px; max-width: 30ch; }
-  .hero__sub br { display: none; }
-  /* CTA: full-width, prominent, level — overrides any inline desktop sizing */
-  .hero__actions { flex-direction: column; align-items: center; gap: 16px; margin-top: 34px; width: 100%; }
-  .hero__actions .btn--primary { width: 100% !important; max-width: 320px; justify-content: center;
-    font-size: 1.05rem; padding: 16px 28px !important; }
-  .hero__note { font-size: .88rem; line-height: 1.5; }
-  /* maker pill: roomier, level, readable */
-  .hero__maker { margin-top: 34px; transform: none; gap: 12px; padding: 12px 18px 12px 12px;
-    border-radius: 18px; max-width: 340px; }
-  .hero__maker svg { flex: 0 0 auto; }
-  .hero__maker span { font-size: .82rem; line-height: 1.55; text-align: left; }
-  /* scroll hint sits comfortably at the bottom */
-  .hero__scroll { bottom: 22px; }
-  /* tame the decorative blobs so they never crowd the copy */
-  .hero .blob.float-a { width: 150px !important; height: 150px !important; top: 64px !important; left: -34px !important; opacity: .5; }
-  .hero .blob.float-b { width: 120px !important; height: 120px !important; bottom: 14px !important; right: -26px !important; opacity: .5; }
-  .hero .blob.bob { opacity: .55; }
 }
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='12' fill='%23B6926A'/%3E%3Ctext x='26' y='37' font-family='sans-serif' font-size='30' font-weight='700' fill='%231F2838' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
@@ -464,39 +411,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 <style id="hero-anim">
 /* transition-based entrance — base state is VISIBLE; hidden only while .anim is present.
-   uses independent translate/scale props so existing rotate()/hover stay intact */
-.hero__badge,.hero__title,.hero__sub,.hero__actions,.hero__maker{
+   uses independent translate prop so existing transforms/hover stay intact */
+.site-nav{
+  transition: background .35s var(--ease), box-shadow .35s var(--ease),
+    opacity .65s var(--ease), translate .65s var(--ease);
+}
+.lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__actions,.lnhero__art{
   transition: opacity .72s var(--ease), translate .72s var(--ease);
 }
-.hero__badge   { transition-delay: .05s; }
-.hero__title   { transition-delay: .18s; }
-.hero__sub     { transition-delay: .34s; }
-.hero__actions { transition-delay: .48s; }
-.hero__maker   { transition-delay: .62s; }
-.hero__actions .btn--primary{
-  transition: opacity .5s var(--ease) .64s, scale .6s cubic-bezier(.2,1.5,.45,1) .64s;
-}
-.hero__title .mark svg path{ stroke-dasharray: 360; transition: stroke-dashoffset .85s var(--ease); }
-.hero__title .mark:nth-of-type(1) svg path{ transition-delay: .5s; stroke-dasharray: 640; }
-.hero__title .mark:nth-of-type(2) svg path{ transition-delay: .78s; }
+.lnhero__kicker  { transition-delay: .12s; }
+.lnhero__title   { transition-delay: .26s; }
+.lnhero__sub     { transition-delay: .42s; }
+.lnhero__actions { transition-delay: .56s; }
+.lnhero__art     { transition-delay: .48s; }
 
 /* hidden state while waiting to play */
-.hero.anim .hero__badge,
-.hero.anim .hero__title,
-.hero.anim .hero__sub,
-.hero.anim .hero__actions,
-.hero.anim .hero__maker { opacity: 0; translate: 0 26px; }
-.hero.anim .hero__actions .btn--primary { opacity: 0; scale: 1.5; }
-.hero.anim .hero__title .mark svg path { stroke-dashoffset: 360; }
-.hero.anim .hero__title .mark:nth-of-type(1) svg path { stroke-dashoffset: -640; }
+.site-nav.anim { opacity: 0; translate: 0 -14px; }
+.lnhero.anim .lnhero__kicker,
+.lnhero.anim .lnhero__title,
+.lnhero.anim .lnhero__sub,
+.lnhero.anim .lnhero__actions { opacity: 0; translate: 0 24px; }
+.lnhero.anim .lnhero__art { opacity: 0; translate: 0 18px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__badge,.hero__title,.hero__sub,.hero__actions,.hero__maker,
-  .hero__actions .btn--primary,.hero__title .mark svg path{ transition: none; }
-  .hero.anim .hero__badge,.hero.anim .hero__title,.hero.anim .hero__sub,
-  .hero.anim .hero__actions,.hero.anim .hero__maker{ opacity: 1; translate: 0 0; }
-  .hero.anim .hero__actions .btn--primary{ opacity: 1; scale: 1; }
-  .hero.anim .hero__title .mark svg path{ stroke-dashoffset: 0; }
+  .lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__actions,.lnhero__art{ transition: none; }
+  .site-nav{ transition: background .35s var(--ease), box-shadow .35s var(--ease); }
+  .site-nav.anim{ opacity: 1; translate: none; }
+  .lnhero.anim .lnhero__kicker,.lnhero.anim .lnhero__title,.lnhero.anim .lnhero__sub,
+  .lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art{ opacity: 1; translate: none; }
 }
 </style>
 <style id="tweak-hooks">
@@ -511,18 +453,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<noscript><style>.hero.anim .hero__badge,.hero.anim .hero__title,.hero.anim .hero__sub,.hero.anim .hero__actions,.hero.anim .hero__maker{opacity:1;translate:0 0}.hero.anim .hero__actions .btn--primary{opacity:1;scale:1}.hero.anim .hero__title .mark svg path{stroke-dashoffset:0}</style></noscript>
+<noscript><style>.site-nav.anim{opacity:1;translate:none}.lnhero.anim .lnhero__kicker,.lnhero.anim .lnhero__title,.lnhero.anim .lnhero__sub,.lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art{opacity:1;translate:none}</style></noscript>
 <script>
-/* エントランス：読み込み時にヒーローをフェードアップ表示（ローダー廃止） */
+/* エントランス：読み込み時にナビ＋ヒーローをフェード表示（ローダー廃止） */
 (function(){
-  function play(){var h=document.querySelector('.hero.anim');if(!h)return;requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.remove('anim');});});}
+  function clear(){document.querySelectorAll('.site-nav.anim,.lnhero.anim').forEach(function(el){el.classList.remove('anim');});}
+  function play(){requestAnimationFrame(function(){requestAnimationFrame(clear);});}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',play);else play();
-  setTimeout(function(){var h=document.querySelector('.hero.anim');if(h)h.classList.remove('anim');},2600);
+  setTimeout(clear,2600);
 })();
 </script>
 
 <!-- ===== NAV ===== -->
-<nav class="site-nav">
+<nav class="site-nav anim">
   <div class="site-nav__inner">
     <a href="index.html" class="site-nav__logo" aria-label="LinPlan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>linplan<span style="color:var(--orange)">.</span></span></a>
     <div class="site-nav__links">
@@ -555,15 +498,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main>
 
 <!-- ===== HERO ===== -->
-<header class="lnhero">
+<header class="lnhero anim">
   <div class="container lnhero__grid">
     <div class="lnhero__copy">
       <div class="lnhero__kicker">
-        <span class="lnhero__hand">ひとりでていねいに</span>
+        <span class="lnhero__hand">千葉県船橋市のホームページ制作</span>
       </div>
-      <h1 class="lnhero__title">ちいさな計画から、<br><span class="lnwave">ずっと続くサイトを</span>。</h1>
-      <p class="lnhero__sub">船橋でひとり、Webサイトをつくっています。お店の想いをじっくり聞いて、「らしさ」のあるサイトに。
-公開してからも、長くいっしょに育てます。</p>
+      <h1 class="lnhero__title">一緒に育てていける<br>サイト作りを。</h1>
+      <p class="lnhero__sub">船橋でひとり、ホームページをつくっています。<br>お店の想いをじっくり聞いて、「らしさ」のあるサイトに。<br>
+公開してからも、長くいっしょに育てていきましょう。</p>
       <div class="lnhero__actions">
         <a href="works.html" class="btn btn--outline">制作実績を見る</a>
       </div>
@@ -585,14 +528,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="profile reveal">
       <figure class="profile__photo">
         <span class="tape tape--yellow" style="top:-13px;left:50%;transform:translateX(-50%) rotate(-3deg)" aria-hidden="true"></span>
-        <div class="ph-img"><img src="images/profile.png" alt="坪山ひろやま" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:inherit"></div>
-        <figcaption>坪山ひろやま</figcaption>
+        <div class="ph-img"><img src="images/profile.png" alt="坪山ちひろ" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:inherit"></div>
+        <figcaption>坪山ちひろ</figcaption>
       </figure>
       <div>
         
         <span class="eyebrow" style="display:block;margin-bottom:10px">About me</span>
-        <h2 style="line-height:1.55">こんにちは。<br>LinPlan 代表の坪山ひろやまです。</h2>
-        <p style="margin-top:18px">中小企業・店舗向けの Web・アプリ・AI を、企画から運用まで一人で担当しています。<br>意思決定が早く、伝言ゲームのような行き違いがなく、コード・データもすべてお客様のもの。<br>NDA・適格請求書発行・インボイス制度にも対応しています。</p>
+        <h2 style="line-height:1.55">こんにちは。<br>Linplan 代表の坪山ちひろです。</h2>
+        <p style="margin-top:18px">HP制作会社で腕を磨いた後、独立。<br>現在はシステムエンジニアとしての知識を生かしつつHP制作中。<br>ホームページ制作だけでなく、業務アプリの制作やAI業務支援なども行っています。<br>制作は、お客様と出来るだけ「対面」でコミュニケーションを取ることを、大切にしています。</p>
         <a href="about.html" class="btn btn--ghost hand" style="margin-top:26px">詳しいプロフィールを見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
@@ -629,8 +572,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="section__head reveal">
       <span class="eyebrow">Service Map</span>
-      <h2>芽から、森へ育てる。</h2>
-      <p class="section__desc" style="margin-top:10px">事業は、お客さまと出会って、つながって、ゆっくり伸びていくもの。<br>その成長を、段階ごとに、そばで支えていけたらと思っています。</p>
+      <h2>ホームページを、事業の武器に。</h2>
+      <p class="section__desc" style="margin-top:10px">ホームページを作ったはいいものの、「あるだけ」になっていませんか？<br>私たちは制作を通じて、いっしょに事業の成長のお手伝いをしていきます。</p>
     </div>
 
     <div class="smc-wrap reveal reveal-d1">
@@ -646,8 +589,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="smc-step__txt">
           <span class="smc-num" style="color:var(--teal)">STEP 01 ・ 集客 / Web</span>
-          <h3>まず、出会う</h3>
-          <p>Webサイトで見つけてもらい、新しいお客さまとの最初の接点を。ここが種まきです。</p>
+          <h3>ホームページ出来上がり</h3>
+          <p>ホームページから見つけてもらい、新しいお客さまとの最初の接点を。</p>
         </div>
       </div>
 
@@ -658,7 +601,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="smc-step__txt">
           <span class="smc-num" style="color:#8C6A3F">STEP 02 ・ 継続 / アプリ</span>
           <h3>つながり続ける</h3>
-          <p>予約・会員などの業務アプリで関係を育てる。幹を太くしていく段階です。</p>
+          <p>予約・会員などの業務アプリで関係を育てる。業務を拡大していく段階です。</p>
         </div>
       </div>
 
@@ -669,7 +612,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="smc-step__txt">
           <span class="smc-num" style="color:var(--orange-deep)">STEP 03 ・ 効率 / AI</span>
           <h3>大きく広げる</h3>
-          <p>AIで手間を減らし、空いた時間を成長へ。木が森になるように、事業を育てます。</p>
+          <p>AIで手間を減らし、空いた時間を成長へ。<br>木が森になるように、事業を育てます。</p>
         </div>
       </div>
 
@@ -687,7 +630,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="grow-line">3つがめぐって、<b>事業が育っていく。</b></p>
     </div>
 
-    <p class="svc-note reveal reveal-d2">もちろん、まずは1つだけのご依頼も大歓迎。今の事業に必要な「次の一歩」から始めましょう。</p>
+    <p class="svc-note svc-note--em reveal reveal-d2">もちろん、まずは1つだけのご依頼も大歓迎。今の事業に必要な<b>「次の一歩」</b>から始めましょう。</p>
   </div>
 </section>
 
@@ -714,8 +657,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .prob-card p{font-size:.86rem;color:var(--ink-soft);line-height:1.9;margin:0}
 .prob-bridge{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:48px}
 .prob-bridge svg{color:var(--teal)}
-.prob-bridge p{font-family:var(--hand);font-size:1.08rem;font-weight:600;color:var(--ink);margin:0}
-.prob-bridge p b{color:var(--orange-deep);font-weight:600}
+.prob-bridge svg path{stroke-dasharray:64;stroke-dashoffset:64}
+.prob-bridge.is-visible svg path{animation:bridge-draw .7s var(--ease) .25s forwards}
+.prob-bridge.is-visible svg path + path{animation-duration:.35s;animation-delay:.8s}
+@keyframes bridge-draw{to{stroke-dashoffset:0}}
+.prob-bridge p{font-family:var(--hand);font-size:1.3rem;font-weight:600;color:var(--ink);margin:0;
+  opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease) .55s,transform .55s var(--ease) .55s}
+.prob-bridge.is-visible p{opacity:1;transform:none}
+@media(max-width:760px){.prob-bridge p{font-size:1.12rem}}
+.prob-bridge p b{color:var(--orange-deep);font-weight:600;position:relative;z-index:0}
+.prob-bridge p b::after{content:"";position:absolute;left:-.06em;right:-.06em;bottom:.06em;height:.45em;
+  background:rgba(182,146,106,.28);border-radius:3px;z-index:-1;
+  transform:scaleX(0);transform-origin:left center;transition:transform .5s var(--ease) 1.15s}
+.prob-bridge.is-visible p b::after{transform:scaleX(1)}
+@media (prefers-reduced-motion: reduce){
+  .prob-bridge svg path{stroke-dasharray:none;stroke-dashoffset:0;animation:none}
+  .prob-bridge p{opacity:1;transform:none;transition:none}
+  .prob-bridge p b::after{transform:none;transition:none}
+}
 .prob-cta{max-height:0;overflow:hidden;opacity:0;transform:translateY(6px);pointer-events:none;font-size:.95rem;
   transition:opacity .4s var(--ease),transform .4s var(--ease),max-height .45s var(--ease),margin-top .45s var(--ease)}
 .prob-cta.is-on{max-height:54px;margin-top:8px;opacity:1;transform:none;pointer-events:auto}
@@ -728,6 +687,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .why2-card__body{flex:1}
 .why2-card h3{font-family:var(--hand);font-size:1.08rem;font-weight:600;line-height:1.5;margin:0 0 7px}
 .why2-card p{font-size:.86rem;color:var(--ink-soft);line-height:1.9;margin:0}
+.why2-card__link{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-family:var(--hand);font-size:.86rem;font-weight:600;color:var(--teal);text-decoration:none;padding-bottom:3px;border-bottom:1px dashed currentColor}
+.why2-card__link svg{transition:transform .3s var(--ease)}
+.why2-card__link:hover{color:var(--orange-deep)}
+.why2-card__link:hover svg{transform:translateX(3px)}
 .why2-card.is-primary{border-top:2px solid var(--teal)}
 .why2-card.is-primary h3{color:var(--teal)}
 .why2-card.is-note{border-top:1px dashed var(--ink-faint)}
@@ -742,7 +705,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="section__head reveal">
       <span class="eyebrow">Problem</span>
       <h2>そのサイト、AI時代も戦えていますか？</h2>
-      <p class="section__desc">検索結果の一番上は、もう青いリンクではなく<b>AIの回答</b>になりました。<br>そこに載らないと、比較してもらう土俵にすら立てないんです。</p>
+      <p class="section__desc">検索結果の一番上は、もう青いリンクではなく<b>「AIの回答」</b>になりました。<br>そこに載らないと、比較してもらう土俵にすら立てないんです。</p>
     </div>
     <p class="prob-hint hand reveal"><i aria-hidden="true"></i>心当たりのあるものに、チェックしてみてください。</p>
     <div class="prob-grid">
@@ -752,7 +715,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="prob-check" aria-hidden="true"></span>
         <div class="prob-card__body">
           <h3>Googleで上位に出ない</h3>
-          <p>SEO対策が後回しになって、競合に押されていませんか。検索からの入口が弱いままだと、来てくれる人の数も頭打ちになってしまいます。</p>
+          <p>SEO対策が後回しになって、競合に押されていませんか。<br>検索からの入口が弱いままだと、来てくれる人の数も頭打ちになってしまいます。</p>
         </div>
       </label>
 
@@ -761,7 +724,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="prob-check" aria-hidden="true"></span>
         <div class="prob-card__body">
           <h3>AIに名前を挙げてもらえない</h3>
-          <p>ChatGPTやGeminiを使う人が、急に増えています。AEO/GEOに対応していないと、その新しい入口がまるごと見えなくなってしまいます。</p>
+          <p>ChatGPTやGeminiを使う人が、急に増えています。<br>AI検索に対応していないと、その新しい入口がまるごと見えなくなってしまいます。</p>
         </div>
       </label>
 
@@ -779,7 +742,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="prob-check" aria-hidden="true"></span>
         <div class="prob-card__body">
           <h3>制作費が高くて踏み切れない</h3>
-          <p>大手の見積もりは100万円超え。私は中小規模に合わせた価格で、必要なものだけを一緒に作ります。</p>
+          <p>大手の見積もりは100万円超え。<br>私は中小規模に合わせた価格で、必要なものだけを一緒に作ります。</p>
         </div>
       </label>
 
@@ -788,7 +751,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="prob-check" aria-hidden="true"></span>
         <div class="prob-card__body">
           <h3>何から始めればいいか分からない</h3>
-          <p>Web・アプリ・AI。どれから、どの順番で進めれば成果が出るのか、お話を伺いながら一緒に整理します。</p>
+          <p>HP・アプリ・AI。<br>どれから、どの順番で進めれば成果が出るのか、お話を伺いながら一緒に整理します。</p>
         </div>
       </label>
 
@@ -797,7 +760,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="prob-check" aria-hidden="true"></span>
         <div class="prob-card__body">
           <h3>丸投げで、成果が見えない</h3>
-          <p>公開して終わり、にはしません。運用まで見据えて設計し、データを見ながら一緒に改善していきます。</p>
+          <p>公開して終わり、にはしません。<br>運用まで見据えて設計し、データを見ながら一緒に改善していきます。</p>
         </div>
       </label>
 
@@ -819,7 +782,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="section__head reveal">
       <span class="eyebrow">Services</span>
       <h2>3つの領域で、まとめて相談できる</h2>
-      <p class="section__desc">複数の会社に発注する手間はいりません。
+      <p class="section__desc">複数の会社に発注する手間はいりません。<br>
 事業を伸ばすために必要なデジタル領域を、私がまとめてお引き受けします。</p>
     </div>
     <style>
@@ -864,8 +827,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="device dev--pc reveal">
         <div class="dev-frame">
           <div class="dev-screen">
-            <h3 class="device__title">Web 制作</h3>
-            <p class="device__desc">コーポレート・店舗・サービスサイトを、AEO/GEO標準対応で。WordPressやレスポンシブ、公開後の運用まで、一通りお任せください。</p>
+            <h3 class="device__title">HP 制作</h3>
+            <p class="device__desc">コーポレート・店舗・サービスサイトを、AI検索（SEO/AEO/GEO）標準対応で。<br>WordPressやレスポンシブ、公開後の運用まで、一通りお任せください。</p>
           </div>
         </div>
         <div class="pc-neck"></div>
@@ -886,7 +849,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="robot-eyes"><i></i><i></i></div>
           <div class="dev-screen">
             <h3 class="device__title">AI 業務支援</h3>
-            <p class="device__desc">ChatGPTや生成AIを活かした業務効率化、AIチャットボットの導入をご支援します。空いた時間を、事業の成長に回せます。</p>
+            <p class="device__desc">ChatGPTや生成AIを活かした業務効率化、AIチャットボットの導入をご支援します。<br>空いた時間を、事業の成長に回せます。</p>
           </div>
         </div>
         <div class="robot-feet"><i></i><i></i></div>
@@ -902,7 +865,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="section__head reveal">
       <span class="eyebrow">Why LinPlan</span>
       <h2>その不安、ぜんぶ解消できます。</h2>
-      <p class="section__desc">さきほどの「困った」を、ひとつずつ仕組みで解決していきます。<br>私が大切にしている、<b>6つの理由</b>です。</p>
+      <p class="section__desc">さきほどの「困った」を、ひとつずつ仕組みで解決していきます。<br>私たちを選ぶ、<b>6つの理由</b>です。</p>
     </div>
     <div class="why2-grid">
 
@@ -910,15 +873,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="why2-card__check" aria-hidden="true"></span>
         <div class="why2-card__body">
           <h3>ひとりで全部、だから速い</h3>
-          <p>ヒアリング・設計・デザイン・実装・運用まで窓口ひとつ。意思決定の遅延も、伝言ゲームのような行き違いもありません。</p>
+          <p>ヒアリング・設計・デザイン・実装・運用まで窓口ひとつ。<br>HPもアプリもAIも詳しい私が、誠意を込めて対応します。</p>
+          <a href="about.html" class="why2-card__link">私についてを見る<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
 
       <div class="why2-card reveal reveal-d1">
         <span class="why2-card__check" aria-hidden="true"></span>
         <div class="why2-card__body">
-          <h3>AEO/GEO標準装備</h3>
-          <p>「AIに選ばれる」ための設計を、追加料金なしで。これからの時代の標準を、今から手に入れられます。</p>
+          <h3>SEO/AEO/GEO標準装備</h3>
+          <p>「AIに選ばれる」ための設計を、<br>追加料金なしで。<br>これからの時代の標準を、今から手に入れられ、定期的なアップデートも行います。</p>
+          <a href="aeo-geo.html" class="why2-card__link">AEO・GEOを詳しく<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
 
@@ -926,7 +891,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="why2-card__check" aria-hidden="true"></span>
         <div class="why2-card__body">
           <h3>Web・アプリ・AIワンストップ</h3>
-          <p>必要なデジタル領域をまとめて相談できる。複数の会社に発注する手間がいりません。</p>
+          <p>必要なデジタル領域をまとめて相談できる。<br>複数の会社に発注する手間がいりません。</p>
+          <a href="services.html" class="why2-card__link">サービス一覧を見る<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
 
@@ -934,23 +900,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="why2-card__check" aria-hidden="true"></span>
         <div class="why2-card__body">
           <h3>中小規模に最適化した価格</h3>
-          <p>大手代理店の半額〜1/3で、同等以上の品質を。「規模に合った投資で、最大の成果を」が基本方針です。</p>
+          <p>大手代理店の半額〜1/3で、同等以上の品質を。<br>「規模に合った投資で、最大の成果を」が基本方針です。</p>
+          <a href="pricing.html" class="why2-card__link">料金プランを見る<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
 
       <div class="why2-card reveal reveal-d1">
         <span class="why2-card__check" aria-hidden="true"></span>
         <div class="why2-card__body">
-          <h3>コード・データは全権お渡し</h3>
-          <p>契約終了後も制作物はすべてお客様のもの。適格請求書発行・NDA対応で、会社レベルの信頼性を。</p>
+          <h3>公開してからが、本番です</h3>
+          <p>作って終わりにはしません。<br>アクセスデータを見ながら一緒に改善を続け、成果の出るサイトに育てていきます。</p>
+          <a href="services.html" class="why2-card__link">サービス一覧を見る<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
 
       <div class="why2-card is-note reveal reveal-d2">
         <span class="why2-card__check" aria-hidden="true"></span>
         <div class="why2-card__body">
-          <h3>向かない場合も、正直に言います</h3>
-          <p>誇張せず、「向いていないかもしれません」と正直にお伝えします。判断の材料をお渡しするのが、私なりの誠実さだと思っています。</p>
+          <h3>向かない場合、正直に言います</h3>
+          <p>誇張せず、「向いていないかもしれません」と正直にお伝えします。<br>判断の材料をお渡しするのが、私なりの誠実さだと思っています。</p>
+          <a href="contact.html" class="why2-card__link">まずは相談してみる<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
 
@@ -1042,7 +1011,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-item"><div class="faq-q">公開後のメンテナンスはお願いできますか？</div><div class="faq-a"><div>はい。月額1万円〜の運用プランをご用意しています。単発の修正のみでも対応可能です。</div></div></div>
       <div class="faq-item"><div class="faq-q">既存サイトのリニューアルもお願いできますか？</div><div class="faq-a"><div>はい。むしろ得意分野です。現状分析から始め、既存の良い部分は活かしながらリニューアルします。</div></div></div>
       <div class="faq-item"><div class="faq-q">遠方ですが対応できますか？</div><div class="faq-a"><div>はい。打ち合わせはオンラインで完結できます。全国どこでも対応可能です。</div></div></div>
-      <div class="faq-item"><div class="faq-q">途中で担当者が変わることはありますか？</div><div class="faq-a"><div>LinPlanは坪山ひろやまひとりで運営しています。ヒアリングから納品まで一貫して同じ担当者が対応します。コード・データは全権お渡しするため、引き継ぎもスムーズです。</div></div></div>
+      <div class="faq-item"><div class="faq-q">途中で担当者が変わることはありますか？</div><div class="faq-a"><div>LinPlanは坪山ちひろひとりで運営しています。ヒアリングから納品まで一貫して同じ担当者が対応します。コード・データは全権お渡しするため、引き継ぎもスムーズです。</div></div></div>
       <div class="faq-item"><div class="faq-q">支払い方法は？分割は可能ですか？</div><div class="faq-a"><div>銀行振込が基本です。分割払いも対応可能ですので、ご相談ください。</div></div></div>
     </div>
     <div style="text-align:center;margin-top:30px" class="reveal"><a href="faq.html" class="btn btn--ghost hand">よくある質問をすべて見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
