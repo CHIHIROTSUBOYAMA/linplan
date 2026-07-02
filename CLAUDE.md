@@ -170,6 +170,6 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 ## SEO / sitemap
 
-- `sitemap.xml` / `robots.txt` はリポジトリルートに配置。新規ページ追加・削除時は `sitemap.xml` の `<urlset>` も更新する。ベース URL は `https://chihirotsuboyama.github.io/`。
-- 全 18 ページの `<head>`（`<title>` 直後）に **OGP / Twitter Card / canonical** メタを設置済み。`og:image` / `twitter:image` は `https://chihirotsuboyama.github.io/images/ogp.png`（絶対 URL）、`og:url` / canonical はページごとの絶対 URL。**新規ページ追加時は同じ一式を入れる**（`og:title` / `og:description` / URL をそのページ用に差し替える）。
+- `sitemap.xml` / `robots.txt` はリポジトリルートに配置。新規ページ追加・削除時は `sitemap.xml` の `<urlset>` も更新する。ベース URL は `https://linplan.jp/`。
+- 全 18 ページの `<head>`（`<title>` 直後）に **OGP / Twitter Card / canonical** メタを設置済み。`og:image` / `twitter:image` は `https://linplan.jp/images/ogp.png`（絶対 URL）、`og:url` / canonical はページごとの絶対 URL。**新規ページ追加時は同じ一式を入れる**（`og:title` / `og:description` / URL をそのページ用に差し替える）。
 - JSON-LD 構造化データが入っているのはブログ記事のみ（`blog/hp-cost-2026.html` に `Article` ＋ `FAQPage`）。現行 `index.html` には入っていない（FAQ は `faq.html` に分離）。構造化データを追加する場合は該当ページのコンテンツと同期させる。
