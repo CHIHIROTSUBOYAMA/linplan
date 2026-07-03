@@ -26,15 +26,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **共有ローカルファイル（全 18 ページが相対パスで読込）** — 新規ページ追加時は必ず 3 つとも入れる：
   - `base.css` … 共通コンポーネント CSS ライブラリ（ルートは `base.css`、blog は `../base.css`）。**インライン `<style>` より前、`theme.css` より前**に置く。
   - `theme.css` … DS スキン。**`<head>` 内・インライン `<style>` と `base.css` の後・`</head>` の前**（最後に読込して上書きする設計）。ルートは `theme.css`、blog は `../theme.css`。
-  - `theme.js` … 共通ナビ用スクリプト（スクロールで `.site-nav` に `.past-hero` を付与）。`</body>` 直前。ルートは `theme.js`、blog は `../theme.js`。
-- **Google Fonts** — 全 18 ページが同一の `<link>` で `Klee One` / `Zen Kaku Gothic New` を読み込む（旧 `Noto Sans JP` / `Space Grotesk` は廃止済み。`theme.css` 内の `@import` も廃止し、各 HTML の `<link>` 一本に集約）。`preconnect`（fonts.googleapis.com / fonts.gstatic.com）の 2 行は各 HTML に残す。
+  - `theme.js` … 共通ナビ用スクリプト（スクロールで `.site-nav` に `.past-hero` を付与、現在ページ表示、**FAQ アコーディオンのキーボード操作対応**＝`.faq-q` に `role="button"`/`tabindex` を付与し Enter/Space で開閉）。`</body>` 直前。ルートは `theme.js`、blog は `../theme.js`。
+- **Google Fonts** — 全ページ（404 含む）が同一 URL で `Klee One`（400;600）/ `Zen Kaku Gothic New`（400;500;700。**900 は未使用のため読み込まない**）を読み込む（旧 `Noto Sans JP` / `Space Grotesk` は廃止済み。`theme.css` 内の `@import` も廃止）。**読み込みは非同期 3 点セット**（`preload as="style"` → `media="print" onload="this.media='all'"` の stylesheet → `<noscript>` フォールバック）で、レンダーブロッキングを回避している。`preconnect`（fonts.googleapis.com / fonts.gstatic.com）の 2 行は各 HTML に残す。**新規ページ追加時はこの 3 点セットごとコピーする**。
   - `Klee One`（`--hand`）= 手書き風の見出し・ボタン・ロゴ
   - `Zen Kaku Gothic New`（`--font` / `--en`）= 本文・英字ラベル
 - **Google Tag Manager（GTM）** — 全 18 ページの `<head>`（viewport 直後）に計測スニペット、`<body>` 直後に noscript 版を設置。コンテナ ID は `GTM-5DVGF39S`。**新規ページを追加するときは、この 2 スニペットを必ず同じ位置に入れる**（入れ忘れると計測が欠落する）。
 - **メインランドマーク（`<main>`）** — 全 18 ページとも、本文を `<main>` で囲む（モバイルメニュー閉じ `</div>` の直後に `<main>`、`<footer class="site-footer">` の直前に `</main>`）。ナビ（`.site-nav`）・モバイルメニュー・フッターは `<main>` の**外**に置く（ランドマークを入れ子にしない）。**新規ページ追加時も必ず入れる**（無いと Lighthouse の「Document does not have a main landmark」で減点される）。`<main>` はブロック要素なので見た目は変わらない。
 - GSAP / SplitType / ScrollTrigger などの外部ライブラリは **使用しない**（旧 `css/` `js/vendor/` は撤去済み。リビールは自前の `IntersectionObserver` で実装）。
 
-## ページ一覧（18 ページ）
+## ページ一覧（18 ページ ＋ 404.html）
 
 | ファイル | 役割 |
 |---|---|
@@ -42,7 +42,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `about.html` | 私について（プロフィール詳細） |
 | `services.html` | サービス紹介 |
 | `aeo-geo.html` | AEO / GEO（生成AI最適化）解説ページ |
-| `works.html` | 制作実績ギャラリー（Original Products / Real Works / Practice Works） |
+| `works.html` | 制作実績ギャラリー（現在の掲載は Original Products / Real Works（見本サイト）の 2 グループ。Practice Works は非掲載） |
 | `pricing.html` | 料金プラン |
 | `faq.html` | よくあるご質問 |
 | `contact.html` | お問い合わせフォームページ |
@@ -55,6 +55,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `blog/wordpress-vs-original.html` | ブログ記事（WordPress と独自制作の比較） |
 | `blog/sme-ai-search-ready.html` | ブログ記事（中小企業の AI 検索対応） |
 | `blog/cited-by-chatgpt.html` | ブログ記事（ChatGPT に引用されるには） |
+| `404.html` | 404 エラーページ（GitHub Pages 用。`noindex`・sitemap 対象外・OGP なし。**共有ファイルはルート相対パス**（`/base.css` `/theme.css` `/theme.js`）で参照する — どの階層の URL でも表示されるため） |
 
 ナビ／モバイルメニューのリンク構成は全ページ共通：私について（about）/ サービス（services）/ AEO・GEO（aeo-geo）/ 制作実績（works）/ 料金（pricing）/ よくある質問（faq）/ 相談室（blog/index.html）/ 無料で相談！（contact、CTA ボタン）。フッターはこれにプライバシーポリシー（privacy）と特定商取引法に基づく表記（tokushoho）を加えた構成。
 
@@ -63,7 +64,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```
 /
 ├─ index.html / about.html / services.html / aeo-geo.html / works.html /
-│  pricing.html / faq.html / contact.html / privacy.html / tokushoho.html
+│  pricing.html / faq.html / contact.html / privacy.html / tokushoho.html / 404.html
+├─ files/
+│   └─ linplan-services.pdf   サービス紹介PDF（A4・10p。services / contact に DL リンク）
 ├─ base.css               共通コンポーネント CSS ライブラリ（全ページ共有）
 ├─ theme.css              DS スキン（最後に読込して上書き。全ページ共有）
 ├─ theme.js               共通ナビ用スクリプト（全ページ共有）
@@ -112,6 +115,8 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 ```
 
 背景は `body` に `#FDFBF5` ベース＋ radial-gradient のドットパターン（`theme.css` が `!important` で指定）。
+
+印刷スタイル（`@media print`）は **`theme.css` 末尾**に配置（ナビ・FAB 等を非表示、`.reveal` を強制表示。カスケード最後の `theme.css` に置くことで `body` 背景の `!important` にも勝てる）。
 
 ### 共通コンポーネントパターン
 
@@ -172,4 +177,4 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 - `sitemap.xml` / `robots.txt` はリポジトリルートに配置。新規ページ追加・削除時は `sitemap.xml` の `<urlset>` も更新する。ベース URL は `https://linplan.jp/`。
 - 全 18 ページの `<head>`（`<title>` 直後）に **OGP / Twitter Card / canonical** メタを設置済み。`og:image` / `twitter:image` は `https://linplan.jp/images/ogp.png`（絶対 URL）、`og:url` / canonical はページごとの絶対 URL。**新規ページ追加時は同じ一式を入れる**（`og:title` / `og:description` / URL をそのページ用に差し替える）。
-- JSON-LD 構造化データが入っているのはブログ記事のみ（`blog/hp-cost-2026.html` に `Article` ＋ `FAQPage`）。現行 `index.html` には入っていない（FAQ は `faq.html` に分離）。構造化データを追加する場合は該当ページのコンテンツと同期させる。
+- JSON-LD 構造化データは**主要ページに設置済み**：`index.html`（`ProfessionalService`＋`Person`）／ `about.html`（`AboutPage`＋`Person`）／ `services.html`（`Service`×3）／ `contact.html`（`ContactPage`）／ `faq.html`（`FAQPage`＝ページ上の全 FAQ と同期）／ works・pricing・aeo-geo・about・services・contact・faq（`BreadcrumbList`）／ ブログ記事（`Article`、FAQ を含む記事は `FAQPage` も）。**構造化データは該当ページの表示コンテンツと必ず同期させる**（FAQ を増減したら `faq.html` の JSON-LD も更新する）。

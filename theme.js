@@ -14,6 +14,15 @@
     window.addEventListener('resize', onScroll);
     onScroll();
 
+    /* FAQ アコーディオンのキーボード操作対応（クリックは各ページのインライン JS が処理） */
+    document.querySelectorAll('.faq-q').forEach(function (q) {
+      q.setAttribute('role', 'button');
+      q.setAttribute('tabindex', '0');
+      q.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); q.click(); }
+      });
+    });
+
     /* current page indicator（PC ピルナビのみ。CTA ボタンは対象外） */
     var here = location.pathname.replace(/\/$/, '/index.html');
     nav.querySelectorAll('.site-nav__links a:not(.site-nav__cta)').forEach(function (a) {

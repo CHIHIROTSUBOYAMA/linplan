@@ -23,10 +23,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="制作実績 ｜ Linplan">
 <meta name="twitter:description" content="Linplan の制作実績。自社プロダクト・制作実績・模写作品の3カテゴリでご紹介します。">
 <meta name="twitter:image" content="https://linplan.jp/images/ogp.png">
-<meta name="description" content="Linplan の制作実績。自社プロダクト・制作実績・模写作品の3カテゴリでご紹介します。">
+<meta name="description" content="Linplan の制作実績。自社プロダクトと、実案件と同じ品質・本番仕様で仕上げた見本サイトをご紹介します。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://linplan.jp/" },
+    { "@type": "ListItem", "position": 2, "name": "制作実績", "item": "https://linplan.jp/works.html" }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"></noscript>
 <link rel="stylesheet" href="base.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='12' fill='%23B6926A'/%3E%3Ctext x='26' y='37' font-family='sans-serif' font-size='30' font-weight='700' fill='%231F2838' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 <style>@media(max-width:560px){br.dt{display:none}.phero h1{font-size:1.6rem;line-height:1.5;letter-spacing:0}.phero p{font-size:.95rem}}</style>
@@ -63,7 +73,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a><a href="blog/index.html">相談室</a>
       <a href="contact.html" class="btn site-nav__cta">無料で相談！</a>
     </div>
-    <button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mobile-menu">
@@ -90,19 +100,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="works-group reveal">
       <div class="works-group__head"><h3>Original Products｜自社プロダクト</h3><p>依頼ではなく、自分で課題を見つけて企画・設計・実装まで完結させたプロダクト。継続的に運用・改善しています。同じ作り手・同じ品質で、お客様の開発にも対応します。</p></div>
       <div class="works-grid is-pair">
-        <div class="polaroid"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/studyreport.webp" loading="lazy" decoding="async" alt="学習時間記録アプリ StudyReport"></div><div class="polaroid__name">学習時間記録 StudyReport</div><div class="polaroid__tags"><span>React</span><span>TypeScript</span><span>Firebase</span></div></div>
-        <div class="polaroid"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/tsukimi.webp" loading="lazy" decoding="async" alt="家計簿アプリ Tsukimi"></div><div class="polaroid__name">家計簿アプリ Tsukimi</div><div class="polaroid__tags"><span>Next.js</span><span>Supabase</span><span>TypeScript</span></div></div>
+        <div class="polaroid"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/studyreport.webp" width="1475" height="911" loading="lazy" decoding="async" alt="学習時間記録アプリ StudyReport"></div><div class="polaroid__name">学習時間記録 StudyReport</div><div style="font-size:.8rem;color:var(--ink-soft);line-height:1.7;margin:4px 12px 8px">毎日の学習を見える化して、「続かない」をなくすアプリ</div><div class="polaroid__tags"><span>React</span><span>TypeScript</span><span>Firebase</span></div></div>
+        <div class="polaroid"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/tsukimi.webp" width="1465" height="932" loading="lazy" decoding="async" alt="家計簿アプリ Tsukimi"></div><div class="polaroid__name">家計簿アプリ Tsukimi</div><div style="font-size:.8rem;color:var(--ink-soft);line-height:1.7;margin:4px 12px 8px">面倒な家計簿づけを、シンプルな入力で「続けられる」に変えるアプリ</div><div class="polaroid__tags"><span>Next.js</span><span>Supabase</span><span>TypeScript</span></div></div>
       </div>
     </div>
 
     <div class="works-group reveal">
       <div class="works-group__head"><h3>Real Works｜制作実績</h3><p>ご自身の業種に近いものから、ぜひ実際に触ってみてください。実案件と同じ品質・本番仕様で仕上げた見本サイトです。「うちのお店ならこうなる」が、きっと見えてきます。</p></div>
       <div class="works-grid">
-        <a class="polaroid" href="https://chihirotsuboyama.github.io/Yui" target="_blank" rel="noopener"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/yui.webp" loading="lazy" decoding="async" alt="和食店 結 -yui- 見本サイト"></div><div class="polaroid__name"><span>和食 -結 Yui-</span></div><div class="polaroid__tags"><span>和食・飲食店</span><span>見本サイト</span></div></a>
-        <a class="polaroid" href="https://chihirotsuboyama.github.io/Akarito" target="_blank" rel="noopener"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(2deg)"></div><div class="polaroid__shot"><img src="images/akarito.webp" loading="lazy" decoding="async" alt="照明・電気工事会社 アカリトの見本サイト"></div><div class="polaroid__name"><span>アカリト Akarito</span></div><div class="polaroid__tags"><span>照明・電気工事</span><span>見本サイト</span></div></a>
-        <a class="polaroid" href="https://chihirotsuboyama.github.io/Fleurir" target="_blank" rel="noopener"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-2deg)"></div><div class="polaroid__shot"><img src="images/fleurir.webp" loading="lazy" decoding="async" alt="コスメ専門店 フルリールの見本サイト"></div><div class="polaroid__name"><span>フルリール Fleurir</span></div><div class="polaroid__tags"><span>コスメ・化粧品</span><span>見本サイト</span></div></a>
-        <a class="polaroid" href="https://chihirotsuboyama.github.io/Kuon" target="_blank" rel="noopener"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(3deg)"></div><div class="polaroid__shot"><img src="images/kuon.webp" loading="lazy" decoding="async" alt="ワイナリー 久遠の見本サイト"></div><div class="polaroid__name"><span>久遠 Kuon</span></div><div class="polaroid__tags"><span>ワイナリー・酒</span><span>見本サイト</span></div></a>
-        <a class="polaroid" href="https://chihirotsuboyama.github.io/Tomoshibitei" target="_blank" rel="noopener"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/tomoshibitei.webp" loading="lazy" decoding="async" alt="和食店 灯火亭の見本サイト"></div><div class="polaroid__name"><span>灯火亭 Tomoshibitei</span></div><div class="polaroid__tags"><span>和食・居酒屋</span><span>見本サイト</span></div></a>
+        <a class="polaroid" href="https://chihirotsuboyama.github.io/Yui" target="_blank" rel="noopener"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/yui.webp" width="720" height="5152" loading="lazy" decoding="async" alt="和食店 結 -yui- 見本サイト"></div><div class="polaroid__name"><span>和食 -結 Yui-</span></div><div class="polaroid__tags"><span>和食・飲食店</span><span>見本サイト</span></div></a>
+        <a class="polaroid" href="https://chihirotsuboyama.github.io/Akarito" target="_blank" rel="noopener"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(2deg)"></div><div class="polaroid__shot"><img src="images/akarito.webp" width="720" height="3699" loading="lazy" decoding="async" alt="照明・電気工事会社 アカリトの見本サイト"></div><div class="polaroid__name"><span>アカリト Akarito</span></div><div class="polaroid__tags"><span>照明・電気工事</span><span>見本サイト</span></div></a>
+        <a class="polaroid" href="https://chihirotsuboyama.github.io/Fleurir" target="_blank" rel="noopener"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-2deg)"></div><div class="polaroid__shot"><img src="images/fleurir.webp" width="720" height="2722" loading="lazy" decoding="async" alt="コスメ専門店 フルリールの見本サイト"></div><div class="polaroid__name"><span>フルリール Fleurir</span></div><div class="polaroid__tags"><span>コスメ・化粧品</span><span>見本サイト</span></div></a>
+        <a class="polaroid" href="https://chihirotsuboyama.github.io/Kuon" target="_blank" rel="noopener"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(3deg)"></div><div class="polaroid__shot"><img src="images/kuon.webp" width="720" height="4106" loading="lazy" decoding="async" alt="ワイナリー 久遠の見本サイト"></div><div class="polaroid__name"><span>久遠 Kuon</span></div><div class="polaroid__tags"><span>ワイナリー・酒</span><span>見本サイト</span></div></a>
+        <a class="polaroid" href="https://chihirotsuboyama.github.io/Tomoshibitei" target="_blank" rel="noopener"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="images/tomoshibitei.webp" width="720" height="4495" loading="lazy" decoding="async" alt="和食店 灯火亭の見本サイト"></div><div class="polaroid__name"><span>灯火亭 Tomoshibitei</span></div><div class="polaroid__tags"><span>和食・居酒屋</span><span>見本サイト</span></div></a>
       </div>
     </div>
 
@@ -127,7 +137,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="site-footer__logo en"><span>Linplan<b style="color:var(--orange-deep)">.</b></span></div>
   <div class="site-footer__tag">一緒に育てていけるサイト作りを。</div>
   <nav class="site-footer__nav"><a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a><a href="blog/index.html">相談室</a><a href="contact.html">お問い合わせ</a><a href="privacy.html">プライバシーポリシー</a><a href="tokushoho.html">特定商取引法に基づく表記</a></nav>
-  <div class="site-footer__meta">全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
+  <div class="site-footer__meta">千葉県船橋市を拠点に全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
   <div class="site-footer__copy">© 2026 Linplan — Web・アプリ・AI、ひとりで一気通貫。</div>
 </footer>
 
