@@ -24,9 +24,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="Web制作・アプリ開発・AI業務支援。中小企業・店舗のためのデジタルを、AEO/GEO標準対応でワンストップにご提供します。">
 <meta name="twitter:image" content="https://linplan.jp/images/ogp.png">
 <meta name="description" content="Web制作・アプリ開発・AI業務支援。中小企業・店舗のためのデジタルを、AEO/GEO標準対応でワンストップにご提供します。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "ホームページ制作",
+      "serviceType": "Web制作",
+      "description": "コーポレート・店舗・サービスサイトを、AEO/GEO（AI検索最適化）標準対応で制作。レスポンシブ対応、CMS導入、公開後の運用・改善サポートまで。",
+      "url": "https://linplan.jp/services.html#web",
+      "provider": { "@type": "ProfessionalService", "@id": "https://linplan.jp/#business", "name": "Linplan", "url": "https://linplan.jp/" },
+      "areaServed": { "@type": "Country", "name": "日本" }
+    },
+    {
+      "@type": "Service",
+      "name": "アプリ制作",
+      "serviceType": "アプリ開発",
+      "description": "iOS / Android のモバイルアプリ、業務Webアプリ・社内ツールを企画から開発・運用まで。予約・会員・在庫などの仕組み化に対応。",
+      "url": "https://linplan.jp/services.html#app",
+      "provider": { "@type": "ProfessionalService", "@id": "https://linplan.jp/#business", "name": "Linplan", "url": "https://linplan.jp/" },
+      "areaServed": { "@type": "Country", "name": "日本" }
+    },
+    {
+      "@type": "Service",
+      "name": "AI業務支援",
+      "serviceType": "AI導入支援",
+      "description": "ChatGPT・生成AIを活用した業務効率化、問い合わせ対応の自動化、独自データを使ったAIチャットボットの導入支援。",
+      "url": "https://linplan.jp/services.html#ai",
+      "provider": { "@type": "ProfessionalService", "@id": "https://linplan.jp/#business", "name": "Linplan", "url": "https://linplan.jp/" },
+      "areaServed": { "@type": "Country", "name": "日本" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://linplan.jp/" },
+        { "@type": "ListItem", "position": 2, "name": "サービス", "item": "https://linplan.jp/services.html" }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"></noscript>
 <link rel="stylesheet" href="base.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='12' fill='%23B6926A'/%3E%3Ctext x='26' y='37' font-family='sans-serif' font-size='30' font-weight='700' fill='%231F2838' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 <style>@media(max-width:560px){br.dt{display:none}.phero h1{font-size:1.6rem;line-height:1.5;letter-spacing:0}.phero p{font-size:.95rem}}</style>
@@ -63,7 +104,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a><a href="blog/index.html">相談室</a>
       <a href="contact.html" class="btn site-nav__cta">無料で相談！</a>
     </div>
-    <button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mobile-menu">
@@ -98,6 +139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>Web 制作</h2>
         <p>コーポレート・店舗・サービスサイトを、AEO/GEO 標準対応で。見つけられ、伝わり、成果を生むサイトを、公開後の運用まで見据えて設計します。</p>
         <ul><li>レスポンシブ（PC / タブレット / スマホ）</li><li>AEO/GEO 標準対応（追加料金なし）</li><li>WordPress 等の CMS で自分で更新</li><li>公開後の運用・改善サポート</li></ul>
+        <p style="margin-top:14px;font-size:.86rem;color:var(--ink-soft);background:var(--paper);border-radius:12px;padding:12px 16px"><b style="color:var(--orange-deep)">例：</b>予約が電話だけの美容室に、メニューと雰囲気が伝わるサイト＋24時間受け付けられる予約導線を。</p>
         <a href="contact.html?service=web" class="btn btn--primary hand" style="margin-top:24px">Webについて相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
@@ -112,6 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>アプリ制作</h2>
         <p>iOS / Android のモバイルアプリ、業務 Web アプリを企画から開発まで。顧客との継続接点をつくり、日々の業務を効率化します。</p>
         <ul><li>モバイルアプリ（iOS / Android）</li><li>業務 Web アプリ・社内ツール</li><li>予約・会員・在庫などの仕組み化</li><li>企画・設計から開発・運用まで</li></ul>
+        <p style="margin-top:14px;font-size:.86rem;color:var(--ink-soft);background:var(--paper);border-radius:12px;padding:12px 16px"><b style="color:var(--teal)">例：</b>紙とExcelで管理していた顧客カルテや予約台帳を、スマホから見られる業務アプリに。</p>
         <a href="contact.html?service=app" class="btn btn--primary hand" style="margin-top:24px">アプリについて相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
@@ -127,6 +170,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2>AI 業務支援</h2>
         <p>ChatGPT・生成 AI を活用した業務効率化、AI チャットボット導入支援。繰り返しの作業を圧縮し、空いた時間を事業の成長に回せます。</p>
         <ul><li>業務マニュアルの AI 化・自動応答</li><li>問い合わせ対応の自動化</li><li>文書要約・翻訳の効率化</li><li>独自データを使った AI チャットボット</li></ul>
+        <p style="margin-top:14px;font-size:.86rem;color:var(--ink-soft);background:var(--paper);border-radius:12px;padding:12px 16px"><b style="color:var(--orange-deep)">例：</b>「営業時間は？」「駐車場はある？」——毎回同じ質問への回答を、AIチャットボットで自動化。</p>
         <a href="contact.html?service=ai" class="btn btn--primary hand" style="margin-top:24px">AIについて相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
@@ -150,6 +194,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="closing-cta__actions">
       <a href="contact.html" class="btn btn--primary">無料で相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       <a href="works.html" class="closing-cta__link">まずは実績を見る</a>
+      <a href="files/linplan-services.pdf" class="closing-cta__link" download>サービス紹介PDF（無料）</a>
     </div>
   </div>
 </section>
@@ -160,7 +205,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="site-footer__logo en"><span>Linplan<b style="color:var(--orange-deep)">.</b></span></div>
   <div class="site-footer__tag">一緒に育てていけるサイト作りを。</div>
   <nav class="site-footer__nav"><a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a><a href="blog/index.html">相談室</a><a href="contact.html">お問い合わせ</a><a href="privacy.html">プライバシーポリシー</a><a href="tokushoho.html">特定商取引法に基づく表記</a></nav>
-  <div class="site-footer__meta">全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
+  <div class="site-footer__meta">千葉県船橋市を拠点に全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
   <div class="site-footer__copy">© 2026 Linplan — Web・アプリ・AI、ひとりで一気通貫。</div>
 </footer>
 
