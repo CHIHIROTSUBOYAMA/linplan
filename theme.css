@@ -106,7 +106,7 @@ body {
    STRIP the scrapbook motifs
    ============================================================ */
 /* floating blobs & stars, head squiggles, seed shapes */
-.section .blob, .cta-band .blob, .section__head > svg { display: none; }
+.section .blob, .cta-band .blob, .phero .blob, .section__head > svg { display: none; }
 /* paper-sheet backgrounds, tape strips & push-pins on every section */
 .section:not(:has(.cta-box)) > .container {
   background: transparent;
