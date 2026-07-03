@@ -248,3 +248,12 @@ body {
   /* a touch more breathing room edge-to-edge */
   .lnhero__sub, .section__desc { max-width: 100%; }
 }
+
+/* ---- 印刷スタイル（4.9）：操作 UI を隠し、リビール前の要素も必ず表示する ---- */
+@media print {
+  .site-nav, .mobile-menu, .fab, .hamburger, .scroll-hint, .blob { display: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  body { background: #fff !important; }
+  .closing-cta, .polaroid, .price-card, .faq-item, .why-card, .value-card, .flow-step { break-inside: avoid; }
+  .faq-a { max-height: none !important; }
+}
