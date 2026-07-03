@@ -24,9 +24,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="Linplan 代表・坪山ちひろのプロフィールと、仕事に対する姿勢・価値観。中小企業・店舗のデジタルを、ひとりの作り手として本気で支えます。">
 <meta name="twitter:image" content="https://linplan.jp/images/ogp.png">
 <meta name="description" content="Linplan 代表・坪山ちひろのプロフィールと、仕事に対する姿勢・価値観。中小企業・店舗のデジタルを、ひとりの作り手として本気で支えます。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://linplan.jp/about.html",
+      "url": "https://linplan.jp/about.html",
+      "name": "私について ｜ Linplan",
+      "mainEntity": { "@id": "https://linplan.jp/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://linplan.jp/#person",
+      "name": "坪山ちひろ",
+      "jobTitle": "Webデザイナー・エンジニア",
+      "description": "千葉県船橋市を拠点に、ホームページ制作・アプリ開発・AI業務支援をひとりで手がけるLinplan代表。システムエンジニア出身。",
+      "url": "https://linplan.jp/about.html",
+      "image": "https://linplan.jp/images/profile.webp",
+      "worksFor": { "@type": "ProfessionalService", "@id": "https://linplan.jp/#business", "name": "Linplan", "url": "https://linplan.jp/" },
+      "knowsAbout": ["ホームページ制作", "SEO", "AEO", "GEO", "アプリ開発", "AI業務支援"]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://linplan.jp/" },
+        { "@type": "ListItem", "position": 2, "name": "私について", "item": "https://linplan.jp/about.html" }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"></noscript>
 <link rel="stylesheet" href="base.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='12' fill='%23B6926A'/%3E%3Ctext x='26' y='37' font-family='sans-serif' font-size='30' font-weight='700' fill='%231F2838' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 <style>@media(max-width:560px){br.dt{display:none}.phero h1{font-size:1.6rem;line-height:1.5}.profile h2{font-size:1.1rem;line-height:1.6}}</style>
@@ -63,7 +95,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a><a href="blog/index.html">相談室</a>
       <a href="contact.html" class="btn site-nav__cta">無料で相談！</a>
     </div>
-    <button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mobile-menu">
@@ -90,7 +122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="profile reveal">
       <figure class="profile__photo">
-        <div class="ph-img"><img src="images/profile.webp" loading="lazy" decoding="async" alt="坪山ちひろ" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:inherit"></div>
+        <div class="ph-img"><img src="images/profile.webp" width="423" height="435" loading="lazy" decoding="async" alt="坪山ちひろ" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:inherit"></div>
         <figcaption>坪山ちひろ</figcaption>
       </figure>
       <div>
@@ -167,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="site-footer__logo en"><span>Linplan<b style="color:var(--orange-deep)">.</b></span></div>
   <div class="site-footer__tag">一緒に育てていけるサイト作りを。</div>
   <nav class="site-footer__nav"><a href="about.html">私について</a><a href="services.html">サービス</a><a href="aeo-geo.html">AEO・GEO</a><a href="works.html">制作実績</a><a href="pricing.html">料金</a><a href="faq.html">よくある質問</a><a href="blog/index.html">相談室</a><a href="contact.html">お問い合わせ</a><a href="privacy.html">プライバシーポリシー</a><a href="tokushoho.html">特定商取引法に基づく表記</a></nav>
-  <div class="site-footer__meta">全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
+  <div class="site-footer__meta">千葉県船橋市を拠点に全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
   <div class="site-footer__copy">© 2026 Linplan — Web・アプリ・AI、ひとりで一気通貫。</div>
 </footer>
 
