@@ -98,6 +98,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 @keyframes lpEnter{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}@keyframes lpEnterNav{from{opacity:0;translate:0 -14px}to{opacity:1;translate:0 0}}
 @media (prefers-reduced-motion:reduce){.phero .eyebrow,.phero h1,.phero p,.post-head__cat,.post-head__title,.post-head__meta,.blog-hero__kicker,.blog-hero__title,.blog-hero__lead,.site-nav{animation:none}}
 </style>
+<style>
+/* サービスカードのビジュアル＝トップと同じデバイス型イラスト（純CSS） */
+.feature > .feature__visual{background:transparent;box-shadow:none;padding:8px 0;transform:none;display:flex;justify-content:center;}
+.feature__visual .device{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;}
+.feature__visual .dev-frame{background:var(--ink);box-shadow:0 16px 34px rgba(44,39,34,.18);position:relative;}
+.feature__visual .dev-screen{background:var(--paper);display:flex;flex-direction:column;}
+.feature__visual .dev-label{font-family:var(--hand);font-weight:600;font-size:1.24rem;line-height:1.35;letter-spacing:-.01em;margin:0;text-align:left;}
+.feature__visual .dev-bar{height:7px;border-radius:6px;background:rgba(31,40,56,.10);margin-top:13px;}
+.feature__visual .dev-bar.s{width:64%;}
+/* monitor */
+.feature__visual .dev--pc{max-width:320px;}
+.feature__visual .dev--pc .dev-label{color:var(--orange);}
+.feature__visual .dev--pc .dev-frame{border-radius:16px;padding:13px;width:100%;}
+.feature__visual .dev--pc .dev-frame::before{content:"";position:absolute;top:5.5px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:#4d473f;}
+.feature__visual .dev--pc .dev-screen{border-radius:7px;padding:24px 22px 26px;min-height:178px;}
+.feature__visual .dev--pc .pc-neck{width:62px;height:28px;background:var(--ink);clip-path:polygon(26% 0,74% 0,100% 100%,0 100%);}
+.feature__visual .dev--pc .pc-base{width:144px;height:11px;background:var(--ink);border-radius:9px;}
+/* phone */
+.feature__visual .dev--phone{max-width:214px;}
+.feature__visual .dev--phone .dev-label{color:var(--teal);}
+.feature__visual .dev--phone .dev-frame{border-radius:34px;padding:13px 12px 15px;width:100%;}
+.feature__visual .dev--phone .dev-frame::before{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:44px;height:5px;border-radius:5px;background:#4d473f;}
+.feature__visual .dev--phone .dev-screen{border-radius:23px;padding:32px 20px 22px;min-height:316px;}
+.feature__visual .dev--phone .phone-home{width:84px;height:5px;border-radius:5px;background:var(--teal);margin:auto auto 0;}
+/* robot */
+.feature__visual .dev--robot{max-width:300px;}
+.feature__visual .dev--robot .dev-label{color:var(--orange-deep);}
+.feature__visual .dev--robot .robot-ant{display:flex;justify-content:center;gap:48px;margin-bottom:-1px;}
+.feature__visual .dev--robot .robot-ant i{width:3px;height:17px;border-radius:3px;background:var(--ink);position:relative;}
+.feature__visual .dev--robot .robot-ant i::before{content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--orange-deep);}
+.feature__visual .dev--robot .dev-frame{border-radius:22px;padding:15px 14px;width:100%;}
+.feature__visual .dev--robot .robot-eyes{display:flex;justify-content:center;gap:24px;margin-bottom:12px;}
+.feature__visual .dev--robot .robot-eyes i{width:13px;height:13px;border-radius:50%;background:var(--orange-deep);box-shadow:0 0 0 4px rgba(221,95,24,.18);}
+.feature__visual .dev--robot .dev-screen{border-radius:13px;padding:20px 18px 22px;min-height:150px;}
+.feature__visual .dev--robot .robot-feet{display:flex;justify-content:center;gap:52px;}
+.feature__visual .dev--robot .robot-feet i{width:26px;height:9px;border-radius:0 0 7px 7px;background:var(--ink);}
+</style>
 
 <nav class="site-nav">
   <div class="site-nav__inner">
@@ -123,7 +160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <span class="eyebrow">Services</span>
     <h1>Web・アプリ・AI、<br>まとめて相談できる。</h1>
-    <p>事業を伸ばすために必要なデジタル領域を、ひとつの窓口で。複数の会社に発注する手間はいりません。</p>
+    <p>事業を伸ばすために必要なデジタル領域を、ひとつの窓口で。<br>複数の会社に発注する手間はいりません。</p>
   </div>
 </header>
 
@@ -133,14 +170,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Web -->
     <div class="feature reveal" id="web">
       <div class="feature__visual">
-        <svg class="blob bob" width="22" height="22" viewBox="0 0 40 40" style="top:18px;right:24px" aria-hidden="true"><path d="M20 2l4 12 13 1-10 8 3 13-13-7-13 7 3-13-10-8 13-1z" fill="#B6926A"/></svg>
-        <svg width="120" height="120" viewBox="0 0 48 48" fill="none" stroke="#B6926A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="36" height="28" rx="3"/><path d="M6 17h36"/><circle cx="11" cy="13" r="1.1" fill="#B6926A"/><circle cx="15" cy="13" r="1.1" fill="#B6926A"/></svg>
+        <div class="device dev--pc">
+          <div class="dev-frame"><div class="dev-screen">
+            <p class="dev-label">Web 制作</p>
+            <div class="dev-bar"></div><div class="dev-bar s"></div>
+          </div></div>
+          <div class="pc-neck"></div>
+          <div class="pc-base"></div>
+        </div>
       </div>
       <div>
         <span class="feature__tag">WEB</span>
         <h2>Web 制作</h2>
-        <p>コーポレート・店舗・サービスサイトを、AEO/GEO 標準対応で。見つけられ、伝わり、成果を生むサイトを、公開後の運用まで見据えて設計します。</p>
-        <ul><li>レスポンシブ（PC / タブレット / スマホ）</li><li>AEO/GEO 標準対応（追加料金なし）</li><li>WordPress 等の CMS で自分で更新</li><li>公開後の運用・改善サポート</li></ul>
+        <p>コーポレート・店舗・サービスサイトを、SEO/AEO/GEO 標準対応で。<br>見つけられ、伝わり、成果を生むサイトを、公開後の運用まで見据えて設計します。</p>
+        <ul><li>レスポンシブ（PC / タブレット / スマホ）</li><li>SEO/AEO/GEO 標準対応（追加料金なし）</li><li>WordPress 等の CMS で自分で更新</li><li>公開後の運用・改善サポート</li></ul>
         <p style="margin-top:14px;font-size:.86rem;color:var(--ink-soft);background:var(--paper);border-radius:12px;padding:12px 16px"><b style="color:var(--orange-deep)">例：</b>予約が電話だけの美容室に、メニューと雰囲気が伝わるサイト＋24時間受け付けられる予約導線を。</p>
         <a href="contact.html?service=web" class="btn btn--primary hand" style="margin-top:24px">Webについて相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       </div>
@@ -148,13 +191,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- App -->
     <div class="feature feature--rev reveal" id="app">
-      <div class="feature__visual" style="background:var(--teal-soft)">
-        <svg width="120" height="120" viewBox="0 0 48 48" fill="none" stroke="#6B6A40" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="5" width="18" height="38" rx="4"/><path d="M21 10h6"/><circle cx="24" cy="38" r="1.4" fill="#6B6A40"/></svg>
+      <div class="feature__visual">
+        <div class="device dev--phone">
+          <div class="dev-frame"><div class="dev-screen">
+            <p class="dev-label">アプリ制作</p>
+            <div class="dev-bar"></div><div class="dev-bar s"></div>
+            <div class="phone-home"></div>
+          </div></div>
+        </div>
       </div>
       <div>
         <span class="feature__tag" style="background:var(--teal-soft);color:var(--teal)">APP</span>
         <h2>アプリ制作</h2>
-        <p>iOS / Android のモバイルアプリ、業務 Web アプリを企画から開発まで。顧客との継続接点をつくり、日々の業務を効率化します。</p>
+        <p>iOS / Android のモバイルアプリ、業務 Web アプリを企画から開発まで。<br>顧客との継続接点をつくり、日々の業務を効率化します。</p>
         <ul><li>モバイルアプリ（iOS / Android）</li><li>業務 Web アプリ・社内ツール</li><li>予約・会員・在庫などの仕組み化</li><li>企画・設計から開発・運用まで</li></ul>
         <p style="margin-top:14px;font-size:.86rem;color:var(--ink-soft);background:var(--paper);border-radius:12px;padding:12px 16px"><b style="color:var(--teal)">例：</b>紙とExcelで管理していた顧客カルテや予約台帳を、スマホから見られる業務アプリに。</p>
         <a href="contact.html?service=app" class="btn btn--primary hand" style="margin-top:24px">アプリについて相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
@@ -163,14 +212,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- AI -->
     <div class="feature reveal" id="ai">
-      <div class="feature__visual" style="background:var(--yellow-soft)">
-        <svg class="blob bob" width="26" height="26" viewBox="0 0 40 40" style="bottom:18px;left:24px" aria-hidden="true"><path d="M20 2l4 12 13 1-10 8 3 13-13-7-13 7 3-13-10-8 13-1z" fill="#B6926A"/></svg>
-        <svg width="120" height="120" viewBox="0 0 48 48" fill="none" stroke="#8C6A3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="6"/><path d="M24 8v6M24 34v6M8 24h6M34 24h6M13 13l4 4M31 31l4 4M35 13l-4 4M17 31l-4 4"/></svg>
+      <div class="feature__visual">
+        <div class="device dev--robot">
+          <div class="robot-ant"><i></i><i></i></div>
+          <div class="dev-frame">
+            <div class="robot-eyes"><i></i><i></i></div>
+            <div class="dev-screen">
+              <p class="dev-label">AI 業務支援</p>
+              <div class="dev-bar"></div><div class="dev-bar s"></div>
+            </div>
+          </div>
+          <div class="robot-feet"><i></i><i></i></div>
+        </div>
       </div>
       <div>
         <span class="feature__tag" style="background:var(--yellow-soft);color:var(--orange-deep)">AI</span>
         <h2>AI 業務支援</h2>
-        <p>ChatGPT・生成 AI を活用した業務効率化、AI チャットボット導入支援。繰り返しの作業を圧縮し、空いた時間を事業の成長に回せます。</p>
+        <p>ChatGPT・生成 AI を活用した業務効率化、AI チャットボット導入支援。<br>繰り返しの作業を圧縮し、空いた時間を事業の成長に回せます。</p>
         <ul><li>業務マニュアルの AI 化・自動応答</li><li>問い合わせ対応の自動化</li><li>文書要約・翻訳の効率化</li><li>独自データを使った AI チャットボット</li></ul>
         <p style="margin-top:14px;font-size:.86rem;color:var(--ink-soft);background:var(--paper);border-radius:12px;padding:12px 16px"><b style="color:var(--orange-deep)">例：</b>「営業時間は？」「駐車場はある？」——毎回同じ質問への回答を、AIチャットボットで自動化。</p>
         <a href="contact.html?service=ai" class="btn btn--primary hand" style="margin-top:24px">AIについて相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
@@ -181,10 +239,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- combine note -->
+<style>
+.grow-band{margin:50px auto 0;max-width:560px;text-align:center;position:relative;}
+.grow-vine{display:block;width:210px;height:auto;margin:0 auto 6px;}
+.grow-kicker{font-family:var(--hand);font-size:1.02rem;color:var(--ink-soft);letter-spacing:.06em;margin:0 0 8px;}
+.grow-line{font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);line-height:1.5;margin:0;}
+.grow-line b{color:var(--orange-deep);font-weight:600;}
+.svc-note{font-family:var(--hand);text-align:center;margin-top:44px;font-size:1rem;color:var(--ink-soft);}
+.svc-note--em{font-size:1.24rem;font-weight:600;color:var(--ink);line-height:2;}
+.svc-note--em b{color:var(--orange-deep);font-weight:600;position:relative;z-index:0;}
+.svc-note--em b::after{content:"";position:absolute;left:-.06em;right:-.06em;bottom:.1em;height:.45em;background:rgba(182,146,106,.28);border-radius:3px;z-index:-1;transform:scaleX(0);transform-origin:left center;transition:transform .55s var(--ease) .7s;}
+.svc-note--em.is-visible b::after{transform:scaleX(1);}
+@media(prefers-reduced-motion:reduce){.svc-note--em b::after{transform:none;transition:none;}}
+@media(max-width:760px){.svc-note--em{font-size:1.08rem;}}
+@media(max-width:560px){.grow-line{font-size:1.22rem;}}
+</style>
 <section class="section">
   <div class="container">
-    <div class="section__head reveal"><span class="eyebrow">1 + 1 + 1</span><h2>組み合わせると、もっと伸びる</h2><p class="section__desc">Web で新規を獲得し、アプリで継続接点をつくり、AI で業務を効率化する。「集客 × 継続 × 効率」のサイクルを、ひとつの窓口で。もちろん1つだけのご依頼も歓迎です。</p></div>
-    <div style="text-align:center" class="reveal"><a href="pricing.html" class="btn btn--ink hand">料金プランを見る<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
+    <div class="grow-band reveal reveal-d2">
+      <svg class="grow-vine" viewBox="0 0 220 56" fill="none" aria-hidden="true">
+        <path d="M10 50 C55 46 80 26 120 22 C158 18 188 14 210 8" stroke="#6B6A40" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M74 34 C68 28 68 21 75 17 C80 23 79 30 74 34Z" fill="#6B6A40" opacity=".5"/>
+        <path d="M122 22 C129 16 137 17 143 11 C136 10 128 13 122 22Z" fill="#6B6A40" opacity=".5"/>
+        <path d="M172 16 C166 10 167 4 174 1 C178 7 177 13 172 16Z" fill="#6B6A40" opacity=".5"/>
+      </svg>
+      <p class="grow-kicker">集客 × 継続 × 効率</p>
+      <p class="grow-line">3つがめぐって、<b>事業が育っていく。</b></p>
+    </div>
+    <p class="svc-note svc-note--em reveal reveal-d2">もちろん、まずは1つだけのご依頼も大歓迎。今の事業に必要な<b>「次の一歩」</b>から始めましょう。</p>
+    <div style="text-align:center;margin-top:36px" class="reveal"><a href="pricing.html" class="btn btn--ink hand">料金プランを見る<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 
@@ -192,11 +275,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="closing-cta__inner reveal">
     <div class="closing-cta__eyebrow">CONTACT</div>
     <h2 class="closing-cta__title">どれから始めるか、一緒に考えます。</h2>
-    <p class="closing-cta__sub">HP・アプリ・AI、順番に迷っていても大丈夫です。初回ヒアリングは無料・オンラインOK、ご返信は24時間以内。<br>いっしょに「次の一歩」を考えましょう。</p>
+    <p class="closing-cta__sub">HP・アプリ・AI、迷っていても大丈夫です。<br>初回ヒアリングは無料・オンラインOK、<br>ご返信は24時間以内。<br>いっしょに「次の一歩」を考えましょう。</p>
     <div class="closing-cta__actions">
       <a href="contact.html" class="btn btn--primary">無料で相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       <a href="works.html" class="closing-cta__link">まずは実績を見る</a>
-      <a href="files/linplan-services.pdf" class="closing-cta__link" download>サービス紹介PDF（無料）</a>
     </div>
   </div>
 </section>

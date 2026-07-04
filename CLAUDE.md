@@ -70,8 +70,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 /
 ├─ index.html / about.html / services.html / aeo-geo.html / works.html /
 │  pricing.html / faq.html / contact.html / privacy.html / tokushoho.html / 404.html
-├─ files/
-│   └─ linplan-services.pdf   サービス紹介PDF（A4・10p。services / contact に DL リンク）
 ├─ base.css               共通コンポーネント CSS ライブラリ（冒頭に @font-face×5。全ページ共有）
 ├─ theme.css              DS スキン（最後に読込して上書き。全ページ共有）
 ├─ theme.js               共通ナビ用スクリプト（全ページ共有）
