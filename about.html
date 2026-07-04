@@ -86,10 +86,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .stance-item b { display: block; font-size: 1.02rem; font-weight: 700; }
 .stance-item p { margin: 6px 0 0; font-size: .88rem; color: var(--ink-soft); line-height: 1.95; }
 /* MVV */
-.mvv-mission { max-width: 900px; margin: 0 auto; text-align: center; background: var(--teal-soft); border-radius: var(--radius-xl); padding: 42px 28px 38px; }
+.mvv-mission { position: relative; max-width: 760px; margin: 20px auto 0; text-align: center; border: 2px dashed var(--border-strong); border-radius: var(--radius-xl); padding: 46px 28px 38px; }
+.mvv-mission__tag { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--paper); padding: 0 12px; white-space: nowrap; }
+.mvv-mission::after { content: ""; display: block; width: 12px; height: 12px; margin: 20px auto 0; background: var(--teal); border-radius: 0 60% 0 60%; transform: rotate(8deg); }
 .mvv-label { display: inline-block; font-family: var(--en); font-weight: 700; font-size: .7rem; letter-spacing: .16em; color: var(--on-accent); background: var(--teal); padding: 5px 14px; border-radius: 100px; }
 .mvv-sub { margin-left: 8px; font-size: .78rem; font-weight: 700; color: var(--teal); }
-.mvv-mission h3 { margin-top: 16px; font-size: clamp(1.12rem, 2.6vw, 1.42rem); font-weight: 700; line-height: 1.9; }
+.mvv-mission h3 { margin-top: 0; font-size: clamp(1.12rem, 2.6vw, 1.42rem); font-weight: 700; line-height: 1.9; }
 .mvv-grid { max-width: 900px; margin: 28px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 34px 44px; }
 .mvv-col { padding-top: 20px; border-top: 2px solid var(--border-strong); }
 .mvv-col > p { margin-top: 14px; font-size: .9rem; color: var(--ink-soft); line-height: 2.05; }
@@ -177,7 +179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </figure>
       <div>
         <h2>中小企業・店舗のデジタルを、<br>ひとりの作り手として本気で支える。</h2>
-        <p>Linplan 代表の坪山ちひろです。システムエンジニアとして開発の現場を経験し、ホームページ制作会社で腕を磨いたあと、独立しました。現在は千葉県船橋市を拠点に、中小企業・店舗向けの Web 制作・アプリ開発・AI 業務支援を、<span class="hl">企画から運用までひとりで</span>担当しています。</p>
+        <p>Linplan 代表の坪山ちひろです。ホームページ制作会社で腕を磨いたあと、システムエンジニアとして開発の現場を経験し、独立しました。現在は千葉県船橋市を拠点に、中小企業・店舗向けの Web 制作・アプリ開発・AI 業務支援を、<span class="hl">企画から運用までひとりで</span>担当しています。</p>
         <p>原点にあるのは、「自分の IT スキルで、誰かの事業や暮らしを少しでも楽に、よくしたい」という思いです。</p>
         <p>ホームページはアプリと同じで、公開してからが本番です。使う人の反応に合わせてアップデートを重ね、少しずつ完成に近づいていくもの。だから Linplan では、<span class="hl">公開後の運用・改善まで基本プランに含めています</span>。</p>
         <p>制作中は、メールだけで済ませず、顔を合わせて話すことを大切にしています（オンラインでも、船橋近郊なら対面でも）。目指しているのは、<span class="hl">「専属のデジタル担当」</span>のように気軽に頼れる関係です。</p>
@@ -185,8 +187,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="career-title reveal">これまでの歩み</div>
     <div class="career reveal">
-      <div class="career-step"><small>STEP 01</small><b>システムエンジニア</b><p>開発の現場で、IT の土台を築く。</p></div>
-      <div class="career-step"><small>STEP 02</small><b>ホームページ制作会社</b><p>Web 制作の実務で腕を磨く。</p></div>
+      <div class="career-step"><small>STEP 01</small><b>ホームページ制作会社</b><p>Web 制作の実務で腕を磨く。</p></div>
+      <div class="career-step"><small>STEP 02</small><b>システムエンジニア</b><p>開発の現場で、IT の土台を築く。</p></div>
       <div class="career-step"><small>STEP 03</small><b>独立・Linplan 開業</b><p>船橋を拠点に、企画から運用までひとりで一気通貫。</p></div>
     </div>
   </div>
@@ -214,8 +216,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="section__head reveal"><span class="eyebrow">Mission / Vision / Value</span><h2>大切にしている考え方</h2></div>
     <div class="mvv-mission reveal">
-      <span class="mvv-label">MISSION</span><span class="mvv-sub">使命</span>
-      <h3>中小企業・店舗のデジタルを、<br class="dt">ひとりの作り手として、本気で支える。</h3>
+      <span class="mvv-mission__tag"><span class="mvv-label">MISSION</span><span class="mvv-sub">使命</span></span>
+      <h3>中小企業・店舗のデジタルを、<br class="dt">ひとりの作り手として、<span class="hl">本気で支える。</span></h3>
     </div>
     <div class="mvv-grid">
       <div class="mvv-col reveal">
