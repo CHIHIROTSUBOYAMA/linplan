@@ -451,24 +451,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .prob-card p{font-size:.86rem;color:var(--ink-soft);line-height:1.9;margin:0}
 .prob-bridge{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:48px}
 .prob-bridge svg{color:var(--teal)}
-.prob-bridge svg path{stroke-dasharray:64;stroke-dashoffset:64}
-.prob-bridge.is-visible svg path{animation:bridge-draw .7s var(--ease) .25s forwards}
-.prob-bridge.is-visible svg path + path{animation-duration:.35s;animation-delay:.8s}
-@keyframes bridge-draw{to{stroke-dashoffset:0}}
-.prob-bridge p{font-family:var(--hand);font-size:1.3rem;font-weight:600;color:var(--ink);margin:0;
-  opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease) .55s,transform .55s var(--ease) .55s}
-.prob-bridge.is-visible p{opacity:1;transform:none}
+.prob-bridge p{font-family:var(--hand);font-size:1.3rem;font-weight:600;color:var(--ink);margin:0}
 @media(max-width:760px){.prob-bridge p{font-size:1.12rem}}
 .prob-bridge p b{color:var(--orange-deep);font-weight:600;position:relative;z-index:0}
 .prob-bridge p b::after{content:"";position:absolute;left:-.06em;right:-.06em;bottom:.06em;height:.45em;
-  background:rgba(182,146,106,.28);border-radius:3px;z-index:-1;
-  transform:scaleX(0);transform-origin:left center;transition:transform .5s var(--ease) 1.15s}
-.prob-bridge.is-visible p b::after{transform:scaleX(1)}
-@media (prefers-reduced-motion: reduce){
-  .prob-bridge svg path{stroke-dasharray:none;stroke-dashoffset:0;animation:none}
-  .prob-bridge p{opacity:1;transform:none;transition:none}
-  .prob-bridge p b::after{transform:none;transition:none}
-}
+  background:rgba(182,146,106,.28);border-radius:3px;z-index:-1}
 .prob-cta{max-height:0;overflow:hidden;opacity:0;transform:translateY(6px);pointer-events:none;font-size:.95rem;
   transition:opacity .4s var(--ease),transform .4s var(--ease),max-height .45s var(--ease),margin-top .45s var(--ease)}
 .prob-cta.is-on{max-height:54px;margin-top:8px;opacity:1;transform:none;pointer-events:auto}
