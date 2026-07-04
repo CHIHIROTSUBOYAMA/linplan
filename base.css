@@ -4,6 +4,48 @@
    ページ固有のCSSは各HTMLのインライン<style>に残す。
    ============================================================ */
 
+/* ------------------------------------------------------------
+   Web フォント（セルフホスト・サブセット済み woff2）
+   fonts/ 配下に使用文字のみ収録したサブセットを置く。
+   再生成手順は CLAUDE.md「外部依存 > Web フォント」を参照。
+   URL は base.css からの相対（blog/ からも ../base.css 経由で解決される）。
+   ------------------------------------------------------------ */
+@font-face {
+  font-family: 'Klee One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/KleeOne-Regular.subset.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Klee One';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/KleeOne-SemiBold.subset.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/ZenKakuGothicNew-Regular.subset.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/ZenKakuGothicNew-Medium.subset.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/ZenKakuGothicNew-Bold.subset.woff2") format("woff2");
+}
+
 /* ============================================================
    Linplan リニューアル — V4「スクラップブック」デザインシステム
    vanilla CSS / レスポンシブ / 公開用

@@ -17,19 +17,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 動作確認
 
-ビルド・テスト・lint コマンドは存在しない。各 HTML ファイルをブラウザで開いて確認する。ただし **`base.css` / `theme.css` / `theme.js` を相対パスで読み込む**ため、`file://` 直開きよりも**ローカルサーバー経由（例：`npx http-server` や `python -m http.server`）が確実**（`.claude/launch.json` に `portfolio` 設定あり）。フォントは Google Fonts を CDN 経由で読み込むため、確認にはインターネット接続が必要（オフラインではフォールバックフォントになる）。
+ビルド・テスト・lint コマンドは存在しない。各 HTML ファイルをブラウザで開いて確認する。ただし **`base.css` / `theme.css` / `theme.js` / `fonts/` を相対パスで読み込む**ため、`file://` 直開きよりも**ローカルサーバー経由（例：`npx http-server` や `python -m http.server`）が確実**（`.claude/launch.json` に `portfolio` 設定あり）。フォントはセルフホスト（`fonts/`）のためオフラインでも表示される。
+
+**Lighthouse の Performance 計測は `node tools/serve-gzip.js`（gzip 配信、既定 8080 番）で行う** — 本番の GitHub Pages は gzip 圧縮で配信するが、`npx http-server` は非圧縮のためスコアが実態より 20 点以上低く出る。計測コマンドは `npx lighthouse http://localhost:8080/ --preset=desktop`（2026-07 時点でトップ 92〜93、他ページ 91〜95）。
 
 **見た目を変えない CSS リファクタの検証**は、`preview_eval` で全要素の computed style を移行前後で比較するダイジェスト方式が確実（スクリーンショット比較に頼らない。「どの定義が実際に効いているか」を直接見る）。
 
 ## 外部依存
 
-- **共有ローカルファイル（全 18 ページが相対パスで読込）** — 新規ページ追加時は必ず 3 つとも入れる：
+- **共有ローカルファイル（全 18 ページが相対パスで読込）** — 新規ページ追加時は必ず 3 つとも入れる（＋下記 Web フォントの preload 5 行セット）：
   - `base.css` … 共通コンポーネント CSS ライブラリ（ルートは `base.css`、blog は `../base.css`）。**インライン `<style>` より前、`theme.css` より前**に置く。
   - `theme.css` … DS スキン。**`<head>` 内・インライン `<style>` と `base.css` の後・`</head>` の前**（最後に読込して上書きする設計）。ルートは `theme.css`、blog は `../theme.css`。
   - `theme.js` … 共通ナビ用スクリプト（スクロールで `.site-nav` に `.past-hero` を付与、現在ページ表示、**FAQ アコーディオンのキーボード操作対応**＝`.faq-q` に `role="button"`/`tabindex` を付与し Enter/Space で開閉）。`</body>` 直前。ルートは `theme.js`、blog は `../theme.js`。
-- **Google Fonts** — 全ページ（404 含む）が同一 URL で `Klee One`（400;600）/ `Zen Kaku Gothic New`（400;500;700。**900 は未使用のため読み込まない**）を読み込む（旧 `Noto Sans JP` / `Space Grotesk` は廃止済み。`theme.css` 内の `@import` も廃止）。**読み込みは非同期 3 点セット**（`preload as="style"` → `media="print" onload="this.media='all'"` の stylesheet → `<noscript>` フォールバック）で、レンダーブロッキングを回避している。`preconnect`（fonts.googleapis.com / fonts.gstatic.com）の 2 行は各 HTML に残す。**新規ページ追加時はこの 3 点セットごとコピーする**。
+- **Web フォント（セルフホスト・サブセット済み woff2）** — `Klee One`（400;600）/ `Zen Kaku Gothic New`（400;500;700）を **`fonts/` 配下の 5 つの `*.subset.woff2`** で配信する（Google Fonts CDN・`preconnect` は全廃済み。旧 `Noto Sans JP` / `Space Grotesk` も廃止済み）。仕組みは 2 段構え：
+  1. **`@font-face` は `base.css` 冒頭**に 5 個定義（`font-display: swap`。URL は `base.css` からの相対 `fonts/...` なので blog / 404 からもそのまま解決される）。
+  2. **各 HTML の `<head>` に 5 フォントぶんの `<link rel="preload" as="font" type="font/woff2" ... crossorigin>`** を置く（`base.css` の直前）。パスは階層で変える：ルート `fonts/`、blog `../fonts/`、404.html のみルート相対 `/fonts/`。**新規ページ追加時はこの 5 行セットをコピーする**（`crossorigin` を忘れると二重ダウンロードになる）。**preload を外すと Lighthouse スコアが大きく落ちる**：フォントは CSS 経由で発見されると VeryHigh 優先度になり Lighthouse（Lantern）が FCP のブロッキング資源として扱うが、preload 経由だと High 優先度になり FCP 依存から外れる（実 UX でも FOUT が短くなる）。
   - `Klee One`（`--hand`）= 手書き風の見出し・ボタン・ロゴ
   - `Zen Kaku Gothic New`（`--font` / `--en`）= 本文・英字ラベル
+  - **再生成**：`pip install fonttools brotli` して `python tools/subset-fonts.py`（元 TTF は google/fonts から自動取得）。Zen は全 HTML/CSS/JS から使用文字を自動収集するので**文章を追加・変更したら再実行**するだけでよい。Klee は `tools/klee-chars.txt` の文字＋かな・約物のみ収録（1 グリフが重いため最小化）なので、**見出し・ボタン等（`--hand` 系）に新しい漢字を使ったら `tools/klee-chars.txt` に追記して再実行**する（漏れるとその文字だけ Zen Kaku フォールバックになる）。
 - **Google Tag Manager（GTM）** — 全 18 ページの `<head>`（viewport 直後）に計測スニペット、`<body>` 直後に noscript 版を設置。コンテナ ID は `GTM-5DVGF39S`。**新規ページを追加するときは、この 2 スニペットを必ず同じ位置に入れる**（入れ忘れると計測が欠落する）。
 - **メインランドマーク（`<main>`）** — 全 18 ページとも、本文を `<main>` で囲む（モバイルメニュー閉じ `</div>` の直後に `<main>`、`<footer class="site-footer">` の直前に `</main>`）。ナビ（`.site-nav`）・モバイルメニュー・フッターは `<main>` の**外**に置く（ランドマークを入れ子にしない）。**新規ページ追加時も必ず入れる**（無いと Lighthouse の「Document does not have a main landmark」で減点される）。`<main>` はブロック要素なので見た目は変わらない。
 - GSAP / SplitType / ScrollTrigger などの外部ライブラリは **使用しない**（旧 `css/` `js/vendor/` は撤去済み。リビールは自前の `IntersectionObserver` で実装）。
@@ -55,7 +60,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `blog/wordpress-vs-original.html` | ブログ記事（WordPress と独自制作の比較） |
 | `blog/sme-ai-search-ready.html` | ブログ記事（中小企業の AI 検索対応） |
 | `blog/cited-by-chatgpt.html` | ブログ記事（ChatGPT に引用されるには） |
-| `404.html` | 404 エラーページ（GitHub Pages 用。`noindex`・sitemap 対象外・OGP なし。**共有ファイルはルート相対パス**（`/base.css` `/theme.css` `/theme.js`）で参照する — どの階層の URL でも表示されるため） |
+| `404.html` | 404 エラーページ（GitHub Pages 用。`noindex`・sitemap 対象外・OGP なし。**共有ファイルはルート相対パス**（`/base.css` `/theme.css` `/theme.js`、フォント preload も `/fonts/...`）で参照する — どの階層の URL でも表示されるため） |
 
 ナビ／モバイルメニューのリンク構成は全ページ共通：私について（about）/ サービス（services）/ AEO・GEO（aeo-geo）/ 制作実績（works）/ 料金（pricing）/ よくある質問（faq）/ 相談室（blog/index.html）/ 無料で相談！（contact、CTA ボタン）。フッターはこれにプライバシーポリシー（privacy）と特定商取引法に基づく表記（tokushoho）を加えた構成。
 
@@ -67,9 +72,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │  pricing.html / faq.html / contact.html / privacy.html / tokushoho.html / 404.html
 ├─ files/
 │   └─ linplan-services.pdf   サービス紹介PDF（A4・10p。services / contact に DL リンク）
-├─ base.css               共通コンポーネント CSS ライブラリ（全ページ共有）
+├─ base.css               共通コンポーネント CSS ライブラリ（冒頭に @font-face×5。全ページ共有）
 ├─ theme.css              DS スキン（最後に読込して上書き。全ページ共有）
 ├─ theme.js               共通ナビ用スクリプト（全ページ共有）
+├─ fonts/                 セルフホストの Web フォント（サブセット済み woff2×5。
+│                          KleeOne-{Regular,SemiBold} / ZenKakuGothicNew-{Regular,Medium,Bold}）
+├─ tools/
+│   ├─ subset-fonts.py    fonts/ の再生成スクリプト（fonttools + brotli が必要）
+│   ├─ klee-chars.txt     Klee One に収録する文字リスト（--hand 系で新しい漢字を使ったら追記）
+│   └─ serve-gzip.js      Lighthouse 計測用の gzip 配信サーバー（本番 GitHub Pages 相当）
 ├─ blog/
 │   ├─ index.html          相談室（ブログ一覧）
 │   └─ *.html              ブログ記事（hp-cost-2026 / how-to-order-website /
@@ -157,7 +168,7 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 ## ブログ（相談室）の運用
 
-`blog/` 配下が「中小企業のHP・IT・AI 相談室」。`blog/index.html` が記事一覧、`blog/hp-cost-2026.html` 以降が個別記事。デザイン・共通コンポーネントはルートのページと同一だが、共有ファイルは **`../base.css` / `../theme.css` / `../theme.js`**（1 階層上）で参照する。記事固有の本文スタイルは各記事の HTML 内インライン `<style>` に持つ。
+`blog/` 配下が「中小企業のHP・IT・AI 相談室」。`blog/index.html` が記事一覧、`blog/hp-cost-2026.html` 以降が個別記事。デザイン・共通コンポーネントはルートのページと同一だが、共有ファイルは **`../base.css` / `../theme.css` / `../theme.js`**（1 階層上）で参照する（フォント preload も `../fonts/...`）。記事固有の本文スタイルは各記事の HTML 内インライン `<style>` に持つ。
 
 - **リンクは相対パスで書く** — `blog/` 配下からルートのページへは、ルート相対ではなく `../about.html` `../contact.html` のような相対パスでリンクする（ブログ内の相互リンクは `index.html` / `hp-cost-2026.html` のようにファイル名のみ）。
 - **記事を追加したら次の 3 箇所を必ず更新する**：
