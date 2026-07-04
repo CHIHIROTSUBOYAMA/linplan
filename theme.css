@@ -222,7 +222,7 @@ body {
   padding: 16px 16px 12px; transform: rotate(-1.2deg);
 }
 .lncard__tape { position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-3deg); width: 92px; height: 26px; background: linear-gradient(135deg, rgba(182,146,106,.55), rgba(214,200,172,.4)); box-shadow: 0 1px 3px rgba(95,70,40,.16); border-radius: 1px; }
-.lncard img { width: 100%; display: block; border-radius: var(--radius-md); }
+.lncard img { width: 100%; height: auto; display: block; border-radius: var(--radius-md); }
 .lncard figcaption { font-family: var(--hand); text-align: center; font-size: 1.2rem; color: var(--ink-soft); margin-top: 6px; }
 @media (max-width: 880px) {
   .lnhero { padding: 120px 0 50px; }
