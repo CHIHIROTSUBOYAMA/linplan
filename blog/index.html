@@ -34,25 +34,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    ============================================================ */
 .blog-hero{padding:120px 0 40px;text-align:center;position:relative}
 .blog-hero__kicker{font-family:var(--en);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:600;margin:0 0 14px}
+.blog-hero__seed{display:inline-block;width:9px;height:9px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg);margin-right:9px}
 .blog-hero__title{font-family:var(--hand);font-size:clamp(1.9rem,5vw,3rem);font-weight:600;line-height:1.4;margin:0 0 16px;color:var(--ink)}
+.blog-hero__title em{font-style:normal;position:relative;white-space:nowrap}
+.blog-hero__title em::after{content:"";position:absolute;left:2%;right:2%;bottom:-6px;height:10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 8 C 20 3, 42 10, 62 6 S 102 4, 117 7' fill='none' stroke='%23C24A33' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%;pointer-events:none}
 .blog-hero__lead{font-size:.98rem;line-height:2;color:var(--ink-soft);max-width:620px;margin:0 auto}
 
-/* カテゴリチップ */
+/* カテゴリチップ（クリックで絞り込み） */
 .blog-cats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 8px}
-.blog-cat{font-size:.82rem;font-weight:600;padding:7px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink-soft);text-decoration:none;transition:all .2s var(--ease);cursor:pointer}
-.blog-cat:hover,.blog-cat.is-active{border-color:var(--orange);background:var(--orange-soft);color:var(--orange-deep)}
+.blog-cat{font-family:inherit;font-size:.82rem;font-weight:600;padding:7px 16px;border-radius:999px;border:1.5px solid var(--border-strong);background:var(--paper);color:var(--ink-soft);text-decoration:none;transition:all .2s var(--ease);cursor:pointer;appearance:none}
+.blog-cat:hover{border-color:var(--orange);background:var(--orange-soft);color:var(--orange-deep)}
+.blog-cat.is-active,.blog-cat.is-active:hover{border-color:var(--orange);background:var(--orange);color:var(--on-accent)}
+.blog-cat:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+
+.blog-empty{display:none;text-align:center;color:var(--ink-soft);font-size:.92rem;padding:40px 0;margin:44px 0 20px}
+.blog-empty.is-visible{display:block}
 
 /* 記事カード一覧 */
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px;margin:44px 0 20px}
 .post-card{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease);position:relative}
 .post-card:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 14px 34px rgba(44,39,34,.13)}
-.post-card__thumb{aspect-ratio:16/9;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;font-size:1.1rem;color:var(--orange-deep);position:relative;overflow:hidden}
-.post-card__thumb span{position:relative;z-index:1;padding:0 18px;text-align:center;line-height:1.4}
+.post-card.is-hidden{display:none}
+.post-card__thumb{aspect-ratio:16/9;background:var(--orange-soft);color:var(--orange-deep);position:relative;overflow:hidden}
+.post-card__thumb::before{content:"";position:absolute;right:-22px;bottom:-22px;width:96px;height:96px;background:currentColor;opacity:.16;border-radius:0 62% 0 62%;transform:rotate(8deg)}
+.post-card__thumb::after{content:"";position:absolute;right:18px;bottom:20px;width:34px;height:34px;background:currentColor;opacity:.28;border-radius:0 62% 0 62%;transform:rotate(8deg)}
+.post-card[data-cat="choice"] .post-card__thumb{background:var(--yellow-soft);color:var(--ink)}
+.post-card[data-cat="aeo"] .post-card__thumb{background:var(--teal-soft);color:var(--teal)}
+.post-card__art{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;pointer-events:none}
+.post-card__art svg{width:52px;height:52px;opacity:.9}
+.post-card__art-word{font-family:var(--hand);font-weight:600;font-size:1rem;letter-spacing:.05em;opacity:.85}
+
+/* 最新記事のフィーチャー表示（グリッド先頭・横長） */
+.post-card--featured{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+.post-card--featured .post-card__thumb{aspect-ratio:auto;min-height:230px}
+.post-card--featured .post-card__art svg{width:70px;height:70px}
+.post-card--featured .post-card__art-word{font-size:1.15rem}
+.post-card--featured .post-card__body{padding:26px 30px}
+.post-card--featured .post-card__title{font-size:clamp(1.15rem,2.3vw,1.45rem)}
+.post-card--featured .post-card__excerpt{font-size:.9rem}
 .post-card__cat{position:absolute;top:12px;left:12px;z-index:2;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+.post-card__new{position:absolute;top:12px;right:12px;z-index:2;font-family:var(--en);font-size:.68rem;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:var(--orange);color:var(--on-accent)}
 .post-card__body{padding:20px 20px 22px;flex:1;display:flex;flex-direction:column}
 .post-card__title{font-size:1.04rem;font-weight:700;line-height:1.55;margin:0 0 10px}
 .post-card__excerpt{font-size:.84rem;color:var(--ink-soft);line-height:1.85;margin:0 0 16px;flex:1}
-.post-card__meta{font-family:var(--en);font-size:.74rem;color:var(--ink-faint);display:flex;gap:12px;align-items:center}
+.post-card__meta{font-family:var(--en);font-size:.74rem;color:var(--ink-faint);display:flex;gap:12px;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px dashed var(--line)}
+.post-card__meta-dates{display:flex;gap:12px;align-items:center}
+.post-card__more{font-weight:700;color:var(--orange-deep);transition:transform .2s var(--ease);display:inline-block}
+.post-card:hover .post-card__more{transform:translateX(3px)}
 
 /* ===== 記事本文ページ ===== */
 .post-wrap{max-width:760px;margin:0 auto;padding:0 28px}
@@ -123,6 +151,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .post-related{margin:52px 0 0}
 .post-related__ttl{font-family:var(--hand);font-size:1.3rem;font-weight:600;margin:0 0 20px;text-align:center}
 
+@media(max-width:720px){
+  .post-card--featured{display:flex}
+  .post-card--featured .post-card__thumb{aspect-ratio:16/9;min-height:0}
+  .post-card--featured .post-card__body{padding:20px 20px 22px}
+}
 @media(max-width:560px){
   .blog-grid{grid-template-columns:1fr;gap:22px}
   .post-body{font-size:.94rem}
@@ -177,16 +210,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <main>
   <section class="blog-hero">
     <div class="container">
-      <p class="blog-hero__kicker">Linplan Journal</p>
-      <h1 class="blog-hero__title">中小企業のホームページ・IT・AI 相談室</h1>
+      <p class="blog-hero__kicker"><span class="blog-hero__seed" aria-hidden="true"></span>Linplan Journal</p>
+      <h1 class="blog-hero__title">中小企業のホームページ・IT・AI <em>相談室</em></h1>
       <p class="blog-hero__lead">「ホームページっていくらかかるの？」「AIって何に使えるの？」<br>——そんな素朴な疑問に、売り込み抜きで本音でお答えします。</p>
-      <div class="blog-cats">
-        <span class="blog-cat is-active">すべて</span>
-        <span class="blog-cat">お金・相場</span>
-        <span class="blog-cat">選び方・比較</span>
-        <span class="blog-cat">AI活用</span>
-        <span class="blog-cat">AEO/GEO</span>
-        <span class="blog-cat">制作の舞台裏</span>
+      <div class="blog-cats" role="group" aria-label="カテゴリで絞り込み">
+        <button type="button" class="blog-cat is-active" data-filter="all" aria-pressed="true">すべて</button>
+        <button type="button" class="blog-cat" data-filter="money" aria-pressed="false">お金・相場</button>
+        <button type="button" class="blog-cat" data-filter="choice" aria-pressed="false">選び方・比較</button>
+        <button type="button" class="blog-cat" data-filter="aeo" aria-pressed="false">AEO/GEO</button>
       </div>
     </div>
   </section>
@@ -194,55 +225,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <section class="section">
     <div class="container">
       <div class="blog-grid">
-      <a href="cited-by-chatgpt.html" class="post-card">
-        <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span>ChatGPTに引用されるサイトの3つ…</span></div>
+      <a href="cited-by-chatgpt.html" class="post-card post-card--featured" data-cat="aeo">
+        <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span class="post-card__new">NEW</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M30 8c2 10 5 14 16 17-11 3-14 7-16 17-2-10-5-14-16-17 11-3 14-7 16-17Z"/><path d="M49 37c1 5 2.5 7 7.5 8.5-5 1.5-6.5 3.5-7.5 8.5-1-5-2.5-7-7.5-8.5 5-1.5 6.5-3.5 7.5-8.5Z"/></svg><span class="post-card__art-word">AI時代の備え</span></span></div>
         <div class="post-card__body">
           <h2 class="post-card__title">ChatGPTに引用されるサイトの3つの共通点</h2>
           <p class="post-card__excerpt">AIに引用されるサイトには共通点があります。①質問への即答 ②独自の一次情報 ③構造化データ。大手でなくても引用される理由を解説します。</p>
-          <div class="post-card__meta"><span>2026.06.15</span><span>約8分</span></div>
+          <div class="post-card__meta"><span class="post-card__meta-dates"><span>2026.06.15</span><span>約8分</span></span><span class="post-card__more">続きを読む →</span></div>
         </div>
       </a>
-      <a href="sme-ai-search-ready.html" class="post-card">
-        <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span>中小企業がAI検索時代に備える…</span></div>
+      <a href="sme-ai-search-ready.html" class="post-card" data-cat="aeo">
+        <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M30 8c2 10 5 14 16 17-11 3-14 7-16 17-2-10-5-14-16-17 11-3 14-7 16-17Z"/><path d="M49 37c1 5 2.5 7 7.5 8.5-5 1.5-6.5 3.5-7.5 8.5-1-5-2.5-7-7.5-8.5 5-1.5 6.5-3.5 7.5-8.5Z"/></svg><span class="post-card__art-word">AI時代の備え</span></span></div>
         <div class="post-card__body">
           <h2 class="post-card__title">中小企業がAI検索時代に備えるためにできること</h2>
           <p class="post-card__excerpt">難しい技術より、まず情報を正しく揃えることが先。AI検索時代に中小企業が今すぐできる4つのことを、具体的に解説します。</p>
-          <div class="post-card__meta"><span>2026.06.14</span><span>約8分</span></div>
+          <div class="post-card__meta"><span class="post-card__meta-dates"><span>2026.06.14</span><span>約8分</span></span><span class="post-card__more">続きを読む →</span></div>
         </div>
       </a>
-      <a href="wordpress-vs-original.html" class="post-card">
-        <div class="post-card__thumb"><span class="post-card__cat">選び方</span><span>WordPressとオリジナル制作…</span></div>
+      <a href="wordpress-vs-original.html" class="post-card" data-cat="choice">
+        <div class="post-card__thumb"><span class="post-card__cat">選び方</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="15" width="21" height="28" rx="4" transform="rotate(-3 18.5 29)"/><rect x="35" y="17" width="21" height="28" rx="4" transform="rotate(3 45.5 31)"/><path d="M14 24h9M14 30h9M14 36h6" opacity=".55"/><path d="M40 30l4.5 5 8-10"/></svg><span class="post-card__art-word">選び方のコツ</span></span></div>
         <div class="post-card__body">
           <h2 class="post-card__title">WordPressとオリジナル制作、中小企業はどちらを選ぶべきか</h2>
           <p class="post-card__excerpt">自分で更新したいならWordPress、独自性や速度ならオリジナル。費用・更新・セキュリティを対比表で比較し、選び方の目安を示します。</p>
-          <div class="post-card__meta"><span>2026.06.13</span><span>約8分</span></div>
+          <div class="post-card__meta"><span class="post-card__meta-dates"><span>2026.06.13</span><span>約8分</span></span><span class="post-card__more">続きを読む →</span></div>
         </div>
       </a>
-      <a href="aeo-vs-seo.html" class="post-card">
-        <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span>AEOとは？SEOとの違いを5分で…</span></div>
+      <a href="aeo-vs-seo.html" class="post-card" data-cat="aeo">
+        <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M30 8c2 10 5 14 16 17-11 3-14 7-16 17-2-10-5-14-16-17 11-3 14-7 16-17Z"/><path d="M49 37c1 5 2.5 7 7.5 8.5-5 1.5-6.5 3.5-7.5 8.5-1-5-2.5-7-7.5-8.5 5-1.5 6.5-3.5 7.5-8.5Z"/></svg><span class="post-card__art-word">AI時代の備え</span></span></div>
         <div class="post-card__body">
           <h2 class="post-card__title">AEOとは？SEOとの違いを5分で理解する</h2>
           <p class="post-card__excerpt">AEOは「AIの回答に引用されるための最適化」。検索順位を狙うSEOとの違いと、中小企業が最初にやるべきことを正直に解説します。</p>
-          <div class="post-card__meta"><span>2026.06.12</span><span>約6分</span></div>
+          <div class="post-card__meta"><span class="post-card__meta-dates"><span>2026.06.12</span><span>約6分</span></span><span class="post-card__more">続きを読む →</span></div>
         </div>
       </a>
-      <a href="how-to-order-website.html" class="post-card">
-        <div class="post-card__thumb"><span class="post-card__cat">選び方</span><span>失敗しないホームページ発注のコツ…</span></div>
+      <a href="how-to-order-website.html" class="post-card" data-cat="choice">
+        <div class="post-card__thumb"><span class="post-card__cat">選び方</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="15" width="21" height="28" rx="4" transform="rotate(-3 18.5 29)"/><rect x="35" y="17" width="21" height="28" rx="4" transform="rotate(3 45.5 31)"/><path d="M14 24h9M14 30h9M14 36h6" opacity=".55"/><path d="M40 30l4.5 5 8-10"/></svg><span class="post-card__art-word">選び方のコツ</span></span></div>
         <div class="post-card__body">
           <h2 class="post-card__title">失敗しないホームページ発注のコツ【相見積もり・依頼の仕方】</h2>
           <p class="post-card__excerpt">準備次第で同じ予算でも仕上がりは変わります。相見積もりの取り方から契約前チェックまで、発注の実務を正直に解説します。</p>
-          <div class="post-card__meta"><span>2026.06.11</span><span>約8分</span></div>
+          <div class="post-card__meta"><span class="post-card__meta-dates"><span>2026.06.11</span><span>約8分</span></span><span class="post-card__more">続きを読む →</span></div>
         </div>
       </a>
-      <a href="hp-cost-2026.html" class="post-card">
-        <div class="post-card__thumb"><span class="post-card__cat">お金</span><span>ホームページ制作費の相場は？【202…</span></div>
+      <a href="hp-cost-2026.html" class="post-card" data-cat="money">
+        <div class="post-card__thumb"><span class="post-card__cat">お金</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="21" transform="rotate(-5 32 32)"/><path d="M25 22l7 10 7-10M32 32v13M26 35h12M26 41h12"/></svg><span class="post-card__art-word">お金のはなし</span></span></div>
         <div class="post-card__body">
           <h2 class="post-card__title">ホームページ制作費の相場は？【2026年版・中小企業向け】</h2>
           <p class="post-card__excerpt">「ホームページっていくらかかるの？」に、現役の制作者が相場と内訳を正直にお答えします。30万円と100万円で何が違うのか、月額費用の正体まで。</p>
-          <div class="post-card__meta"><span>2026.06.10</span><span>約8分</span></div>
+          <div class="post-card__meta"><span class="post-card__meta-dates"><span>2026.06.10</span><span>約8分</span></span><span class="post-card__more">続きを読む →</span></div>
         </div>
       </a>
       </div>
+      <p class="blog-empty">該当するカテゴリの記事は、まだありません。近日公開予定です。</p>
     </div>
   </section>
 </main>
@@ -335,6 +367,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </script>
 <script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='\u21C5 \u30b9\u30af\u30ed\u30fc\u30eb';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
+<script>
+/* \u30d6\u30ed\u30b0\u4e00\u89a7\uff1a\u30ab\u30c6\u30b4\u30ea\u7d5e\u308a\u8fbc\u307f */
+(function () {
+  'use strict';
+  var chips = document.querySelectorAll('.blog-cat');
+  var cards = document.querySelectorAll('.post-card');
+  var empty = document.querySelector('.blog-empty');
+  if (!chips.length || !cards.length) return;
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var filter = chip.getAttribute('data-filter');
+      chips.forEach(function (c) {
+        c.classList.remove('is-active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      chip.classList.add('is-active');
+      chip.setAttribute('aria-pressed', 'true');
+
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var match = filter === 'all' || card.getAttribute('data-cat') === filter;
+        card.classList.toggle('is-hidden', !match);
+        if (match) visibleCount++;
+      });
+      if (empty) empty.classList.toggle('is-visible', visibleCount === 0);
+    });
+  });
+})();
+</script>
 
 
 <script src="../theme.js"></script>
