@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5DVGF39S');</script>
 <!-- End Google Tag Manager -->
-<title>Linplan ｜ 千葉県船橋市のホームページ制作</title>
+<title>船橋のホームページ制作｜月額9,900円〜・対面対応【Linplan】</title>
 <link rel="canonical" href="https://linplan.jp/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Linplan">
@@ -33,12 +33,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@id": "https://linplan.jp/#business",
       "name": "Linplan",
       "url": "https://linplan.jp/",
-      "description": "千葉県船橋市のホームページ制作・アプリ開発・AI業務支援スタジオ。AEO/GEO（AI検索最適化）標準対応で、中小企業・店舗のサイトを制作しています。",
+      "description": "千葉県船橋市のホームページ制作・アプリ開発・AI業務支援スタジオ。月額9,900円〜の月額プランと買い切りプラン。船橋市内・近隣へは直接お伺いし、対面での打ち合わせ・サポートに対応。AEO/GEO（AI検索最適化）標準対応で、中小企業・店舗のサイトを制作しています。",
       "image": "https://linplan.jp/images/ogp.png",
       "email": "tsubochihiroyama2230@gmail.com",
       "address": { "@type": "PostalAddress", "addressLocality": "船橋市", "addressRegion": "千葉県", "addressCountry": "JP" },
       "areaServed": [
         { "@type": "City", "name": "船橋市" },
+        { "@type": "City", "name": "習志野市" },
+        { "@type": "City", "name": "市川市" },
+        { "@type": "City", "name": "鎌ケ谷市" },
+        { "@type": "City", "name": "八千代市" },
         { "@type": "Country", "name": "日本" }
       ],
       "priceRange": "月額9,900円〜 / 買い切り35万円〜",
@@ -215,12 +219,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   transition: background .35s var(--ease), box-shadow .35s var(--ease),
     opacity .65s var(--ease), translate .65s var(--ease);
 }
-.lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__actions,.lnhero__art,.about-me .profile{
+.lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__price,.lnhero__actions,.lnhero__art,.about-me .profile{
   transition: opacity .72s var(--ease), translate .72s var(--ease);
 }
 .lnhero__kicker  { transition-delay: .12s; }
 .lnhero__title   { transition-delay: .26s; }
 .lnhero__sub     { transition-delay: .42s; }
+.lnhero__price   { transition-delay: .50s; }
 .lnhero__actions { transition-delay: .56s; }
 .lnhero__art     { transition-delay: .48s; }
 .about-me .profile { transition-delay: .68s; }
@@ -230,17 +235,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .lnhero.anim .lnhero__kicker,
 .lnhero.anim .lnhero__title,
 .lnhero.anim .lnhero__sub,
+.lnhero.anim .lnhero__price,
 .lnhero.anim .lnhero__actions { opacity: 0; translate: 0 24px; }
 .lnhero.anim .lnhero__art { opacity: 0; translate: 0 18px; }
 .about-me.anim .profile { opacity: 0; translate: 0 24px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__actions,.lnhero__art,.about-me .profile{ transition: none; }
+  .lnhero__kicker,.lnhero__title,.lnhero__sub,.lnhero__price,.lnhero__actions,.lnhero__art,.about-me .profile{ transition: none; }
   .site-nav{ transition: background .35s var(--ease), box-shadow .35s var(--ease); }
   .site-nav.anim{ opacity: 1; translate: none; }
   .lnhero.anim .lnhero__kicker,.lnhero.anim .lnhero__title,.lnhero.anim .lnhero__sub,
-  .lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art,.about-me.anim .profile{ opacity: 1; translate: none; }
+  .lnhero.anim .lnhero__price,.lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art,.about-me.anim .profile{ opacity: 1; translate: none; }
 }
+/* 月額入口バッジ（ヒーロー） */
+.lnhero__price{margin-top:16px;font-size:.9rem;color:var(--ink-soft);}
+.lnhero__price .hand{display:inline-block;font-family:var(--hand);font-weight:600;font-size:1.05rem;color:var(--orange-deep);background:linear-gradient(transparent 64%,rgba(194,74,51,.14) 64%);padding:0 2px;}
+.lnhero__price-link{margin-left:8px;font-weight:600;color:var(--teal);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;white-space:nowrap;}
+.lnhero__price-link:hover{color:var(--orange-deep);}
+@media(max-width:560px){.lnhero__price{font-size:.84rem}.lnhero__price .hand{font-size:.98rem}}
 </style>
 <link rel="stylesheet" href="theme.css">
 </head>
@@ -249,7 +261,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<noscript><style>.site-nav.anim{opacity:1;translate:none}.lnhero.anim .lnhero__kicker,.lnhero.anim .lnhero__title,.lnhero.anim .lnhero__sub,.lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art,.about-me.anim .profile{opacity:1;translate:none}</style></noscript>
+<noscript><style>.site-nav.anim{opacity:1;translate:none}.lnhero.anim .lnhero__kicker,.lnhero.anim .lnhero__title,.lnhero.anim .lnhero__sub,.lnhero.anim .lnhero__price,.lnhero.anim .lnhero__actions,.lnhero.anim .lnhero__art,.about-me.anim .profile{opacity:1;translate:none}</style></noscript>
 <script>
 /* エントランス：読み込み時にナビ＋ヒーローをフェード表示（ローダー廃止） */
 (function(){
@@ -300,6 +312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <h1 class="lnhero__title">一緒に育てていける<br>サイト作りを。</h1>
       <p class="lnhero__sub">船橋でひとり、ホームページをつくっています。<br>お店の想いをじっくり聞いて、「らしさ」のあるサイトに。<br>公開してからも、長くいっしょに育てていきましょう。</p>
+      <p class="lnhero__price"><span class="hand">初期費用 0円・月額 9,900円〜</span> ではじめられます<a href="pricing.html" class="lnhero__price-link">→ 料金をみる</a></p>
       <div class="lnhero__actions">
         <a href="works.html" class="btn btn--outline">制作実績を見る</a>
       </div>
@@ -329,6 +342,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow" style="display:block;margin-bottom:10px">About me</span>
         <h2 style="line-height:1.55">こんにちは。<br class="dt">Linplan 代表の坪山ちひろです。</h2>
         <p style="margin-top:18px">HP制作会社で腕を磨いた後、独立。<br>現在はシステムエンジニアとしての知識を生かしつつHP制作中。<br>ホームページ制作だけでなく、業務アプリの制作やAI業務支援なども行っています。<br>制作は、お客様と出来るだけ「対面」でコミュニケーションを取ることを、大切にしています。</p>
+        <p style="margin-top:14px;font-size:.92rem;color:var(--ink-soft);line-height:1.9">拠点は千葉県船橋市。<a href="area/funabashi.html" style="color:var(--teal);font-weight:600;text-decoration:underline;text-underline-offset:3px">船橋市内・近隣の方には直接お伺いしての対面制作</a>も承っています。</p>
         <a href="about.html" class="btn btn--ghost hand" style="margin-top:26px">詳しいプロフィールを見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
@@ -860,6 +874,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="blog/">相談室</a>
     <a href="contact.html">お問い合わせ</a>
     <a href="aeo-geo.html">AEO・GEO対応とは</a>
+    <a href="area/funabashi.html">船橋のホームページ制作</a>
     <a href="privacy.html">プライバシーポリシー</a>
     <a href="tokushoho.html">特定商取引法に基づく表記</a>
   </nav>
