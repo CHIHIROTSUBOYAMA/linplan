@@ -16,14 +16,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:site_name" content="Linplan">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="料金プラン ｜ Linplan">
-<meta property="og:description" content="Linplan の料金プラン。月額9,900円〜で気軽にはじめるか、買い切り35万円〜で資産として持つか。大手代理店の半額〜1/3。">
+<meta property="og:description" content="Linplan の料金プラン。月額9,900円〜のサブスク型と、買い切り35万円〜の2つの持ち方から選べます。初期費用0円・AEO/GEO標準対応。大手制作会社の半額〜1/3が目安です。">
 <meta property="og:url" content="https://linplan.jp/pricing.html">
 <meta property="og:image" content="https://linplan.jp/images/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="料金プラン ｜ Linplan">
-<meta name="twitter:description" content="Linplan の料金プラン。月額9,900円〜で気軽にはじめるか、買い切り35万円〜で資産として持つか。大手代理店の半額〜1/3。">
+<meta name="twitter:description" content="Linplan の料金プラン。月額9,900円〜のサブスク型と、買い切り35万円〜の2つの持ち方から選べます。初期費用0円・AEO/GEO標準対応。大手制作会社の半額〜1/3が目安です。">
 <meta name="twitter:image" content="https://linplan.jp/images/ogp.png">
-<meta name="description" content="Linplan の料金プラン。月額9,900円〜で気軽にはじめるか、買い切り35万円〜で資産として持つか。大手代理店の半額〜1/3。">
+<meta name="description" content="Linplan の料金プラン。月額9,900円〜のサブスク型と、買い切り35万円〜の2つの持ち方から選べます。初期費用0円・AEO/GEO標準対応。大手制作会社の半額〜1/3が目安です。">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,25 +41,101 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preload" as="font" type="font/woff2" href="fonts/KleeOne-SemiBold.subset.woff2" crossorigin>
 <link rel="stylesheet" href="base.css">
 <style>
-/* pricing 固有 */
-.opt-wrap { max-width: 720px; margin: 0 auto; }
-.opt-cat { font-family: var(--hand); font-size: 1.15rem; font-weight: 600; margin: 30px 0 12px; padding-bottom: 8px; border-bottom: 2px dashed var(--line); }
-.opt-cat:first-child { margin-top: 0; }
-.opt-table { width: 100%; border-collapse: collapse; font-size: .92rem; margin-bottom: 6px; }
-.opt-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
-.opt-table td.opt-price { text-align: right; white-space: nowrap; font-family: var(--en); font-weight: 600; color: var(--orange-deep); width: 38%; }
-.opt-table tr:hover { background: var(--paper); }
+/* pricing 固有 — お品書き（価格表）スタイル */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+#monthly, #onetime { scroll-margin-top: 86px; }
+.section__lead { font-size: .92rem; color: var(--ink-soft); line-height: 1.9; margin: 14px auto 0; max-width: 620px; }
+
+/* 点線リーダー（品名と価格を結ぶ） */
+.leader { flex: 1 1 16px; min-width: 16px; border-bottom: 2px dotted rgba(31,40,56,.32); margin: 0 10px; transform: translateY(-.35em); }
+
+/* 選び方ガイド：二枚看板 */
+.choice-duo { display: grid; grid-template-columns: 1fr 1fr; max-width: 940px; margin: 0 auto; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+.choice { display: flex; flex-direction: column; padding: 34px 44px 30px; color: inherit; }
+.choice + .choice { border-left: 1px dashed var(--line); }
+.choice__tag { display: inline-flex; align-items: center; font-family: var(--hand); font-weight: 600; font-size: 1.3rem; color: var(--ink); }
+.choice__leaf { display: inline-block; width: 12px; height: 12px; border-radius: 0 60% 0 60%; transform: rotate(8deg); margin-right: 9px; }
+.choice__price { margin: 14px 0 4px; font-family: var(--en); font-weight: 700; font-size: 1.7rem; color: var(--orange); }
+.choice__price small { font-size: .82rem; font-weight: 500; color: var(--ink-soft); font-family: var(--font); margin-left: 2px; }
+.choice__note { font-size: .85rem; color: var(--ink-soft); }
+.choice ul { list-style: none; margin: 16px 0 20px; }
+.choice li { position: relative; padding: 6px 0 6px 26px; font-size: .9rem; color: var(--ink-soft); line-height: 1.7; }
+.choice li::before { content: '✓'; position: absolute; left: 2px; top: 6px; font-family: var(--hand); font-weight: 600; color: var(--teal); }
+.choice--onetime li::before { color: var(--orange); }
+.choice__go { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-family: var(--hand); font-weight: 600; font-size: .98rem; color: var(--orange-deep); }
+.choice__go svg { transition: translate .25s var(--ease); }
+.choice:hover .choice__go { text-decoration: underline; text-underline-offset: 4px; }
+.choice:hover .choice__go svg { translate: 4px 0; }
+@media (max-width: 760px) {
+  .choice-duo { grid-template-columns: 1fr; max-width: 560px; }
+  .choice { padding: 28px 8px 26px; }
+  .choice + .choice { border-left: none; border-top: 1px dashed var(--line); }
+}
+
+/* 但し書き（3プラン共通） */
+.menu-note { max-width: 880px; margin: 0 auto 8px; padding: 14px 8px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 6px 20px; }
+.menu-note__label { font-family: var(--hand); font-weight: 600; font-size: .95rem; color: var(--ink); }
+.menu-note__item { font-size: .8rem; color: var(--ink-soft); }
+.menu-note__item::before { content: '✓ '; font-family: var(--hand); font-weight: 600; color: var(--teal); }
+
+/* お品書き：プラン */
+.menu-plans { max-width: 880px; margin: 0 auto; }
+.menu-plan { padding: 36px 6px 34px; }
+.menu-plan + .menu-plan { border-top: 1px dashed var(--line); }
+.menu-plan__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; }
+.menu-plan__name { display: inline-flex; align-items: center; gap: 12px; font-family: var(--hand); font-weight: 600; font-size: 1.5rem; color: var(--ink); flex-shrink: 0; white-space: nowrap; }
+.menu-plan__badge { font-family: var(--hand); font-weight: 600; font-size: .78rem; color: var(--orange); border: 1.5px solid var(--orange); padding: 2px 9px; transform: rotate(-3deg); white-space: nowrap; }
+.menu-plan__price { font-family: var(--en); font-weight: 700; font-size: 1.9rem; color: var(--orange); white-space: nowrap; margin-left: auto; }
+.menu-plan__price small { font-size: .85rem; font-weight: 500; color: var(--ink-soft); font-family: var(--font); margin-left: 2px; }
+.menu-plan__for { margin-top: 4px; font-size: .9rem; color: var(--ink-soft); }
+.menu-plan__body { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-top: 16px; }
+.menu-plan__items { flex: 1; }
+.menu-plan__plus { font-size: .8rem; font-weight: 700; color: var(--ink-soft); margin-bottom: 6px; }
+.menu-plan__plus b { color: var(--orange-deep); }
+.menu-plan__items ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 28px; }
+.menu-plan__items li { position: relative; padding: 5px 0 5px 24px; font-size: .88rem; color: var(--ink-soft); line-height: 1.7; }
+.menu-plan__items li::before { content: '✓'; position: absolute; left: 0; top: 5px; font-family: var(--hand); font-weight: 600; color: var(--teal); }
+.menu-plan__side { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; flex: 0 0 auto; }
+.menu-plan__term { font-size: .8rem; color: var(--ink-soft); }
+.menu-plan__ref { font-size: .76rem; color: var(--ink-faint); max-width: 250px; text-align: right; }
+@media (max-width: 760px) {
+  .menu-plan { padding: 30px 2px 28px; }
+  .menu-plan__name { font-size: 1.3rem; gap: 8px; }
+  .menu-plan__price { font-size: 1.5rem; }
+  .menu-plan__body { flex-direction: column; align-items: stretch; gap: 16px; }
+  .menu-plan__items ul { grid-template-columns: 1fr; }
+  .menu-plan__side { align-items: stretch; }
+  .menu-plan__side .btn { width: 100%; justify-content: center; }
+  .menu-plan__term, .menu-plan__ref { text-align: left; max-width: none; }
+}
+
+/* 含まれるもの */
 .inc-list { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; column-gap: 60px; }
-.inc-item { display: flex; align-items: flex-start; gap: 14px; padding: 15px 2px; border-bottom: 1px dashed var(--line); }
-.inc-item__check { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; background: var(--teal); color: var(--on-accent); display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; }
-.inc-item__check svg { width: 13px; height: 13px; }
+.inc-item { display: flex; align-items: flex-start; gap: 12px; padding: 15px 2px; border-bottom: 1px dashed var(--line); }
+.inc-item__check { flex: 0 0 auto; font-family: var(--hand); font-weight: 600; color: var(--teal); line-height: 1.5; }
 .inc-item b { display: block; font-size: .98rem; font-weight: 700; line-height: 1.5; }
 .inc-item p { margin: 3px 0 0; font-size: .84rem; color: var(--ink-soft); line-height: 1.7; }
-.inc-tag { display: inline-block; margin-left: 8px; font-size: .68rem; font-weight: 600; color: var(--ink-soft); background: rgba(182,146,106,.18); padding: 2px 8px; border-radius: 100px; vertical-align: 2px; white-space: nowrap; }
+.inc-tag { display: inline-block; margin-left: 8px; font-size: .68rem; font-weight: 600; color: var(--ink-soft); border: 1px solid var(--line); padding: 1px 8px; vertical-align: 2px; white-space: nowrap; }
 @media (max-width: 680px) { .inc-list { grid-template-columns: 1fr; } }
-.price-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto; }
-.section__lead { font-size: .92rem; color: var(--ink-soft); line-height: 1.9; margin: 14px auto 0; max-width: 560px; }
-.price-card__now { color: var(--orange-deep); }
+
+/* オプション：価格表 */
+.menu-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 48px; align-items: start; }
+.menu-opt h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-family: var(--hand); font-weight: 600; font-size: 1.2rem; color: var(--ink); border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+.menu-opt h3 small { font-family: var(--font); font-size: .72rem; font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
+.menu-opt dl { margin: 4px 0 0; }
+.opt-row { display: flex; align-items: baseline; padding: 10px 0; }
+.opt-row dt { font-size: .88rem; color: var(--ink); line-height: 1.6; }
+.opt-row dt small { display: block; font-size: .75rem; color: var(--ink-faint); }
+.opt-row dd { margin: 0; font-family: var(--en); font-weight: 600; font-size: .88rem; color: var(--orange-deep); white-space: nowrap; }
+@media (max-width: 1020px) { .menu-opts { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; } }
+
+/* 比較表：お品書きに合わせて枠・角丸なしに */
+.cmp { background: transparent; border-radius: 0; box-shadow: none; }
+.cmp thead th { background: transparent; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+.cmp thead th.is-lp { background: transparent; color: var(--orange-deep); }
+.cmp td { border-bottom: 1px dashed var(--line); }
+.cmp td.is-lp { background: rgba(240,217,208,.45); font-weight: 500; }
+.cmp tr:last-child td { border-bottom: 2px solid var(--ink); }
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' rx='12' fill='%23B6926A'/%3E%3Ctext x='26' y='37' font-family='sans-serif' font-size='30' font-weight='700' fill='%231F2838' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 <style>@media(max-width:560px){br.dt{display:none}.phero h1{font-size:1.6rem;line-height:1.5;letter-spacing:0}.phero p{font-size:.95rem}}</style>
@@ -109,150 +185,268 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main>
 
 <header class="phero">
-  <svg class="blob float-a" width="200" height="200" viewBox="-90 -90 180 180" style="top:70px;left:8%;opacity:.7" aria-hidden="true"><path d="M44.6,-55.6C56.4,-46.3,63.5,-31.1,66.8,-15.2C70.1,0.7,69.6,17.3,62.4,30.6C55.2,43.9,41.3,53.9,26,59.8C10.7,65.7,-6,67.5,-21.9,63.3C-37.8,59.1,-52.9,48.9,-61.4,34.6C-69.9,20.3,-71.8,1.9,-67.5,-14.4C-63.2,-30.7,-52.7,-44.9,-39.3,-54C-25.9,-63.1,-13,-67.1,1.4,-68.8C15.7,-70.5,32.8,-64.9,44.6,-55.6Z" fill="#E6E3CF"/></svg>
   <div class="container">
     <span class="eyebrow">Pricing</span>
-    <h1>無理のない予算で、<br>最大の成果を。</h1>
-    <p>月々払いで気軽にはじめるか、買い切りで資産として持つか。<br>ご予算とご希望に合わせて選べます。大手代理店の半額〜1/3の価格です。</p>
+    <h1>無理のない予算で、<br>ちゃんと成果を。</h1>
+    <p>月々払いで気軽にはじめるか、買い切りで資産として持つか。<br class="dt">ご予算と運用のしかたに合わせて、2つの「持ち方」から選べます。</p>
   </div>
 </header>
 
-<!-- 月額プラン -->
+<!-- 選び方ガイド -->
 <section class="section section--white">
   <div class="container">
-    <div class="section__head reveal"><span class="eyebrow">Monthly</span><h2>サブスク（月額）ではじめる</h2><p class="section__lead">初期費用を抑えて、月々のお支払いで。<br>更新も保守も、困ったときも、ぜんぶお任せ。船橋近郊なら直接伺います。</p></div>
-    <div class="price-grid price-grid--2">
-      <div class="price-card reveal">
-        <h3>ライト</h3>
-        <div class="price-card__term" style="margin:14px 0 4px">始めたばかりの方・お試しの方に</div>
-        <div class="price-card__now en">¥9,900<small>/月（税別）</small></div>
-        <div class="price-card__term">初期費用 0円（オプション別）／最低12ヶ月</div>
-        <ul><li>トップページのサイト制作</li><li>スマホ対応・SEO/AEO/GEO対応</li><li>お問い合わせフォーム</li><li>サーバー・ドメイン・SSL管理</li><li>サイトの情報送信（サーチコンソール）</li><li>不具合対応・電話/メールサポート</li></ul>
-        <a href="contact.html?plan=monthly-light" class="btn btn--ink hand" style="margin-top:22px;width:100%;justify-content:center">このプランで相談する</a>
+    <div class="section__head reveal"><span class="eyebrow">Which</span><h2>どちらの「持ち方」が合う？</h2><p class="section__lead">同じサイトでも、持ち方しだいで費用のかたちは変わります。<br class="dt">あてはまる項目が多いほうから、ご覧ください。</p></div>
+    <div class="choice-duo reveal">
+      <a href="#monthly" class="choice">
+        <span class="choice__tag"><i class="choice__leaf" style="background:var(--teal)"></i>月額プラン</span>
+        <div class="choice__price">¥9,900<small>〜 /月（税別）</small></div>
+        <div class="choice__note">初期費用0円。更新も保守もおまかせ。</div>
+        <ul>
+          <li>初期費用をかけずに始めたい</li>
+          <li>更新・保守・トラブル対応は任せたい</li>
+          <li>小さく始めて、少しずつ育てたい</li>
+        </ul>
+        <span class="choice__go">月額プランを見る<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="#onetime" class="choice choice--onetime">
+        <span class="choice__tag"><i class="choice__leaf" style="background:var(--orange)"></i>買い切りプラン</span>
+        <div class="choice__price">¥35<small>万円〜（税別）</small></div>
+        <div class="choice__note">一度のお支払いで、ずっと自社のもの。</div>
+        <ul>
+          <li>自社の資産として所有したい</li>
+          <li>月々の固定費は増やしたくない</li>
+          <li>更新は自分たち（社内）でできる</li>
+        </ul>
+        <span class="choice__go">買い切りプランを見る<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+      </a>
+    </div>
+    <p class="svc-note reveal">途中で持ち方を変えたくなったときも、ご相談ください。</p>
+  </div>
+</section>
+
+<!-- 月額プラン -->
+<section class="section" id="monthly">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Monthly</span><h2>月々のお支払いで、ぜんぶおまかせ</h2><p class="section__lead">初期費用0円、月々のお支払いだけ。更新も保守も、困ったときの相談もまとめてお任せいただけます。<br class="dt">船橋近郊へは直接お伺いします。</p></div>
+    <div class="menu-note reveal">
+      <span class="menu-note__label">3プラン共通</span>
+      <span class="menu-note__item">初期費用 0円（オプション別）</span>
+      <span class="menu-note__item">最低契約期間 12ヶ月</span>
+      <span class="menu-note__item">スマホ対応</span>
+      <span class="menu-note__item">SEO・AEO・GEO標準対応</span>
+      <span class="menu-note__item">サーバー・ドメイン・SSL管理</span>
+      <span class="menu-note__item">月々の更新代行</span>
+      <span class="menu-note__item">不具合対応・電話/メールサポート</span>
+    </div>
+    <div class="menu-plans">
+      <div class="menu-plan reveal">
+        <div class="menu-plan__head">
+          <span class="menu-plan__name">ライト</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="menu-plan__price">¥9,900<small>/月（税別）</small></span>
+        </div>
+        <p class="menu-plan__for">まずは小さく、1ページから試したい方に</p>
+        <div class="menu-plan__body">
+          <div class="menu-plan__items">
+            <ul>
+              <li>トップページ1枚のサイト制作</li>
+              <li>お問い合わせフォーム</li>
+              <li>検索エンジンへの登録・情報送信</li>
+            </ul>
+          </div>
+          <div class="menu-plan__side">
+            <a href="contact.html?plan=monthly-light" class="btn btn--ink hand">このプランで相談する</a>
+          </div>
+        </div>
       </div>
-      <div class="price-card is-popular reveal reveal-d1">
-        <div class="price-card__badge hand">おすすめ</div>
-        <h3>スタンダード</h3>
-        <div class="price-card__term" style="margin:14px 0 4px">集客を伸ばしたい、更新もしたい方に</div>
-        <div class="price-card__now en">¥16,500<small>/月（税別）</small></div>
-        <div class="price-card__term">初期費用 0円（オプション別）／最低12ヶ月</div>
-        <ul><li>ライトの全内容</li><li>2~6ページ・CMS付き</li><li>ブログ・お知らせ機能</li><li>CMSアップデートなどの保守</li><li>ブログ・更新内容の提供/サポート</li><li>ブログやSEO対策情報送信</li></ul>
-        <a href="contact.html?plan=monthly-standard" class="btn btn--primary hand" style="margin-top:22px;width:100%;justify-content:center;transform:none">このプランで相談する</a>
+      <div class="menu-plan reveal">
+        <div class="menu-plan__head">
+          <span class="menu-plan__name">スタンダード<span class="menu-plan__badge">おすすめ</span></span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="menu-plan__price">¥16,500<small>/月（税別）</small></span>
+        </div>
+        <p class="menu-plan__for">ページを増やして、集客を伸ばしたい方に</p>
+        <div class="menu-plan__body">
+          <div class="menu-plan__items">
+            <p class="menu-plan__plus"><b>ライトの全内容</b> ＋</p>
+            <ul>
+              <li>2〜6ページ構成・CMS付き</li>
+              <li>ブログ・お知らせ機能</li>
+              <li>CMSアップデートなどの保守</li>
+              <li>ブログ運用のサポート（ネタ出し・書き方）</li>
+            </ul>
+          </div>
+          <div class="menu-plan__side">
+            <a href="contact.html?plan=monthly-standard" class="btn btn--primary hand" style="transform:none">このプランで相談する</a>
+          </div>
+        </div>
       </div>
-      <div class="price-card reveal">
-        <h3>プレミアム</h3>
-        <div class="price-card__term" style="margin:14px 0 4px">しっかりと運営していきたい方に</div>
-        <div class="price-card__now en">¥22,000<small>/月（税別）</small></div>
-        <div class="price-card__term">初期費用 0円（オプション別）／最低12ヶ月</div>
-        <ul><li>スタンダードの全内容</li><li>7~12ページ・CMS付き</li><li>ブログ・お知らせ機能</li><li>CMSアップデートなどの保守</li><li>ブログ・更新内容の提供/サポート</li><li>ブログやSEO対策情報送信</li></ul>
-        <a href="contact.html?plan=monthly-premium" class="btn btn--ink hand" style="margin-top:22px;width:100%;justify-content:center">このプランで相談する</a>
+      <div class="menu-plan reveal">
+        <div class="menu-plan__head">
+          <span class="menu-plan__name">プレミアム</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="menu-plan__price">¥22,000<small>/月（税別）</small></span>
+        </div>
+        <p class="menu-plan__for">更新も分析も、しっかり運営したい方に</p>
+        <div class="menu-plan__body">
+          <div class="menu-plan__items">
+            <p class="menu-plan__plus"><b>スタンダードの全内容</b> ＋</p>
+            <ul>
+              <li>7〜12ページのしっかり構成</li>
+              <li>月1回のアクセスレポート＋改善提案</li>
+              <li>更新のご依頼を優先対応</li>
+              <li>年1回のデザイン見直し</li>
+            </ul>
+          </div>
+          <div class="menu-plan__side">
+            <a href="contact.html?plan=monthly-premium" class="btn btn--ink hand">このプランで相談する</a>
+          </div>
+        </div>
       </div>
     </div>
-    <p class="svc-note reveal">ドメイン（ネット上の住所）はお客様名義でご用意します。続けたい場合はデータごとのお引き渡しも可能です。<br>大きな改修・新機能の追加は別途お見積もりとなります。</p>
+    <p class="svc-note reveal">ドメイン（ネット上の住所）はお客様名義でご用意します。解約後もサイトを続けたい場合は、データごとのお引き渡しができます。<br>大きな改修・新機能の追加は別途お見積もりです。</p>
   </div>
 </section>
 
 <!-- 買い切りプラン -->
-<section class="section">
+<section class="section section--white" id="onetime">
   <div class="container">
-    <div class="section__head reveal"><span class="eyebrow">One-time</span><h2>買い切りで持つ</h2><p class="section__lead">自社の資産として所有したい方へ。コード・データを100%お渡しします。</p></div>
-    <div class="price-grid">
-      <div class="price-card reveal">
-        <h3>スターター</h3>
-        <div class="price-card__now en">¥35<small>万円〜</small></div>
-        <div class="price-card__term">納期 4〜8週間</div>
-        <ul><li>コーポレート / 店舗サイト</li><li>5〜8ページ程度</li></ul>
-        <a href="contact.html?plan=starter" class="btn btn--ink hand" style="margin-top:22px;width:100%;justify-content:center">このプランで相談する</a>
+    <div class="section__head reveal"><span class="eyebrow">One-time</span><h2>買い切りで、自社の資産に</h2><p class="section__lead">一度のお支払いで、コード・データを100%お渡しします。<br class="dt">月々の固定費を抑えて、自社のペースで運用できます。</p></div>
+    <div class="menu-plans">
+      <div class="menu-plan reveal">
+        <div class="menu-plan__head">
+          <span class="menu-plan__name">スターター</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="menu-plan__price">¥35<small>万円〜（税別）</small></span>
+        </div>
+        <p class="menu-plan__for">まずは会社・お店の「顔」になるサイトを</p>
+        <div class="menu-plan__body">
+          <div class="menu-plan__items">
+            <ul>
+              <li>コーポレート / 店舗サイト</li>
+              <li>5〜8ページ程度</li>
+              <li>お問い合わせフォーム</li>
+            </ul>
+          </div>
+          <div class="menu-plan__side">
+            <span class="menu-plan__term">納期 4〜8週間</span>
+            <a href="contact.html?plan=starter" class="btn btn--ink hand">このプランで相談する</a>
+          </div>
+        </div>
       </div>
-      <div class="price-card is-popular reveal reveal-d1">
-        <div class="price-card__badge hand">人気 No.1</div>
-        <h3>スタンダード</h3>
-        <div class="price-card__old">通常 120万円〜</div>
-        <div class="price-card__now en">¥70<small>万円〜</small></div>
-        <div class="price-card__term">納期 6〜12週間</div>
-        <ul><li>10〜20ページ程度</li><li>CMS（自分で更新の仕組み）</li></ul>
-        <a href="contact.html?plan=standard" class="btn btn--primary hand" style="margin-top:22px;width:100%;justify-content:center;transform:none">このプランで相談する</a>
+      <div class="menu-plan reveal">
+        <div class="menu-plan__head">
+          <span class="menu-plan__name">スタンダード<span class="menu-plan__badge">人気 No.1</span></span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="menu-plan__price">¥70<small>万円〜（税別）</small></span>
+        </div>
+        <p class="menu-plan__for">コンテンツを増やして、自分たちで更新したい方に</p>
+        <div class="menu-plan__body">
+          <div class="menu-plan__items">
+            <ul>
+              <li>10〜20ページ程度</li>
+              <li>CMS（ご自身で更新できる仕組み）</li>
+              <li>ブログ・お知らせ機能</li>
+            </ul>
+          </div>
+          <div class="menu-plan__side">
+            <span class="menu-plan__term">納期 6〜12週間</span>
+            <span class="menu-plan__ref">参考：制作会社に依頼した場合の一般的な相場は100万円〜です</span>
+            <a href="contact.html?plan=standard" class="btn btn--primary hand" style="transform:none">このプランで相談する</a>
+          </div>
+        </div>
       </div>
-      <div class="price-card reveal reveal-d2">
-        <h3>カスタム</h3>
-        <div class="price-card__old">&nbsp;</div>
-        <div class="price-card__now en">¥80<small>万円〜</small></div>
-        <div class="price-card__term">納期 要相談</div>
-        <ul><li>モバイル / 業務アプリ開発</li><li>AI業務支援・自動化</li><li>大規模・複合案件</li><li>EC・予約・会員システム</li></ul>
-        <a href="contact.html?plan=custom" class="btn btn--ink hand" style="margin-top:22px;width:100%;justify-content:center">このプランで相談する</a>
+      <div class="menu-plan reveal">
+        <div class="menu-plan__head">
+          <span class="menu-plan__name">カスタム</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="menu-plan__price">¥80<small>万円〜（税別）</small></span>
+        </div>
+        <p class="menu-plan__for">サイトの枠を超えて、仕組みからつくりたい方に</p>
+        <div class="menu-plan__body">
+          <div class="menu-plan__items">
+            <ul>
+              <li>モバイル / 業務アプリ開発</li>
+              <li>AI業務支援・自動化</li>
+              <li>EC・予約・会員システム</li>
+              <li>大規模・複合案件</li>
+            </ul>
+          </div>
+          <div class="menu-plan__side">
+            <span class="menu-plan__term">納期 内容により（要相談）</span>
+            <a href="contact.html?plan=custom" class="btn btn--ink hand">このプランで相談する</a>
+          </div>
+        </div>
       </div>
     </div>
-    <p class="svc-note reveal" style="margin-top:36px">表示はすべて税別の目安です。ご予算が限られる場合も、必要な分でお見積もりいたします。お気軽にご相談ください。</p>
+    <p class="svc-note reveal">表示はすべて税別の目安です。ご予算が限られる場合も、必要な分だけでお見積もりしますので、お気軽にご相談ください。</p>
   </div>
 </section>
 
 <!-- 含まれるもの -->
-<section class="section section--white">
+<section class="section">
   <div class="container">
     <div class="section__head reveal"><span class="eyebrow">Included</span><h2>すべてのプランに含まれるもの</h2><p class="section__lead">どのプランを選んでも、ここまでは標準です。追加料金はかかりません。</p></div>
     <div class="inc-list reveal">
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>サイト本体の制作</b><p>構成・デザイン・実装まで一式。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>スマホ対応（レスポンシブ）</b><p>PC・タブレット・スマホで最適表示。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>お問い合わせフォーム</b><p>フォーム設置から自動返信の設定まで。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>サーバー／ドメイン／SSL管理<small class="inc-tag">※月額プラン</small></b><p>面倒な契約・設定・更新はお任せ。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>月の更新代行<small class="inc-tag">※月額プラン</small></b><p>文言や画像の差し替えなどに対応。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>不具合対応</b><p>表示崩れやエラーはすぐに対処。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>AEO/GEO標準対応</b><p>AIにも選ばれる構造化データ・FAQ設計。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>コード・データお渡し</b><p>制作物は100%お客様のもの。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>適格請求書発行</b><p>インボイス制度対応・NDA対応。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>24時間以内に返信</b><p>不安にさせない、早いレスポンス。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>明確なプロセス</b><p>何が起きるか事前に明示します。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>サイト本体の制作</b><p>構成・デザイン・実装まで一式。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>スマホ対応（レスポンシブ）</b><p>PC・タブレット・スマホで最適表示。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>お問い合わせフォーム</b><p>設置から自動返信の設定まで。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>サーバー／ドメイン／SSL管理<small class="inc-tag">※月額プラン</small></b><p>面倒な契約・設定・更新はお任せ。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>月々の更新代行<small class="inc-tag">※月額プラン</small></b><p>文言や画像の差し替えに対応。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>不具合対応</b><p>表示崩れやエラーはすぐに対処。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>AEO/GEO標準対応</b><p>AIにも選ばれる構造化データ・FAQ設計。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>コード・データのお渡し</b><p>制作物は100%お客様のものです。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>適格請求書（インボイス）対応</b><p>請求書発行・NDAにも対応。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>24時間以内の返信</b><p>不安にさせない、早いレスポンス。</p></div></div>
+      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>進め方の事前共有</b><p>何をいつやるか、着手前にお伝えします。</p></div></div>
     </div>
     <div style="text-align:center;margin-top:38px" class="reveal"><a href="aeo-geo.html" class="btn btn--ink hand">AEO/GEOの詳しい説明を見る<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 
 <!-- オプションメニュー -->
-<section class="section">
+<section class="section section--white">
   <div class="container">
-    <div class="section__head reveal"><span class="eyebrow">Options</span><h2>オプションで、育てていける</h2><p class="section__lead">サイトはシンプルに始めて、必要なものを後から足せます。<br>やりたいことが増えたら、その分だけ。<br>ロゴなどの制作物、ドメインメールなどの設定、MEO・SNS・広告などの運用は、下記のオプションです。</p></div>
-
-    <div class="opt-wrap reveal">
-      <h3 class="opt-cat">制作（一回のお支払い）</h3>
-      <table class="opt-table">
-        <tbody>
-          <tr><td>ロゴ作成</td><td class="opt-price">30,000円〜</td></tr>
-          <tr><td>名刺デザイン</td><td class="opt-price">10,000円〜</td></tr>
-          <tr><td>チラシ・パンフレット</td><td class="opt-price">30,000円〜</td></tr>
-          <tr><td>ランディングページ（LP）追加</td><td class="opt-price">50,000円〜</td></tr>
-          <tr><td>写真撮影・取材</td><td class="opt-price">20,000円〜</td></tr>
-          <tr><td>原稿（文章）作成代行</td><td class="opt-price">1ページ 5,000円〜</td></tr>
-          <tr><td>ページ追加</td><td class="opt-price">1ページ 10,000円〜</td></tr>
-        </tbody>
-      </table>
-
-      <h3 class="opt-cat">取得・設定（一回のお支払い）</h3>
-      <table class="opt-table">
-        <tbody>
-          <tr><td>独自ドメイン・サーバ取得・設定代行</td><td class="opt-price">5,500円〜</td></tr>
-          <tr><td>独自ドメインメール設定（hello@お店.com など）</td><td class="opt-price">5,500円〜</td></tr>
-          <tr><td>Googleビジネスプロフィール初期設定</td><td class="opt-price">11,000円〜</td></tr>
-        </tbody>
-      </table>
-
-      <h3 class="opt-cat">運用（月額）</h3>
-      <table class="opt-table">
-        <tbody>
-          <tr><td>MEO対策（Googleマップ・口コミ運用）</td><td class="opt-price">月 11,000円〜</td></tr>
-          <tr><td>SNS運用代行（投稿作成・更新）</td><td class="opt-price">月 16,500円〜</td></tr>
-          <tr><td>集客のご相談（コンサル）</td><td class="opt-price">月 11,000円〜</td></tr>
-          <tr><td>広告運用代行</td><td class="opt-price">月 16,500円〜</td></tr>
-          <tr><td>ブログ記事制作（AIに引用される記事）</td><td class="opt-price">1本 5,500円〜</td></tr>
-          <tr><td>更新代行の回数追加</td><td class="opt-price">月 3,300円〜</td></tr>
-        </tbody>
-      </table>
+    <div class="section__head reveal"><span class="eyebrow">Options</span><h2>オプションで、育てていける</h2><p class="section__lead">サイトはシンプルに始めて、必要になったものだけ後から足せます。<br class="dt">ロゴなどの制作物、メールなどの設定、MEO・SNS・広告などの運用をご用意しています。</p></div>
+    <div class="menu-opts">
+      <div class="menu-opt reveal">
+        <h3>制作<small>一回のお支払い</small></h3>
+        <dl>
+          <div class="opt-row"><dt>ロゴ作成</dt><span class="leader" aria-hidden="true"></span><dd>30,000円〜</dd></div>
+          <div class="opt-row"><dt>名刺デザイン</dt><span class="leader" aria-hidden="true"></span><dd>10,000円〜</dd></div>
+          <div class="opt-row"><dt>チラシ・パンフレット</dt><span class="leader" aria-hidden="true"></span><dd>30,000円〜</dd></div>
+          <div class="opt-row"><dt>ランディングページ（LP）追加</dt><span class="leader" aria-hidden="true"></span><dd>50,000円〜</dd></div>
+          <div class="opt-row"><dt>写真撮影・取材</dt><span class="leader" aria-hidden="true"></span><dd>20,000円〜</dd></div>
+          <div class="opt-row"><dt>原稿（文章）作成代行</dt><span class="leader" aria-hidden="true"></span><dd>1ページ 5,000円〜</dd></div>
+          <div class="opt-row"><dt>ページ追加</dt><span class="leader" aria-hidden="true"></span><dd>1ページ 10,000円〜</dd></div>
+        </dl>
+      </div>
+      <div class="menu-opt reveal reveal-d1">
+        <h3>取得・設定<small>一回のお支払い</small></h3>
+        <dl>
+          <div class="opt-row"><dt>独自ドメイン・サーバー取得代行</dt><span class="leader" aria-hidden="true"></span><dd>5,500円〜</dd></div>
+          <div class="opt-row"><dt>独自ドメインメール設定<small>hello@お店.com などのアドレス</small></dt><span class="leader" aria-hidden="true"></span><dd>5,500円〜</dd></div>
+          <div class="opt-row"><dt>Googleビジネスプロフィール初期設定</dt><span class="leader" aria-hidden="true"></span><dd>11,000円〜</dd></div>
+        </dl>
+      </div>
+      <div class="menu-opt reveal reveal-d2">
+        <h3>運用<small>月額</small></h3>
+        <dl>
+          <div class="opt-row"><dt>MEO対策<small>Googleマップ・口コミ運用</small></dt><span class="leader" aria-hidden="true"></span><dd>月 11,000円〜</dd></div>
+          <div class="opt-row"><dt>SNS運用代行<small>投稿作成・更新</small></dt><span class="leader" aria-hidden="true"></span><dd>月 16,500円〜</dd></div>
+          <div class="opt-row"><dt>広告運用代行</dt><span class="leader" aria-hidden="true"></span><dd>月 16,500円〜</dd></div>
+          <div class="opt-row"><dt>集客のご相談（コンサルティング）</dt><span class="leader" aria-hidden="true"></span><dd>月 11,000円〜</dd></div>
+          <div class="opt-row"><dt>ブログ記事制作<small>AIに引用される記事づくり</small></dt><span class="leader" aria-hidden="true"></span><dd>1本 5,500円〜</dd></div>
+          <div class="opt-row"><dt>更新代行の回数追加</dt><span class="leader" aria-hidden="true"></span><dd>月 3,300円〜</dd></div>
+        </dl>
+      </div>
     </div>
-    <p class="svc-note reveal" style="margin-top:28px">表示はすべて税別の目安です。内容により前後しますので、まずはお気軽にご相談ください。必要なものだけ、無理なく組み合わせられます。</p>
+    <p class="svc-note reveal" style="margin-top:32px">表示はすべて税別の目安です。内容により前後しますので、まずはお気軽にご相談ください。<br>必要なものだけ、無理なく組み合わせられます。</p>
   </div>
 </section>
 
 <!-- comparison -->
-<section class="section section--white">
+<section class="section">
   <div class="container">
     <div class="section__head reveal"><span class="eyebrow">Comparison</span><h2>他の選択肢との違い</h2></div>
     <div class="reveal" style="overflow-x:auto">
@@ -356,7 +550,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 
 </script>
-<script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='\u21C5 \u30b9\u30af\u30ed\u30fc\u30eb';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
+<script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='⇅ スクロール';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
 <script src="theme.js"></script>
 </body>
 </html>
