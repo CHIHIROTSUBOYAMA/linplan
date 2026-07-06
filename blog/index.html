@@ -60,6 +60,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .post-card__thumb::after{content:"";position:absolute;right:18px;bottom:20px;width:34px;height:34px;background:currentColor;opacity:.28;border-radius:0 62% 0 62%;transform:rotate(8deg)}
 .post-card[data-cat="choice"] .post-card__thumb{background:var(--yellow-soft);color:var(--ink)}
 .post-card[data-cat="aeo"] .post-card__thumb{background:var(--teal-soft);color:var(--teal)}
+.post-card[data-cat="local"] .post-card__thumb{background:var(--teal-soft);color:var(--orange-deep)}
 .post-card__art{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;pointer-events:none}
 .post-card__art svg{width:52px;height:52px;opacity:.9}
 .post-card__art-word{font-family:var(--hand);font-weight:600;font-size:1rem;letter-spacing:.05em;opacity:.85}
@@ -218,6 +219,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <button type="button" class="blog-cat" data-filter="money" aria-pressed="false">お金・相場</button>
         <button type="button" class="blog-cat" data-filter="choice" aria-pressed="false">選び方・比較</button>
         <button type="button" class="blog-cat" data-filter="aeo" aria-pressed="false">AEO/GEO</button>
+        <button type="button" class="blog-cat" data-filter="local" aria-pressed="false">地域・集客</button>
       </div>
     </div>
   </section>
@@ -225,8 +227,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <section class="section">
     <div class="container">
       <div class="blog-grid">
-      <a href="cited-by-chatgpt.html" class="post-card post-card--featured" data-cat="aeo">
-        <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span class="post-card__new">NEW</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M30 8c2 10 5 14 16 17-11 3-14 7-16 17-2-10-5-14-16-17 11-3 14-7 16-17Z"/><path d="M49 37c1 5 2.5 7 7.5 8.5-5 1.5-6.5 3.5-7.5 8.5-1-5-2.5-7-7.5-8.5 5-1.5 6.5-3.5 7.5-8.5Z"/></svg><span class="post-card__art-word">AI時代の備え</span></span></div>
+      <a href="funabashi-seitai.html" class="post-card post-card--featured" data-cat="local">
+        <div class="post-card__thumb"><span class="post-card__cat">地域・集客</span><span class="post-card__new">NEW</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8c-8.5 0-15 6.3-15 14.5C17 34 32 50 32 50s15-16 15-27.5C47 14.3 40.5 8 32 8Z"/><circle cx="32" cy="23" r="5.5"/></svg><span class="post-card__art-word">地域で集客</span></span></div>
+        <div class="post-card__body">
+          <h2 class="post-card__title">船橋の整体院がホームページで集客する方法</h2>
+          <p class="post-card__excerpt">ポータルサイトだけに頼らず、「船橋 整体」の検索で見つけてもらうには。集客できるサイトに必要な5つの要素と費用の目安を、地元の制作者が解説します。</p>
+          <div class="post-card__meta"><span class="post-card__meta-dates"><span>2026.07.06</span><span>約7分</span></span><span class="post-card__more">続きを読む →</span></div>
+        </div>
+      </a>
+      <a href="cited-by-chatgpt.html" class="post-card" data-cat="aeo">
+        <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M30 8c2 10 5 14 16 17-11 3-14 7-16 17-2-10-5-14-16-17 11-3 14-7 16-17Z"/><path d="M49 37c1 5 2.5 7 7.5 8.5-5 1.5-6.5 3.5-7.5 8.5-1-5-2.5-7-7.5-8.5 5-1.5 6.5-3.5 7.5-8.5Z"/></svg><span class="post-card__art-word">AI時代の備え</span></span></div>
         <div class="post-card__body">
           <h2 class="post-card__title">ChatGPTに引用されるサイトの3つの共通点</h2>
           <p class="post-card__excerpt">AIに引用されるサイトには共通点があります。①質問への即答 ②独自の一次情報 ③構造化データ。大手でなくても引用される理由を解説します。</p>
