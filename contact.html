@@ -129,6 +129,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <optgroup label="月額プラン">
             <option value="monthly-light">ライト（月額9,900円〜）</option>
             <option value="monthly-standard">スタンダード（月額16,500円〜）</option>
+            <option value="monthly-premium">プレミアム（月額22,000円〜）</option>
           </optgroup>
           <optgroup label="買い切りプラン">
             <option value="starter">スターター（35万円〜）</option>
@@ -253,10 +254,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 <script>
   (function () {
-    var params = new URLSearchParams(location.search);
-    var plan = params.get('plan');
+    /* プレフィルは #plan= / #service=（ハッシュ）で受け取る。
+       ハッシュは URL の一部として索引されないため、?plan= のようにクエリを使うと
+       Google が contact.html の重複 URL として個別にインデックスしてしまう。
+       旧 ?plan= 形式のリンク・ブックマークも動くようクエリ側も引き続き読む。 */
+    var qs = new URLSearchParams(location.search);
+    var hs = new URLSearchParams(location.hash.replace(/^#/, ''));
+    var param = function (key) { return qs.get(key) || hs.get(key); };
+    var plan = param('plan');
     if (plan) { var sel = document.getElementById('plan'); if (sel) sel.value = plan; }
-    var service = params.get('service');
+    var service = param('service');
     if (service) { var cb = document.querySelector('input[name=topic][value="' + service + '"]'); if (cb) cb.checked = true; }
     try {
       var worries = JSON.parse(localStorage.getItem('Linplan_worries') || '[]');

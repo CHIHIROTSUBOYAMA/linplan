@@ -25,21 +25,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 外部依存
 
-- **共有ローカルファイル（全 18 ページが相対パスで読込）** — 新規ページ追加時は必ず 3 つとも入れる（＋下記 Web フォントの preload 5 行セット）：
-  - `base.css` … 共通コンポーネント CSS ライブラリ（ルートは `base.css`、blog は `../base.css`）。**インライン `<style>` より前、`theme.css` より前**に置く。
-  - `theme.css` … DS スキン。**`<head>` 内・インライン `<style>` と `base.css` の後・`</head>` の前**（最後に読込して上書きする設計）。ルートは `theme.css`、blog は `../theme.css`。
-  - `theme.js` … 共通ナビ用スクリプト（スクロールで `.site-nav` に `.past-hero` を付与、現在ページ表示、**FAQ アコーディオンのキーボード操作対応**＝`.faq-q` に `role="button"`/`tabindex` を付与し Enter/Space で開閉）。`</body>` 直前。ルートは `theme.js`、blog は `../theme.js`。
+- **共有ローカルファイル（全 19 ページが相対パスで読込）** — 新規ページ追加時は必ず 3 つとも入れる（＋下記 Web フォントの preload 5 行セット）：
+  - `base.css` … 共通コンポーネント CSS ライブラリ（ルートは `base.css`、blog / area は `../base.css`）。**インライン `<style>` より前、`theme.css` より前**に置く。
+  - `theme.css` … DS スキン。**`<head>` 内・インライン `<style>` と `base.css` の後・`</head>` の前**（最後に読込して上書きする設計）。ルートは `theme.css`、blog / area は `../theme.css`。
+  - `theme.js` … 共通ナビ用スクリプト（スクロールで `.site-nav` に `.past-hero` を付与、現在ページ表示、**FAQ アコーディオンのキーボード操作対応**＝`.faq-q` に `role="button"`/`tabindex` を付与し Enter/Space で開閉）。`</body>` 直前。ルートは `theme.js`、blog / area は `../theme.js`。
 - **Web フォント（セルフホスト・サブセット済み woff2）** — `Klee One`（400;600）/ `Zen Kaku Gothic New`（400;500;700）を **`fonts/` 配下の 5 つの `*.subset.woff2`** で配信する（Google Fonts CDN・`preconnect` は全廃済み。旧 `Noto Sans JP` / `Space Grotesk` も廃止済み）。仕組みは 2 段構え：
   1. **`@font-face` は `base.css` 冒頭**に 5 個定義（`font-display: swap`。URL は `base.css` からの相対 `fonts/...` なので blog / 404 からもそのまま解決される）。
   2. **各 HTML の `<head>` に 5 フォントぶんの `<link rel="preload" as="font" type="font/woff2" ... crossorigin>`** を置く（`base.css` の直前）。パスは階層で変える：ルート `fonts/`、blog `../fonts/`、404.html のみルート相対 `/fonts/`。**新規ページ追加時はこの 5 行セットをコピーする**（`crossorigin` を忘れると二重ダウンロードになる）。**preload を外すと Lighthouse スコアが大きく落ちる**：フォントは CSS 経由で発見されると VeryHigh 優先度になり Lighthouse（Lantern）が FCP のブロッキング資源として扱うが、preload 経由だと High 優先度になり FCP 依存から外れる（実 UX でも FOUT が短くなる）。
   - `Klee One`（`--hand`）= 手書き風の見出し・ボタン・ロゴ
   - `Zen Kaku Gothic New`（`--font` / `--en`）= 本文・英字ラベル
   - **再生成**：`pip install fonttools brotli` して `python tools/subset-fonts.py`（元 TTF は google/fonts から自動取得）。Zen は全 HTML/CSS/JS から使用文字を自動収集するので**文章を追加・変更したら再実行**するだけでよい。Klee は `tools/klee-chars.txt` の文字＋かな・約物のみ収録（1 グリフが重いため最小化）なので、**見出し・ボタン等（`--hand` 系）に新しい漢字を使ったら `tools/klee-chars.txt` に追記して再実行**する（漏れるとその文字だけ Zen Kaku フォールバックになる）。
-- **Google Tag Manager（GTM）** — 全 18 ページの `<head>`（viewport 直後）に計測スニペット、`<body>` 直後に noscript 版を設置。コンテナ ID は `GTM-5DVGF39S`。**新規ページを追加するときは、この 2 スニペットを必ず同じ位置に入れる**（入れ忘れると計測が欠落する）。
-- **メインランドマーク（`<main>`）** — 全 18 ページとも、本文を `<main>` で囲む（モバイルメニュー閉じ `</div>` の直後に `<main>`、`<footer class="site-footer">` の直前に `</main>`）。ナビ（`.site-nav`）・モバイルメニュー・フッターは `<main>` の**外**に置く（ランドマークを入れ子にしない）。**新規ページ追加時も必ず入れる**（無いと Lighthouse の「Document does not have a main landmark」で減点される）。`<main>` はブロック要素なので見た目は変わらない。
+
+    **症状**：見出しの中で**その文字だけ太く・角張って見える**。「一部だけ太字になっていてダサい」という見え方をするが、原因は `<b>` ではなくサブセット漏れなので、`<b>` を疑う前にこちらを確認する（2026-07 に `面`・`寄`・`初`・`近`・`隣`・`伺`・`志`・`野`・`川`・`鎌`・`谷`・`八`・`外`・`苦`・`¥`・`／` の16文字が漏れていた）。
+
+    **漏れの検出方法**（目視に頼らない）：ローカルサーバーを立てて、全ページを iframe で読み込み → 各テキストノードと `::before`/`::after` の computed `font-family` が `Klee One` 始まりのものだけ文字を収集 → 各文字を canvas に「Klee One → Zen Kaku」と「Zen Kaku のみ」の2通りで描画し、**ピクセルが完全一致したらフォールバック＝サブセット漏れ**と判定する。全角文字は幅が同じなので `measureText` の幅比較では判定できない。
+
+    **`✓`（U+2713）だけは直せない** — `tools/klee-chars.txt` に記載済みだが Klee One の元フォントにグリフが無いため、サブセットに入らず常に Zen Kaku で描画される（`pricing.html` の `.choice li::before` 等）。記号なので見た目の実害はない。
+- **Google Tag Manager（GTM）** — 全 19 ページの `<head>`（viewport 直後）に計測スニペット、`<body>` 直後に noscript 版を設置。コンテナ ID は `GTM-5DVGF39S`。**新規ページを追加するときは、この 2 スニペットを必ず同じ位置に入れる**（入れ忘れると計測が欠落する）。
+- **メインランドマーク（`<main>`）** — 全 19 ページとも、本文を `<main>` で囲む（モバイルメニュー閉じ `</div>` の直後に `<main>`、`<footer class="site-footer">` の直前に `</main>`）。ナビ（`.site-nav`）・モバイルメニュー・フッターは `<main>` の**外**に置く（ランドマークを入れ子にしない）。**新規ページ追加時も必ず入れる**（無いと Lighthouse の「Document does not have a main landmark」で減点される）。`<main>` はブロック要素なので見た目は変わらない。
 - GSAP / SplitType / ScrollTrigger などの外部ライブラリは **使用しない**（旧 `css/` `js/vendor/` は撤去済み。リビールは自前の `IntersectionObserver` で実装）。
 
-## ページ一覧（18 ページ ＋ 404.html）
+## ページ一覧（19 ページ ＋ 404.html）
 
 | ファイル | 役割 |
 |---|---|
@@ -53,6 +59,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `contact.html` | お問い合わせフォームページ |
 | `privacy.html` | プライバシーポリシー |
 | `tokushoho.html` | 特定商取引法に基づく表記（販売事業者・価格・支払・契約期間・解約条件などの法定表記） |
+| `area/funabashi.html` | 地域ページ（船橋市内の対面サポート・対応エリア）。**共有ファイルは blog と同じく `../` 参照** |
 | `blog/index.html` | 相談室（ブログ一覧）— 公開記事カード＋「近日公開」プレースホルダー |
 | `blog/hp-cost-2026.html` | ブログ記事「ホームページ制作費の相場は？【2026年版・中小企業向け】」 |
 | `blog/how-to-order-website.html` | ブログ記事（ホームページ発注の進め方） |
@@ -60,6 +67,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `blog/wordpress-vs-original.html` | ブログ記事（WordPress と独自制作の比較） |
 | `blog/sme-ai-search-ready.html` | ブログ記事（中小企業の AI 検索対応） |
 | `blog/cited-by-chatgpt.html` | ブログ記事（ChatGPT に引用されるには） |
+| `blog/funabashi-seitai.html` | ブログ記事（船橋の整体院のHP集客）— 地域×業種の記事 |
 | `404.html` | 404 エラーページ（GitHub Pages 用。`noindex`・sitemap 対象外・OGP なし。**共有ファイルはルート相対パス**（`/base.css` `/theme.css` `/theme.js`、フォント preload も `/fonts/...`）で参照する — どの階層の URL でも表示されるため） |
 
 ナビ／モバイルメニューのリンク構成は全ページ共通：私について（about）/ サービス（services）/ AEO・GEO（aeo-geo）/ 制作実績（works）/ 料金（pricing）/ よくある質問（faq）/ 相談室（blog/index.html）/ 無料で相談！（contact、CTA ボタン）。フッターはこれにプライバシーポリシー（privacy）と特定商取引法に基づく表記（tokushoho）を加えた構成。
@@ -79,12 +87,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │   ├─ subset-fonts.py    fonts/ の再生成スクリプト（fonttools + brotli が必要）
 │   ├─ klee-chars.txt     Klee One に収録する文字リスト（--hand 系で新しい漢字を使ったら追記）
 │   └─ serve-gzip.js      Lighthouse 計測用の gzip 配信サーバー（本番 GitHub Pages 相当）
+├─ area/
+│   └─ funabashi.html      地域ページ（船橋）。共有ファイルは `../` 参照
 ├─ blog/
 │   ├─ index.html          相談室（ブログ一覧）
 │   └─ *.html              ブログ記事（hp-cost-2026 / how-to-order-website /
 │                          aeo-vs-seo / wordpress-vs-original /
-│                          sme-ai-search-ready / cited-by-chatgpt）
+│                          sme-ai-search-ready / cited-by-chatgpt /
+│                          funabashi-seitai）
 ├─ CLAUDE.md
+├─ CNAME                  GitHub Pages のカスタムドメイン（`linplan.jp`）。消すと独自ドメインが外れる
 ├─ sitemap.xml / robots.txt
 ├─ images/
 │   ├─ *.webp             制作物・イラスト画像（studyreport / tsukimi / practice-* / hero-consult / profile 等。HTML はすべて WebP を参照）
@@ -144,7 +156,15 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 ## お問い合わせフォーム（Formspree 接続済み）
 
-`contact.html` の submit ハンドラ（`#contactForm`）は `fetch()` で Formspree（`action="https://formspree.io/f/xvzldalg"`、`method="POST"`）へ非同期送信する。HTML5 バリデーション（`checkValidity` / `reportValidity`）通過後に送信し、成功で `#formDone`（完了メッセージ）、失敗で `#formError`（mailto: 導線つき）を表示する。送信中はボタンを `disabled` にして「送信中…」表示。URL パラメータ（`?plan=` / `?service=` 等）や `localStorage` の「気になっている点」から本文・プラン選択をプレフィルする機能もある。連絡先メールは実値（`tsubochihiroyama2230@gmail.com`、本文中およびページ内に mailto: リンクあり）。**送信先を変える場合は `<form>` の `action` の Formspree ID を差し替える**。
+`contact.html` の submit ハンドラ（`#contactForm`）は `fetch()` で Formspree（`action="https://formspree.io/f/xvzldalg"`、`method="POST"`）へ非同期送信する。HTML5 バリデーション（`checkValidity` / `reportValidity`）通過後に送信し、成功で `#formDone`（完了メッセージ）、失敗で `#formError`（mailto: 導線つき）を表示する。送信中はボタンを `disabled` にして「送信中…」表示。`localStorage` の「気になっている点」から本文をプレフィルする機能もある。連絡先メールは実値（`tsubochihiroyama2230@gmail.com`、本文中およびページ内に mailto: リンクあり）。**送信先を変える場合は `<form>` の `action` の Formspree ID を差し替える**。
+
+### プラン／サービスのプレフィルは「ハッシュ」で渡す（クエリ禁止）
+
+`pricing.html` の「このプランで相談する」6本と `services.html` の導線3本は、**`contact.html#plan=…` / `contact.html#service=…`**（`?` ではなく `#`）でリンクする。`contact.html` の JS は `location.hash` と `location.search` の**両方**を読む（`param()` ヘルパー）ため、旧 `?plan=` 形式のブックマークも動く。
+
+**クエリ（`?plan=`）に戻してはいけない** — クエリは Google にとって別 URL なので、`contact.html` の重複 URL が9種類生まれる。実際に `https://linplan.jp/contact.html?plan=custom` が単独でインデックスされ、検索から来た人のフォームに「カスタム」が勝手に選択される状態になった（2026-07 に修正）。ハッシュは URL の一部として索引されないのでこの問題が起きない。
+
+新しいプラン導線を足すときは **`#plan=` の値が `contact.html` の `<select id="plan">` の `<option value>` に必ず存在すること**を確認する（存在しないと `sel.value` が空になり、プラン未選択で着地する。`monthly-premium` が実際にこれで抜けていた）。同様に `#service=` の値は `input[name=topic]` の `value`（`web` / `app` / `ai` / `renewal` / `other`）と一致させる。
 
 ## Works の 3 カテゴリ運用ルール（重要）
 
@@ -185,5 +205,23 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 ## SEO / sitemap
 
 - `sitemap.xml` / `robots.txt` はリポジトリルートに配置。新規ページ追加・削除時は `sitemap.xml` の `<urlset>` も更新する。ベース URL は `https://linplan.jp/`。
-- 全 18 ページの `<head>`（`<title>` 直後）に **OGP / Twitter Card / canonical** メタを設置済み。`og:image` / `twitter:image` は `https://linplan.jp/images/ogp.png`（絶対 URL）、`og:url` / canonical はページごとの絶対 URL。**新規ページ追加時は同じ一式を入れる**（`og:title` / `og:description` / URL をそのページ用に差し替える）。
+- 全 19 ページの `<head>`（`<title>` 直後）に **OGP / Twitter Card / canonical** メタを設置済み。`og:image` / `twitter:image` は `https://linplan.jp/images/ogp.png`（絶対 URL）、`og:url` / canonical はページごとの絶対 URL。**新規ページ追加時は同じ一式を入れる**（`og:title` / `og:description` / URL をそのページ用に差し替える）。
 - JSON-LD 構造化データは**主要ページに設置済み**：`index.html`（`ProfessionalService`＋`Person`）／ `about.html`（`AboutPage`＋`Person`）／ `services.html`（`Service`×3）／ `contact.html`（`ContactPage`）／ `faq.html`（`FAQPage`＝ページ上の全 FAQ と同期）／ works・pricing・aeo-geo・about・services・contact・faq（`BreadcrumbList`）／ ブログ記事（`Article`、FAQ を含む記事は `FAQPage` も）。**構造化データは該当ページの表示コンテンツと必ず同期させる**（FAQ を増減したら `faq.html` の JSON-LD も更新する）。
+- `<title>` は **全角 30〜32 文字以内**に収める（Google の検索結果でそれ以上は「…」で切られる）。サフィックスの `｜ Linplan` が 9 文字ぶんを占めるので、本文側は 20 文字強が上限。`og:title` と JSON-LD の `headline` は SERP で切られないので、`<h1>` と同じフル表記のままでよい（`<title>` だけ短くする）。
+
+### GSC「ページにリダイレクトがあります」について（正常・対応不要）
+
+Search Console のインデックス未登録レポートに出る「ページにリダイレクトがあります」は、以下の **意図した 301 が検出されているだけ**なので**直してはいけない**（消すと正規化が壊れる）：
+
+| 検出される URL | 挙動 |
+|---|---|
+| `http://linplan.jp/*` | → 301 → `https://linplan.jp/*`（HTTPS 強制） |
+| `http(s)://www.linplan.jp/*` | → 301 → `https://linplan.jp/*`（www 統一） |
+| `https://chihirotsuboyama.github.io/linplan/*` | → 301 → `https://linplan.jp/*`（`CNAME` 設定時に GitHub Pages が自動付与。無効化不可） |
+| `https://linplan.jp/blog`・`/area`（末尾スラッシュなし） | → 301 → `/blog/`・`/area/` |
+
+**本当に直すべきなのは「sitemap.xml に載せた URL 自体がリダイレクトする」場合だけ**。検証コマンド（全件 `200` で空出力なら正常）：
+
+```
+$sm=[xml](curl.exe -s https://linplan.jp/sitemap.xml); foreach($u in $sm.urlset.url.loc){$c=curl.exe -s -o NUL -w "%{http_code}" $u; if($c -ne '200'){"NG $c $u"}}
+```
