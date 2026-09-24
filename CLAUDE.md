@@ -175,6 +175,18 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 - トークンは `instagram-token-refresh.yml` が毎月 1 日に延長して Secrets `IG_ACCESS_TOKEN` を上書き（`GH_PAT` が必要。PAT の有効期限切れに注意）。
 - 取得失敗時は index.html を変更しない（前回の表示が残る）。投稿 0 件ならセクションごと出さない。
 
+## Instagram 投稿 → ブログ記事の下書き（GitHub Actions・手動実行）
+
+Actions の「Instagram to blog」を手動実行すると、`.github/scripts/instagram-to-blog.mjs` が未記事化の最新投稿（本文 40 文字以上）を Claude API（`claude-sonnet-5`、Secrets `ANTHROPIC_API_KEY`）で記事化し、**`blog-draft/insta-<投稿ID>` ブランチの下書き PR** を出す（マージ＝公開）。1 回の実行で次をまとめて行う：
+
+- `blog/<slug>.html` を生成 — **`blog/funabashi-seitai.html` の head・ナビ・フッター・著者欄・インライン CSS を型として流用**するため、このファイルを削除・改名しない（直すと以降の生成記事にも反映される）
+- 投稿画像を `blog/img/insta-<ID>.jpg` に保存（Instagram の画像 URL は期限切れになるため）
+- `blog/index.html` の featured の次にカード追加（写真付きは `.post-card__thumb--photo` で葉の装飾を消す）、トップ `index.html` の相談室カードを先頭に追加して 3 枚に保つ、`sitemap.xml` に追加
+- 見出し等（Klee 描画）の新しい漢字を `tools/klee-chars.txt` に追記し、ワークフロー内で `tools/subset-fonts.py` を実行して `fonts/` も PR に含める
+- 記事化済みの投稿を `blog/insta-articles.json` に記録（二重記事化防止）
+
+**AI の文章はそのまま公開しない** — PR 説明欄の「確認が必要な点」とチェックリストを見て、事実・数字・言い過ぎを必ず人が確認する。
+
 ## Works の 3 カテゴリ運用ルール（重要）
 
 `index.html` / `works.html` の Works は **Original Products / Real Works / Practice Works** の 3 カテゴリで運用する。法令面（景表法・不正競争防止法・著作権・商標）とブランド面の両方を守るための運用ルール。

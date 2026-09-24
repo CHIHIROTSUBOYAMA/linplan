@@ -1,0 +1,75 @@
+# インスタの投稿を AI で記事化し、「下書きのプルリクエスト」として出す
+# Actions 画面から手動で実行。マージするまで公開されない。
+name: Instagram to blog
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: "記事化する投稿ID（空欄なら、まだ記事にしていない最新の投稿）"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: instagram-to-blog
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 下書きPRが開いている投稿を除外
+        id: skip
+        run: |
+          IDS=$(git ls-remote --heads origin 'blog-draft/insta-*' | sed -E 's#.*/insta-##' | tr '\n' ' ')
+          echo "ids=$IDS" >> "$GITHUB_OUTPUT"
+
+      - name: 記事を生成
+        id: gen
+        run: node .github/scripts/instagram-to-blog.mjs
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          POST_ID: ${{ inputs.post_id }}
+          SKIP_IDS: ${{ steps.skip.outputs.ids }}
+          PR_BODY: /tmp/pr-body.md
+
+      # 記事の新しい漢字がフォントのサブセットに無いと、その字だけ別フォントで表示されるため再生成
+      - uses: actions/setup-python@v5
+        if: steps.gen.outputs.created == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: フォントのサブセットを再生成
+        if: steps.gen.outputs.created == 'true'
+        run: |
+          pip install fonttools brotli
+          python tools/subset-fonts.py
+
+      - name: 下書きのプルリクエストを作成
+        if: steps.gen.outputs.created == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ steps.gen.outputs.title }}
+          POST: ${{ steps.gen.outputs.post_id }}
+        run: |
+          BRANCH="blog-draft/insta-${POST}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add blog sitemap.xml index.html fonts tools/klee-chars.txt
+          git commit -m "draft: ${TITLE}"
+          git push origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "【下書き】${TITLE}" --body-file /tmp/pr-body.md
