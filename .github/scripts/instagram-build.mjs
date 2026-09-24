@@ -87,7 +87,7 @@ const block = posts.length === 0 ? "" : `
     <div class="insta-grid">
 ${cards}
     </div>
-    <div style="text-align:center;margin-top:36px" class="reveal"><a href="${ACCOUNT_URL}" class="btn btn--ghost hand" target="_blank" rel="noopener">Instagramを見る</a></div>
+    <div style="text-align:center;margin-top:36px" class="reveal"><a href="${ACCOUNT_URL}" class="btn btn--ghost hand" target="_blank" rel="noopener">Instagramを見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 `;

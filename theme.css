@@ -161,7 +161,7 @@ body {
 .polaroid__shot { border-radius: var(--radius-md); }
 .polaroid__name { font-family: var(--hand); }
 
-.faq-item, .post-card, .value-card {
+.faq-item, .post-card, .value-card, .insta-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-soft);
   box-shadow: var(--shadow-card);
