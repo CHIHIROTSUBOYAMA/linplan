@@ -166,6 +166,15 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 新しいプラン導線を足すときは **`#plan=` の値が `contact.html` の `<select id="plan">` の `<option value>` に必ず存在すること**を確認する（存在しないと `sel.value` が空になり、プラン未選択で着地する。`monthly-premium` が実際にこれで抜けていた）。同様に `#service=` の値は `input[name=topic]` の `value`（`web` / `app` / `ai` / `renewal` / `other`）と一致させる。
 
+## Instagram「最新のお知らせ」（GitHub Actions で自動更新）
+
+`index.html` の相談室（Blog）セクション直前、`<!-- INSTA:START -->` 〜 `<!-- INSTA:END -->` の間は **`.github/workflows/instagram-feed.yml` が毎日 6:00 JST に自動で書き換える**（手で編集しない）。`.github/scripts/instagram-build.mjs` が Instagram Graph API から最新 6 件を取得し、画像を `insta/*.jpg`（＋`insta/posts.json`）に保存してカード HTML を生成、変化があった日だけ bot が main にコミットする。**ローカル作業前は必ず pull**（しないとコンフリクトする）。
+
+- CSS は `base.css` 末尾の `.insta-grid` / `.insta-card`。
+- キャプションは Zen Kaku（本文）で描画されるため、index.html が変わった日はワークフロー内で `tools/subset-fonts.py` も実行して `fonts/` をコミットする（新しい漢字のサブセット漏れ対策）。
+- トークンは `instagram-token-refresh.yml` が毎月 1 日に延長して Secrets `IG_ACCESS_TOKEN` を上書き（`GH_PAT` が必要。PAT の有効期限切れに注意）。
+- 取得失敗時は index.html を変更しない（前回の表示が残る）。投稿 0 件ならセクションごと出さない。
+
 ## Works の 3 カテゴリ運用ルール（重要）
 
 `index.html` / `works.html` の Works は **Original Products / Real Works / Practice Works** の 3 カテゴリで運用する。法令面（景表法・不正競争防止法・著作権・商標）とブランド面の両方を守るための運用ルール。

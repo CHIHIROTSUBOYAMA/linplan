@@ -1,0 +1,61 @@
+# 毎日 6:00（日本時間）に Instagram の投稿を取得して「最新のお知らせ」を更新
+name: Instagram feed
+
+on:
+  schedule:
+    - cron: "0 21 * * *"   # UTC 21:00 = JST 6:00
+  workflow_dispatch:        # Actions 画面から手動実行も可能
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build Instagram feed
+        run: node .github/scripts/instagram-build.mjs
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_LIMIT: "6"
+
+      # キャプションに新しい漢字が入ると Zen Kaku のサブセットに無く、その字だけ
+      # システムフォントで表示されるため、index.html が変わった日はフォントも再生成する
+      - name: Check index.html changed
+        id: diff
+        run: |
+          if git diff --quiet -- index.html; then echo "changed=false" >> "$GITHUB_OUTPUT"
+          else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+
+      - uses: actions/setup-python@v5
+        if: steps.diff.outputs.changed == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate font subsets
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          pip install fonttools brotli
+          python tools/subset-fonts.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html insta fonts
+          if git diff --cached --quiet; then
+            echo "変更なし（コミットしません）"
+          else
+            git commit -m "chore: Instagram の最新投稿を反映"
+            git push
+          fi
