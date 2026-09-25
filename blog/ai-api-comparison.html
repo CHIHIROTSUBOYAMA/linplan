@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5DVGF39S');</script>
+<!-- End Google Tag Manager -->
+<title>AIのAPIとは？無料枠・料金・おすすめを比較【2026年】｜ Linplan</title>
+<link rel="canonical" href="https://linplan.jp/blog/ai-api-comparison.html">
+<meta name="description" content="AIのAPIとは何か、無料で使える条件、料金の決まり方、目的別のおすすめ、使い始める手順までを中小企業向けにやさしく解説。Linplanが実際に業務で使った費用も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Linplan">
+<meta property="og:title" content="AIのAPIとは？無料で使えるものから料金・おすすめ・使い方まで比較【2026年版】">
+<meta property="og:description" content="AIのAPIとは何か、無料枠の条件、料金の決まり方、目的別のおすすめ、使い始める手順までを中小企業向けに解説します。">
+<meta property="og:url" content="https://linplan.jp/blog/ai-api-comparison.html">
+<meta property="og:image" content="https://linplan.jp/images/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AIのAPIとは？無料で使えるものから料金・おすすめ・使い方まで比較【2026年版】",
+  "description": "AIのAPIとは何か、無料枠の条件、料金の決まり方、目的別のおすすめ、使い始める手順までを中小企業向けに解説します。",
+  "datePublished": "2026-09-25",
+  "dateModified": "2026-09-25",
+  "author": {"@type": "Person","name": "坪山ちひろ","url": "https://linplan.jp/about.html"},
+  "publisher": {"@type": "Organization","name": "Linplan"},
+  "mainEntityOfPage": "https://linplan.jp/blog/ai-api-comparison.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"ChatGPTの有料プランに入っていればAPIも使えますか？","acceptedAnswer":{"@type":"Answer","text":"使えません。チャットの有料プランとAPIは別契約です。APIは開発者向けの管理画面で別に登録し、使った分の料金を支払います。"}},
+    {"@type":"Question","name":"無料枠で商用利用しても大丈夫ですか？","acceptedAnswer":{"@type":"Answer","text":"各社の利用規約によって異なるため、使う前に規約を確認してください。また、無料枠では入力した内容がサービス改善に使われることがあるため、お客様の情報や社外秘は入れないのが安全です。"}},
+    {"@type":"Question","name":"AIのAPIは月にいくらくらいかかりますか？","acceptedAnswer":{"@type":"Answer","text":"使い方次第ですが、文章の下書き程度であれば月に数百円〜数千円に収まることが多いです。管理画面で利用上限を設定しておけば、想定外の請求を防げます。"}},
+    {"@type":"Question","name":"プログラミングができなくてもAIのAPIは使えますか？","acceptedAnswer":{"@type":"Answer","text":"ノーコードの自動化ツールを使えば、プログラムを書かずにAPIを利用する方法があります。自社のサイトやシステムに組み込みたい場合は、制作会社に相談するのが早道です。"}}
+  ]
+}
+</script>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Regular.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Medium.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Bold.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/KleeOne-Regular.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/KleeOne-SemiBold.subset.woff2" crossorigin>
+<link rel="stylesheet" href="../base.css">
+<link rel="icon" href="../favicon.ico" sizes="48x48 32x32 16x16">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>@media(max-width:560px){.btn{white-space:normal}}</style>
+<style>.post-code{background:var(--ink);color:var(--paper);border-radius:6px;padding:16px 18px;margin:0 0 22px;overflow-x:auto;font-size:.8rem;line-height:1.7;white-space:pre}.post-code code{font-family:ui-monospace,Consolas,monospace}</style>
+<style>
+/* ============================================================
+   BLOG 固有スタイル（V4スクラップブック準拠）
+   ============================================================ */
+.blog-hero{padding:72px 0 40px;text-align:center;position:relative}
+.blog-hero__kicker{font-family:var(--en);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:600;margin:0 0 14px}
+.blog-hero__title{font-family:var(--hand);font-size:clamp(1.9rem,5vw,3rem);font-weight:600;line-height:1.4;margin:0 0 16px;color:var(--ink)}
+.blog-hero__lead{font-size:.98rem;line-height:2;color:var(--ink-soft);max-width:620px;margin:0 auto}
+
+/* カテゴリチップ */
+.blog-cats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 8px}
+.blog-cat{font-size:.82rem;font-weight:600;padding:7px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink-soft);text-decoration:none;transition:all .2s var(--ease);cursor:pointer}
+.blog-cat:hover,.blog-cat.is-active{border-color:var(--orange);background:var(--orange-soft);color:var(--orange-deep)}
+
+/* 記事カード一覧 */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px;margin:44px 0 20px}
+.post-card{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease);position:relative}
+.post-card:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 14px 34px rgba(44,39,34,.13)}
+.post-card__thumb{aspect-ratio:16/9;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;font-size:1.1rem;color:var(--orange-deep);position:relative;overflow:hidden}
+.post-card__thumb span{position:relative;z-index:1;padding:0 18px;text-align:center;line-height:1.4}
+.post-card__cat{position:absolute;top:12px;left:12px;z-index:2;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+.post-card__body{padding:20px 20px 22px;flex:1;display:flex;flex-direction:column}
+.post-card__title{font-size:1.04rem;font-weight:700;line-height:1.55;margin:0 0 10px}
+.post-card__excerpt{font-size:.84rem;color:var(--ink-soft);line-height:1.85;margin:0 0 16px;flex:1}
+.post-card__meta{font-family:var(--en);font-size:.74rem;color:var(--ink-faint);display:flex;gap:12px;align-items:center}
+
+/* ===== 記事本文ページ ===== */
+.post-wrap{max-width:760px;margin:0 auto;padding:0 28px}
+.post-breadcrumb{font-size:.78rem;color:var(--ink-faint);margin:116px 0 0;font-family:var(--en)}
+.post-breadcrumb a{color:var(--ink-soft);text-decoration:none}
+.post-breadcrumb a:hover{color:var(--orange-deep)}
+.post-head{padding:26px 0 24px;border-bottom:2px dashed var(--line);margin-bottom:34px}
+.post-head__cat{display:inline-block;font-size:.74rem;font-weight:700;padding:5px 13px;border-radius:999px;background:var(--orange-soft);color:var(--orange-deep);margin:0 0 16px}
+.post-head__title{font-family:var(--hand);font-size:clamp(1.6rem,4.4vw,2.4rem);font-weight:600;line-height:1.45;margin:0 0 18px;color:var(--ink)}
+.post-head__meta{font-family:var(--en);font-size:.78rem;color:var(--ink-faint);display:flex;gap:16px;flex-wrap:wrap}
+
+/* 目次 */
+.post-toc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px 26px;margin:0 0 38px}
+.post-toc__ttl{font-family:var(--hand);font-weight:600;font-size:1rem;margin:0 0 12px;color:var(--ink)}
+.post-toc ol{margin:0;padding-left:1.3em}
+.post-toc li{font-size:.88rem;line-height:1.95;color:var(--ink-soft)}
+.post-toc a{color:var(--ink-soft);text-decoration:none}
+.post-toc a:hover{color:var(--orange-deep);text-decoration:underline}
+
+/* 本文 typography */
+.post-body{font-size:.97rem;line-height:2.05;color:var(--ink)}
+.post-body > p{margin:0 0 22px}
+.post-body h2{font-family:var(--hand);font-size:1.5rem;font-weight:600;line-height:1.5;margin:48px 0 18px;padding:0 0 10px;border-bottom:1px solid var(--line);scroll-margin-top:90px}
+.post-body h3{font-size:1.16rem;font-weight:700;line-height:1.6;margin:34px 0 14px;color:var(--ink);scroll-margin-top:90px}
+.post-body h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--orange);border-radius:2px;margin-right:9px;transform:rotate(8deg)}
+.post-body ul,.post-body ol{margin:0 0 22px;padding-left:1.4em}
+.post-body li{margin:0 0 9px;line-height:1.9}
+.post-body strong{font-weight:700;background:linear-gradient(transparent 62%,var(--yellow-soft) 62%)}
+.post-body a{color:var(--orange-deep);text-decoration:underline;text-underline-offset:3px}
+
+/* 結論ボックス（AEO最適化：冒頭の即答） */
+.post-answer{background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:0 6px 6px 0;padding:20px 24px;margin:0 0 34px}
+.post-answer__label{font-family:var(--en);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+.post-answer p{margin:0;font-size:.96rem;line-height:1.95;font-weight:500}
+
+/* 表 */
+.post-table-wrap{overflow-x:auto;margin:0 0 26px}
+.post-body table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:440px}
+.post-body th,.post-body td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.post-body thead th{background:var(--ink);color:var(--paper);font-weight:600}
+.post-body tbody tr:nth-child(even){background:var(--paper)}
+
+/* 引用・補足 */
+.post-note{background:var(--orange-soft);border-radius:6px;padding:16px 20px;margin:0 0 26px;font-size:.88rem;line-height:1.9;color:var(--ink-soft)}
+.post-note strong{background:none}
+
+/* FAQ */
+.post-faq{margin:44px 0 0}
+.post-faq__ttl{font-family:var(--hand);font-size:1.5rem;font-weight:600;margin:0 0 20px}
+.post-faq__item{border:1px solid var(--line);border-radius:6px;padding:18px 22px;margin:0 0 14px;background:var(--white)}
+.post-faq__q{font-weight:700;font-size:.96rem;margin:0 0 10px;padding-left:26px;position:relative}
+.post-faq__q::before{content:"Q";position:absolute;left:0;top:-2px;font-family:var(--en);font-weight:700;color:var(--orange-deep);background:var(--orange-soft);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem}
+.post-faq__a{font-size:.88rem;line-height:1.9;color:var(--ink-soft);margin:0;padding-left:26px;position:relative}
+.post-faq__a::before{content:"A";position:absolute;left:0;top:-2px;font-family:var(--en);font-weight:700;color:var(--teal);background:var(--teal-soft);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem}
+
+/* 著者 */
+.post-author{display:flex;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px 24px;margin:44px 0 0}
+.post-author__avatar{width:56px;height:56px;border-radius:50%;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;color:var(--orange-deep);flex-shrink:0;font-size:1.2rem}
+.post-author__name{font-weight:700;font-size:.96rem;margin:0 0 5px}
+.post-author__bio{font-size:.82rem;color:var(--ink-soft);line-height:1.8;margin:0}
+
+/* 記事末CTA */
+.post-cta{text-align:center;background:var(--ink);border-radius:8px;padding:40px 28px;margin:48px 0 0;position:relative;overflow:hidden}
+.post-cta__ttl{font-family:var(--hand);font-size:1.4rem;font-weight:600;color:var(--paper);margin:0 0 12px}
+.post-cta__txt{font-size:.9rem;color:rgba(251,248,241,.78);line-height:1.9;margin:0 0 22px}
+
+/* 関連記事 */
+.post-related{margin:52px 0 0}
+.post-related__ttl{font-family:var(--hand);font-size:1.3rem;font-weight:600;margin:0 0 20px;text-align:center}
+
+@media(max-width:560px){
+  .blog-grid{grid-template-columns:1fr;gap:22px}
+  .post-body{font-size:.94rem}
+}
+</style>
+
+<link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- エントランスアニメーション（ローダー廃止：読み込み時に見出しをフェードアップ） -->
+<style>
+.site-nav{animation:lpEnterNav .65s var(--ease) both}.phero .eyebrow,.post-head__cat,.blog-hero__kicker{animation:lpEnter .7s var(--ease) both}
+.phero h1,.post-head__title,.blog-hero__title{animation:lpEnter .78s var(--ease) .12s both}
+.phero p,.post-head__meta,.blog-hero__lead{animation:lpEnter .78s var(--ease) .26s both}
+@keyframes lpEnter{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}@keyframes lpEnterNav{from{opacity:0;translate:0 -14px}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:reduce){.phero .eyebrow,.phero h1,.phero p,.post-head__cat,.post-head__title,.post-head__meta,.blog-hero__kicker,.blog-hero__title,.blog-hero__lead,.site-nav{animation:none}}
+</style>
+
+
+<!-- ===== NAV ===== -->
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a href="../" class="site-nav__logo" aria-label="Linplan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>Linplan<span style="color:var(--orange)">.</span></span></a>
+    <div class="site-nav__links">
+      <a href="../about.html">私について</a>
+      <a href="../services.html">サービス</a>
+      <a href="../pricing.html">料金</a>
+      <a href="../works.html">制作実績</a>
+      <a href="../faq.html">よくある質問</a>
+      <a href="./">相談室</a>
+      <a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
+    </div>
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <div class="mobile-menu__bar">
+    <button class="mobile-menu__close" aria-label="閉じる">×</button>
+  </div>
+  <a href="../about.html">私について</a>
+  <a href="../services.html">サービス</a>
+  <a href="../pricing.html">料金</a>
+  <a href="../works.html">制作実績</a>
+  <a href="../faq.html">よくある質問</a>
+  <a href="./">相談室</a>
+  <a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
+</div>
+
+
+<main>
+  <div class="post-wrap">
+    <nav class="post-breadcrumb"><a href="../">ホーム</a> ／ <a href="./">相談室</a> ／ AIのAPIとは</nav>
+  </div>
+
+  <article>
+   <div class="post-wrap">
+    <header class="post-head">
+      <span class="post-head__cat">選び方・比較</span>
+      <h1 class="post-head__title">AIのAPIとは？無料で使えるものから<br>料金・おすすめ・使い方まで比較【2026年版】</h1>
+      <div class="post-head__meta"><span>2026.09.25</span><span>約10分で読めます</span><span>カテゴリ：選び方・比較</span></div>
+    </header>
+
+    <!-- AEO最適化：冒頭の即答ボックス -->
+    <div class="post-answer">
+      <p class="post-answer__label">結論</p>
+      <p>AIのAPIは、ChatGPTのようなAIを<strong>自社のサイトやシステムから呼び出して使う仕組み</strong>です。GoogleのGeminiには<strong>課金設定なしで試せる無料枠</strong>があり、OpenAIやClaudeは<strong>使った分だけ支払う従量課金</strong>が基本です。まずは無料枠で試し、顧客情報など大事なデータを扱うなら有料枠を選ぶのが基本です。</p>
+    </div>
+
+    <!-- 目次 -->
+    <nav class="post-toc">
+      <p class="post-toc__ttl">この記事でわかること</p>
+      <ol>
+        <li><a href="#a1">AIのAPIとは？チャット画面と何が違うの？</a></li>
+        <li><a href="#a2">AIのAPIは無料で使える？無料枠の条件と注意点</a></li>
+        <li><a href="#a3">AIのAPIの料金はいくら？何で決まるの？</a></li>
+        <li><a href="#a4">OpenAI・Gemini・Claudeはどれがいい？</a></li>
+        <li><a href="#a5">目的別：どのAIのAPIを選べばいい？</a></li>
+        <li><a href="#a6">AIのAPIの使い方は？始めるまでの3ステップ</a></li>
+        <li><a href="#a7">よくある質問</a></li>
+      </ol>
+    </nav>
+
+    <div class="post-body">
+      <p>「ChatGPTは毎日使っているけど、APIと言われるとよくわからない」「無料と書いてあったけど、本当にタダなの？」——AIを業務に取り入れたい中小企業の方から、最近よくいただくご相談です。</p>
+      <p>この記事では、AIのAPIとは何かという基本から、無料で使える条件、料金の決まり方、目的別の選び方、使い始める手順までを、専門用語をできるだけ使わずに順番に解説します。</p>
+      <p>ちなみにLinplanでも、実際にAIのAPIを業務で使っています。記事の途中で、<strong>そのとき実際にどれくらいの費用がかかったのか</strong>もご紹介します。</p>
+
+      <h2 id="a1">AIのAPIとは？チャット画面と何が違うの？</h2>
+      <p>AIのAPIとは、<strong>AIを、人が画面で操作するのではなく、プログラムから呼び出すための窓口</strong>です。APIは「Application Programming Interface」の略で、ソフト同士がやり取りするための決まった受付口のようなものです。</p>
+      <p>お店にたとえると、チャット画面は<strong>店頭で店員さんと話しながら注文する</strong>方法、APIは<strong>決まった書式の注文票をFAXやフォームで送る</strong>方法です。どちらも同じ厨房（AI）が料理を作りますが、APIなら注文を機械的に何百回でも送れるので、作業の自動化に向いています。</p>
+      <div class="post-table-wrap">
+        <table>
+          <thead><tr><th></th><th>チャット画面<br>（ChatGPT・Gemini・Claudeのアプリ）</th><th>API</th></tr></thead>
+          <tbody>
+            <tr><td>使う人</td><td>人が直接入力する</td><td>自社のサイト・システムが自動で呼び出す</td></tr>
+            <tr><td>料金</td><td>月額の定額（無料プランあり）</td><td>使った量に応じた従量課金</td></tr>
+            <tr><td>向いている使い方</td><td>調べもの・文章の相談</td><td>同じ作業の自動化・自社サービスへの組み込み</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="post-note"><strong>多くの人がつまずくポイント</strong>：ChatGPTやClaudeの<strong>有料プラン（月額）を払っていても、APIは使えません</strong>。APIは開発者向けの管理画面で<strong>別に登録し、別に料金を支払う</strong>仕組みです。</div>
+      <p>中小企業での使いみちとしては、たとえば次のようなものがあります。</p>
+      <ul>
+        <li><strong>問い合わせへの返信文の下書き</strong>——フォームに届いた内容から、返信のたたき台を自動で作る</li>
+        <li><strong>商品・サービスの説明文づくり</strong>——箇条書きのメモから、ネットショップ用の紹介文を作る</li>
+        <li><strong>SNS投稿からブログ記事の下書き</strong>——Instagramの投稿をもとに、読みものとして整えた記事のたたき台を作る</li>
+      </ul>
+
+      <h2 id="a2">AIのAPIは無料で使える？無料枠の条件と注意点</h2>
+      <p>条件つきで無料で使えます。ただし<strong>「無料」はあくまで試すためのもの</strong>で、入力した内容がAIの改善（学習）に使われることがある点に注意が必要です。主要3社の状況は次のとおりです。</p>
+      <div class="post-table-wrap">
+        <table>
+          <thead><tr><th>サービス</th><th>無料で使える範囲</th><th>注意点</th></tr></thead>
+          <tbody>
+            <tr><td>Google Gemini API</td><td>課金を有効にしなくても、軽量モデル（Flash・Flash-Lite系）を回数制限つきで利用できる。上位のProモデルは無料枠の対象外</td><td>無料枠で送った内容は、Googleのサービス改善に使われる（有料枠では使われない）</td></tr>
+            <tr><td>OpenAI API</td><td>誰でも使える常設の無料枠はない。入力内容の共有（学習への利用）に同意すると、1日あたり一定量が無料になる仕組みがある</td><td>無料分は入力内容が学習に使われる前提。機密情報には不向き</td></tr>
+            <tr><td>Claude API（Anthropic）</td><td>新規登録時に、動作確認用の少額の無料クレジットがもらえる</td><td>継続的な無料枠はない。使い続けるにはクレジットの購入が必要</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="post-note">※2026年9月25日時点の各社公式情報をもとにしています。無料枠の内容は変更されることがあります。最新情報は各社の公式ページ（<a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener">Gemini</a>・<a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noopener">OpenAI</a>・<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Claude</a>）でご確認ください。</p>
+      <p>無料枠には1分・1日あたりの回数制限があり、上限を超えると一時的に使えなくなります。「ちょっと試す」には十分ですが、業務で毎日使うには心もとない量です。</p>
+      <p>そしてなにより、<strong>お客様の名前や連絡先、社外秘の資料を扱うなら、有料枠を使う</strong>のが基本です。有料枠であれば、入力内容を学習に使わない条件で提供されているのが一般的です（契約前に各社の規約で確認してください）。</p>
+
+      <h2 id="a3">AIのAPIの料金はいくら？何で決まるの？</h2>
+      <p>料金は<strong>「どのモデルを使うか」と「どれだけの文章をやり取りするか」</strong>で決まります。1回あたりは数円程度のことが多く、気にすべきなのは回数です。</p>
+      <h3>料金の単位は「トークン」</h3>
+      <p>APIの料金は「トークン」という単位で数えます。トークンは、AIが文章を細かく区切って数えるときの単位で、<strong>日本語ならおおよそ1文字＝1トークン前後</strong>が目安です（モデルや文章によって変わります）。</p>
+      <p>料金は、AIに渡す文章（<strong>入力</strong>）と、AIが書いた文章（<strong>出力</strong>）で別々にかかり、<strong>出力のほうが高く</strong>設定されています。料金表は「100万トークンあたり◯ドル」という書き方が一般的です。</p>
+      <div class="post-table-wrap">
+        <table>
+          <thead><tr><th>価格帯</th><th>例（100万トークンあたり・米ドル）</th><th>向いている作業</th></tr></thead>
+          <tbody>
+            <tr><td>安い（軽量モデル）</td><td>GPT-5 nano：入力$0.05／出力$0.40<br>Gemini 3.5 Flash-Lite：入力$0.30／出力$2.50</td><td>大量の分類・短い要約</td></tr>
+            <tr><td>中くらい</td><td>Claude Haiku 4.5：入力$1／出力$5<br>Claude Sonnet 5：入力$2／出力$10</td><td>文章の作成・記事の下書き</td></tr>
+            <tr><td>高い（最上位モデル）</td><td>各社の最上位モデルは入力$4〜10／出力$20〜50程度</td><td>難しい判断・高度な作業</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="post-note">※2026年9月25日時点の各社公式の料金ページ（<a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener">Gemini</a>・<a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noopener">OpenAI</a>・<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Claude</a>）より。料金やモデル名は頻繁に変わるため、利用前に必ず公式ページでご確認ください。</p>
+      <h3>Linplanで実際にかかった費用</h3>
+      <p>Linplanでは、<strong>Instagramの投稿をAI（Claude Sonnet 5）でブログ記事の下書きにする仕組み</strong>を使っています。投稿の文章と写真を渡すと、見出しや構成を整えた記事のたたき台が返ってくるものです。</p>
+      <p>1記事あたりのやり取りはおよそ入力5,000トークン・出力4,000トークンで、費用は<strong>見積もりで約7〜8円</strong>（1ドル＝150円で換算）です。人が一から書く手間を考えると、下書きづくりのコストとしてはかなり小さいと言えます。</p>
+      <p>このように、<strong>1回あたりは数円〜数十円</strong>程度です。問題になるのは、プログラムの不具合などで意図せず何千回も呼び出してしまったとき。次の3つをしておけば、想定外の請求はまず防げます。</p>
+      <ul>
+        <li><strong>前払い制（クレジット購入）を選ぶ</strong>——入れた金額以上は使われない</li>
+        <li><strong>自動チャージをオフにする</strong>——残高がなくなったら止まるようにする</li>
+        <li><strong>管理画面で月の利用上限を設定する</strong></li>
+      </ul>
+
+      <h2 id="a4">OpenAI・Gemini・Claudeはどれがいい？得意なこと・苦手なこと</h2>
+      <p>どれか1社が絶対的に優れているわけではなく、<strong>何に使うかで向き・不向きが分かれます</strong>。一般的な傾向をまとめると次のとおりです。</p>
+      <div class="post-table-wrap">
+        <table>
+          <thead><tr><th></th><th>Google Gemini</th><th>OpenAI（GPT）</th><th>Anthropic（Claude）</th></tr></thead>
+          <tbody>
+            <tr><td>無料で試す</td><td>◎ 課金設定なしの無料枠あり</td><td>△ 学習利用に同意した場合のみ</td><td>△ 登録時の少額クレジットのみ</td></tr>
+            <tr><td>料金の幅</td><td>○ 軽量モデルは手ごろ</td><td>◎ 非常に安い小型モデルから最上位まで幅広い</td><td>○ 中価格帯が中心</td></tr>
+            <tr><td>得意なこと</td><td>画像・音声などの読み取り、Googleのサービスとの連携</td><td>対応するツールや情報の多さ、機能の幅広さ</td><td>長い日本語の文章作成、細かい指示を守る丁寧さ</td></tr>
+            <tr><td>苦手・注意点</td><td>無料枠の内容が変わりやすい／無料枠は学習に使われる</td><td>モデルの種類が多く、名前も変わりやすいため選びにくい</td><td>継続的な無料枠がない</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Gemini</strong>は、無料枠で気軽に試せるのが大きな魅力です。写真や音声を読み取らせる使い方にも強いと言われることが多く、Googleのサービスと組み合わせやすい点も特長です。</p>
+      <p><strong>OpenAI（GPT）</strong>は、利用者が多いぶん解説記事や対応ツールが豊富で、困ったときに情報を探しやすい傾向があります。ごく安い小型モデルもあり、大量処理のコストを抑えやすいのも利点です。</p>
+      <p><strong>Claude</strong>は、長い日本語の文章を自然に書くことや、細かい指示に沿った出力が得意と評価されることが多いモデルです。一方で、継続的な無料枠はありません。</p>
+      <div class="post-note"><strong>お断り</strong>：Linplanでは記事の下書きづくりにClaudeを使っていますが、用途によってはGeminiやOpenAIのほうが向いています。まずは同じ作業を2〜3社で試して、結果と費用を比べるのがおすすめです。</div>
+      <p>このほか、自分のパソコンやサーバーで動かせる、無料で公開されているAIモデルもあります。ただし準備や運用に専門知識が必要で、性能面でも差があるため、中小企業の業務でいきなり選ぶ選択肢としては手間がかかります。</p>
+
+      <h2 id="a5">目的別：どのAIのAPIを選べばいい？</h2>
+      <p>迷ったら、<strong>「やりたいこと」と「扱うデータの大事さ」</strong>から選ぶのが近道です。</p>
+      <div class="post-table-wrap">
+        <table>
+          <thead><tr><th>やりたいこと</th><th>選び方の目安</th></tr></thead>
+          <tbody>
+            <tr><td>まずはタダで試したい</td><td>Geminiの無料枠（ただし大事な情報は入れない）</td></tr>
+            <tr><td>日本語の文章をたくさん書かせたい</td><td>中価格帯のモデル（Claude Sonnet・GPTの中位モデルなど）で比べてみる</td></tr>
+            <tr><td>大量のデータを安く分類・要約したい</td><td>各社の軽量モデル（Gemini Flash-Lite・GPTの小型モデル・Claude Haikuなど）</td></tr>
+            <tr><td>お客様の情報や社外秘を扱う</td><td>有料枠を使う（入力内容が学習に使われない条件を確認）</td></tr>
+            <tr><td>プログラムは書けないが自動化したい</td><td>ノーコードの自動化ツールを使うか、制作会社に相談する</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="a6">AIのAPIの使い方は？始めるまでの3ステップ</h2>
+      <p>使い始めるまでの流れは、どの会社でもほぼ同じで<strong>「アカウント作成→APIキー発行→呼び出し」</strong>の3ステップです。</p>
+      <ol>
+        <li><strong>開発者向けのアカウントを作る</strong>——各社の開発者向け管理画面に登録します。チャット用のアカウントとは別物です。</li>
+        <li><strong>APIキーを発行する</strong>——APIキーは、あなたの会社だと証明する<strong>合言葉</strong>のようなもの。これを知っている人は誰でもあなたの料金でAIを使えてしまうため、<strong>他人に見せない・サイトのHTMLに書かない</strong>ことが鉄則です。</li>
+        <li><strong>プログラムから呼び出す</strong>——決まった形式で「どのモデルに・何をしてほしいか」を送ると、AIの回答が返ってきます。</li>
+      </ol>
+      <p>参考までに、ClaudeのAPIを呼び出す最小限の例です（<strong>読み飛ばしても大丈夫です</strong>）。「このモデルで、この依頼文に、500トークン以内で答えて」という注文票を送っているだけ、とイメージしてください。</p>
+<pre class="post-code"><code>curl https://api.anthropic.com/v1/messages \
+  -H "x-api-key: あなたのAPIキー" \
+  -H "anthropic-version: 2023-06-01" \
+  -H "content-type: application/json" \
+  -d '{"model":"claude-sonnet-5","max_tokens":500,
+       "messages":[{"role":"user","content":"船橋のパン屋の紹介文を100文字で"}]}'</code></pre>
+      <p>安全に使うために、次の3点は必ず守りましょう。</p>
+      <ul>
+        <li><strong>APIキーはサーバー側や専用の保管場所に置く</strong>——たとえばGitHubの「Secrets」のような、鍵を隠して保管する仕組みを使う</li>
+        <li><strong>利用上限を設定しておく</strong>——万一のトラブルでも請求額が膨らまないようにする</li>
+        <li><strong>AIの出力はそのまま公開せず、人が確認する</strong>——事実の誤りや言い過ぎが混ざることがあるため</li>
+      </ul>
+      <p>AIを使ったサイトづくりや、AI検索で見つけてもらうための準備については「<a href="sme-ai-search-ready.html">中小企業がAI検索時代に備えるためにできること</a>」もあわせてどうぞ。</p>
+    </div>
+
+    <!-- FAQ -->
+    <section class="post-faq" id="a7">
+      <h2 class="post-faq__ttl">よくある質問</h2>
+      <div class="post-faq__item">
+        <p class="post-faq__q">ChatGPTの有料プランに入っていればAPIも使えますか？</p>
+        <p class="post-faq__a">使えません。チャットの有料プランとAPIは別契約です。APIは開発者向けの管理画面で別に登録し、使った分の料金を支払います。</p>
+      </div>
+      <div class="post-faq__item">
+        <p class="post-faq__q">無料枠で商用利用しても大丈夫ですか？</p>
+        <p class="post-faq__a">各社の利用規約によって異なるため、使う前に規約を確認してください。また、無料枠では入力した内容がサービス改善に使われることがあるため、お客様の情報や社外秘は入れないのが安全です。</p>
+      </div>
+      <div class="post-faq__item">
+        <p class="post-faq__q">AIのAPIは月にいくらくらいかかりますか？</p>
+        <p class="post-faq__a">使い方次第ですが、文章の下書き程度であれば月に数百円〜数千円に収まることが多いです。管理画面で利用上限を設定しておけば、想定外の請求を防げます。</p>
+      </div>
+      <div class="post-faq__item">
+        <p class="post-faq__q">プログラミングができなくてもAIのAPIは使えますか？</p>
+        <p class="post-faq__a">ノーコードの自動化ツールを使えば、プログラムを書かずにAPIを利用する方法があります。自社のサイトやシステムに組み込みたい場合は、制作会社に相談するのが早道です。</p>
+      </div>
+    </section>
+
+    <!-- 著者 -->
+    <div class="post-author">
+      <div class="post-author__avatar">坪</div>
+      <div>
+        <p class="post-author__name">坪山ちひろ｜Linplan代表</p>
+        <p class="post-author__bio">千葉県船橋市を拠点に、中小企業・店舗向けの Web・アプリ・AI を、企画から運用までひとりで一気通貫で手がけています。<a href="../about.html">プロフィールを見る →</a></p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="post-cta">
+      <p class="post-cta__ttl">AIを業務に組み込みたい方へ</p>
+      <p class="post-cta__txt">どのAPIを選べばいいか、何を自動化できるかから一緒に考えます。<br>Instagramの投稿をブログ記事の下書きにする仕組みなど、実際に動いている例もお見せできます。</p>
+      <a href="../contact.html" class="btn btn--primary">無料で相談する</a>
+    </div>
+
+    <!-- 関連記事 -->
+    <section class="post-related">
+      <h2 class="post-related__ttl">あわせて読みたい</h2>
+      <div class="blog-grid">
+        <a href="cited-by-chatgpt.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span>AIに引用される条件</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">ChatGPTに引用されるサイトの3つの共通点</h3><div class="post-card__meta"><span>2026.06.15</span><span>約8分</span></div></div>
+        </a>
+        <a href="sme-ai-search-ready.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span>AI検索時代の備え</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">中小企業がAI検索時代に備えるためにできること</h3><div class="post-card__meta"><span>2026.06.14</span><span>約8分</span></div></div>
+        </a>
+      </div>
+    </section>
+   </div>
+  </article>
+</main>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="site-footer__logo"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>Linplan<span style="color:var(--orange)">.</span></span></div>
+  <div class="site-footer__tag">一緒に育てていけるサイト作りを。</div>
+  <nav class="site-footer__nav">
+    <a href="../about.html">私について</a>
+    <a href="../services.html">サービス</a>
+    <a href="../pricing.html">料金</a>
+    <a href="../works.html">制作実績</a>
+    <a href="../faq.html">よくある質問</a>
+    <a href="./">相談室</a>
+    <a href="../contact.html">お問い合わせ</a>
+    <a href="../aeo-geo.html">AEO・GEO対応とは</a>
+    <a href="../area/funabashi.html">船橋のホームページ制作</a>
+    <a href="../privacy.html">プライバシーポリシー</a>
+    <a href="../tokushoho.html">特定商取引法に基づく表記</a>
+  </nav>
+  <div class="site-footer__meta">千葉県船橋市を拠点に全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
+  <div class="site-footer__copy">© 2026 Linplan — Web・アプリ・AI、ひとりで一気通貫。</div>
+</footer>
+
+
+
+
+<script>
+/* Linplan サイト共通スクリプト（軽量・依存なし） */
+(function () {
+  'use strict';
+
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+    /* ---- nav scroll state ---- */
+    var nav = document.querySelector('.site-nav');
+    function onScroll() {
+      if (!nav) return;
+      if (window.scrollY > 30) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---- mobile menu ---- */
+    var ham = document.querySelector('.hamburger');
+    var menu = document.querySelector('.mobile-menu');
+    var close = document.querySelector('.mobile-menu__close');
+    if (ham && menu) {
+      function closeMenu(){ menu.classList.remove('open'); ham.classList.remove('open'); ham.setAttribute('aria-expanded','false'); }
+      function openMenu(){ menu.classList.add('open'); ham.classList.add('open'); ham.setAttribute('aria-expanded','true'); }
+      ham.addEventListener('click', function () { (menu.classList.contains('open') ? closeMenu : openMenu)(); });
+      if (close) close.addEventListener('click', closeMenu);
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+    }
+
+    /* ---- scroll reveal ---- */
+    var revs = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && revs.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revs.forEach(function (el) { io.observe(el); });
+    } else {
+      revs.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    /* ---- FAQ accordion ---- */
+    document.querySelectorAll('.faq-item').forEach(function (item) {
+      var q = item.querySelector('.faq-q');
+      var a = item.querySelector('.faq-a');
+      if (!q || !a) return;
+      q.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+        item.classList.toggle('open');
+        a.style.maxHeight = isOpen ? null : a.scrollHeight + 'px';
+      });
+    });
+  });
+})();
+
+</script>
+<script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='⇅ スクロール';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
+
+
+<script src="../theme.js"></script>
+</body>
+</html>
