@@ -2,6 +2,7 @@
 // 生成物は GitHub Actions がプルリクエストとして出す。人が確認してからマージ＝公開。
 import fs from "node:fs";
 import path from "node:path";
+import { linkedSlug } from "./insta-blog-link.mjs";
 
 const IG_TOKEN = process.env.IG_ACCESS_TOKEN;
 const AI_KEY = process.env.ANTHROPIC_API_KEY;
@@ -46,8 +47,10 @@ if (POST_ID) {
   post = media.find(m => m.id === POST_ID);
   if (!post) fail(`投稿ID ${POST_ID} が最新25件の中に見つかりません`);
   if (registry[POST_ID]) fail(`投稿ID ${POST_ID} は記事化済みです（blog/${registry[POST_ID]}.html）`);
+  if (linkedSlug(post.caption)) fail(`投稿ID ${POST_ID} はブログ記事（blog/${linkedSlug(post.caption)}.html）の告知投稿なので記事化しません`);
 } else {
-  post = media.find(m => !registry[m.id] && !SKIP_IDS.has(m.id) && cleanCaption(m.caption).length >= MIN_CHARS);
+  // 本文に linplan.jp/blog/… を書いた投稿は既存記事の告知なので対象外（同じテーマの記事が二重にできるのを防ぐ）
+  post = media.find(m => !registry[m.id] && !SKIP_IDS.has(m.id) && !linkedSlug(m.caption) && cleanCaption(m.caption).length >= MIN_CHARS);
 }
 if (!post) { log("記事化できる新しい投稿はありません（すべて記事化済み、または本文が短すぎます）"); setOutput("created", "false"); process.exit(0); }
 const caption = cleanCaption(post.caption);

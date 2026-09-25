@@ -174,6 +174,7 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 - キャプションは Zen Kaku（本文）で描画されるため、index.html が変わった日はワークフロー内で `tools/subset-fonts.py` も実行して `fonts/` をコミットする（新しい漢字のサブセット漏れ対策）。
 - トークンは `instagram-token-refresh.yml` が毎月 1 日に延長して Secrets `IG_ACCESS_TOKEN` を上書き（`GH_PAT` が必要。PAT の有効期限切れに注意）。
 - 取得失敗時は index.html を変更しない（前回の表示が残る）。投稿 0 件ならセクションごと出さない。
+- **ブログ記事がある投稿はカードのリンク先がブログ記事になる**（Instagram ではなく `blog/<slug>.html`、「ブログ記事を読む →」表示）。対象は ①本文に `linplan.jp/blog/<slug>.html` と書いた告知投稿 ②`blog/insta-articles.json` に載っている記事化済み投稿。記事ファイルがまだ無い（未公開）場合は Instagram へリンクし、公開後の次回実行で自動的に切り替わる。判定は `.github/scripts/insta-blog-link.mjs`（下の記事化ワークフローと共用）。
 
 ## Instagram 投稿 → ブログ記事の下書き（GitHub Actions・手動実行）
 
@@ -184,6 +185,7 @@ Actions の「Instagram to blog」を手動実行すると、`.github/scripts/in
 - `blog/index.html` の featured の次にカード追加（写真付きは `.post-card__thumb--photo` で葉の装飾を消す）、トップ `index.html` の相談室カードを先頭に追加して 3 枚に保つ、`sitemap.xml` に追加
 - 見出し等（Klee 描画）の新しい漢字を `tools/klee-chars.txt` に追記し、ワークフロー内で `tools/subset-fonts.py` を実行して `fonts/` も PR に含める
 - 記事化済みの投稿を `blog/insta-articles.json` に記録（二重記事化防止）
+- **本文に `linplan.jp/blog/…` を書いた投稿（既存記事の告知）は記事化の対象外**。ブログ記事を Instagram で告知するときは、キャプションに記事の URL を必ず書く（書かないと同じテーマの記事が二重に作られる）
 
 **AI の文章はそのまま公開しない** — PR 説明欄の「確認が必要な点」とチェックリストを見て、事実・数字・言い過ぎを必ず人が確認する。
 

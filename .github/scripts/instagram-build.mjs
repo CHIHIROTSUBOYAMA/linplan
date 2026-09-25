@@ -2,6 +2,7 @@
 // GitHub Actions から毎日実行。取得に失敗した場合は index.html を変更しない。
 import fs from "node:fs";
 import path from "node:path";
+import { blogSlugFor } from "./insta-blog-link.mjs";
 
 const TOKEN = process.env.IG_ACCESS_TOKEN;
 const LIMIT = Number(process.env.IG_LIMIT || 6);          // トップに出す件数
@@ -11,6 +12,7 @@ const INDEX = path.join(ROOT, "index.html");
 const IMG_DIR = path.join(ROOT, "insta");
 const START = "<!-- INSTA:START -->";
 const END = "<!-- INSTA:END -->";
+const REGISTRY = path.join(ROOT, "blog", "insta-articles.json");   // AI で記事化済みの投稿 → 記事 slug
 
 function fail(msg) { console.error("✗ " + msg); process.exit(1); }
 if (!TOKEN) fail("IG_ACCESS_TOKEN が設定されていません（リポジトリの Secrets を確認）");
@@ -39,6 +41,9 @@ function title(caption = "") {
   return first.length > 40 ? first.slice(0, 40) + "…" : first;
 }
 
+// ブログ記事がある投稿は、カードのリンク先をその記事にする
+const registry = fs.existsSync(REGISTRY) ? JSON.parse(fs.readFileSync(REGISTRY, "utf8")) : {};
+
 // ---- 3. 画像を保存（media_url は期限付きのため必ずローカル化） ----
 fs.mkdirSync(IMG_DIR, { recursive: true });
 const posts = [];
@@ -55,7 +60,8 @@ for (const p of items) {
   }
   if (!fs.existsSync(dest)) continue;
   posts.push({ id: p.id, title: title(p.caption), caption: p.caption ?? "", image: `insta/${file}`,
-               permalink: p.permalink, date: p.timestamp, type: p.media_type });
+               permalink: p.permalink, date: p.timestamp, type: p.media_type,
+               blog: blogSlugFor(p, ROOT, registry) });
 }
 
 // 表示しなくなった古い画像を削除（リポジトリの肥大化防止）
@@ -68,11 +74,13 @@ fs.writeFileSync(path.join(IMG_DIR, "posts.json"), JSON.stringify(posts, null, 2
 
 // ---- 4. HTML 生成（投稿0件ならセクションごと非表示） ----
 const delay = i => ["", " reveal-d1", " reveal-d2"][i % 3];
-const cards = posts.map((p, i) => `      <a href="${esc(p.permalink)}" class="insta-card reveal${delay(i)}" target="_blank" rel="noopener">
+const link = p => p.blog ? `href="blog/${p.blog}.html"` : `href="${esc(p.permalink)}" target="_blank" rel="noopener"`;
+const cards = posts.map((p, i) => `      <a ${link(p)} class="insta-card reveal${delay(i)}">
         <img src="${p.image}" alt="${esc(p.title)}" loading="lazy" decoding="async">
         <div class="insta-card__body">
           <time datetime="${esc(p.date)}">${fmtDate(p.date)}</time>
-          <h3 class="insta-card__title">${esc(p.title)}</h3>
+          <h3 class="insta-card__title">${esc(p.title)}</h3>${p.blog ? `
+          <span class="insta-card__more">ブログ記事を読む →</span>` : ""}
         </div>
       </a>`).join("\n");
 
