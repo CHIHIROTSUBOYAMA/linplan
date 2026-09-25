@@ -54,6 +54,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="../favicon.ico" sizes="48x48 32x32 16x16">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>@media(max-width:560px){.btn{white-space:normal}}</style>
+<style>.api-fig{margin:4px 0 28px;border-top:2px dashed var(--line);border-bottom:2px dashed var(--line)}.api-fig__row{padding:18px 0 16px}.api-fig__row+.api-fig__row{border-top:1px dashed var(--line)}.api-fig__label{font-family:var(--hand);font-weight:600;font-size:1.02rem;line-height:1.6;margin:0 0 14px;color:var(--ink)}.api-fig__label span{color:var(--orange-deep)}.api-fig__flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:start;gap:4px;text-align:center}.api-fig__node{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.84rem;line-height:1.5;color:var(--ink)}.api-fig__node svg{width:42px;height:42px;color:var(--teal);margin-bottom:4px}.api-fig__node--ai svg{color:var(--orange)}.api-fig__node b{font-weight:700}.api-fig__node small{font-size:.72rem;color:var(--ink-soft)}.api-fig__arrow{padding-top:10px;color:var(--ink-soft);font-size:1.1rem}.api-fig figcaption{font-size:.84rem;line-height:1.8;color:var(--ink-soft);padding:12px 0 14px;border-top:1px dashed var(--line)}@media(max-width:560px){.api-fig__node{font-size:.78rem}.api-fig__node svg{width:36px;height:36px}}</style>
 <style>.post-code{background:var(--ink);color:var(--paper);border-radius:6px;padding:16px 18px;margin:0 0 22px;overflow-x:auto;font-size:.8rem;line-height:1.7;white-space:pre}.post-code code{font-family:ui-monospace,Consolas,monospace}</style>
 <style>
 /* ============================================================
@@ -216,7 +217,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- AEO最適化：冒頭の即答ボックス -->
     <div class="post-answer">
       <p class="post-answer__label">結論</p>
-      <p>AIのAPIは、ChatGPTのようなAIを<strong>自社のサイトやシステムから呼び出して使う仕組み</strong>です。GoogleのGeminiには<strong>課金設定なしで試せる無料枠</strong>があり、OpenAIやClaudeは<strong>使った分だけ支払う従量課金</strong>が基本です。まずは無料枠で試し、顧客情報など大事なデータを扱うなら有料枠を選ぶのが基本です。</p>
+      <p>AIのAPIは、ChatGPTのようなAIを<strong>自社のサイトやシステムから呼び出して使う仕組み</strong>です。<br>
+      GoogleのGeminiには<strong>課金設定なしで試せる無料枠</strong>があり、OpenAIやClaudeは<strong>使った分だけ支払う従量課金</strong>が基本です。<br>
+      まずは無料枠で試し、顧客情報など大事なデータを扱うなら有料枠を選びましょう。</p>
     </div>
 
     <!-- 目次 -->
@@ -234,13 +237,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </nav>
 
     <div class="post-body">
-      <p>「ChatGPTは毎日使っているけど、APIと言われるとよくわからない」「無料と書いてあったけど、本当にタダなの？」——AIを業務に取り入れたい中小企業の方から、最近よくいただくご相談です。</p>
-      <p>この記事では、AIのAPIとは何かという基本から、無料で使える条件、料金の決まり方、目的別の選び方、使い始める手順までを、専門用語をできるだけ使わずに順番に解説します。</p>
-      <p>ちなみにLinplanでも、実際にAIのAPIを業務で使っています。記事の途中で、<strong>そのとき実際にどれくらいの費用がかかったのか</strong>もご紹介します。</p>
+      <p>「ChatGPTは毎日使っているけど、APIと言われるとよくわからない」<br>
+      「無料と書いてあったけど、本当にタダなの？」</p>
+      <p>AIを業務に取り入れたい中小企業の方から、最近よくいただくご相談です。</p>
+      <p>この記事では、AIのAPIの基本から、無料で使える条件、料金の決まり方、目的別の選び方、使い始める手順までを順番に解説します。<br>
+      専門用語は、できるだけその場でかみくだいて説明します。</p>
+      <p>ちなみにLinplanでも、実際にAIのAPIを業務で使っています。<br>
+      記事の途中で、<strong>実際にどれくらいの費用がかかったのか</strong>もご紹介します。</p>
 
       <h2 id="a1">AIのAPIとは？チャット画面と何が違うの？</h2>
-      <p>AIのAPIとは、<strong>AIを、人が画面で操作するのではなく、プログラムから呼び出すための窓口</strong>です。APIは「Application Programming Interface」の略で、ソフト同士がやり取りするための決まった受付口のようなものです。</p>
-      <p>お店にたとえると、チャット画面は<strong>店頭で店員さんと話しながら注文する</strong>方法、APIは<strong>決まった書式の注文票をFAXやフォームで送る</strong>方法です。どちらも同じ厨房（AI）が料理を作りますが、APIなら注文を機械的に何百回でも送れるので、作業の自動化に向いています。</p>
+      <p>AIのAPIとは、<strong>AIを、人が画面で操作するのではなく、プログラムから呼び出すための窓口</strong>です。</p>
+      <p>APIは「Application Programming Interface」の略です。<br>
+      ソフト同士がやり取りするための、決まった受付口のようなものだと考えてください。</p>
+
+      <h3>お店にたとえると…</h3>
+      <p>チャット画面とAPIの違いは、<strong>お店での「注文のしかた」の違い</strong>にたとえるとわかりやすくなります。</p>
+      <figure class="api-fig">
+        <div class="api-fig__row">
+          <p class="api-fig__label">チャット画面 ＝ <span>店頭で話して注文</span></p>
+          <div class="api-fig__flow">
+            <div class="api-fig__node"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="15" r="7"/><path d="M10 42c1.5-9 7-13 14-13s12.5 4 14 13"/></svg><b>あなた</b><small>その都度、入力する</small></div>
+            <span class="api-fig__arrow" aria-hidden="true">→</span>
+            <div class="api-fig__node"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 11h32v21H22l-8 7v-7H8Z"/><path d="M15 19h18M15 25h11"/></svg><b>店員さん</b><small>チャット画面</small></div>
+            <span class="api-fig__arrow" aria-hidden="true">→</span>
+            <div class="api-fig__node api-fig__node--ai"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 23h38"/><path d="M10 23v11a6 6 0 0 0 6 6h16a6 6 0 0 0 6-6V23"/><path d="M18 7c-2 3 2 5 0 9M24 5c-2 3 2 5 0 9M30 7c-2 3 2 5 0 9"/></svg><b>厨房</b><small>AI</small></div>
+          </div>
+        </div>
+        <div class="api-fig__row">
+          <p class="api-fig__label">API ＝ <span>決まった注文票で注文</span></p>
+          <div class="api-fig__flow">
+            <div class="api-fig__node"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="8" width="36" height="24" rx="2"/><path d="M18 40h12M24 32v8"/></svg><b>自社のシステム</b><small>自動で送る</small></div>
+            <span class="api-fig__arrow" aria-hidden="true">→</span>
+            <div class="api-fig__node"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="5" width="24" height="31" rx="2" opacity=".45"/><rect x="9" y="11" width="24" height="31" rx="2" fill="var(--paper)"/><path d="M14 19h14M14 25h14M14 31h8"/></svg><b>注文票</b><small>API（何百枚でも）</small></div>
+            <span class="api-fig__arrow" aria-hidden="true">→</span>
+            <div class="api-fig__node api-fig__node--ai"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 23h38"/><path d="M10 23v11a6 6 0 0 0 6 6h16a6 6 0 0 0 6-6V23"/><path d="M18 7c-2 3 2 5 0 9M24 5c-2 3 2 5 0 9M30 7c-2 3 2 5 0 9"/></svg><b>厨房</b><small>AI</small></div>
+          </div>
+        </div>
+        <figcaption>料理を作るのは、どちらも同じ厨房（AI）。違うのは「注文のしかた」だけです。</figcaption>
+      </figure>
+      <p>チャット画面は、<strong>店頭で店員さんと話しながら注文する</strong>方法です。<br>
+      その場で相談しながら決められる反面、注文するたびに人が行く必要があります。</p>
+      <p>APIは、<strong>決まった書式の注文票を送る</strong>方法です。<br>
+      書式さえ守れば、システムが自動で何百枚でも注文を送れるので、<strong>同じ作業の自動化</strong>に向いています。</p>
       <div class="post-table-wrap">
         <table>
           <thead><tr><th></th><th>チャット画面<br>（ChatGPT・Gemini・Claudeのアプリ）</th><th>API</th></tr></thead>
@@ -251,74 +289,97 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </tbody>
         </table>
       </div>
-      <div class="post-note"><strong>多くの人がつまずくポイント</strong>：ChatGPTやClaudeの<strong>有料プラン（月額）を払っていても、APIは使えません</strong>。APIは開発者向けの管理画面で<strong>別に登録し、別に料金を支払う</strong>仕組みです。</div>
+      <div class="post-note"><strong>多くの人がつまずくポイント</strong><br>
+      ChatGPTやClaudeの<strong>有料プラン（月額）を払っていても、APIは使えません</strong>。<br>
+      APIは開発者向けの管理画面で<strong>別に登録し、別に料金を支払う</strong>仕組みです。</div>
       <p>中小企業での使いみちとしては、たとえば次のようなものがあります。</p>
       <ul>
-        <li><strong>問い合わせへの返信文の下書き</strong>——フォームに届いた内容から、返信のたたき台を自動で作る</li>
-        <li><strong>商品・サービスの説明文づくり</strong>——箇条書きのメモから、ネットショップ用の紹介文を作る</li>
-        <li><strong>SNS投稿からブログ記事の下書き</strong>——Instagramの投稿をもとに、読みものとして整えた記事のたたき台を作る</li>
+        <li><strong>問い合わせへの返信文の下書き</strong><br>フォームに届いた内容から、返信のたたき台を自動で作る</li>
+        <li><strong>商品・サービスの説明文づくり</strong><br>箇条書きのメモから、ネットショップ用の紹介文を作る</li>
+        <li><strong>SNS投稿からブログ記事の下書き</strong><br>Instagramの投稿をもとに、読みものとして整えた記事のたたき台を作る</li>
       </ul>
 
       <h2 id="a2">AIのAPIは無料で使える？無料枠の条件と注意点</h2>
-      <p>条件つきで無料で使えます。ただし<strong>「無料」はあくまで試すためのもの</strong>で、入力した内容がAIの改善（学習）に使われることがある点に注意が必要です。主要3社の状況は次のとおりです。</p>
+      <p>条件つきで無料で使えます。<br>
+      ただし<strong>「無料」はあくまで試すためのもの</strong>です。入力した内容がAIの改善（学習）に使われることがある点に注意しましょう。</p>
+      <p>主要3社の状況は次のとおりです。</p>
       <div class="post-table-wrap">
         <table>
           <thead><tr><th>サービス</th><th>無料で使える範囲</th><th>注意点</th></tr></thead>
           <tbody>
             <tr><td>Google Gemini API</td><td>課金を有効にしなくても、軽量モデル（Flash・Flash-Lite系）を回数制限つきで利用できる。上位のProモデルは無料枠の対象外</td><td>無料枠で送った内容は、Googleのサービス改善に使われる（有料枠では使われない）</td></tr>
             <tr><td>OpenAI API</td><td>誰でも使える常設の無料枠はない。入力内容の共有（学習への利用）に同意すると、1日あたり一定量が無料になる仕組みがある</td><td>無料分は入力内容が学習に使われる前提。機密情報には不向き</td></tr>
-            <tr><td>Claude API（Anthropic）</td><td>新規登録時に、動作確認用の少額の無料クレジットがもらえる</td><td>継続的な無料枠はない。使い続けるにはクレジットの購入が必要</td></tr>
+            <tr><td>Claude API（Anthropic）</td><td>新規登録時に、動作確認用の少額の無料クレジットがもらえる</td><td>継続的な無料枠はない。使い続けるにはクレジットの購入が必要。<br>入力内容は、フィードバックを送るなど本人が許可しない限り<strong>学習に使われない</strong></td></tr>
           </tbody>
         </table>
       </div>
-      <p class="post-note">※2026年9月25日時点の各社公式情報をもとにしています。無料枠の内容は変更されることがあります。最新情報は各社の公式ページ（<a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener">Gemini</a>・<a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noopener">OpenAI</a>・<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Claude</a>）でご確認ください。</p>
-      <p>無料枠には1分・1日あたりの回数制限があり、上限を超えると一時的に使えなくなります。「ちょっと試す」には十分ですが、業務で毎日使うには心もとない量です。</p>
-      <p>そしてなにより、<strong>お客様の名前や連絡先、社外秘の資料を扱うなら、有料枠を使う</strong>のが基本です。有料枠であれば、入力内容を学習に使わない条件で提供されているのが一般的です（契約前に各社の規約で確認してください）。</p>
+      <p class="post-note">※2026年9月25日時点の各社公式情報をもとにしています。無料枠の内容は変更されることがあります。<br>
+      最新情報は各社の公式ページ（<a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener">Gemini</a>・<a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noopener">OpenAI</a>・<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Claude</a>・<a href="https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training" target="_blank" rel="noopener">Claudeの学習利用について</a>）でご確認ください。</p>
+      <p>無料枠には、1分・1日あたりの回数制限があります。<br>
+      上限を超えると一時的に使えなくなるので、「ちょっと試す」には十分でも、業務で毎日使うには心もとない量です。</p>
+      <p>そしてなにより、<strong>お客様の名前や連絡先、社外秘の資料を扱うなら、有料枠を使う</strong>のが基本です。<br>
+      有料枠であれば、入力内容を学習に使わない条件で提供されているのが一般的です（契約前に各社の規約で確認してください）。</p>
 
       <h2 id="a3">AIのAPIの料金はいくら？何で決まるの？</h2>
-      <p>料金は<strong>「どのモデルを使うか」と「どれだけの文章をやり取りするか」</strong>で決まります。1回あたりは数円程度のことが多く、気にすべきなのは回数です。</p>
+      <p>料金は<strong>「どのモデルを使うか」と「どれだけの文章をやり取りするか」</strong>で決まります。<br>
+      1回あたりは数円程度のことが多く、気にすべきなのは回数です。</p>
       <h3>料金の単位は「トークン」</h3>
-      <p>APIの料金は「トークン」という単位で数えます。トークンは、AIが文章を細かく区切って数えるときの単位で、<strong>日本語ならおおよそ1文字＝1トークン前後</strong>が目安です（モデルや文章によって変わります）。</p>
-      <p>料金は、AIに渡す文章（<strong>入力</strong>）と、AIが書いた文章（<strong>出力</strong>）で別々にかかり、<strong>出力のほうが高く</strong>設定されています。料金表は「100万トークンあたり◯ドル」という書き方が一般的です。</p>
+      <p>APIの料金は「トークン」という単位で数えます。<br>
+      トークンは、AIが文章を細かく区切って数えるときの単位で、<strong>日本語ならおおよそ1文字＝1トークン前後</strong>が目安です（モデルや文章によって変わります）。</p>
+      <p>料金は、AIに渡す文章（<strong>入力</strong>）と、AIが書いた文章（<strong>出力</strong>）で別々にかかります。<br>
+      <strong>出力のほうが高く</strong>設定されていて、料金表は「100万トークンあたり◯ドル」という書き方が一般的です。</p>
       <div class="post-table-wrap">
         <table>
           <thead><tr><th>価格帯</th><th>例（100万トークンあたり・米ドル）</th><th>向いている作業</th></tr></thead>
           <tbody>
             <tr><td>安い（軽量モデル）</td><td>GPT-5 nano：入力$0.05／出力$0.40<br>Gemini 3.5 Flash-Lite：入力$0.30／出力$2.50</td><td>大量の分類・短い要約</td></tr>
             <tr><td>中くらい</td><td>Claude Haiku 4.5：入力$1／出力$5<br>Claude Sonnet 5：入力$2／出力$10</td><td>文章の作成・記事の下書き</td></tr>
-            <tr><td>高い（最上位モデル）</td><td>各社の最上位モデルは入力$4〜10／出力$20〜50程度</td><td>難しい判断・高度な作業</td></tr>
+            <tr><td>高い（各社の最上位モデル）</td><td>GPT-6 Astra：入力$10／出力$50<br>Claude Fable 5.1：入力$10／出力$50<br>Claude Opus 5.5：入力$4／出力$20<br>Gemini 3.1 Pro Preview：入力$2／出力$12（入力20万トークン以下の場合）</td><td>難しい判断・高度な作業</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="post-note">※2026年9月25日時点の各社公式の料金ページ（<a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener">Gemini</a>・<a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noopener">OpenAI</a>・<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Claude</a>）より。料金やモデル名は頻繁に変わるため、利用前に必ず公式ページでご確認ください。</p>
+      <p class="post-note">※2026年9月25日時点の各社公式の料金ページ（<a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener">Gemini</a>・<a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noopener">OpenAI</a>・<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Claude</a>）より。<br>
+      料金やモデル名は頻繁に変わるため、利用前に必ず公式ページでご確認ください。</p>
       <h3>Linplanで実際にかかった費用</h3>
-      <p>Linplanでは、<strong>Instagramの投稿をAI（Claude Sonnet 5）でブログ記事の下書きにする仕組み</strong>を使っています。投稿の文章と写真を渡すと、見出しや構成を整えた記事のたたき台が返ってくるものです。</p>
-      <p>1記事あたりのやり取りはおよそ入力5,000トークン・出力4,000トークンで、費用は<strong>見積もりで約7〜8円</strong>（1ドル＝150円で換算）です。人が一から書く手間を考えると、下書きづくりのコストとしてはかなり小さいと言えます。</p>
-      <p>このように、<strong>1回あたりは数円〜数十円</strong>程度です。問題になるのは、プログラムの不具合などで意図せず何千回も呼び出してしまったとき。次の3つをしておけば、想定外の請求はまず防げます。</p>
+      <p>Linplanでは、<strong>Instagramの投稿をAI（Claude Sonnet 5）でブログ記事の下書きにする仕組み</strong>を使っています。<br>
+      投稿の文章と写真を渡すと、見出しや構成を整えた記事のたたき台が返ってくるものです。</p>
+      <p>1記事あたりのやり取りは、およそ入力5,000トークン・出力4,000トークン。<br>
+      費用は<strong>見積もりで約7〜8円</strong>（1ドル＝150円で換算）です。</p>
+      <p>人が一から書く手間を考えると、下書きづくりのコストとしてはかなり小さいと言えます。</p>
+      <p>このように、<strong>1回あたりは数円〜数十円</strong>程度です。<br>
+      問題になるのは、プログラムの不具合などで意図せず何千回も呼び出してしまったとき。次の3つをしておけば、想定外の請求はまず防げます。</p>
       <ul>
-        <li><strong>前払い制（クレジット購入）を選ぶ</strong>——入れた金額以上は使われない</li>
-        <li><strong>自動チャージをオフにする</strong>——残高がなくなったら止まるようにする</li>
+        <li><strong>前払い制（クレジット購入）を選ぶ</strong><br>入れた金額以上は使われない</li>
+        <li><strong>自動チャージをオフにする</strong><br>残高がなくなったら止まるようにする</li>
         <li><strong>管理画面で月の利用上限を設定する</strong></li>
       </ul>
 
       <h2 id="a4">OpenAI・Gemini・Claudeはどれがいい？得意なこと・苦手なこと</h2>
-      <p>どれか1社が絶対的に優れているわけではなく、<strong>何に使うかで向き・不向きが分かれます</strong>。一般的な傾向をまとめると次のとおりです。</p>
+      <p>どれか1社が絶対的に優れているわけではありません。<br>
+      <strong>何に使うかで向き・不向きが分かれます</strong>。一般的な傾向をまとめると次のとおりです。</p>
       <div class="post-table-wrap">
         <table>
           <thead><tr><th></th><th>Google Gemini</th><th>OpenAI（GPT）</th><th>Anthropic（Claude）</th></tr></thead>
           <tbody>
             <tr><td>無料で試す</td><td>◎ 課金設定なしの無料枠あり</td><td>△ 学習利用に同意した場合のみ</td><td>△ 登録時の少額クレジットのみ</td></tr>
             <tr><td>料金の幅</td><td>○ 軽量モデルは手ごろ</td><td>◎ 非常に安い小型モデルから最上位まで幅広い</td><td>○ 中価格帯が中心</td></tr>
+            <tr><td>入力内容の学習利用</td><td>無料枠は使われる／有料枠は使われない</td><td>無料トークン分は使われる／通常の有料利用は原則使われない</td><td>本人が許可しない限り使われない</td></tr>
             <tr><td>得意なこと</td><td>画像・音声などの読み取り、Googleのサービスとの連携</td><td>対応するツールや情報の多さ、機能の幅広さ</td><td>長い日本語の文章作成、細かい指示を守る丁寧さ</td></tr>
             <tr><td>苦手・注意点</td><td>無料枠の内容が変わりやすい／無料枠は学習に使われる</td><td>モデルの種類が多く、名前も変わりやすいため選びにくい</td><td>継続的な無料枠がない</td></tr>
           </tbody>
         </table>
       </div>
-      <p><strong>Gemini</strong>は、無料枠で気軽に試せるのが大きな魅力です。写真や音声を読み取らせる使い方にも強いと言われることが多く、Googleのサービスと組み合わせやすい点も特長です。</p>
-      <p><strong>OpenAI（GPT）</strong>は、利用者が多いぶん解説記事や対応ツールが豊富で、困ったときに情報を探しやすい傾向があります。ごく安い小型モデルもあり、大量処理のコストを抑えやすいのも利点です。</p>
-      <p><strong>Claude</strong>は、長い日本語の文章を自然に書くことや、細かい指示に沿った出力が得意と評価されることが多いモデルです。一方で、継続的な無料枠はありません。</p>
-      <div class="post-note"><strong>お断り</strong>：Linplanでは記事の下書きづくりにClaudeを使っていますが、用途によってはGeminiやOpenAIのほうが向いています。まずは同じ作業を2〜3社で試して、結果と費用を比べるのがおすすめです。</div>
-      <p>このほか、自分のパソコンやサーバーで動かせる、無料で公開されているAIモデルもあります。ただし準備や運用に専門知識が必要で、性能面でも差があるため、中小企業の業務でいきなり選ぶ選択肢としては手間がかかります。</p>
+      <p><strong>Gemini</strong>は、無料枠で気軽に試せるのが大きな魅力です。<br>
+      写真や音声を読み取らせる使い方にも強いと言われることが多く、Googleのサービスと組み合わせやすい点も特長です。</p>
+      <p><strong>OpenAI（GPT）</strong>は、利用者が多いぶん解説記事や対応ツールが豊富で、困ったときに情報を探しやすい傾向があります。<br>
+      ごく安い小型モデルもあり、大量処理のコストを抑えやすいのも利点です。</p>
+      <p><strong>Claude</strong>は、長い日本語の文章を自然に書くことや、細かい指示に沿った出力が得意と評価されることが多いモデルです。<br>
+      一方で、継続的な無料枠はありません。</p>
+      <div class="post-note"><strong>Linplanが使っているAPIについて</strong><br>
+      Linplanでは記事の下書きづくりにClaudeを使っていますが、用途によってはGeminiやOpenAIのほうが向いています。<br>
+      まずは同じ作業を2〜3社で試して、結果と費用を比べるのがおすすめです。</div>
+      <p>このほか、自分のパソコンやサーバーで動かせる、無料で公開されているAIモデルもあります。<br>
+      ただし準備や運用に専門知識が必要で、性能面でも差があるため、中小企業の業務でいきなり選ぶには手間がかかります。</p>
 
       <h2 id="a5">目的別：どのAIのAPIを選べばいい？</h2>
       <p>迷ったら、<strong>「やりたいこと」と「扱うデータの大事さ」</strong>から選ぶのが近道です。</p>
@@ -336,13 +397,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
 
       <h2 id="a6">AIのAPIの使い方は？始めるまでの3ステップ</h2>
-      <p>使い始めるまでの流れは、どの会社でもほぼ同じで<strong>「アカウント作成→APIキー発行→呼び出し」</strong>の3ステップです。</p>
+      <p>使い始めるまでの流れは、どの会社でもほぼ同じです。<br>
+      <strong>「アカウント作成 → APIキー発行 → 呼び出し」</strong>の3ステップで進みます。</p>
       <ol>
-        <li><strong>開発者向けのアカウントを作る</strong>——各社の開発者向け管理画面に登録します。チャット用のアカウントとは別物です。</li>
-        <li><strong>APIキーを発行する</strong>——APIキーは、あなたの会社だと証明する<strong>合言葉</strong>のようなもの。これを知っている人は誰でもあなたの料金でAIを使えてしまうため、<strong>他人に見せない・サイトのHTMLに書かない</strong>ことが鉄則です。</li>
-        <li><strong>プログラムから呼び出す</strong>——決まった形式で「どのモデルに・何をしてほしいか」を送ると、AIの回答が返ってきます。</li>
+        <li><strong>開発者向けのアカウントを作る</strong><br>各社の開発者向け管理画面に登録します。チャット用のアカウントとは別物です。</li>
+        <li><strong>APIキーを発行する</strong><br>APIキーは、あなたの会社だと証明する<strong>合言葉</strong>のようなもの。<br>知られると誰でもあなたの料金でAIを使えてしまうため、<strong>他人に見せない・サイトのHTMLに書かない</strong>ことが鉄則です。</li>
+        <li><strong>プログラムから呼び出す</strong><br>決まった形式で「どのモデルに・何をしてほしいか」を送ると、AIの回答が返ってきます。</li>
       </ol>
-      <p>参考までに、ClaudeのAPIを呼び出す最小限の例です（<strong>読み飛ばしても大丈夫です</strong>）。「このモデルで、この依頼文に、500トークン以内で答えて」という注文票を送っているだけ、とイメージしてください。</p>
+      <p>参考までに、ClaudeのAPIを呼び出す最小限の例です（<strong>読み飛ばしても大丈夫です</strong>）。<br>
+      「このモデルで、この依頼文に、500トークン以内で答えて」という<strong>注文票</strong>を送っているだけ、とイメージしてください。</p>
 <pre class="post-code"><code>curl https://api.anthropic.com/v1/messages \
   -H "x-api-key: あなたのAPIキー" \
   -H "anthropic-version: 2023-06-01" \
@@ -351,11 +414,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
        "messages":[{"role":"user","content":"船橋のパン屋の紹介文を100文字で"}]}'</code></pre>
       <p>安全に使うために、次の3点は必ず守りましょう。</p>
       <ul>
-        <li><strong>APIキーはサーバー側や専用の保管場所に置く</strong>——たとえばGitHubの「Secrets」のような、鍵を隠して保管する仕組みを使う</li>
-        <li><strong>利用上限を設定しておく</strong>——万一のトラブルでも請求額が膨らまないようにする</li>
-        <li><strong>AIの出力はそのまま公開せず、人が確認する</strong>——事実の誤りや言い過ぎが混ざることがあるため</li>
+        <li><strong>APIキーはサーバー側や専用の保管場所に置く</strong><br>たとえばGitHubの「Secrets」のような、鍵を隠して保管する仕組みを使う</li>
+        <li><strong>利用上限を設定しておく</strong><br>万一のトラブルでも請求額が膨らまないようにする</li>
+        <li><strong>AIの出力はそのまま公開せず、人が確認する</strong><br>事実の誤りや言い過ぎが混ざることがあるため</li>
       </ul>
-      <p>AIを使ったサイトづくりや、AI検索で見つけてもらうための準備については「<a href="sme-ai-search-ready.html">中小企業がAI検索時代に備えるためにできること</a>」もあわせてどうぞ。</p>
+      <p>AI検索で見つけてもらうための準備については、「<a href="sme-ai-search-ready.html">中小企業がAI検索時代に備えるためにできること</a>」もあわせてどうぞ。</p>
     </div>
 
     <!-- FAQ -->
