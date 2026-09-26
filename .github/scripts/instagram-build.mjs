@@ -36,9 +36,11 @@ const esc = (t = "") => t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", 
 const jst = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" });
 const fmtDate = d => jst.format(new Date(d)).replace(/\//g, ".");
 function title(caption = "") {
-  const body = caption.replace(/#[^\s#]+/g, "").trim();
-  const first = (body.split("\n").find(l => l.trim()) || "").trim();
-  return first.length > 40 ? first.slice(0, 40) + "…" : first;
+  const lines = caption.replace(/#[^\s#]+/g, "").trim().split("\n").map(l => l.trim());
+  // 1行目が読点で終わるときは、文の途中で切れないよう次の行とつなげる（空行＝段落の区切りまで）
+  let t = lines[0] || "";
+  for (let i = 1; /[、，,]$/.test(t) && lines[i]; i++) t += lines[i];
+  return t.length > 40 ? t.slice(0, 40) + "…" : t;
 }
 
 // ブログ記事がある投稿は、カードのリンク先をその記事にする
