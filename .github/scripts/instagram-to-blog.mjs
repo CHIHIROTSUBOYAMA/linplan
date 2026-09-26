@@ -207,7 +207,7 @@ const main = `<main>
     <header class="post-head">
       <span class="post-head__cat">${CATS[art.category]}</span>
       <h1 class="post-head__title">${esc(plain(art.title))}</h1>
-      <div class="post-head__meta"><span>${dotDate}</span><span>約${minutes}分で読めます</span><span>カテゴリ：${CATS[art.category]}</span></div>
+      <div class="post-head__meta"><span>公開 <time datetime="${today}">${dotDate}</time></span><span>更新 <time datetime="${today}">${dotDate}</time></span><span>約${minutes}分で読めます</span><span>カテゴリ：${CATS[art.category]}</span></div>
     </header>
 
     <!-- AEO最適化：冒頭の即答ボックス -->
