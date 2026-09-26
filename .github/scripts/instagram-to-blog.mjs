@@ -282,8 +282,19 @@ const afterGrid = gridAt + '<div class="blog-grid">'.length;
 const rest = blogIndex.slice(afterGrid);
 const firstNormal = rest.search(/<a href="[^"]+" class="post-card"(?! post-card--featured)[^>]*>/);
 const insertAt = firstNormal >= 0 ? afterGrid + firstNormal - (rest.slice(0, firstNormal).match(/[ \t]*$/)[0].length) : afterGrid + 1;
-fs.writeFileSync(path.join(BLOG, "index.html"), blogIndex.slice(0, insertAt) + card + blogIndex.slice(insertAt), "utf8");
+let newIndex = blogIndex.slice(0, insertAt) + card + blogIndex.slice(insertAt);
 log("✓ blog/index.html に一覧カードを追加");
+// 一覧の構造化データ（Blog）の blogPost にも追加する（新しい記事を先頭に）
+const blogLd = [...newIndex.matchAll(/<script type="application\/ld\+json">\n([\s\S]*?)\n<\/script>/g)]
+  .find(m => { try { return JSON.parse(m[1])["@type"] === "Blog"; } catch { return false; } });
+if (blogLd) {
+  const ld = JSON.parse(blogLd[1]);
+  ld.blogPost = (ld.blogPost || []).filter(p => p.url !== url);
+  ld.blogPost.unshift({ "@type": "BlogPosting", headline: plain(art.title), url, datePublished: today });
+  newIndex = newIndex.replace(blogLd[0], `<script type="application/ld+json">\n${JSON.stringify(ld, null, 2)}\n</script>`);
+  log("✓ blog/index.html の Blog 構造化データに追加");
+} else log("! blog/index.html に Blog の構造化データが見つかりません。blogPost は手動で追加してください");
+fs.writeFileSync(path.join(BLOG, "index.html"), newIndex, "utf8");
 
 const smPath = path.join(ROOT, "sitemap.xml");
 if (fs.existsSync(smPath)) {

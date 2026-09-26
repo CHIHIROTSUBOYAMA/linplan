@@ -55,7 +55,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `about.html` | 私について（プロフィール詳細） |
 | `services.html` | サービス紹介 |
 | `aeo-geo.html` | AEO / GEO（生成AI最適化）解説ページ |
-| `works.html` | 制作実績ギャラリー（現在の掲載は Original Products / Real Works（見本サイト）の 2 グループ。Practice Works は非掲載） |
+| `works.html` | 制作実績ギャラリー（現在の掲載は Original Products / Sample Works｜見本サイト の 2 グループ。Practice Works は非掲載） |
 | `pricing.html` | 料金プラン |
 | `faq.html` | よくあるご質問 |
 | `contact.html` | お問い合わせフォームページ |
@@ -72,7 +72,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `blog/funabashi-seitai.html` | ブログ記事（船橋の整体院のHP集客）— 地域×業種の記事 |
 | `404.html` | 404 エラーページ（GitHub Pages 用。`noindex`・sitemap 対象外・OGP なし。**共有ファイルはルート相対パス**（`/base.css` `/theme.css` `/theme.js`、フォント preload も `/fonts/...`）で参照する — どの階層の URL でも表示されるため） |
 
-ナビ／モバイルメニューのリンク構成は全ページ共通：私について（about）/ サービス（services）/ AEO・GEO（aeo-geo）/ 制作実績（works）/ 料金（pricing）/ よくある質問（faq）/ 相談室（blog/index.html）/ 無料で相談！（contact、CTA ボタン）。フッターはこれにプライバシーポリシー（privacy）と特定商取引法に基づく表記（tokushoho）を加えた構成。
+ナビ／モバイルメニューのリンク構成は全ページ共通：私について（about）/ サービス（services）/ AEO・GEO（aeo-geo）/ 制作実績（works）/ 料金（pricing）/ よくある質問（faq）/ 相談室（blog/index.html）/ 無料で相談！（contact、CTA ボタン）。フッターはこれに AEO・GEO対応とは（aeo-geo）/ **船橋のホームページ制作（トップ `./`。blog・area は `../`、404 は `/`）** / 対応エリア・対面サポート（area/funabashi.html）/ プライバシーポリシー（privacy）/ 特定商取引法に基づく表記（tokushoho）/ Instagram（`https://www.instagram.com/linplan.wb/`、別タブ）を加えた構成。
+
+**「船橋のホームページ制作」という文字のリンクは必ずトップ（`index.html`）に向ける**（「船橋 ホームページ制作」の評価をトップに集める方針。2026-09 までは全ページのフッターから area/funabashi.html に向いており、逆向きのシグナルになっていた）。area/funabashi.html へのリンクは「対応エリア・対面サポート」など内容どおりの文字にする。
 
 ## ディレクトリ構成
 
@@ -185,7 +187,7 @@ Actions の「Instagram to blog」を手動実行すると、`.github/scripts/in
 
 - `blog/<slug>.html` を生成 — **`blog/funabashi-seitai.html` の head・ナビ・フッター・著者欄・インライン CSS を型として流用**するため、このファイルを削除・改名しない（直すと以降の生成記事にも反映される）
 - 投稿画像を `blog/img/insta-<ID>.jpg` に保存（Instagram の画像 URL は期限切れになるため）
-- `blog/index.html` の featured の次にカード追加（写真付きは `.post-card__thumb--photo` で葉の装飾を消す）、トップ `index.html` の相談室カードを先頭に追加して 3 枚に保つ、`sitemap.xml` に追加
+- `blog/index.html` の featured の次にカード追加し、同ファイルの Blog JSON-LD の `blogPost` 先頭にも追加（写真付きは `.post-card__thumb--photo` で葉の装飾を消す）、トップ `index.html` の相談室カードを先頭に追加して 3 枚に保つ、`sitemap.xml` に追加
 - 見出し等（Klee 描画）の新しい漢字を `tools/klee-chars.txt` に追記し、ワークフロー内で `tools/subset-fonts.py` を実行して `fonts/` も PR に含める
 - 記事化済みの投稿を `blog/insta-articles.json` に記録（二重記事化防止）
 - **本文に `linplan.jp/blog/…` を書いた投稿（既存記事の告知）は記事化の対象外**。ブログ記事を Instagram で告知するときは、キャプションに記事の URL を必ず書く（書かないと同じテーマの記事が二重に作られる）
@@ -194,31 +196,32 @@ Actions の「Instagram to blog」を手動実行すると、`.github/scripts/in
 
 ## Works の 3 カテゴリ運用ルール（重要）
 
-`index.html` / `works.html` の Works は **Original Products / Real Works / Practice Works** の 3 カテゴリで運用する。法令面（景表法・不正競争防止法・著作権・商標）とブランド面の両方を守るための運用ルール。
+`index.html` / `works.html` の Works は **Original Products / Sample Works / Practice Works** の 3 カテゴリで運用する（2026-09 に「Real Works｜制作実績」→「Sample Works｜見本サイト」へ改称。中身が見本サイトのみのため「制作実績」と書かない）。初めての実案件を載せるときは **「Client Works｜制作実績」を別グループとして新設**する。法令面（景表法・不正競争防止法・著作権・商標）とブランド面の両方を守るための運用ルール。
 
 | カテゴリ | 内容 | 表記ルール |
 |---|---|---|
 | **Original Products** | 自社プロダクト（StudyReport / Tsukimi 等） | 自分が企画・実装したものに限る |
-| **Real Works** | クライアント案件・見本サイト（例：和食 -結 yui-） | 模写を混ぜない |
+| **Sample Works** | 見本サイト（例：和食 -結 yui-） | 模写を混ぜない。「制作実績」と書かず「見本サイト」と明示する |
 | **Practice Works** | 模写・学習作品 | **実在企業名・サービス名は使わない**。業種ベースのラベル（例：「Hospitality 模写サイト」「Medical 模写サイト」）で表示する |
 
 ### 禁止事項
 
 - Practice Works に実在企業名を入れない（`alt` 属性も同様）。
 - Practice Works を「制作実績」「公式サイト」と表記しない。「模写サイト」「学習作品」と明示する。
-- Real Works に模写を混ぜない。
+- Sample Works（および将来の Client Works）に模写を混ぜない。
 
-実案件が発生したら Practice Works の該当カードを Real Works 側に移し、内容を実案件向けに書き換える。
+実案件が発生したら「Client Works｜制作実績」グループを新設して掲載する。
 
 ## ブログ（相談室）の運用
 
 `blog/` 配下が「中小企業のHP・IT・AI 相談室」。`blog/index.html` が記事一覧、`blog/hp-cost-2026.html` 以降が個別記事。デザイン・共通コンポーネントはルートのページと同一だが、共有ファイルは **`../base.css` / `../theme.css` / `../theme.js`**（1 階層上）で参照する（フォント preload も `../fonts/...`）。記事固有の本文スタイルは各記事の HTML 内インライン `<style>` に持つ。
 
 - **リンクは相対パスで書く** — `blog/` 配下からルートのページへは、ルート相対ではなく `../about.html` `../contact.html` のような相対パスでリンクする（ブログ内の相互リンクは `index.html` / `hp-cost-2026.html` のようにファイル名のみ）。
-- **記事を追加したら次の 3 箇所を必ず更新する**：
+- **記事を追加したら次の 4 箇所を必ず更新する**：
   1. `blog/index.html` の記事一覧にカードを追加
   2. `index.html`（トップ）の相談室セクション — `.blog-grid` のカードを更新（「近日公開」プレースホルダーがあれば実記事に差し替える）
   3. `sitemap.xml` に記事の URL を追加
+  4. `blog/index.html` の `<head>` にある Blog JSON-LD の `blogPost` に追加（`headline` と `datePublished` は記事の `Article` JSON-LD からコピーする。新しい記事を先頭に）
 - 記事ページには OGP / canonical / GTM の共通一式に加え、JSON-LD（`Article`。FAQ を含む記事は `FAQPage` も）を入れる。`hp-cost-2026.html` が雛形。
 
 ## 画像の取り扱い
@@ -232,7 +235,7 @@ Actions の「Instagram to blog」を手動実行すると、`.github/scripts/in
 
 - `sitemap.xml` / `robots.txt` はリポジトリルートに配置。新規ページ追加・削除時は `sitemap.xml` の `<urlset>` も更新する。ベース URL は `https://linplan.jp/`。
 - 全 19 ページの `<head>`（`<title>` 直後）に **OGP / Twitter Card / canonical** メタを設置済み。`og:image` / `twitter:image` は `https://linplan.jp/images/ogp.png`（絶対 URL）、`og:url` / canonical はページごとの絶対 URL。**新規ページ追加時は同じ一式を入れる**（`og:title` / `og:description` / URL をそのページ用に差し替える）。
-- JSON-LD 構造化データは**主要ページに設置済み**：`index.html`（`ProfessionalService`＋`Person`）／ `about.html`（`AboutPage`＋`Person`）／ `services.html`（`Service`×3）／ `contact.html`（`ContactPage`）／ `faq.html`（`FAQPage`＝ページ上の全 FAQ と同期）／ works・pricing・aeo-geo・about・services・contact・faq（`BreadcrumbList`）／ ブログ記事（`Article`、FAQ を含む記事は `FAQPage` も）。**構造化データは該当ページの表示コンテンツと必ず同期させる**（FAQ を増減したら `faq.html` の JSON-LD も更新する）。
+- JSON-LD 構造化データは**主要ページに設置済み**：`index.html`（`ProfessionalService`＋`Person`。`sameAs` に Instagram と GBP（`https://www.google.com/maps?cid=6084748009252929878`））／ `about.html`（`AboutPage`＋`Person`）／ `services.html`（`Service`×3）／ `contact.html`（`ContactPage`）／ `faq.html`（`FAQPage`＝ページ上の全 FAQ と同期）／ `pricing.html`（`Service`＋`Offer`×6＝表示中の料金と同期。料金を変えたら必ず直す）／ `blog/index.html`（`Blog`＋`BreadcrumbList`。`blogPost` は一覧の全記事）／ works・pricing・aeo-geo・about・services・contact・faq（`BreadcrumbList`）／ ブログ記事（`Article`、FAQ を含む記事は `FAQPage` も）。**構造化データは該当ページの表示コンテンツと必ず同期させる**（FAQ を増減したら `faq.html` の JSON-LD も更新する）。
 - `<title>` は **全角 30〜32 文字以内**に収める（Google の検索結果でそれ以上は「…」で切られる）。サフィックスの `｜ Linplan` が 9 文字ぶんを占めるので、本文側は 20 文字強が上限。`og:title` と JSON-LD の `headline` は SERP で切られないので、`<h1>` と同じフル表記のままでよい（`<title>` だけ短くする）。
 
 ### GSC「ページにリダイレクトがあります」について（正常・対応不要）
