@@ -7,7 +7,7 @@ import { linkedSlug } from "./insta-blog-link.mjs";
 const IG_TOKEN = process.env.IG_ACCESS_TOKEN;
 const AI_KEY = process.env.ANTHROPIC_API_KEY;
 const MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-5";
-const POST_ID = (process.env.POST_ID || "").trim();            // 空なら未記事化の最新投稿
+const TARGET = (process.env.POST || process.env.POST_ID || "").trim(); // 投稿のURLかID。空なら未記事化の最新投稿
 const SKIP_IDS = new Set((process.env.SKIP_IDS || "").split(/\s+/).filter(Boolean)); // 下書きPRが開いている投稿
 const MIN_CHARS = 40;                                             // 本文がこれ未満の投稿は材料不足として対象外
 const SITE = "https://linplan.jp";
@@ -43,11 +43,14 @@ if (json.error) fail(`Instagram APIエラー: ${json.error.message}`);
 const media = json.data ?? [];
 
 let post;
-if (POST_ID) {
-  post = media.find(m => m.id === POST_ID);
-  if (!post) fail(`投稿ID ${POST_ID} が最新25件の中に見つかりません`);
-  if (registry[POST_ID]) fail(`投稿ID ${POST_ID} は記事化済みです（blog/${registry[POST_ID]}.html）`);
-  if (linkedSlug(post.caption)) fail(`投稿ID ${POST_ID} はブログ記事（blog/${linkedSlug(post.caption)}.html）の告知投稿なので記事化しません`);
+if (TARGET) {
+  // URL（instagram.com/p/<コード>/ や /reel/<コード>/。?igsh=… 付きでも可）なら、URL の中のコードで照合する
+  const code = (TARGET.match(/instagram\.com\/(?:[\w.]+\/)?(?:p|reel|reels|tv)\/([\w-]+)/) || [])[1];
+  if (/instagram\.com/.test(TARGET) && !code) fail(`投稿のURLとして読み取れません: ${TARGET}（例：https://www.instagram.com/p/XXXXXXXX/）`);
+  post = code ? media.find(m => (m.permalink || "").includes(`/${code}/`)) : media.find(m => m.id === TARGET);
+  if (!post) fail(`投稿 ${TARGET} が最新25件の中に見つかりません`);
+  if (registry[post.id]) fail(`この投稿は記事化済みです（blog/${registry[post.id]}.html）`);
+  if (linkedSlug(post.caption)) fail(`この投稿はブログ記事（blog/${linkedSlug(post.caption)}.html）の告知投稿なので記事化しません`);
 } else {
   // 本文に linplan.jp/blog/… を書いた投稿は既存記事の告知なので対象外（同じテーマの記事が二重にできるのを防ぐ）
   post = media.find(m => !registry[m.id] && !SKIP_IDS.has(m.id) && !linkedSlug(m.caption) && cleanCaption(m.caption).length >= MIN_CHARS);

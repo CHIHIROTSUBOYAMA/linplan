@@ -183,7 +183,7 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 ## Instagram 投稿 → ブログ記事の下書き（GitHub Actions・手動実行）
 
-Actions の「Instagram to blog」を手動実行すると、`.github/scripts/instagram-to-blog.mjs` が未記事化の最新投稿（本文 40 文字以上）を Claude API（`claude-sonnet-5`、Secrets `ANTHROPIC_API_KEY`）で記事化し、**`blog-draft/insta-<投稿ID>` ブランチの下書き PR** を出す（マージ＝公開）。1 回の実行で次をまとめて行う：
+Actions の「Instagram to blog」を手動実行すると（入力欄に**投稿のURL**を貼ればその投稿、空欄なら最新の未記事化投稿。投稿IDでも可）、`.github/scripts/instagram-to-blog.mjs` が未記事化の最新投稿（本文 40 文字以上）を Claude API（`claude-sonnet-5`、Secrets `ANTHROPIC_API_KEY`）で記事化し、**`blog-draft/insta-<投稿ID>` ブランチの下書き PR** を出す（マージ＝公開）。1 回の実行で次をまとめて行う：
 
 - `blog/<slug>.html` を生成 — **`blog/funabashi-seitai.html` の head・ナビ・フッター・著者欄・インライン CSS を型として流用**するため、このファイルを削除・改名しない（直すと以降の生成記事にも反映される）
 - 投稿画像を `blog/img/insta-<ID>.jpg` に保存（Instagram の画像 URL は期限切れになるため）

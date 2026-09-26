@@ -5,8 +5,8 @@ name: Instagram to blog
 on:
   workflow_dispatch:
     inputs:
-      post_id:
-        description: "記事化する投稿ID（空欄なら、まだ記事にしていない最新の投稿）"
+      post:
+        description: "記事化する投稿のURL（例：https://www.instagram.com/p/XXXXXXXX/）。空欄なら、まだ記事にしていない最新の投稿"
         required: false
         default: ""
 
@@ -42,7 +42,7 @@ jobs:
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          POST_ID: ${{ inputs.post_id }}
+          POST: ${{ inputs.post }}
           SKIP_IDS: ${{ steps.skip.outputs.ids }}
           PR_BODY: /tmp/pr-body.md
 
