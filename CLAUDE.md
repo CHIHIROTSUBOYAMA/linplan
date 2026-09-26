@@ -223,6 +223,13 @@ Actions の「Instagram to blog」を手動実行すると、`.github/scripts/in
   3. `sitemap.xml` に記事の URL を追加
   4. `blog/index.html` の `<head>` にある Blog JSON-LD の `blogPost` に追加（`headline` と `datePublished` は記事の `Article` JSON-LD からコピーする。新しい記事を先頭に）
 - 記事ページには OGP / canonical / GTM の共通一式に加え、JSON-LD（`Article`。FAQ を含む記事は `FAQPage` も）を入れる。`hp-cost-2026.html` が雛形。
+- **記事ヘッダーの日付は「公開・更新」を併記する** — `.post-head__meta` の先頭を `<span>公開 <time datetime="YYYY-MM-DD">YYYY.MM.DD</time></span><span>更新 <time datetime="YYYY-MM-DD">YYYY.MM.DD</time></span>` にする（本文を一度も更新していない記事は更新日＝公開日）。`instagram-to-blog.mjs` もこの形式で出力する。
+- **記事の本文を更新したら、次の 3 箇所の日付を同時に上げる**（3 つは常に一致させる）：
+  1. 記事の JSON-LD `dateModified`
+  2. 記事ヘッダーの「更新」日付（`<time datetime>` と表示の両方）
+  3. `sitemap.xml` の該当 URL の `lastmod`
+
+  **フッター・ナビ・連絡先メール・関連リンクなど共通パーツだけの変更では日付を上げない**（中身が変わっていないのに更新を主張すると、Google が sitemap の `lastmod` 全体を信用しなくなる。2026-09 に共通パーツ変更で全記事の `lastmod` を上げてしまい、`dateModified` と食い違った）。
 
 ## 画像の取り扱い
 
