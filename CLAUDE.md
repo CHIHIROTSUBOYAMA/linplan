@@ -44,6 +44,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Google Tag Manager（GTM）** — 全 19 ページの `<head>`（viewport 直後）に計測スニペット、`<body>` 直後に noscript 版を設置。コンテナ ID は `GTM-5DVGF39S`。**新規ページを追加するときは、この 2 スニペットを必ず同じ位置に入れる**（入れ忘れると計測が欠落する）。
 - **メインランドマーク（`<main>`）** — 全 19 ページとも、本文を `<main>` で囲む（モバイルメニュー閉じ `</div>` の直後に `<main>`、`<footer class="site-footer">` の直前に `</main>`）。ナビ（`.site-nav`）・モバイルメニュー・フッターは `<main>` の**外**に置く（ランドマークを入れ子にしない）。**新規ページ追加時も必ず入れる**（無いと Lighthouse の「Document does not have a main landmark」で減点される）。`<main>` はブロック要素なので見た目は変わらない。
 - GSAP / SplitType / ScrollTrigger などの外部ライブラリは **使用しない**（旧 `css/` `js/vendor/` は撤去済み。リビールは自前の `IntersectionObserver` で実装）。
+- **連絡先メールは `c.tsuboyama@linplan.jp` で統一**（JSON-LD・特商法・プライバシーポリシー・フッター・mailto すべて）。個人 Gmail を使うのは Formspree の通知先だけ。**新規ページ・記事でも Gmail を書かない**。
+- **公開対象からの除外は `_config.yml` の `exclude`**（GitHub Pages＝Jekyll はフロントマターのない `.md` などもそのまま配信するため、`CLAUDE.md` と `tools` を外している）。公開したくないファイルをリポジトリ直下に置くときはここに追記する。`.` で始まるフォルダ（`.claude/` `.github/`）はもともと配信されない。
 
 ## ページ一覧（19 ページ ＋ 404.html）
 
@@ -97,6 +99,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │                          funabashi-seitai）
 ├─ CLAUDE.md
 ├─ CNAME                  GitHub Pages のカスタムドメイン（`linplan.jp`）。消すと独自ドメインが外れる
+├─ _config.yml            GitHub Pages の配信除外（exclude: CLAUDE.md / tools）
 ├─ sitemap.xml / robots.txt
 ├─ images/
 │   ├─ *.webp             制作物・イラスト画像（studyreport / tsukimi / practice-* / hero-consult / profile 等。HTML はすべて WebP を参照）
@@ -170,7 +173,7 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 `index.html` の相談室（Blog）セクション直前、`<!-- INSTA:START -->` 〜 `<!-- INSTA:END -->` の間は **`.github/workflows/instagram-feed.yml` が毎日 6:00 JST に自動で書き換える**（手で編集しない）。`.github/scripts/instagram-build.mjs` が Instagram Graph API から最新 6 件を取得し、画像を `insta/*.jpg`（＋`insta/posts.json`）に保存してカード HTML を生成、変化があった日だけ bot が main にコミットする。**ローカル作業前は必ず pull**（しないとコンフリクトする）。
 
-- CSS は `base.css` 末尾の `.insta-grid` / `.insta-card`。
+- CSS は `base.css` 末尾の `.insta-grid` / `.insta-card`。**画像は 4:5（`aspect-ratio: 4 / 5`＋`object-fit: cover`）で表示**するので、投稿画像は 1080×1350 で作る（正方形の投稿は左右が約 10% ずつ切れる）。`<img>` には CLS 防止の `width="1080" height="1350"` をスクリプトが付ける。
 - キャプションは Zen Kaku（本文）で描画されるため、index.html が変わった日はワークフロー内で `tools/subset-fonts.py` も実行して `fonts/` をコミットする（新しい漢字のサブセット漏れ対策）。
 - トークンは `instagram-token-refresh.yml` が毎月 1 日に延長して Secrets `IG_ACCESS_TOKEN` を上書き（`GH_PAT` が必要。PAT の有効期限切れに注意）。
 - 取得失敗時は index.html を変更しない（前回の表示が残る）。投稿 0 件ならセクションごと出さない。
