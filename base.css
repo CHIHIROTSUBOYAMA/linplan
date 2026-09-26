@@ -434,7 +434,7 @@ a.polaroid { display: block; color: inherit; text-decoration: none; }
 .insta-card { flex: 0 0 calc((100% - 44px) / 3); display: block; overflow: hidden; text-decoration: none; color: inherit;
   transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
 .insta-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.insta-card img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: var(--paper2); }
+.insta-card img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: var(--paper2); }
 .insta-card__body { padding: 16px 20px 20px; }
 .insta-card__more { display: inline-block; margin-top: 8px; font-size: .8rem; font-weight: 700; color: var(--orange-deep); }
 .insta-card__body time { display: block; font-family: var(--en); font-size: .74rem; letter-spacing: .04em; color: var(--ink-faint); }

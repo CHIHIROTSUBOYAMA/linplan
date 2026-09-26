@@ -76,7 +76,7 @@ fs.writeFileSync(path.join(IMG_DIR, "posts.json"), JSON.stringify(posts, null, 2
 const delay = i => ["", " reveal-d1", " reveal-d2"][i % 3];
 const link = p => p.blog ? `href="blog/${p.blog}.html"` : `href="${esc(p.permalink)}" target="_blank" rel="noopener"`;
 const cards = posts.map((p, i) => `      <a ${link(p)} class="insta-card reveal${delay(i)}">
-        <img src="${p.image}" alt="${esc(p.title)}" loading="lazy" decoding="async">
+        <img src="${p.image}" alt="${esc(p.title)}" width="1080" height="1350" loading="lazy" decoding="async">
         <div class="insta-card__body">
           <time datetime="${esc(p.date)}">${fmtDate(p.date)}</time>
           <h3 class="insta-card__title">${esc(p.title)}</h3>${p.blog ? `
