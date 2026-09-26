@@ -444,3 +444,27 @@ a.polaroid { display: block; color: inherit; text-decoration: none; }
 @media (max-width: 680px) { .insta-grid { gap: 12px; } .insta-card { flex-basis: calc((100% - 12px) / 2); }
   .insta-card__body { padding: 12px 14px 16px; } .insta-card__title { font-size: .86rem; } }
 @media (prefers-reduced-motion: reduce) { .insta-card, .insta-card:hover { transition: none; transform: none; } }
+
+/* ===== ブログ記事のコードブロック（技術記事用・ハイライトなし） ===== */
+.post-body pre {
+  margin: 1.2em 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: .86rem;
+  line-height: 1.7;
+}
+.post-body pre code,
+.post-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.post-body :not(pre) > code {
+  padding: .1em .35em;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: .9em;
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5DVGF39S');</script>
+<!-- End Google Tag Manager -->
+<title>Supabaseで個人情報が見えてしまう5つの設定ミス｜RLSとGrantの対策、リリース前チェックリスト｜ Linplan</title>
+<link rel="canonical" href="https://linplan.jp/blog/supabase-rls-data-exposure.html">
+<meta name="description" content="2026年4月に話題になったアプリのデータ露出を例に、Supabase を使った Web アプリで他人のユーザー情報がブラウザから取れてしまう仕組みと、Grant・RLS・列の権限による対策、リリース前のチェックリストを解説します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Linplan">
+<meta property="og:title" content="Supabaseで個人情報が見えてしまう5つの設定ミスと対策">
+<meta property="og:description" content="2026年4月に話題になったアプリのデータ露出を例に、Supabase を使った Web アプリで他人のユーザー情報がブラウザから取れてしまう仕組みと、Grant・RLS・列の権限による対策、リリース前のチェックリストを解説します。">
+<meta property="og:url" content="https://linplan.jp/blog/supabase-rls-data-exposure.html">
+<meta property="og:image" content="https://linplan.jp/images/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Supabaseで個人情報が見えてしまう5つの設定ミス｜RLSとGrantの対策、リリース前チェックリスト",
+  "description": "2026年4月に話題になったアプリのデータ露出を例に、Supabase を使った Web アプリで他人のユーザー情報がブラウザから取れてしまう仕組みと、Grant・RLS・列の権限による対策、リリース前のチェックリストを解説します。",
+  "datePublished": "2026-09-26",
+  "dateModified": "2026-09-26",
+  "author": {"@type": "Person","name": "坪山ちひろ","url": "https://linplan.jp/about.html"},
+  "publisher": {"@type": "Organization","name": "Linplan"},
+  "mainEntityOfPage": "https://linplan.jp/blog/supabase-rls-data-exposure.html",
+  "url": "https://linplan.jp/blog/supabase-rls-data-exposure.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"anon キーが漏れたら、キーを作り直すべきですか？","acceptedAnswer":{"@type":"Answer","text":"anon キーはもともとブラウザに渡る、公開される前提の鍵です。漏れること自体が問題なのではなく、そのキーで取れてはいけないデータが取れてしまう Grant と RLS の設定のほうが問題です。ただし service_role キー（secret キー）が漏れた場合は RLS を無視してすべてのデータを読み書きできるため、すぐに作り直してください。"}},
+    {"@type":"Question","name":"RLS を有効にすれば安全ですか？","acceptedAnswer":{"@type":"Answer","text":"それだけでは足りません。using (true) のような緩いポリシーだと、RLS が有効でも全行が読めます。また RLS は行を制御する仕組みで、列は制御しません。返す列と、本人に書き換えさせる列も別に設計する必要があります。"}},
+    {"@type":"Question","name":"AIコーディングツールで作ったアプリは危ないですか？","acceptedAnswer":{"@type":"Answer","text":"ツールそのものが危ないわけではありません。ただ、SQL やマイグレーションで作ったテーブルは、ダッシュボードで作った場合と違って RLS が最初から有効になっていません。生成されたコードに RLS の有効化とポリシーが入っているかを、自分で確認する必要があります。"}}
+  ]
+}
+</script>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Regular.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Medium.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Bold.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/KleeOne-Regular.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/KleeOne-SemiBold.subset.woff2" crossorigin>
+<link rel="stylesheet" href="../base.css">
+<link rel="icon" href="../favicon.ico" sizes="48x48 32x32 16x16">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>@media(max-width:560px){.btn{white-space:normal}}</style>
+<style>
+/* ============================================================
+   BLOG 固有スタイル（V4スクラップブック準拠）
+   ============================================================ */
+.blog-hero{padding:72px 0 40px;text-align:center;position:relative}
+.blog-hero__kicker{font-family:var(--en);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:600;margin:0 0 14px}
+.blog-hero__title{font-family:var(--hand);font-size:clamp(1.9rem,5vw,3rem);font-weight:600;line-height:1.4;margin:0 0 16px;color:var(--ink)}
+.blog-hero__lead{font-size:.98rem;line-height:2;color:var(--ink-soft);max-width:620px;margin:0 auto}
+
+/* カテゴリチップ */
+.blog-cats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 8px}
+.blog-cat{font-size:.82rem;font-weight:600;padding:7px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink-soft);text-decoration:none;transition:all .2s var(--ease);cursor:pointer}
+.blog-cat:hover,.blog-cat.is-active{border-color:var(--orange);background:var(--orange-soft);color:var(--orange-deep)}
+
+/* 記事カード一覧 */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px;margin:44px 0 20px}
+.post-card{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease);position:relative}
+.post-card:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 14px 34px rgba(44,39,34,.13)}
+.post-card__thumb{aspect-ratio:16/9;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;font-size:1.1rem;color:var(--orange-deep);position:relative;overflow:hidden}
+.post-card__thumb span{position:relative;z-index:1;padding:0 18px;text-align:center;line-height:1.4}
+.post-card__cat{position:absolute;top:12px;left:12px;z-index:2;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+.post-card__body{padding:20px 20px 22px;flex:1;display:flex;flex-direction:column}
+.post-card__title{font-size:1.04rem;font-weight:700;line-height:1.55;margin:0 0 10px}
+.post-card__excerpt{font-size:.84rem;color:var(--ink-soft);line-height:1.85;margin:0 0 16px;flex:1}
+.post-card__meta{font-family:var(--en);font-size:.74rem;color:var(--ink-faint);display:flex;gap:12px;align-items:center}
+
+/* ===== 記事本文ページ ===== */
+.post-wrap{max-width:760px;margin:0 auto;padding:0 28px}
+.post-breadcrumb{font-size:.78rem;color:var(--ink-faint);margin:116px 0 0;font-family:var(--en)}
+.post-breadcrumb a{color:var(--ink-soft);text-decoration:none}
+.post-breadcrumb a:hover{color:var(--orange-deep)}
+.post-head{padding:26px 0 24px;border-bottom:2px dashed var(--line);margin-bottom:34px}
+.post-head__cat{display:inline-block;font-size:.74rem;font-weight:700;padding:5px 13px;border-radius:999px;background:var(--orange-soft);color:var(--orange-deep);margin:0 0 16px}
+.post-head__title{font-family:var(--hand);font-size:clamp(1.6rem,4.4vw,2.4rem);font-weight:600;line-height:1.45;margin:0 0 18px;color:var(--ink)}
+.post-head__meta{font-family:var(--en);font-size:.78rem;color:var(--ink-faint);display:flex;gap:16px;flex-wrap:wrap}
+
+/* 目次 */
+.post-toc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px 26px;margin:0 0 38px}
+.post-toc__ttl{font-family:var(--hand);font-weight:600;font-size:1rem;margin:0 0 12px;color:var(--ink)}
+.post-toc ol{margin:0;padding-left:1.3em}
+.post-toc li{font-size:.88rem;line-height:1.95;color:var(--ink-soft)}
+.post-toc a{color:var(--ink-soft);text-decoration:none}
+.post-toc a:hover{color:var(--orange-deep);text-decoration:underline}
+
+/* 本文 typography */
+.post-body{font-size:.97rem;line-height:2.05;color:var(--ink)}
+.post-body > p{margin:0 0 22px}
+.post-body h2{font-family:var(--hand);font-size:1.5rem;font-weight:600;line-height:1.5;margin:48px 0 18px;padding:0 0 10px;border-bottom:1px solid var(--line);scroll-margin-top:90px}
+.post-body h3{font-size:1.16rem;font-weight:700;line-height:1.6;margin:34px 0 14px;color:var(--ink);scroll-margin-top:90px}
+.post-body h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--orange);border-radius:2px;margin-right:9px;transform:rotate(8deg)}
+.post-body ul,.post-body ol{margin:0 0 22px;padding-left:1.4em}
+.post-body li{margin:0 0 9px;line-height:1.9}
+.post-body strong{font-weight:700;background:linear-gradient(transparent 62%,var(--yellow-soft) 62%)}
+.post-body a{color:var(--orange-deep);text-decoration:underline;text-underline-offset:3px}
+
+/* 結論ボックス（AEO最適化：冒頭の即答） */
+.post-answer{background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:0 6px 6px 0;padding:20px 24px;margin:0 0 34px}
+.post-answer__label{font-family:var(--en);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+.post-answer p{margin:0;font-size:.96rem;line-height:1.95;font-weight:500}
+
+/* 表 */
+.post-table-wrap{overflow-x:auto;margin:0 0 26px}
+.post-body table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:440px}
+.post-body th,.post-body td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.post-body thead th{background:var(--ink);color:var(--paper);font-weight:600}
+.post-body tbody tr:nth-child(even){background:var(--paper)}
+
+/* 引用・補足 */
+.post-note{background:var(--orange-soft);border-radius:6px;padding:16px 20px;margin:0 0 26px;font-size:.88rem;line-height:1.9;color:var(--ink-soft)}
+.post-note strong{background:none}
+
+/* FAQ */
+.post-faq{margin:44px 0 0}
+.post-faq__ttl{font-family:var(--hand);font-size:1.5rem;font-weight:600;margin:0 0 20px}
+.post-faq__item{border:1px solid var(--line);border-radius:6px;padding:18px 22px;margin:0 0 14px;background:var(--white)}
+.post-faq__q{font-weight:700;font-size:.96rem;margin:0 0 10px;padding-left:26px;position:relative}
+.post-faq__q::before{content:"Q";position:absolute;left:0;top:-2px;font-family:var(--en);font-weight:700;color:var(--orange-deep);background:var(--orange-soft);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem}
+.post-faq__a{font-size:.88rem;line-height:1.9;color:var(--ink-soft);margin:0;padding-left:26px;position:relative}
+.post-faq__a::before{content:"A";position:absolute;left:0;top:-2px;font-family:var(--en);font-weight:700;color:var(--teal);background:var(--teal-soft);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem}
+
+/* 著者 */
+.post-author{display:flex;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px 24px;margin:44px 0 0}
+.post-author__avatar{width:56px;height:56px;border-radius:50%;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;color:var(--orange-deep);flex-shrink:0;font-size:1.2rem}
+.post-author__name{font-weight:700;font-size:.96rem;margin:0 0 5px}
+.post-author__bio{font-size:.82rem;color:var(--ink-soft);line-height:1.8;margin:0}
+
+/* 記事末CTA */
+.post-cta{text-align:center;background:var(--ink);border-radius:8px;padding:40px 28px;margin:48px 0 0;position:relative;overflow:hidden}
+.post-cta__ttl{font-family:var(--hand);font-size:1.4rem;font-weight:600;color:var(--paper);margin:0 0 12px}
+.post-cta__txt{font-size:.9rem;color:rgba(251,248,241,.78);line-height:1.9;margin:0 0 22px}
+
+/* 関連記事 */
+.post-related{margin:52px 0 0}
+.post-related__ttl{font-family:var(--hand);font-size:1.3rem;font-weight:600;margin:0 0 20px;text-align:center}
+
+/* 構成図（インライン SVG） */
+.post-figure{margin:6px 0 30px;padding:18px 14px 14px;background:var(--white);border:1px solid var(--line);border-radius:10px}
+.post-figure svg{display:block;width:100%;height:auto;max-width:420px;margin:0 auto}
+.post-figure figcaption{font-size:.82rem;line-height:1.8;color:var(--ink-soft);margin:12px 4px 0;text-align:center}
+.fig-box{fill:var(--paper);stroke:var(--ink);stroke-width:1.5}
+.fig-box--outside{fill:var(--white);stroke:var(--ink-faint);stroke-dasharray:5 4}
+.fig-box--db{fill:var(--teal-soft);stroke:var(--teal)}
+.fig-gate{fill:var(--orange-soft);stroke:var(--orange);stroke-width:1.5}
+.fig-line{stroke:var(--ink);stroke-width:1.6;fill:none}
+.fig-arrow{fill:var(--ink)}
+.fig-t{fill:var(--ink);font-size:15px;font-weight:700}
+.fig-s{fill:var(--ink-soft);font-size:13px}
+.fig-g{fill:var(--orange-deep);font-size:14px;font-weight:700}
+/* 参考資料 */
+.post-refs li{font-size:.9rem}
+@media(max-width:560px){
+  .blog-grid{grid-template-columns:1fr;gap:22px}
+  .post-figure{padding:14px 6px 12px}
+  .post-body{font-size:.94rem}
+}
+</style>
+
+<link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- エントランスアニメーション（ローダー廃止：読み込み時に見出しをフェードアップ） -->
+<style>
+.site-nav{animation:lpEnterNav .65s var(--ease) both}.phero .eyebrow,.post-head__cat,.blog-hero__kicker{animation:lpEnter .7s var(--ease) both}
+.phero h1,.post-head__title,.blog-hero__title{animation:lpEnter .78s var(--ease) .12s both}
+.phero p,.post-head__meta,.blog-hero__lead{animation:lpEnter .78s var(--ease) .26s both}
+@keyframes lpEnter{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}@keyframes lpEnterNav{from{opacity:0;translate:0 -14px}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:reduce){.phero .eyebrow,.phero h1,.phero p,.post-head__cat,.post-head__title,.post-head__meta,.blog-hero__kicker,.blog-hero__title,.blog-hero__lead,.site-nav{animation:none}}
+</style>
+
+
+<!-- ===== NAV ===== -->
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a href="../" class="site-nav__logo" aria-label="Linplan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>Linplan<span style="color:var(--orange)">.</span></span></a>
+    <div class="site-nav__links">
+      <a href="../about.html">私について</a>
+      <a href="../services.html">サービス</a>
+      <a href="../pricing.html">料金</a>
+      <a href="../works.html">制作実績</a>
+      <a href="../faq.html">よくある質問</a>
+      <a href="./">相談室</a>
+      <a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
+    </div>
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <div class="mobile-menu__bar">
+    <button class="mobile-menu__close" aria-label="閉じる">×</button>
+  </div>
+  <a href="../about.html">私について</a>
+  <a href="../services.html">サービス</a>
+  <a href="../pricing.html">料金</a>
+  <a href="../works.html">制作実績</a>
+  <a href="../faq.html">よくある質問</a>
+  <a href="./">相談室</a>
+  <a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
+</div>
+
+
+<main>
+  <div class="post-wrap">
+    <nav class="post-breadcrumb"><a href="../">ホーム</a> ／ <a href="./">相談室</a> ／ Supabaseの設定ミスと対策</nav>
+  </div>
+
+  <article>
+   <div class="post-wrap">
+    <header class="post-head">
+      <span class="post-head__cat">開発・セキュリティ</span>
+      <h1 class="post-head__title">Supabaseで個人情報が見えてしまう<br>5つの設定ミスと対策</h1>
+      <div class="post-head__meta"><span>2026.09.26</span><span>約12分で読めます</span><span>カテゴリ：開発・セキュリティ</span></div>
+    </header>
+
+    <!-- AEO最適化：冒頭の即答ボックス -->
+    <div class="post-answer">
+      <p class="post-answer__label">結論</p>
+      <p>Supabase のクライアント用キー（anon／publishable key）は、ブラウザに渡る<strong>公開前提の鍵</strong>です。守りはキーを隠すことではなく、データベース側の2段階で行います。<strong>①Grant：どのロールがテーブルに触れるか ②RLS：どの行を読めるか・書けるか</strong>。さらに、RLS は「列」を制御しないので、<strong>返す列と、本人に書き換えさせる列</strong>も別に設計する必要があります。</p>
+    </div>
+
+    <!-- 目次 -->
+    <nav class="post-toc">
+      <p class="post-toc__ttl">この記事でわかること</p>
+      <ol>
+        <li><a href="#a1">はじめに ― 何が話題になったのか</a></li>
+        <li><a href="#a2">そもそも「内部のJSON」はどこから来るのか</a></li>
+        <li><a href="#a3">Supabaseの前提 ― anonキーは「公開される鍵」</a></li>
+        <li><a href="#a4">パターン1 ― RLSが有効になっていないテーブル</a></li>
+        <li><a href="#a5">パターン2 ― RLSはあるがポリシーが緩すぎる</a></li>
+        <li><a href="#a6">パターン3 ― 必要以上の列を返している</a></li>
+        <li><a href="#a7">パターン4 ― 自分の行なら何でも書き換えられてしまう</a></li>
+        <li><a href="#a8">パターン5 ― チェックをブラウザ側だけで行っている</a></li>
+        <li><a href="#a9">リリース前のチェックリスト</a></li>
+        <li><a href="#a10">まとめ</a></li>
+        <li><a href="#a11">参考資料</a></li>
+        <li><a href="#a12">よくある質問</a></li>
+      </ol>
+    </nav>
+
+    <div class="post-body">
+      <h2 id="a1">はじめに ― 何が話題になったのか</h2>
+      <p>2026年4月、大学生向けのマッチングアプリで、他のユーザーのメールアドレス・大学名・顔写真のURL・本人確認が済んでいるかどうかのフラグなどを含むJSONが、第三者から取得できる状態だったとSNSで指摘されました。指摘された問題点は次の3つです。</p>
+      <ul>
+        <li>ログインしていなくても、全ユーザーの情報が取れた</li>
+        <li>メールアドレスのドメインの判定を、ブラウザ側でしか行っていなかった</li>
+        <li>本人確認済みのフラグを、ユーザー自身が書き換えられた</li>
+      </ul>
+      <div class="post-note"><strong>この事例について</strong>：上の内容は SNS 上での第三者による指摘をもとに整理したもので、運営者の公式発表ではありません。この記事では特定のサービスを取り上げることはせず、同じ構成のアプリで起こり得る設定ミスとして扱います。</div>
+      <p>これは高度なハッキング技術の話ではありません。<strong>データベースの権限の設定ミスによって、ブラウザから普通に見えてしまう</strong>という話です。Supabase を使い、ブラウザから直接データを取りに行く構成なら、どのプロジェクトでも起こり得ます。</p>
+      <p>筆者は Next.js と Supabase でアプリを作っている制作者です。この記事は、自分のプロジェクトを確認するときに見ている観点をまとめたものです。内容は2026年9月時点の情報で、Supabase の公式ドキュメントに基づいています。</p>
+
+      <h2 id="a2">そもそも「内部のJSON」はどこから来るのか</h2>
+      <p>画面に出していない項目でも、ブラウザが受け取ったJSONに入っていれば、誰でも見られます。</p>
+      <p>SPA や Next.js のブラウザ側のコード（Client Component など）は、API や Supabase の Data API から JSON を受け取って画面を描いています。Data API は PostgREST という仕組みで、テーブルごとに REST API を自動で用意してくれるものです。<code>supabase.from('profiles').select()</code> と書くと、裏ではこの API に HTTPS のリクエストが飛んでいます。</p>
+      <p>受け取ったレスポンスは、開発者ツールの Network タブで中身をそのまま確認できます。画面にメールアドレスを表示していなくても、レスポンスに <code>email</code> が入っていれば見えてしまいます。<strong>「画面に表示していない」は「隠れている」という意味ではありません。</strong></p>
+      <p>さらに、同じリクエストはブラウザ以外からでも送れます。Data API にとっては、ブラウザからのリクエストも curl やスクリプトからのリクエストも区別がつきません。</p>
+
+      <figure class="post-figure">
+        <svg viewBox="0 0 360 460" role="img" aria-labelledby="fig1-title" xmlns="http://www.w3.org/2000/svg">
+          <title id="fig1-title">ブラウザと curl などのスクリプトは、同じ HTTPS リクエストで Supabase Data API に届く。Data API では ① Grant と ② RLS の2段階でチェックしてから、Postgres のデータを返す。</title>
+          <rect class="fig-box" x="8" y="10" width="164" height="60" rx="8"/>
+          <text class="fig-t" x="90" y="36" text-anchor="middle">ブラウザ</text>
+          <text class="fig-s" x="90" y="57" text-anchor="middle">JS・anonキー入り</text>
+          <rect class="fig-box fig-box--outside" x="188" y="10" width="164" height="60" rx="8"/>
+          <text class="fig-t" x="270" y="36" text-anchor="middle">curl・スクリプト</text>
+          <text class="fig-s" x="270" y="57" text-anchor="middle">ブラウザ以外</text>
+          <path class="fig-line" d="M90 70V115M270 70V115"/>
+          <path class="fig-arrow" d="M85 115h10l-5 9zM265 115h10l-5 9z"/>
+          <text class="fig-s" x="180" y="100" text-anchor="middle">同じHTTPSリクエスト</text>
+          <rect class="fig-box" x="8" y="124" width="344" height="228" rx="10"/>
+          <text class="fig-t" x="180" y="151" text-anchor="middle">Supabase Data API（PostgREST）</text>
+          <rect class="fig-gate" x="26" y="166" width="308" height="74" rx="8"/>
+          <text class="fig-g" x="44" y="190">① Grant</text>
+          <text class="fig-s" x="44" y="211">このロールはテーブルに触れるか</text>
+          <text class="fig-s" x="44" y="229">（anon／authenticated など）</text>
+          <rect class="fig-gate" x="26" y="252" width="308" height="84" rx="8"/>
+          <text class="fig-g" x="44" y="276">② RLS</text>
+          <text class="fig-s" x="44" y="297">どの行を返すか</text>
+          <text class="fig-s" x="44" y="317">どの行を書き換えさせるか</text>
+          <path class="fig-line" d="M180 352V389"/>
+          <path class="fig-arrow" d="M175 389h10l-5 9z"/>
+          <rect class="fig-box fig-box--db" x="68" y="398" width="224" height="54" rx="8"/>
+          <text class="fig-t" x="180" y="421" text-anchor="middle">Postgres</text>
+          <text class="fig-s" x="180" y="441" text-anchor="middle">profiles テーブルなど</text>
+        </svg>
+        <figcaption>①と②で止めていなければ、ブラウザ以外（curl など）から送っても同じデータが返ってきます。</figcaption>
+      </figure>
+
+      <h2 id="a3">Supabaseの前提 ― anonキーは「公開される鍵」</h2>
+      <p>anon キー（新しい形式では publishable キー）は、ブラウザ側の JavaScript に埋め込んで使う鍵です。ページを開いた人なら誰でも読めるので、秘密にはできません。もともと秘密にする前提の鍵でもありません。</p>
+      <p>そのため、守りはキーを隠すことではなく、データベース側で行います。Supabase の公式ドキュメントでは、Data API は2段階の仕組みで守るものと説明されています。</p>
+      <ul>
+        <li><strong>Grant（権限）</strong>：どのロールが、どのテーブルやビュー・関数に触れるか</li>
+        <li><strong>RLS（Row Level Security）</strong>：そのロールが、どの行を読めるか・書き換えられるか</li>
+      </ul>
+      <p>ここでいう「ロール」は Postgres のロールのことで、ログインしていないリクエストは <code>anon</code>、ログインしているユーザーのリクエストは <code>authenticated</code> として扱われます。公式は「公開するすべてのオブジェクトで、両方を使う」ことを求めています。</p>
+      <p>もうひとつの <code>service_role</code> キー（新しい形式では secret キー）は、<strong>RLS を無視してすべての行を読み書きできる</strong>鍵です。サーバー側の処理だけで使い、ブラウザに渡るコード（Next.js なら <code>NEXT_PUBLIC_</code> が付いた環境変数など）には絶対に入れないでください。</p>
+
+      <h2 id="a4">パターン1 ― RLSが有効になっていないテーブル</h2>
+      <p>もっとも影響が大きいのがこのパターンです。<strong>RLS が無効で、anon に SELECT の権限があるテーブルは、公開URLと anon キーだけで全行が取れます。</strong></p>
+      <p>「Supabase は RLS が最初からオフ」と言われることがありますが、正確ではありません。テーブルをどこで作ったかによって違います。</p>
+      <ul>
+        <li><strong>ダッシュボード（Table Editor）で作ったテーブル</strong>：RLS が最初から有効</li>
+        <li><strong>SQL Editor、マイグレーション、ほかのツール（ORM や AIコーディングツールなど）で作ったテーブル</strong>：自分で有効にする必要がある</li>
+      </ul>
+      <p>さらに既存のプロジェクトでは、<code>public</code> スキーマに作ったテーブルに、<code>anon</code>・<code>authenticated</code>・<code>service_role</code> への SELECT／INSERT／UPDATE／DELETE の権限が自動で付きます。つまり SQL でテーブルを作って RLS を有効にし忘れると、「誰でも読めて、誰でも書き換えられる」状態になります。</p>
+      <p>対策は、公開しているすべてのテーブルで RLS を有効にすることです。</p>
+<pre><code>alter table public.profiles enable row level security;</code></pre>
+      <p>RLS を有効にしてポリシーを1つも作らなければ、Data API からはどの行も読めなくなります（ブラウザから見ると空の配列が返ります）。必要な操作ごとにポリシーを足していく、という順番で考えると安全です。マイグレーションでテーブルを作るときは、<code>create table</code> と同じファイルに RLS の有効化とポリシーを書いておくと、有効化のし忘れを防げます。</p>
+
+      <h2 id="a5">パターン2 ― RLSはあるがポリシーが緩すぎる</h2>
+      <p><strong>RLS を有効にしただけでは安心できません。</strong>ポリシーの中身が緩ければ、RLS が無効なのとほとんど同じです。たとえば次のポリシーは「全員が全行を読める」という意味になります。</p>
+<pre><code>-- 危ない例：ログインしていない人も含め、全員が全行・全列を読める
+create policy "誰でも閲覧可"
+  on public.profiles for select
+  using (true);</code></pre>
+      <p><code>to</code> を書かないポリシーは、<code>anon</code> を含むすべてのロールに適用されます。<code>using (true)</code> は「どの行でも条件を満たす」という意味なので、メールアドレスや本人確認の状態が入ったテーブルにこれを付けると、ログインしていない人にまで全ユーザーの情報を返すことになります。</p>
+      <p>「マッチング相手の一覧を見せたい」という要件でも、返す行と列は絞れます。おすすめは、<strong>他の人に見せてよい情報と、本人しか見てはいけない情報を、別のテーブルに分ける</strong>ことです。以下のテーブル名・列名は例です。</p>
+<pre><code>-- 他のユーザーに見せてよい列だけを持つテーブル
+create table public.public_profiles (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  display_name text,
+  university text,
+  photo_path text
+);
+alter table public.public_profiles enable row level security;
+
+-- 見せてよい列しかないテーブルなので、ログインユーザー全員に読ませてよい
+create policy "ログインユーザーは公開プロフィールを閲覧可"
+  on public.public_profiles for select
+  to authenticated
+  using (true);
+
+-- メールアドレスなどの非公開情報は別テーブルにする
+create table public.private_profiles (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  email text,
+  kyc_verified boolean not null default false
+);
+alter table public.private_profiles enable row level security;
+
+create policy "本人のみ閲覧可"
+  on public.private_profiles for select
+  to authenticated
+  using ((select auth.uid()) = user_id);</code></pre>
+      <p>ここでも <code>public_profiles</code> には <code>using (true)</code> を使っていますが、上の「危ない例」とは意味が違います。</p>
+      <ul>
+        <li><strong>テーブルに見せてよい列しか入っていない</strong>ので、全行を読めても漏れてはいけない情報は含まれない</li>
+        <li><strong><code>to authenticated</code> で、ログインしているユーザーに限定している</strong>ので、ログインしていない人には返らない</li>
+      </ul>
+      <p>つまり <code>using (true)</code> そのものが悪いのではなく、「どの列が入ったテーブルに、どのロール向けに付けるか」が問題です。一方、<code>private_profiles</code> は <code>auth.uid()</code>（ログイン中のユーザーのID）と <code>user_id</code> が一致する行、つまり本人の行だけを返します。</p>
+      <p>大学生限定・同じ大学の人だけに見せる、のようにさらに絞りたい場合は、<code>using</code> の条件に「相手と同じ大学か」などを加えて、返す行を減らします。</p>
+
+      <h2 id="a6">パターン3 ― 必要以上の列を返している</h2>
+      <p><strong>RLS は行を制御する仕組みで、列は制御しません。</strong>公式ドキュメントでも、RLS は行へのアクセスを細かく制御できる一方、行の中のどの列にアクセスできるかは制御できない、と説明されています。</p>
+      <p>そのため、本人の行だけを返すポリシーが正しく書けていても、ブラウザ側で <code>select('*')</code> と書いていれば、その行のすべての列が返ってきます。メールアドレス、本人確認の状態、通知用のトークン、管理用のメモなど、画面に出していない列もすべて Network タブで見えます。相手の一覧を返すテーブルに非公開の列が混ざっていれば、他人の情報まで返ることになります。</p>
+      <p>対策は2つです。</p>
+      <ul>
+        <li><strong>見せてよい列だけのテーブル（またはビュー）に分ける</strong>（パターン2の <code>public_profiles</code>）。取得する側がどう書いても、余計な列はそもそも返りません</li>
+        <li><strong>ブラウザ側では取得する列を明示する</strong>。<code>select('*')</code> は使わず、画面に必要な列だけを書きます</li>
+      </ul>
+<pre><code>// 画面に必要な列だけを取る
+const { data, error } = await supabase
+  .from('public_profiles')
+  .select('user_id, display_name, university, photo_path');</code></pre>
+      <p>ただし、列を明示するのは「うっかり返す」のを防ぐための習慣で、守りにはなりません。リクエストを自分で組み立てれば <code>*</code> で取れてしまうからです。守りの本体は、テーブルを分けることのほうです。</p>
+      <p>なお、ビューで分ける場合は注意が必要です。Postgres のビューは、既定では作った人（多くの場合 <code>postgres</code>）の権限で動くため、元のテーブルの RLS が効きません。Postgres 15 以降なら <code>with (security_invoker = true)</code> を付けて、呼び出した人の権限で動かすようにします。迷ったら、最初からテーブルを分けておくほうが確実です。</p>
+
+      <h2 id="a7">パターン4 ― 自分の行なら何でも書き換えられてしまう</h2>
+      <p>「本人は自分の行を UPDATE できる」というポリシーだけを作ると、<strong>その行のすべての列を本人が書き換えられます</strong>。<code>kyc_verified</code>（本人確認済み）や <code>role</code>（管理者かどうか）のような、運営が管理するべき列も例外ではありません。画面に編集フォームがなくても、Data API に直接リクエストを送れば書き換えられます。</p>
+      <p>INSERT のポリシーがある場合も同じです。登録時に <code>kyc_verified = true</code> の行を自分で作れてしまわないかを確認してください。</p>
+      <p>対策は2つあり、公式ドキュメントが勧めている順に紹介します。</p>
+      <h3>対策1（推奨）：運営が管理する列を別テーブルに分ける</h3>
+      <p>パターン2の <code>private_profiles</code> のように、<code>kyc_verified</code> などを本人が編集する列とは別のテーブルに置きます。このテーブルには<strong>本人用の UPDATE・INSERT のポリシーを作りません</strong>。RLS が有効でポリシーがなければ、ブラウザからは書き込めません。</p>
+      <p>本人確認が済んだときの書き込みは、サーバー側の処理（<code>service_role</code> キーを使う API や Edge Functions など）からだけ行います。<code>service_role</code> は RLS を無視するので、ポリシーを作らなくても書き込めます。</p>
+      <h3>対策2：列ごとの権限（column privileges）で絞る</h3>
+      <p>同じテーブルのまま、本人が編集してよい列だけに UPDATE の権限を付ける方法です。</p>
+<pre><code>-- テーブル全体の UPDATE 権限を外してから、本人が編集してよい列だけ付け直す
+revoke update on table public.profiles from authenticated;
+grant update (display_name, bio, hobbies) on table public.profiles to authenticated;
+
+create policy "本人の行のみ更新可"
+  on public.profiles for update
+  to authenticated
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
+
+-- UPDATE で対象の行を絞り込むには、その行を読める SELECT のポリシーも必要
+create policy "本人の行のみ閲覧可"
+  on public.profiles for select
+  to authenticated
+  using ((select auth.uid()) = user_id);</code></pre>
+      <p>最後の SELECT のポリシーは忘れやすい部分です。Postgres では、<code>where</code> で行を絞り込む UPDATE は、その行を SELECT のポリシーで読めることも条件になります。UPDATE のポリシーだけだと、エラーにならないまま「0件更新」で終わるので、原因に気づきにくくなります。</p>
+      <p>もうひとつのポイントは、1行目の <code>revoke</code> です。Postgres では、テーブル全体の権限と列ごとの権限の両方がある場合、テーブル全体の権限が効いてしまいます。前に書いたとおり、既存のプロジェクトでは <code>authenticated</code> にテーブル全体の UPDATE 権限が自動で付いているので、<strong>先にそれを外さないと、列ごとの権限を付けても意味がありません</strong>。</p>
+      <p>ただし公式ドキュメントは、列ごとの権限を<strong>上級者向けの機能と位置づけ、多くの場合は勧めない</strong>としています。代わりに勧めているのが、RLS のポリシーと専用のテーブルを組み合わせる方法（対策1）です。列が増えるたびに権限を付け直す必要があり、管理が漏れやすいので、特別な理由がなければ対策1を選んでください。</p>
+
+      <h2 id="a8">パターン5 ― チェックをブラウザ側だけで行っている</h2>
+      <p>「大学のメールアドレスだけ登録できる」のような制限を、ブラウザ側の JavaScript だけで判定していると、<strong>API を直接呼べばすり抜けられます</strong>。ブラウザ側のチェックは入力ミスを減らすための親切で、守りにはなりません。</p>
+      <p>登録時のチェックは、サーバー側で行います。Supabase Auth の場合、方法は主に次の3つです。</p>
+      <ul>
+        <li><strong>Auth Hook（Before User Created フック）</strong>：ユーザーが作られる直前に呼ばれ、エラーを返すと登録を拒否できる</li>
+        <li><strong>サーバー側の API</strong>：登録をサーバー側の処理にまとめ、そこでチェックしてから登録する</li>
+        <li><strong>データベースのトリガー</strong>：プロフィールのテーブルなど、自分で作ったテーブルへの書き込み時にチェックする</li>
+      </ul>
+      <p>メールアドレスのドメインで絞るなら、Before User Created フックが目的に合っています。公式ドキュメントの例をもとにした、Postgres の関数で書く場合の例です（ドメインの条件は例です）。</p>
+<pre><code>create or replace function public.hook_allow_university_email(event jsonb)
+returns jsonb
+language plpgsql
+as $$
+declare
+  email_domain text := lower(split_part(event-&gt;'user'-&gt;&gt;'email', '@', 2));
+begin
+  -- 例：.ac.jp で終わるドメインだけ登録を許可する
+  if email_domain like '%.ac.jp' then
+    return '{}'::jsonb;
+  end if;
+
+  return jsonb_build_object(
+    'error', jsonb_build_object(
+      'http_code', 403,
+      'message', '大学のメールアドレスで登録してください'
+    )
+  );
+end;
+$$;
+
+-- Supabase Auth から呼べるようにし、Data API からは呼べないようにする
+grant execute on function public.hook_allow_university_email to supabase_auth_admin;
+revoke execute on function public.hook_allow_university_email from authenticated, anon, public;</code></pre>
+      <p>関数を作ったら、ダッシュボードの Auth Hooks の画面で、この関数を Before User Created フックとして設定します。空のオブジェクトを返すと登録が進み、<code>error</code> を返すと登録が拒否されます。</p>
+      <p>あわせて、メールアドレスの確認（確認メールのリンクを踏ませる設定）も有効にしておいてください。ドメインの判定は「そのアドレスの持ち主であること」までは確かめないので、確認メールと組み合わせて初めて「その大学のアドレスを持っている人」に絞れます。</p>
+
+      <h2 id="a9">リリース前のチェックリスト</h2>
+      <p>公開前に、最低限ここまでは確認しておきたい項目です。</p>
+      <ul>
+        <li>ダッシュボードの <strong>Security Advisor</strong> で警告が出ていないか確認する（RLS が無効なテーブルなどを教えてくれます）</li>
+        <li>公開しているすべてのテーブルで、<strong>RLS が有効か、ポリシーの中身が正しいか</strong>を確認する（<code>using (true)</code> がどのテーブルに、どのロール向けに付いているか）</li>
+        <li><strong>自分のプロジェクトで</strong>、ログインしていない状態で主なテーブルを SELECT し、何も返らない（空の配列か権限エラーになる）ことを確認する</li>
+        <li>主な画面を開いて、<strong>レスポンスに余計な列が入っていないか</strong>を Network タブで確認する</li>
+        <li><strong>本人に書き換えさせてはいけない列</strong>（本人確認の状態、権限など）を、ログインユーザーとして UPDATE・INSERT できないか確認する</li>
+        <li><strong>service_role キー（secret キー）がブラウザ側のコードに含まれていない</strong>か確認する（ビルド後の JS も含めて検索する）</li>
+      </ul>
+      <p>ログインしていない状態の確認は、自分のプロジェクトの URL と anon キーだけを設定したクライアントで行えます。</p>
+<pre><code>// 自分のプロジェクトで、ログインしていない状態の動きを確かめる
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const { data, error } = await supabase.from('private_profiles').select('*');
+console.log(data, error); // 期待する結果：空の配列、または権限エラー</code></pre>
+      <div class="post-note"><strong>確認は自分のプロジェクトで</strong>：ここで紹介した確認は、必ず自分が管理しているプロジェクトで行ってください。他人のサービスに無断でアクセスすると、法律に触れるおそれがあります。</div>
+      <h3>新しく作るテーブルに権限が自動で付かないようにする</h3>
+      <p>パターン1の「権限が自動で付く」動きそのものを止めておく方法もあります。公式ドキュメントに載っている SQL です。</p>
+<pre><code>alter default privileges for role postgres in schema public
+  revoke select, insert, update, delete on tables from anon, authenticated, service_role;
+
+alter default privileges for role postgres in schema public
+  revoke execute on functions from anon, authenticated, service_role;
+
+alter default privileges for role postgres in schema public
+  revoke usage, select on sequences from anon, authenticated, service_role;
+
+alter default privileges for role postgres in schema public
+  revoke execute on functions from public;</code></pre>
+      <p>これを実行したあとに作るテーブルや関数は、権限を付けるまで Data API から触れなくなります。そのため、<strong>公開したいテーブルには必要な権限を自分で付ける</strong>必要があります（例：<code>grant select on table public.public_profiles to authenticated;</code>）。すでにあるテーブルの権限は変わりません。</p>
+      <p>公式は「自動で権限を付けるデフォルトをやめ、公開は明示的に選ぶ方式に変えていく」としていますが、時期は書かれていません。プロジェクトによって動きが違う可能性があるので、自分の環境でどうなっているかを確認してください。</p>
+
+      <h2 id="a10">まとめ</h2>
+      <ul>
+        <li>anon キーは公開される前提の鍵。守りはキーを隠すことではなく、データベース側で行う</li>
+        <li>Grant（どのロールが触れるか）と RLS（どの行に触れるか）の両方で守る</li>
+        <li>RLS は列を制御しないので、返す列と、本人に書き換えさせる列も設計する</li>
+      </ul>
+
+      <h2 id="a11">参考資料</h2>
+      <p>2026年9月時点の Supabase 公式ドキュメントです。</p>
+      <ul class="post-refs">
+        <li><a href="https://supabase.com/docs/guides/database/hardening-data-api" target="_blank" rel="noopener">Supabase Docs: Hardening the Data API</a></li>
+        <li><a href="https://supabase.com/docs/guides/api/securing-your-api" target="_blank" rel="noopener">Supabase Docs: Securing your API</a></li>
+        <li><a href="https://supabase.com/docs/guides/database/postgres/column-level-security" target="_blank" rel="noopener">Supabase Docs: Column Level Security</a></li>
+        <li><a href="https://supabase.com/docs/guides/database/postgres/row-level-security" target="_blank" rel="noopener">Supabase Docs: Row Level Security</a></li>
+        <li><a href="https://supabase.com/docs/guides/auth/auth-hooks/before-user-created-hook" target="_blank" rel="noopener">Supabase Docs: Before User Created Hook</a></li>
+      </ul>
+    </div>
+
+    <!-- FAQ -->
+    <section class="post-faq" id="a12">
+      <h2 class="post-faq__ttl">よくある質問</h2>
+      <div class="post-faq__item">
+        <p class="post-faq__q">anon キーが漏れたら、キーを作り直すべきですか？</p>
+        <p class="post-faq__a">anon キーはもともとブラウザに渡る、公開される前提の鍵です。漏れること自体が問題なのではなく、そのキーで取れてはいけないデータが取れてしまう Grant と RLS の設定のほうが問題です。ただし service_role キー（secret キー）が漏れた場合は RLS を無視してすべてのデータを読み書きできるため、すぐに作り直してください。</p>
+      </div>
+      <div class="post-faq__item">
+        <p class="post-faq__q">RLS を有効にすれば安全ですか？</p>
+        <p class="post-faq__a">それだけでは足りません。using (true) のような緩いポリシーだと、RLS が有効でも全行が読めます。また RLS は行を制御する仕組みで、列は制御しません。返す列と、本人に書き換えさせる列も別に設計する必要があります。</p>
+      </div>
+      <div class="post-faq__item">
+        <p class="post-faq__q">AIコーディングツールで作ったアプリは危ないですか？</p>
+        <p class="post-faq__a">ツールそのものが危ないわけではありません。ただ、SQL やマイグレーションで作ったテーブルは、ダッシュボードで作った場合と違って RLS が最初から有効になっていません。生成されたコードに RLS の有効化とポリシーが入っているかを、自分で確認する必要があります。</p>
+      </div>
+    </section>
+
+    <!-- 著者 -->
+    <div class="post-author">
+      <div class="post-author__avatar">坪</div>
+      <div>
+        <p class="post-author__name">坪山ちひろ｜Linplan代表</p>
+        <p class="post-author__bio">千葉県船橋市を拠点に、中小企業・店舗向けの Web・アプリ・AI を、企画から運用までひとりで一気通貫で手がけています。<a href="../about.html">プロフィールを見る →</a></p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="post-cta">
+      <p class="post-cta__ttl">Supabaseアプリの権限、一緒に見直しませんか</p>
+      <p class="post-cta__txt">Supabase を使ったアプリの権限設定の見直しや、Next.js＋Supabase でのアプリ開発のご相談を受け付けています。<br>ご相談・お見積もりは無料です。</p>
+      <a href="../contact.html" class="btn btn--primary">無料で相談する</a>
+    </div>
+
+    <!-- 関連記事 -->
+    <section class="post-related">
+      <h2 class="post-related__ttl">あわせて読みたい</h2>
+      <div class="blog-grid">
+        <a href="how-to-order-website.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">選び方</span><span>失敗しない発注のコツ</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">失敗しないホームページ発注のコツ【相見積もり・依頼の仕方】</h3><div class="post-card__meta"><span>2026.06.11</span><span>約8分</span></div></div>
+        </a>
+        <a href="wordpress-vs-original.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">選び方</span><span>WordPressかオリジナルか</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">WordPressとオリジナル制作、中小企業はどちらを選ぶべきか</h3><div class="post-card__meta"><span>2026.06.13</span><span>約8分</span></div></div>
+        </a>
+      </div>
+    </section>
+   </div>
+  </article>
+</main>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="site-footer__logo"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>Linplan<span style="color:var(--orange)">.</span></span></div>
+  <div class="site-footer__tag">一緒に育てていけるサイト作りを。</div>
+  <nav class="site-footer__nav">
+    <a href="../about.html">私について</a>
+    <a href="../services.html">サービス</a>
+    <a href="../pricing.html">料金</a>
+    <a href="../works.html">制作実績</a>
+    <a href="../faq.html">よくある質問</a>
+    <a href="./">相談室</a>
+    <a href="../contact.html">お問い合わせ</a>
+    <a href="../aeo-geo.html">AEO・GEO対応とは</a>
+    <a href="../area/funabashi.html">船橋のホームページ制作</a>
+    <a href="../privacy.html">プライバシーポリシー</a>
+    <a href="../tokushoho.html">特定商取引法に基づく表記</a>
+  </nav>
+  <div class="site-footer__meta">千葉県船橋市を拠点に全国対応（打ち合わせはオンラインで完結） ／ tsubochihiroyama2230@gmail.com</div>
+  <div class="site-footer__copy">© 2026 Linplan — Web・アプリ・AI、ひとりで一気通貫。</div>
+</footer>
+
+
+
+
+<script>
+/* Linplan サイト共通スクリプト（軽量・依存なし） */
+(function () {
+  'use strict';
+
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+    /* ---- nav scroll state ---- */
+    var nav = document.querySelector('.site-nav');
+    function onScroll() {
+      if (!nav) return;
+      if (window.scrollY > 30) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---- mobile menu ---- */
+    var ham = document.querySelector('.hamburger');
+    var menu = document.querySelector('.mobile-menu');
+    var close = document.querySelector('.mobile-menu__close');
+    if (ham && menu) {
+      function closeMenu(){ menu.classList.remove('open'); ham.classList.remove('open'); ham.setAttribute('aria-expanded','false'); }
+      function openMenu(){ menu.classList.add('open'); ham.classList.add('open'); ham.setAttribute('aria-expanded','true'); }
+      ham.addEventListener('click', function () { (menu.classList.contains('open') ? closeMenu : openMenu)(); });
+      if (close) close.addEventListener('click', closeMenu);
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+    }
+
+    /* ---- scroll reveal ---- */
+    var revs = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && revs.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revs.forEach(function (el) { io.observe(el); });
+    } else {
+      revs.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    /* ---- FAQ accordion ---- */
+    document.querySelectorAll('.faq-item').forEach(function (item) {
+      var q = item.querySelector('.faq-q');
+      var a = item.querySelector('.faq-a');
+      if (!q || !a) return;
+      q.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+        item.classList.toggle('open');
+        a.style.maxHeight = isOpen ? null : a.scrollHeight + 'px';
+      });
+    });
+  });
+})();
+
+</script>
+<script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='⇅ スクロール';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
+
+
+<script src="../theme.js"></script>
+</body>
+</html>
