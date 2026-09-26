@@ -63,6 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .post-card[data-cat="aeo"] .post-card__thumb{background:var(--teal-soft);color:var(--teal)}
 .post-card[data-cat="local"] .post-card__thumb{background:var(--teal-soft);color:var(--orange-deep)}
 .post-card[data-cat="dev"] .post-card__thumb{background:var(--paper2);color:var(--ink)}
+.post-card[data-cat="basics"] .post-card__thumb{background:var(--teal-soft);color:var(--teal)}
 .post-card__thumb--photo::before,.post-card__thumb--photo::after{display:none}
 .post-card__thumb--photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .post-card__art{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;pointer-events:none}
@@ -224,6 +225,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <button type="button" class="blog-cat" data-filter="choice" aria-pressed="false">選び方・比較</button>
         <button type="button" class="blog-cat" data-filter="aeo" aria-pressed="false">AEO/GEO</button>
         <button type="button" class="blog-cat" data-filter="local" aria-pressed="false">地域・集客</button>
+        <button type="button" class="blog-cat" data-filter="basics" aria-pressed="false">しくみ・基礎</button>
         <button type="button" class="blog-cat" data-filter="dev" aria-pressed="false">開発・セキュリティ</button>
       </div>
     </div>
@@ -232,8 +234,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <section class="section">
     <div class="container">
       <div class="blog-grid">
-      <a href="supabase-rls-data-exposure.html" class="post-card post-card--featured" data-cat="dev">
-        <div class="post-card__thumb"><span class="post-card__cat">開発・セキュリティ</span><span class="post-card__new">NEW</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 7l20 7v15c0 13-8.5 22-20 28C20.5 51 12 42 12 29V14l20-7Z"/><rect x="23" y="29" width="18" height="14" rx="3"/><path d="M26.5 29v-4a5.5 5.5 0 0 1 11 0v4"/></svg><span class="post-card__art-word">データを守る</span></span></div>
+      <a href="how-a-website-loads.html" class="post-card post-card--featured" data-cat="basics">
+        <div class="post-card__thumb"><span class="post-card__cat">しくみ・基礎</span><span class="post-card__new">NEW</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="22"/><path d="M10 32h44M32 10c-7 6-10 14-10 22s3 16 10 22M32 10c7 6 10 14 10 22s-3 16-10 22"/></svg><span class="post-card__art-word">しくみの基礎</span></span></div>
+        <div class="post-card__body">
+          <h2 class="post-card__title">ホームページが表示されるまでの仕組み【漫画の台詞で学ぶDNSとキャッシュ】</h2>
+          <p class="post-card__excerpt">「更新したのに変わらない」はキャッシュ、「ドメインを変えたら見えない」はDNSの切り替え待ち。こち亀の台詞を手がかりに、表示までの3段階と店主が覚えておく3つのことを解説します。</p>
+          <div class="post-card__meta"><span class="post-card__meta-dates"><span>2026.09.26</span><span>約7分</span></span><span class="post-card__more">続きを読む →</span></div>
+        </div>
+      </a>
+      <a href="supabase-rls-data-exposure.html" class="post-card" data-cat="dev">
+        <div class="post-card__thumb"><span class="post-card__cat">開発・セキュリティ</span><span class="post-card__art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 7l20 7v15c0 13-8.5 22-20 28C20.5 51 12 42 12 29V14l20-7Z"/><rect x="23" y="29" width="18" height="14" rx="3"/><path d="M26.5 29v-4a5.5 5.5 0 0 1 11 0v4"/></svg><span class="post-card__art-word">データを守る</span></span></div>
         <div class="post-card__body">
           <h2 class="post-card__title">Supabaseで個人情報が見えてしまう5つの設定ミスと対策</h2>
           <p class="post-card__excerpt">anonキーは公開前提の鍵。守りはGrantとRLSの2段階で行います。RLSが無効・ポリシーが緩い・列を返しすぎ・本人が書き換えられる・チェックがブラウザだけ、の5パターンと対策、リリース前のチェックリストを開発者向けに解説します。</p>
