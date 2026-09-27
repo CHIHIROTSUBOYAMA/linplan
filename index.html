@@ -375,12 +375,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .smc-step p{font-size:.9rem;color:var(--ink-soft);line-height:1.95;}
 .smc-goal{margin:34px auto 0;max-width:560px;text-align:center;background:var(--orange-soft);color:var(--ink);font-family:var(--hand);font-weight:600;font-size:1.12rem;line-height:1.6;padding:18px 24px;border-radius:18px;}
 .smc-goal b{color:var(--orange-deep);font-weight:600;}
-.grow-band{margin:50px auto 0;max-width:560px;text-align:center;position:relative;}
-.grow-vine{display:block;width:210px;height:auto;margin:0 auto 6px;}
-.grow-kicker{font-family:var(--hand);font-size:1.02rem;color:var(--ink-soft);letter-spacing:.06em;margin:0 0 8px;}
-.grow-line{font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);line-height:1.5;margin:0;}
+.grow-wrap{position:relative;max-width:1080px;margin:108px auto 0;padding:84px 80px 210px;}
+.grow-wrap .svc-note{margin-top:36px;position:relative;font-size:1rem;font-weight:400;color:var(--ink-soft);line-height:2;}
+.grow-wrap .svc-note b::after{display:none;}
+.grow-forest{position:absolute;top:3%;left:1.6%;right:1.6%;bottom:3.5%;border-radius:60px 70px 50px 64px;overflow:hidden;pointer-events:none;}
+.grow-forest__in{position:absolute;inset:0;}
+.grow-forest__ground{position:absolute;left:0;right:0;bottom:0;height:70px;background:#EFEBDA;}
+.grow-forest__glow{position:absolute;left:50%;top:26px;width:820px;height:280px;margin-left:-410px;border-radius:50%;background:radial-gradient(closest-side,var(--paper) 58%,rgba(253,251,245,0));}
+.gf-t{position:absolute;width:var(--w);height:calc(var(--h) + var(--tr));margin-left:calc(var(--w) / -2);}
+.gf-t::before{content:"";position:absolute;top:0;left:0;width:100%;height:var(--h);background:var(--c);border-radius:var(--r);}
+.gf-t::after{content:"";position:absolute;left:50%;bottom:0;width:3px;margin-left:-1.5px;height:calc(var(--tr) + 2px);background:var(--tc);}
+@media(max-width:760px){
+  .grow-wrap{padding:78px 30px 160px;}
+  .grow-forest__in{left:-35%;right:-35%;transform:scale(.6);transform-origin:50% 100%;}
+}
+.grow-band{margin:0 auto;max-width:560px;text-align:center;position:relative;}
+.grow-kicker{display:flex;align-items:baseline;justify-content:center;gap:20px;font-family:var(--hand);font-weight:600;font-size:2.9rem;line-height:1.2;letter-spacing:.04em;margin:0 0 18px;}
+.grow-kicker .k1{color:var(--teal);}
+.grow-kicker .k2{color:#8C6A3F;}
+.grow-kicker .k3{color:var(--orange-deep);}
+.grow-kicker .kx{color:#B6926A;font-size:1.6rem;}
+.grow-kicker span{white-space:nowrap;}
+.grow-line{font-family:var(--hand);font-weight:600;font-size:1.62rem;color:var(--ink);line-height:1.5;margin:0;}
 .grow-line b{color:var(--orange-deep);font-weight:600;}
-@media(max-width:560px){.grow-line{font-size:1.22rem;}}
+@media(max-width:560px){
+  .grow-line{font-size:1.22rem;}
+  .grow-kicker{font-size:clamp(1.4rem,calc((100vw - 180px) / 6.4),2rem);gap:10px;}
+  .grow-kicker .kx{font-size:1.1rem;}
+}
 @media(max-width:560px){
   .smc-vine{left:8px;}
   .smc-step{grid-template-columns:56px 1fr;gap:18px;}
@@ -438,18 +460,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       </div>
 
+    <div class="grow-wrap">
+    <div class="grow-forest reveal reveal-d2" aria-hidden="true">
+      <div class="grow-forest__in">
+        <div class="grow-forest__ground"></div>
+        <i class="gf-t" style="left:-2.00%;bottom:22px;--w:194px;--h:207px;--tr:29px;--c:#F2F0E4;--tc:#E6E3D2;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:6.62%;bottom:30px;--w:186px;--h:226px;--tr:28px;--c:#F2F0E4;--tc:#E6E3D2;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:12.14%;bottom:31px;--w:192px;--h:227px;--tr:29px;--c:#F2F0E4;--tc:#E6E3D2;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:21.80%;bottom:38px;--w:155px;--h:174px;--tr:25px;--c:#F2F0E4;--tc:#E6E3D2;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:27.08%;bottom:46px;--w:158px;--h:179px;--tr:25px;--c:#F2F0E4;--tc:#E6E3D2;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:34.64%;bottom:50px;--w:115px;--h:144px;--tr:20px;--c:#F2F0E4;--tc:#E6E3D2;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:37.07%;bottom:59px;--w:133px;--h:164px;--tr:22px;--c:#F2F0E4;--tc:#E6E3D2;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:46.67%;bottom:61px;--w:148px;--h:202px;--tr:24px;--c:#F2F0E4;--tc:#E6E3D2;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:53.73%;bottom:67px;--w:141px;--h:162px;--tr:23px;--c:#F2F0E4;--tc:#E6E3D2;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:60.66%;bottom:59px;--w:160px;--h:224px;--tr:25px;--c:#F2F0E4;--tc:#E6E3D2;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:65.24%;bottom:54px;--w:129px;--h:136px;--tr:21px;--c:#F2F0E4;--tc:#E6E3D2;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:73.82%;bottom:50px;--w:146px;--h:154px;--tr:24px;--c:#F2F0E4;--tc:#E6E3D2;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:80.95%;bottom:42px;--w:170px;--h:208px;--tr:26px;--c:#F2F0E4;--tc:#E6E3D2;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:84.76%;bottom:42px;--w:202px;--h:242px;--tr:30px;--c:#F2F0E4;--tc:#E6E3D2;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:91.64%;bottom:27px;--w:162px;--h:174px;--tr:25px;--c:#F2F0E4;--tc:#E6E3D2;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:96.07%;bottom:29px;--w:178px;--h:210px;--tr:27px;--c:#F2F0E4;--tc:#E6E3D2;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:-1.66%;bottom:80px;--w:80px;--h:100px;--tr:16px;--c:#ECE9D6;--tc:#D9D5BC;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:4.96%;bottom:86px;--w:57px;--h:80px;--tr:13px;--c:#ECE9D6;--tc:#D9D5BC;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:7.81%;bottom:83px;--w:59px;--h:75px;--tr:13px;--c:#ECE9D6;--tc:#D9D5BC;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:10.98%;bottom:76px;--w:56px;--h:78px;--tr:13px;--c:#ECE9D6;--tc:#D9D5BC;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:16.91%;bottom:73px;--w:39px;--h:53px;--tr:11px;--c:#ECE9D6;--tc:#D9D5BC;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:18.92%;bottom:74px;--w:47px;--h:64px;--tr:12px;--c:#ECE9D6;--tc:#D9D5BC;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:23.63%;bottom:70px;--w:31px;--h:41px;--tr:10px;--c:#ECE9D6;--tc:#D9D5BC;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:26.84%;bottom:71px;--w:34px;--h:46px;--tr:10px;--c:#ECE9D6;--tc:#D9D5BC;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:30.00%;bottom:66px;--w:22px;--h:28px;--tr:9px;--c:#ECE9D6;--tc:#D9D5BC;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:68.94%;bottom:71px;--w:28px;--h:34px;--tr:9px;--c:#ECE9D6;--tc:#D9D5BC;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:71.42%;bottom:67px;--w:32px;--h:42px;--tr:10px;--c:#ECE9D6;--tc:#D9D5BC;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:74.06%;bottom:72px;--w:36px;--h:45px;--tr:10px;--c:#ECE9D6;--tc:#D9D5BC;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:80.70%;bottom:79px;--w:49px;--h:56px;--tr:12px;--c:#ECE9D6;--tc:#D9D5BC;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:83.18%;bottom:81px;--w:45px;--h:59px;--tr:11px;--c:#ECE9D6;--tc:#D9D5BC;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:86.59%;bottom:79px;--w:52px;--h:73px;--tr:12px;--c:#ECE9D6;--tc:#D9D5BC;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:90.27%;bottom:84px;--w:57px;--h:77px;--tr:13px;--c:#ECE9D6;--tc:#D9D5BC;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:95.85%;bottom:85px;--w:76px;--h:93px;--tr:15px;--c:#ECE9D6;--tc:#D9D5BC;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:98.58%;bottom:84px;--w:89px;--h:98px;--tr:17px;--c:#ECE9D6;--tc:#D9D5BC;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:-0.57%;bottom:63px;--w:120px;--h:128px;--tr:20px;--c:#DCD9BD;--tc:#C4C09E;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:6.83%;bottom:59px;--w:101px;--h:111px;--tr:18px;--c:#DCD9BD;--tc:#C4C09E;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:11.50%;bottom:50px;--w:85px;--h:110px;--tr:16px;--c:#DCD9BD;--tc:#C4C09E;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:15.17%;bottom:53px;--w:63px;--h:70px;--tr:14px;--c:#DCD9BD;--tc:#C4C09E;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:20.98%;bottom:55px;--w:60px;--h:74px;--tr:13px;--c:#DCD9BD;--tc:#C4C09E;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:27.67%;bottom:52px;--w:40px;--h:48px;--tr:11px;--c:#DCD9BD;--tc:#C4C09E;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:32.10%;bottom:43px;--w:41px;--h:55px;--tr:11px;--c:#DCD9BD;--tc:#C4C09E;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:66.12%;bottom:47px;--w:34px;--h:44px;--tr:10px;--c:#DCD9BD;--tc:#C4C09E;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:71.36%;bottom:44px;--w:34px;--h:46px;--tr:10px;--c:#DCD9BD;--tc:#C4C09E;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:76.07%;bottom:48px;--w:48px;--h:61px;--tr:12px;--c:#DCD9BD;--tc:#C4C09E;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:81.67%;bottom:55px;--w:65px;--h:87px;--tr:14px;--c:#DCD9BD;--tc:#C4C09E;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:86.89%;bottom:59px;--w:70px;--h:89px;--tr:14px;--c:#DCD9BD;--tc:#C4C09E;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:94.34%;bottom:55px;--w:85px;--h:118px;--tr:16px;--c:#DCD9BD;--tc:#C4C09E;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:99.21%;bottom:59px;--w:109px;--h:141px;--tr:19px;--c:#DCD9BD;--tc:#C4C09E;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:0.15%;bottom:29px;--w:163px;--h:198px;--tr:26px;--c:#C9C6A2;--tc:#A9A67E;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:9.00%;bottom:32px;--w:113px;--h:132px;--tr:20px;--c:#C9C6A2;--tc:#A9A67E;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:17.11%;bottom:22px;--w:70px;--h:85px;--tr:14px;--c:#C9C6A2;--tc:#A9A67E;--r:48% 52% 46% 54% / 58% 64% 36% 42%"></i>
+        <i class="gf-t" style="left:23.32%;bottom:23px;--w:63px;--h:81px;--tr:14px;--c:#C9C6A2;--tc:#A9A67E;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:30.43%;bottom:19px;--w:41px;--h:57px;--tr:11px;--c:#C9C6A2;--tc:#A9A67E;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:68.01%;bottom:15px;--w:41px;--h:44px;--tr:11px;--c:#C9C6A2;--tc:#A9A67E;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:74.80%;bottom:25px;--w:71px;--h:92px;--tr:15px;--c:#C9C6A2;--tc:#A9A67E;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:84.72%;bottom:32px;--w:71px;--h:80px;--tr:14px;--c:#C9C6A2;--tc:#A9A67E;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <i class="gf-t" style="left:92.44%;bottom:33px;--w:128px;--h:153px;--tr:21px;--c:#C9C6A2;--tc:#A9A67E;--r:55% 45% 50% 50% / 62% 58% 42% 38%"></i>
+        <i class="gf-t" style="left:100.10%;bottom:29px;--w:157px;--h:181px;--tr:25px;--c:#C9C6A2;--tc:#A9A67E;--r:60% 40% 55% 45% / 55% 60% 40% 45%"></i>
+        <div class="grow-forest__glow"></div>
+      </div>
+    </div>
     <div class="grow-band reveal reveal-d2">
-      <svg class="grow-vine" viewBox="0 0 220 56" fill="none" aria-hidden="true">
-        <path d="M10 50 C55 46 80 26 120 22 C158 18 188 14 210 8" stroke="#6B6A40" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M74 34 C68 28 68 21 75 17 C80 23 79 30 74 34Z" fill="#6B6A40" opacity=".5"/>
-        <path d="M122 22 C129 16 137 17 143 11 C136 10 128 13 122 22Z" fill="#6B6A40" opacity=".5"/>
-        <path d="M172 16 C166 10 167 4 174 1 C178 7 177 13 172 16Z" fill="#6B6A40" opacity=".5"/>
-      </svg>
-      <p class="grow-kicker">集客 × 継続 × 効率</p>
+      <p class="grow-kicker"><span class="k1">集客</span><span class="kx">×</span><span class="k2">継続</span><span class="kx">×</span><span class="k3">効率</span></p>
       <p class="grow-line">3つがめぐって、<b>事業が育っていく。</b></p>
     </div>
 
     <p class="svc-note svc-note--em reveal reveal-d2">もちろん、まずは1つだけのご依頼も大歓迎。今の事業に必要な<b>「次の一歩」</b>から始めましょう。</p>
+    </div>
   </div>
 </section>
 
