@@ -468,3 +468,11 @@ a.polaroid { display: block; color: inherit; text-decoration: none; }
   font-size: .9em;
   overflow-wrap: anywhere;
 }
+
+/* できること一覧（料金ページ） */
+.can-tags { list-style: none; padding: 0; margin: 0 auto; max-width: 860px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 12px; }
+.can-tags li { font-size: .88rem; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 100px; padding: 8px 16px; line-height: 1.5; }
+.can-tags li:nth-child(3n+1) { transform: rotate(-1deg); }
+.can-tags li:nth-child(3n+2) { transform: rotate(.8deg); }
+@media (max-width: 680px) { .can-tags li { font-size: .82rem; padding: 7px 13px; } }
+@media (prefers-reduced-motion: reduce) { .can-tags li { transform: none; } }

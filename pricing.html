@@ -150,17 +150,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .inc-tag { display: inline-block; margin-left: 8px; font-size: .68rem; font-weight: 600; color: var(--ink-soft); border: 1px solid var(--line); padding: 1px 8px; vertical-align: 2px; white-space: nowrap; }
 @media (max-width: 680px) { .inc-list { grid-template-columns: 1fr; } }
 
-/* オプション：価格表 */
-.menu-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 48px; align-items: start; }
-.menu-opt h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-family: var(--hand); font-weight: 600; font-size: 1.2rem; color: var(--ink); border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
-.menu-opt h3 small { font-family: var(--font); font-size: .72rem; font-weight: 500; color: var(--ink-soft); white-space: nowrap; }
-.menu-opt dl { margin: 4px 0 0; }
-.opt-row { display: flex; align-items: baseline; padding: 10px 0; }
-.opt-row dt { font-size: .88rem; color: var(--ink); line-height: 1.6; }
-.opt-row dt small { display: block; font-size: .75rem; color: var(--ink-faint); }
-.opt-row dd { margin: 0; font-family: var(--en); font-weight: 600; font-size: .88rem; color: var(--orange-deep); white-space: nowrap; }
-@media (max-width: 1020px) { .menu-opts { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; } }
-
 /* 比較表：お品書きに合わせて枠・角丸なしに */
 .cmp { background: transparent; border-radius: 0; box-shadow: none; }
 .cmp thead th { background: transparent; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
@@ -445,66 +434,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- 含まれるもの -->
-<section class="section section--white">
-  <div class="container">
-    <div class="section__head reveal"><span class="eyebrow">Included</span><h2>すべてのプランに含まれるもの</h2><p class="section__lead">どのプランを選んでも、ここまでは標準です。追加料金はかかりません。</p></div>
-    <div class="inc-list reveal">
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>サイト本体の制作</b><p>構成・デザイン・実装まで一式。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>スマホ対応（レスポンシブ）</b><p>PC・タブレット・スマホで最適表示。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>お問い合わせフォーム</b><p>設置から自動返信の設定まで。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>サーバー／ドメイン／SSL管理<small class="inc-tag">※月額プラン</small></b><p>面倒な契約・設定・更新はお任せ。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>月々の更新代行<small class="inc-tag">※月額プラン</small></b><p>文言や画像の差し替えに対応。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>不具合対応</b><p>表示崩れやエラーはすぐに対処。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>AEO/GEO標準対応</b><p>AIにも選ばれる構造化データ・FAQ設計。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>コード・データのお渡し</b><p>制作物は100%お客様のものです。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>適格請求書（インボイス）対応</b><p>請求書発行・NDAにも対応。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>24時間以内の返信</b><p>不安にさせない、早いレスポンス。</p></div></div>
-      <div class="inc-item"><span class="inc-item__check">✓</span><div><b>進め方の事前共有</b><p>何をいつやるか、着手前にお伝えします。</p></div></div>
-    </div>
-    <div style="text-align:center;margin-top:38px" class="reveal"><a href="aeo-geo.html" class="btn btn--ink hand">AEO/GEOの詳しい説明を見る<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
-  </div>
-</section>
-
 <!-- オプションメニュー -->
 <section class="section">
   <div class="container">
-    <div class="section__head reveal"><span class="eyebrow">Options</span><h2>オプションで、育てていける</h2><p class="section__lead">サイトはシンプルに始めて、必要になったものだけ後から足せます。<br class="dt">ロゴなどの制作物、メールなどの設定、MEO・SNS・広告などの運用をご用意しています。</p></div>
-    <div class="menu-opts">
-      <div class="menu-opt reveal">
-        <h3>制作<small>一回のお支払い</small></h3>
-        <dl>
-          <div class="opt-row"><dt>ロゴ作成</dt><span class="leader" aria-hidden="true"></span><dd>30,000円〜</dd></div>
-          <div class="opt-row"><dt>名刺デザイン</dt><span class="leader" aria-hidden="true"></span><dd>10,000円〜</dd></div>
-          <div class="opt-row"><dt>チラシ・パンフレット</dt><span class="leader" aria-hidden="true"></span><dd>30,000円〜</dd></div>
-          <div class="opt-row"><dt>ランディングページ（LP）追加</dt><span class="leader" aria-hidden="true"></span><dd>50,000円〜</dd></div>
-          <div class="opt-row"><dt>写真撮影・取材</dt><span class="leader" aria-hidden="true"></span><dd>20,000円〜</dd></div>
-          <div class="opt-row"><dt>原稿（文章）作成代行</dt><span class="leader" aria-hidden="true"></span><dd>1ページ 5,000円〜</dd></div>
-          <div class="opt-row"><dt>ページ追加</dt><span class="leader" aria-hidden="true"></span><dd>1ページ 10,000円〜</dd></div>
-        </dl>
-      </div>
-      <div class="menu-opt reveal reveal-d1">
-        <h3>取得・設定<small>一回のお支払い</small></h3>
-        <dl>
-          <div class="opt-row"><dt>独自ドメイン・サーバー取得代行</dt><span class="leader" aria-hidden="true"></span><dd>5,500円〜</dd></div>
-          <div class="opt-row"><dt>独自ドメインメール設定<small>hello@お店.com などのアドレス</small></dt><span class="leader" aria-hidden="true"></span><dd>5,500円〜</dd></div>
-          <div class="opt-row"><dt>Googleビジネスプロフィール初期設定</dt><span class="leader" aria-hidden="true"></span><dd>11,000円〜</dd></div>
-          <div class="opt-row"><dt>インスタ連携の初期設定<small>ライトプラン向け。投稿がお知らせ欄に自動で並ぶ</small></dt><span class="leader" aria-hidden="true"></span><dd>5,500円</dd></div>
-        </dl>
-      </div>
-      <div class="menu-opt reveal reveal-d2">
-        <h3>運用<small>月額</small></h3>
-        <dl>
-          <div class="opt-row"><dt>MEO対策<small>Googleマップ・口コミ運用</small></dt><span class="leader" aria-hidden="true"></span><dd>月 11,000円〜</dd></div>
-          <div class="opt-row"><dt>SNS運用代行<small>投稿作成・更新</small></dt><span class="leader" aria-hidden="true"></span><dd>月 16,500円〜</dd></div>
-          <div class="opt-row"><dt>広告運用代行</dt><span class="leader" aria-hidden="true"></span><dd>月 16,500円〜</dd></div>
-          <div class="opt-row"><dt>集客のご相談（コンサルティング）</dt><span class="leader" aria-hidden="true"></span><dd>月 11,000円〜</dd></div>
-          <div class="opt-row"><dt>ブログ記事制作<small>AIに引用される記事づくり。インスタの投稿から記事にすることもできます</small></dt><span class="leader" aria-hidden="true"></span><dd>1本 5,500円〜</dd></div>
-          <div class="opt-row"><dt>更新代行の回数追加</dt><span class="leader" aria-hidden="true"></span><dd>月 3,300円〜</dd></div>
-        </dl>
-      </div>
-    </div>
-    <p class="svc-note reveal" style="margin-top:32px">表示はすべて税別の目安です。内容により前後しますので、まずはお気軽にご相談ください。<br>必要なものだけ、無理なく組み合わせられます。</p>
+    <div class="section__head reveal"><span class="eyebrow">Options</span><h2>こんなことも、まとめて頼めます</h2><p class="section__lead">サイトはシンプルに始めて、必要になったものだけ後から足せます。<br class="dt">どれも内容に応じてお見積もりします。</p></div>
+    <ul class="can-tags reveal">
+      <li>ロゴ作成</li>
+      <li>名刺デザイン</li>
+      <li>チラシ・パンフレット</li>
+      <li>ランディングページ（LP）</li>
+      <li>写真撮影・取材</li>
+      <li>原稿（文章）の作成</li>
+      <li>ページの追加</li>
+      <li>独自ドメイン・サーバーの取得</li>
+      <li>独自ドメインのメール設定</li>
+      <li>Googleビジネスプロフィールの初期設定</li>
+      <li>MEO対策（Googleマップ・口コミ）</li>
+      <li>SNS運用の代行</li>
+      <li>広告運用の代行</li>
+      <li>集客のご相談</li>
+      <li>ブログ記事の制作</li>
+      <li>インスタ連携（投稿をサイトに自動表示）</li>
+      <li>予約・問い合わせの仕組みづくり</li>
+      <li>更新回数の追加</li>
+    </ul>
+    <p class="svc-note reveal">「こんなことはできる？」というご相談も歓迎です。お気軽にお問い合わせください。</p>
   </div>
 </section>
 
