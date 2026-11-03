@@ -55,6 +55,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `about.html` | 私について（プロフィール詳細） |
 | `services.html` | サービス紹介 |
 | `aeo-geo.html` | AEO / GEO（生成AI最適化）解説ページ |
+| `ai-taisaku.html` | 船橋のAI対策（既存サイトにも頼めるAI対策サービス。料金：診断無料／3万・7万・12万円〜）。`aeo-geo.html`＝標準で入っている設計の説明と相互リンク |
 | `works.html` | 制作実績ギャラリー（現在の掲載は Original Products / Sample Works｜見本サイト の 2 グループ。Practice Works は非掲載） |
 | `pricing.html` | 料金プラン |
 | `faq.html` | よくあるご質問 |
@@ -72,7 +73,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `blog/funabashi-seitai.html` | ブログ記事（船橋の整体院のHP集客）— 地域×業種の記事 |
 | `404.html` | 404 エラーページ（GitHub Pages 用。`noindex`・sitemap 対象外・OGP なし。**共有ファイルはルート相対パス**（`/base.css` `/theme.css` `/theme.js`、フォント preload も `/fonts/...`）で参照する — どの階層の URL でも表示されるため） |
 
-ナビ／モバイルメニューのリンク構成は全ページ共通：私について（about）/ サービス（services）/ AEO・GEO（aeo-geo）/ 制作実績（works）/ 料金（pricing）/ よくある質問（faq）/ 相談室（blog/index.html）/ 無料で相談！（contact、CTA ボタン）。フッターはこれに AEO・GEO対応とは（aeo-geo）/ **船橋のホームページ制作（トップ `./`。blog・area は `../`、404 は `/`）** / 対応エリア・対面サポート（area/funabashi.html）/ プライバシーポリシー（privacy）/ 特定商取引法に基づく表記（tokushoho）/ Instagram（`https://www.instagram.com/linplan.wb/`、別タブ）を加えた構成。
+ナビ／モバイルメニューのリンク構成は全ページ共通：私について（about）/ サービス（services）/ AI対策（ai-taisaku）/ AEO・GEO（aeo-geo）/ 制作実績（works）/ 料金（pricing）/ よくある質問（faq）/ 相談室（blog/index.html）/ 無料で相談！（contact、CTA ボタン）。フッターはこれに AEO・GEO対応とは（aeo-geo）/ **船橋のホームページ制作（トップ `./`。blog・area は `../`、404 は `/`）** / 対応エリア・対面サポート（area/funabashi.html）/ プライバシーポリシー（privacy）/ 特定商取引法に基づく表記（tokushoho）/ Instagram（`https://www.instagram.com/linplan.wb/`、別タブ）を加えた構成。
 
 **「船橋のホームページ制作」という文字のリンクは必ずトップ（`index.html`）に向ける**（「船橋 ホームページ制作」の評価をトップに集める方針。2026-09 までは全ページのフッターから area/funabashi.html に向いており、逆向きのシグナルになっていた）。area/funabashi.html へのリンクは「対応エリア・対面サポート」など内容どおりの文字にする。
 
