@@ -90,7 +90,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ├─ tools/
 │   ├─ subset-fonts.py    fonts/ の再生成スクリプト（fonttools + brotli が必要）
 │   ├─ klee-chars.txt     Klee One に収録する文字リスト（--hand 系で新しい漢字を使ったら追記）
-│   └─ serve-gzip.js      Lighthouse 計測用の gzip 配信サーバー（本番 GitHub Pages 相当）
+│   ├─ serve-gzip.js      Lighthouse 計測用の gzip 配信サーバー（本番 GitHub Pages 相当）
+│   ├─ build-wp-theme.py  WordPress 版テーマの生成スクリプト（wordpress/linplan.zip を出力）
+│   └─ wp-theme/          WordPress 版テーマの手書き部分（functions.php / single.php / inc/ など）
+├─ wordpress/             WordPress 版の生成物（linplan/ と linplan.zip。git・Pages とも対象外）
 ├─ area/
 │   └─ funabashi.html      地域ページ（船橋）。共有ファイルは `../` 参照
 ├─ blog/
@@ -193,6 +196,16 @@ Actions の「Instagram to blog」を手動実行すると（入力欄に**投�
 - **本文に `linplan.jp/blog/…` を書いた投稿（既存記事の告知）は記事化の対象外**。ブログ記事を Instagram で告知するときは、キャプションに記事の URL を必ず書く（書かないと同じテーマの記事が二重に作られる）
 
 **AI の文章はそのまま公開しない** — PR 説明欄の「確認が必要な点」とチェックリストを見て、事実・数字・言い過ぎを必ず人が確認する。
+
+## WordPress 版（見本・ローカル確認用のテーマ Zip）
+
+`python tools/build-wp-theme.py` で、静的サイトから WordPress テーマを生成して **`wordpress/linplan.zip`** に出力する（標準ライブラリのみ）。**本番（linplan.jp＝GitHub Pages）には一切関係しない**：`wordpress/` は `.gitignore` と `_config.yml` の `exclude` に入れてあり、コミットも配信もされない。Local などの WordPress で「外観 → テーマ → 新規追加 → テーマのアップロード」から入れて有効化すると、初回だけ固定ページ・カテゴリ・記事の取り込みと表示設定（ホームページ＝トップページ／投稿ページ＝相談室／パーマリンク `/blog/%postname%/`）が自動で行われる。
+
+- **手で直すのは `tools/wp-theme/`（functions.php・single.php・inc/ など）と `tools/build-wp-theme.py` だけ**。`wordpress/linplan/` は生成物で、実行のたびに作り直される。サイトの文章・デザインを変えたら再実行するだけでよい。
+- **固定ページ**は各 HTML を head／ナビ前／main／スクリプトに切り分けて `parts/{key}/*.php` に持つ（管理画面からは編集不可）。ナビ・フッターは `about.html` のものを `header.php` / `footer.php` に使う。
+- **ブログ記事だけ「投稿」**として取り込む（`data/posts.json`）。段落・見出しは WordPress のブロック、表・リスト・FAQ などはカスタム HTML ブロック。著者欄・CTA・関連記事は `single.php` が出す。記事ページ共通の CSS・JS・著者欄は **`blog/funabashi-seitai.html` が型**（Instagram 記事化ワークフローと同じ）。
+- 読込順（`base.css` → ページ固有 `<style>` → `theme.css`）は `wp_head` の優先度で再現している。**GTM は入れていない**（ローカル確認のアクセスを本番の計測に混ぜないため）。
+- 検証は、WordPress Playground（`npx @wp-playground/cli server --mount-dir <wordpress\linplan> /wordpress/wp-content/themes/linplan`。Git Bash はパスを書き換えるので PowerShell で実行）で立ち上げ、静的サイトと computed style ダイジェストを比較する。Playground では存在しないルート直下の URL がトップへ 301 されるが、これは Playground 固有（`PHP_SELF` の値）でテーマの不具合ではない。
 
 ## Works の 3 カテゴリ運用ルール（重要）
 

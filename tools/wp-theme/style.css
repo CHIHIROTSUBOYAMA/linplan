@@ -1,0 +1,14 @@
+/*
+Theme Name: Linplan
+Theme URI: https://linplan.jp/
+Author: Linplan
+Author URI: https://linplan.jp/
+Description: Linplan のポートフォリオサイト（静的 HTML 版）を WordPress テーマ化した見本。固定ページの本文はテーマ内の parts/ に持ち、ブログ（相談室）の記事だけを「投稿」として管理画面から編集・追加できる。tools/build-wp-theme.py が静的サイトから自動生成するため、このフォルダを直接編集しても次回の生成で上書きされる。
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 7.4
+Text Domain: linplan
+*/
+
+/* 見た目の CSS は assets/base.css（共通コンポーネント）→ 各ページのインライン <style> → assets/theme.css（DS スキン）の順に読み込む。
+   このファイルは WordPress にテーマとして認識させるためのヘッダーだけを持つ。 */
