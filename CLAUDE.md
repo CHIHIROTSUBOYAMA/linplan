@@ -51,8 +51,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | ファイル | 役割 |
 |---|---|
-| `index.html` | トップページ — Hero / Service map / Problem / Services / Why us / Works / Process / Comparison / FAQ / 相談室（Blog）/ CTA |
-| `about.html` | 私について（プロフィール詳細） |
+| `index.html` | トップページ — Hero / About Me / Problem / Why us / Services / Works / Process / Comparison / FAQ / 相談室（Blog）/ CTA |
+| `about.html` | 私について（プロフィール詳細・Service Map（成長ストーリー）） |
 | `services.html` | サービス紹介 |
 | `aeo-geo.html` | AEO / GEO（生成AI最適化）解説ページ |
 | `ai-taisaku.html` | 船橋のAI対策（既存サイトにも頼めるAI対策サービス。料金：診断無料／3万・7万・12万円〜）。`aeo-geo.html`＝標準で入っている設計の説明と相互リンク |
