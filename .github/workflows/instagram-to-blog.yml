@@ -69,7 +69,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add blog sitemap.xml index.html fonts tools/klee-chars.txt
+          git add blog sitemap.xml fonts tools/klee-chars.txt
           git commit -m "draft: ${TITLE}"
           git push origin "$BRANCH"
           gh pr create --base main --head "$BRANCH" --title "【下書き】${TITLE}" --body-file /tmp/pr-body.md

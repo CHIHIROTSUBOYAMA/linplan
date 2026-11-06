@@ -51,7 +51,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | ファイル | 役割 |
 |---|---|
-| `index.html` | トップページ — Hero / About Me / Problem / Why us / Services / Works / Process / Comparison / FAQ / 相談室（Blog）/ CTA |
+| `index.html` | トップページ — Hero / About Me / Problem / Why us / Services / Works / Process / FAQ / CTA（2026-11 に Instagram 欄は works.html へ移設、Blog 欄・Area 欄は削除。対面エリアの案内は CTA に統合） |
 | `about.html` | 私について（プロフィール詳細・Service Map（成長ストーリー）） |
 | `services.html` | サービス紹介 |
 | `aeo-geo.html` | AEO / GEO（生成AI最適化）解説ページ |
@@ -73,7 +73,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `blog/funabashi-seitai.html` | ブログ記事（船橋の整体院のHP集客）— 地域×業種の記事 |
 | `404.html` | 404 エラーページ（GitHub Pages 用。`noindex`・sitemap 対象外・OGP なし。**共有ファイルはルート相対パス**（`/base.css` `/theme.css` `/theme.js`、フォント preload も `/fonts/...`）で参照する — どの階層の URL でも表示されるため） |
 
-ナビ／モバイルメニューのリンク構成は全ページ共通：私について（about）/ サービス（services）/ AI対策（ai-taisaku）/ AEO・GEO（aeo-geo）/ 制作実績（works）/ 料金（pricing）/ よくある質問（faq）/ 相談室（blog/index.html）/ 無料で相談！（contact、CTA ボタン）。フッターはこれに AEO・GEO対応とは（aeo-geo）/ **船橋のホームページ制作（トップ `./`。blog・area は `../`、404 は `/`）** / 対応エリア・対面サポート（area/funabashi.html）/ プライバシーポリシー（privacy）/ 特定商取引法に基づく表記（tokushoho）/ Instagram（`https://www.instagram.com/linplan.wb/`、別タブ）を加えた構成。
+ナビ／モバイルメニューのリンク構成は全ページ共通：私について（about）/ サービス（services）/ AI対策（ai-taisaku）/ AEO・GEO（aeo-geo）/ 制作実績（works）/ 料金（pricing）/ よくある質問（faq）/ BLOG（blog/index.html。**ヘッダーの表示名は「BLOG」**、フッターは「相談室」のまま）/ 無料で相談！（contact、CTA ボタン）。フッターはこれに AEO・GEO対応とは（aeo-geo）/ **船橋のホームページ制作（トップ `./`。blog・area は `../`、404 は `/`）** / 対応エリア・対面サポート（area/funabashi.html）/ プライバシーポリシー（privacy）/ 特定商取引法に基づく表記（tokushoho）/ Instagram（`https://www.instagram.com/linplan.wb/`、別タブ）を加えた構成。
 
 **「船橋のホームページ制作」という文字のリンクは必ずトップ（`index.html`）に向ける**（「船橋 ホームページ制作」の評価をトップに集める方針。2026-09 までは全ページのフッターから area/funabashi.html に向いており、逆向きのシグナルになっていた）。area/funabashi.html へのリンクは「対応エリア・対面サポート」など内容どおりの文字にする。
 
@@ -177,10 +177,10 @@ JS は各 HTML 末尾のインライン（依存なし・IIFE・`DOMContentLoade
 
 ## Instagram「最新のお知らせ」（GitHub Actions で自動更新）
 
-`index.html` の相談室（Blog）セクション直前、`<!-- INSTA:START -->` 〜 `<!-- INSTA:END -->` の間は **`.github/workflows/instagram-feed.yml` が毎日 6:00 JST に自動で書き換える**（手で編集しない）。`.github/scripts/instagram-build.mjs` が Instagram Graph API から最新 6 件を取得し、画像を `insta/*.jpg`（＋`insta/posts.json`）に保存してカード HTML を生成、変化があった日だけ bot が main にコミットする。**ローカル作業前は必ず pull**（しないとコンフリクトする）。
+`works.html`（制作実績）の Works セクションの後・CTA の前、`<!-- INSTA:START -->` 〜 `<!-- INSTA:END -->` の間は **`.github/workflows/instagram-feed.yml` が毎日 6:00 JST に自動で書き換える**（手で編集しない）。`.github/scripts/instagram-build.mjs` が Instagram Graph API から最新 6 件を取得し、画像を `insta/*.jpg`（＋`insta/posts.json`）に保存してカード HTML を生成、変化があった日だけ bot が main にコミットする。**ローカル作業前は必ず pull**（しないとコンフリクトする）。
 
 - CSS は `base.css` 末尾の `.insta-grid` / `.insta-card`。**画像は 4:5（`aspect-ratio: 4 / 5`＋`object-fit: cover`）で表示**するので、投稿画像は 1080×1350 で作る（正方形の投稿は左右が約 10% ずつ切れる）。`<img>` には CLS 防止の `width="1080" height="1350"` をスクリプトが付ける。
-- キャプションは Zen Kaku（本文）で描画されるため、index.html が変わった日はワークフロー内で `tools/subset-fonts.py` も実行して `fonts/` をコミットする（新しい漢字のサブセット漏れ対策）。
+- キャプションは Zen Kaku（本文）で描画されるため、works.html が変わった日はワークフロー内で `tools/subset-fonts.py` も実行して `fonts/` をコミットする（新しい漢字のサブセット漏れ対策）。
 - トークンは `instagram-token-refresh.yml` が毎月 1 日に延長して Secrets `IG_ACCESS_TOKEN` を上書き（`GH_PAT` が必要。PAT の有効期限切れに注意）。
 - 取得失敗時は index.html を変更しない（前回の表示が残る）。投稿 0 件ならセクションごと出さない。
 - **ブログ記事がある投稿はカードのリンク先がブログ記事になる**（Instagram ではなく `blog/<slug>.html`、「ブログ記事を読む →」表示）。対象は ①本文に `linplan.jp/blog/<slug>.html` と書いた告知投稿 ②`blog/insta-articles.json` に載っている記事化済み投稿。記事ファイルがまだ無い（未公開）場合は Instagram へリンクし、公開後の次回実行で自動的に切り替わる。判定は `.github/scripts/insta-blog-link.mjs`（下の記事化ワークフローと共用）。
@@ -191,7 +191,7 @@ Actions の「Instagram to blog」を手動実行すると（入力欄に**投�
 
 - `blog/<slug>.html` を生成 — **`blog/funabashi-seitai.html` の head・ナビ・フッター・著者欄・インライン CSS を型として流用**するため、このファイルを削除・改名しない（直すと以降の生成記事にも反映される）
 - 投稿画像を `blog/img/insta-<ID>.jpg` に保存（Instagram の画像 URL は期限切れになるため）
-- `blog/index.html` の featured の次にカード追加し、同ファイルの Blog JSON-LD の `blogPost` 先頭にも追加（写真付きは `.post-card__thumb--photo` で葉の装飾を消す）、トップ `index.html` の相談室カードを先頭に追加して 3 枚に保つ、`sitemap.xml` に追加
+- `blog/index.html` の featured の次にカード追加し、同ファイルの Blog JSON-LD の `blogPost` 先頭にも追加（写真付きは `.post-card__thumb--photo` で葉の装飾を消す）、`sitemap.xml` に追加（トップには Blog 欄が無いので触らない）
 - 見出し等（Klee 描画）の新しい漢字を `tools/klee-chars.txt` に追記し、ワークフロー内で `tools/subset-fonts.py` を実行して `fonts/` も PR に含める
 - 記事化済みの投稿を `blog/insta-articles.json` に記録（二重記事化防止）
 - **本文に `linplan.jp/blog/…` を書いた投稿（既存記事の告知）は記事化の対象外**。ブログ記事を Instagram で告知するときは、キャプションに記事の URL を必ず書く（書かないと同じテーマの記事が二重に作られる）
@@ -226,16 +226,23 @@ Actions の「Instagram to blog」を手動実行すると（入力欄に**投�
 
 実案件が発生したら「Client Works｜制作実績」グループを新設して掲載する。
 
+### Own Site｜自社サイトでの成果（2026-11 新設）
+
+Works の先頭（`works.html` / `index.html`）に、自社サイトで出た成果を `.results`（`base.css` 末尾。罫線区切りのお品書き風）で載せている。`ai-taisaku.html`（Our approach の下）に検索・AI の 2 件、`area/funabashi.html` の AI対策セクションに一文がある。
+
+- **検索順位・AI の回答を載せるときは、確認日・確認方法（シークレットウィンドウ等）・「日時・地域・端末で変わる／同じ結果を約束しない」の注記を必ず添える**（景表法の誇大表示対策）。注記の確認日は 4 ページで同じ文言なので、変えるときは全部直す。
+- 順位が落ちたら放置せず、削除するか確認日つきの過去の実績として書き換える。
+- お客様の案件の成果ではないので「制作実績」とは書かず、「自社サイトでの成果」と明示する。
+
 ## ブログ（相談室）の運用
 
 `blog/` 配下が「中小企業のHP・IT・AI 相談室」。`blog/index.html` が記事一覧、`blog/hp-cost-2026.html` 以降が個別記事。デザイン・共通コンポーネントはルートのページと同一だが、共有ファイルは **`../base.css` / `../theme.css` / `../theme.js`**（1 階層上）で参照する（フォント preload も `../fonts/...`）。記事固有の本文スタイルは各記事の HTML 内インライン `<style>` に持つ。
 
 - **リンクは相対パスで書く** — `blog/` 配下からルートのページへは、ルート相対ではなく `../about.html` `../contact.html` のような相対パスでリンクする（ブログ内の相互リンクは `index.html` / `hp-cost-2026.html` のようにファイル名のみ）。
-- **記事を追加したら次の 4 箇所を必ず更新する**：
+- **記事を追加したら次の 3 箇所を必ず更新する**（トップの Blog 欄は 2026-11 に削除済み）：
   1. `blog/index.html` の記事一覧にカードを追加
-  2. `index.html`（トップ）の相談室セクション — `.blog-grid` のカードを更新（「近日公開」プレースホルダーがあれば実記事に差し替える）
-  3. `sitemap.xml` に記事の URL を追加
-  4. `blog/index.html` の `<head>` にある Blog JSON-LD の `blogPost` に追加（`headline` と `datePublished` は記事の `Article` JSON-LD からコピーする。新しい記事を先頭に）
+  2. `sitemap.xml` に記事の URL を追加
+  3. `blog/index.html` の `<head>` にある Blog JSON-LD の `blogPost` に追加（`headline` と `datePublished` は記事の `Article` JSON-LD からコピーする。新しい記事を先頭に）
 - 記事ページには OGP / canonical / GTM の共通一式に加え、JSON-LD（`Article`。FAQ を含む記事は `FAQPage` も）を入れる。`hp-cost-2026.html` が雛形。
 - **記事ヘッダーの日付は「公開・更新」を併記する** — `.post-head__meta` の先頭を `<span>公開 <time datetime="YYYY-MM-DD">YYYY.MM.DD</time></span><span>更新 <time datetime="YYYY-MM-DD">YYYY.MM.DD</time></span>` にする（本文を一度も更新していない記事は更新日＝公開日）。`instagram-to-blog.mjs` もこの形式で出力する。
 - **記事の本文を更新したら、次の 3 箇所の日付を同時に上げる**（3 つは常に一致させる）：

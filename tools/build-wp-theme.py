@@ -533,8 +533,6 @@ def main():
         titles[key] = head['title']
         body = rewrite_attrs(s['main'], srcdir, 'php')
 
-        if key == 'index':
-            body = replace_inner(body, r'<div class="blog-grid">', '\n<?php linplan_home_cards(); ?>\n    ', rel)
         if key == 'blog':
             body = replace_inner(body, r'<div class="blog-cats"[^>]*>', '\n        <?php linplan_cat_chips(); ?>      ', rel)
             body = replace_inner(body, r'<div class="blog-grid">', '\n<?php linplan_post_cards(); ?>\n      ', rel)

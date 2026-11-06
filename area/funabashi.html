@@ -54,6 +54,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             "@type": "Answer",
             "text": "はい、無料相談だけでも歓迎です。「そもそもホームページが必要か」からご一緒に考えます。押し売りは一切しませんし、他の方法が合っていると感じたら正直にお伝えします。まずはお気軽にお声がけください。"
           }
+        },
+        {
+          "@type": "Question",
+          "name": "船橋でホームページを作ると、費用はどのくらいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Linplan では、月額プランが月9,900円〜（初期費用0円〜）、買い切りプランが10万円〜です（いずれも税別）。船橋・近隣の制作会社の価格帯や、3年・5年でかかる総額の比較は「船橋でホームページ制作を頼むといくら？」の記事にまとめています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "今あるホームページの作り直しも相談できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。既存サイトのリニューアルにも対応しています。今のサイトを一緒に見ながら、活かせる部分は残して作り直します。ChatGPT や Gemini に出てこないといった AI 対策だけのご相談も、他社で作ったサイトのまま承ります。"
+          }
         }
       ]
     },
@@ -104,6 +120,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .fnb-flow__num::before{content:counter(fnbstep);}
 .fnb-flow__step h3{font-family:var(--hand);font-weight:600;font-size:1.12rem;margin:2px 0 6px;color:var(--ink);}
 .fnb-flow__step p{font-size:.9rem;color:var(--ink-soft);line-height:1.95;margin:0;}
+/* 担当者 */
+.fnb-profile{max-width:720px;margin:0 auto;display:flex;gap:28px;align-items:center;}
+.fnb-profile img{width:140px;height:140px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.fnb-profile__name{font-weight:700;margin:0 0 8px;}
+@media(max-width:560px){.fnb-profile{flex-direction:column;text-align:center;}}
 @media(max-width:560px){
   .fnb-price__row{flex-wrap:wrap;}
   .fnb-price__leader{display:none;}
@@ -130,7 +151,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="site-nav__inner">
     <a href="../" class="site-nav__logo" aria-label="Linplan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>Linplan<span style="color:var(--orange)">.</span></span></a>
     <div class="site-nav__links">
-      <a href="../about.html">私について</a><a href="../services.html">サービス</a><a href="../ai-taisaku.html">AI対策</a><a href="../pricing.html">料金</a><a href="../works.html">制作実績</a><a href="../faq.html">よくある質問</a><a href="../blog/">相談室</a>
+      <a href="../about.html">私について</a><a href="../services.html">サービス</a><a href="../ai-taisaku.html">AI対策</a><a href="../pricing.html">料金</a><a href="../works.html">制作実績</a><a href="../faq.html">よくある質問</a><a href="../blog/">BLOG</a>
       <a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
     </div>
     <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -140,7 +161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="mobile-menu__bar">
     <button class="mobile-menu__close" aria-label="閉じる">×</button>
   </div>
-  <a href="../about.html">私について</a><a href="../services.html">サービス</a><a href="../ai-taisaku.html">AI対策</a><a href="../pricing.html">料金</a><a href="../works.html">制作実績</a><a href="../faq.html">よくある質問</a><a href="../blog/">相談室</a><a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
+  <a href="../about.html">私について</a><a href="../services.html">サービス</a><a href="../ai-taisaku.html">AI対策</a><a href="../pricing.html">料金</a><a href="../works.html">制作実績</a><a href="../faq.html">よくある質問</a><a href="../blog/">BLOG</a><a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
 </div>
 
 <main>
@@ -150,7 +171,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <span class="eyebrow">Funabashi</span>
     <h1>船橋市内の<br class="dt">対面サポート・対応エリア</h1>
-    <p>打ち合わせも、公開してからのサポートも、直接お伺いできます。<br>制作内容や料金については<a href="../index.html">船橋のホームページ制作（トップページ）</a>をご覧ください。</p>
+    <p>打ち合わせも、公開してからのサポートも、直接お伺いできます。<br>制作の進め方や考え方は<a href="../">船橋のホームページ制作（トップページ）</a>でもご紹介しています。</p>
   </div>
 </header>
 
@@ -215,8 +236,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- 対応エリア -->
+<!-- 見本サイト -->
 <section class="section section--white">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Works</span>
+      <h2>業種別の見本サイト</h2>
+      <p class="section__lead">実際のお仕事と同じ品質・本番と同じ作りで仕上げた見本サイトです。<br class="dt">お店に伺うときは、この画面を一緒に見ながら「うちならこうしたい」をお聞きします。</p>
+    </div>
+    <div class="works-grid reveal">
+      <a class="polaroid" href="https://chihirotsuboyama.github.io/Akarito" target="_blank" rel="noopener"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(2deg)"></div><div class="polaroid__shot"><img src="../images/akarito.webp" width="600" height="3082" loading="lazy" decoding="async" alt="照明・電気工事会社 アカリトの見本サイト"></div><div class="polaroid__name"><span>アカリト Akarito</span></div><div class="polaroid__tags"><span>照明・電気工事</span><span>見本サイト</span></div></a>
+      <a class="polaroid" href="https://chihirotsuboyama.github.io/Fleurir" target="_blank" rel="noopener"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-2deg)"></div><div class="polaroid__shot"><img src="../images/fleurir.webp" width="600" height="2268" loading="lazy" decoding="async" alt="コスメ専門店 フルリールの見本サイト"></div><div class="polaroid__name"><span>フルリール Fleurir</span></div><div class="polaroid__tags"><span>コスメ・化粧品</span><span>見本サイト</span></div></a>
+      <a class="polaroid" href="https://chihirotsuboyama.github.io/Kuon" target="_blank" rel="noopener"><div class="tape" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(3deg)"></div><div class="polaroid__shot"><img src="../images/kuon.webp" width="600" height="3422" loading="lazy" decoding="async" alt="ワイナリー 久遠の見本サイト"></div><div class="polaroid__name"><span>久遠 Kuon</span></div><div class="polaroid__tags"><span>ワイナリー・酒</span><span>見本サイト</span></div></a>
+      <a class="polaroid" href="https://chihirotsuboyama.github.io/Tomoshibitei" target="_blank" rel="noopener"><div class="tape tape--yellow" style="top:-11px;left:50%;margin-left:-42px;transform:rotate(-3deg)"></div><div class="polaroid__shot"><img src="../images/tomoshibitei.webp" width="600" height="3746" loading="lazy" decoding="async" alt="和食店 灯火亭の見本サイト"></div><div class="polaroid__name"><span>灯火亭 Tomoshibitei</span></div><div class="polaroid__tags"><span>和食・居酒屋</span><span>見本サイト</span></div></a>
+    </div>
+    <div style="text-align:center;margin-top:32px" class="reveal"><a href="../works.html" class="btn btn--outline hand">制作実績・見本サイトをすべて見る</a></div>
+  </div>
+</section>
+
+<!-- 対応エリア -->
+<section class="section">
   <div class="container">
     <div class="section__head reveal">
       <span class="eyebrow">Area</span>
@@ -226,13 +265,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p><b>船橋市全域</b>に対応しています。船橋駅・西船橋・津田沼エリア・新船橋・下総中山のまわりはもちろん、市内であればどこでも直接お伺いします。実店舗をお持ちの方も、事務所や自宅で事業をされている方も、お気軽にご相談ください。</p>
       <p>船橋市のとなり近くの街も、直接お伺いして対応しています。</p>
       <span class="fnb-area__near">習志野市 ／ 市川市 ／ 鎌ケ谷市 ／ 八千代市 ほか</span>
-      <p style="margin-top:22px">業種ごとの具体的な進め方も書いています。たとえば <a href="../blog/funabashi-seitai.html">船橋の整体院がホームページで集客する方法</a> では、ポータルサイト頼みから抜け出すまでの流れを、地元のWeb制作者の視点でまとめました。</p>
+      <p style="margin-top:22px">業種ごとの具体的な進め方も書いています。たとえば <a href="../blog/funabashi-seitai.html">船橋の整体院がホームページで集客する方法</a> では、ポータルサイト頼みから抜け出すまでの流れを、地元のWeb制作者の視点でまとめました。美容室なら <a href="../blog/salon-homepage-shukyaku.html">美容室がホームページで集客する方法</a>、費用を先に知りたい方は <a href="../blog/funabashi-homepage-hiyo.html">船橋でホームページ制作を頼むといくら？</a> をご覧ください。</p>
     </div>
   </div>
 </section>
 
 <!-- 制作の流れ -->
-<section class="section">
+<section class="section section--white">
   <div class="container">
     <div class="section__head reveal">
       <span class="eyebrow">Flow</span>
@@ -273,14 +312,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- AI対策 -->
-<section class="section section--white">
+<section class="section">
   <div class="container">
     <div class="section__head reveal">
       <span class="eyebrow">AI対策</span>
       <h2>船橋のお店のAI対策も</h2>
-      <p class="section__lead">「船橋で〇〇のおすすめは？」とAIに聞く人が増えています。船橋市内のお店のAI対策も、対面でご相談いただけます。</p>
+      <p class="section__lead">「船橋で〇〇のおすすめは？」とAIに聞く人が増えています。船橋市内のお店のAI対策も、対面でご相談いただけます。Linplanのサイトは、Googleで「船橋 ホームページ AI対策」と検索すると1位に表示されています（2026年11月7日時点・<a href="../works.html">成果の詳細</a>）。</p>
     </div>
     <div style="text-align:center" class="reveal"><a href="../ai-taisaku.html" class="btn btn--outline hand">船橋のAI対策を見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
+  </div>
+</section>
+
+<!-- 担当者 -->
+<section class="section section--white">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Profile</span>
+      <h2>伺うのは、作る本人です</h2>
+    </div>
+    <div class="fnb-profile reveal">
+      <img src="../images/profile.webp" width="423" height="435" loading="lazy" decoding="async" alt="Linplan代表 坪山ちひろ">
+      <div>
+        <p class="fnb-profile__name">坪山ちひろ｜Linplan代表</p>
+        <p>千葉県船橋市を拠点に、中小企業・店舗向けの Web・アプリ・AI を、企画から運用までひとりで手がけています。システムエンジニアとして培った技術で、設計から実装まで私自身が担当します。営業担当を挟まないので、打ち合わせでお聞きしたことがそのまま画面に反映されます。</p>
+        <p><a href="../about.html">プロフィールを見る →</a></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -295,6 +352,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-item"><div class="faq-q">船橋市外でも頼めますか？</div><div class="faq-a"><div>はい、大丈夫です。習志野市・市川市・鎌ケ谷市・八千代市など近隣の市も直接お伺いして対応しています。それより遠い地域も、打ち合わせをオンライン（Zoom / Google Meet 等）に切り替えれば全国どこでもご依頼いただけます。</div></div></div>
       <div class="faq-item"><div class="faq-q">パソコンが苦手でも大丈夫ですか？</div><div class="faq-a"><div>もちろんです。専門用語は使わず、直接お会いして一緒に進めますのでご安心ください。公開後の文章や写真の差し替えといった更新作業も、月額プランならこちらでお引き受けします。「やりたいこと」を言葉でお聞かせいただければ大丈夫です。</div></div></div>
       <div class="faq-item"><div class="faq-q">相談だけでも大丈夫ですか？</div><div class="faq-a"><div>はい、無料相談だけでも歓迎です。「そもそもホームページが必要か」からご一緒に考えます。押し売りは一切しませんし、他の方法が合っていると感じたら正直にお伝えします。まずはお気軽にお声がけください。</div></div></div>
+      <div class="faq-item"><div class="faq-q">船橋でホームページを作ると、費用はどのくらいですか？</div><div class="faq-a"><div>Linplan では、月額プランが月9,900円〜（初期費用0円〜）、買い切りプランが10万円〜です（いずれも税別）。船橋・近隣の制作会社の価格帯や、3年・5年でかかる総額の比較は「<a href="../blog/funabashi-homepage-hiyo.html">船橋でホームページ制作を頼むといくら？</a>」の記事にまとめています。</div></div></div>
+      <div class="faq-item"><div class="faq-q">今あるホームページの作り直しも相談できますか？</div><div class="faq-a"><div>はい。既存サイトのリニューアルにも対応しています。今のサイトを一緒に見ながら、活かせる部分は残して作り直します。ChatGPT や Gemini に出てこないといった <a href="../ai-taisaku.html">AI 対策</a>だけのご相談も、他社で作ったサイトのまま承ります。</div></div></div>
     </div>
   </div>
 </section>

@@ -307,25 +307,6 @@ if (fs.existsSync(smPath)) {
     log("✓ sitemap.xml に追加");
   }
 }
-// トップページの相談室：新しい記事を先頭に入れ、末尾の1枚を外す（3枚のまま）
-const topPath = path.join(ROOT, "index.html");
-const top = fs.readFileSync(topPath, "utf8");
-const topGrid = top.match(/(<div class="blog-grid">\n)([\s\S]*?)(\n    <\/div>\n    <div style="text-align:center;margin-top:40px" class="reveal"><a href="blog\/")/);
-if (topGrid) {
-  const thumbWord = plain(art.title).length > 16 ? plain(art.title).slice(0, 15) + "…" : plain(art.title);
-  const topCard = `      <a href="blog/${slug}.html" class="post-card reveal">
-        <div class="post-card__thumb"><span class="post-card__cat">${CATS[art.category]}</span><span>${esc(thumbWord)}</span></div>
-        <div class="post-card__body">
-          <h3 class="post-card__title">${esc(plain(art.title))}</h3>
-          <p class="post-card__excerpt">${esc(excerpt)}</p>
-          <div class="post-card__meta"><span>${dotDate}</span><span>約${minutes}分</span></div>
-        </div>
-      </a>`;
-  const cards = [topCard, ...(topGrid[2].match(/      <a href="[^"]+" class="post-card[\s\S]*?<\/a>/g) || [])].slice(0, 3)
-    .map((c, i) => c.replace(/class="post-card[^"]*"/, `class="post-card reveal${i ? ` reveal-d${i}` : ""}"`));
-  fs.writeFileSync(topPath, top.replace(topGrid[0], topGrid[1] + cards.join("\n") + topGrid[3]), "utf8");
-  log("✓ index.html（トップ）の相談室カードを更新");
-} else log("! index.html の相談室カードが見つかりません。トップは手動で更新してください");
 
 // 手書き風フォント（Klee One）で描画される文字をサブセット対象に追記する（漏れるとその字だけ太く見える）
 const kleePath = path.join(ROOT, "tools", "klee-chars.txt");

@@ -200,17 +200,6 @@ function linplan_simple_cards( $posts, $with_excerpt, $reveal ) {
 	}
 }
 
-/** トップの相談室セクション：新しい順に 3 件 */
-function linplan_home_cards() {
-	$posts = get_posts(
-		array(
-			'numberposts'         => 3,
-			'ignore_sticky_posts' => true,
-		)
-	);
-	linplan_simple_cards( $posts, true, true );
-}
-
 /** 記事末の関連記事。取り込んだ記事は静的サイトと同じ 3 本、新しい記事は同じカテゴリの新着 */
 function linplan_related_posts( $post ) {
 	$slugs = get_post_meta( $post->ID, '_linplan_related', true );
