@@ -428,7 +428,7 @@ a.polaroid { display: block; color: inherit; text-decoration: none; }
 }
 
 
-/* ---------- Instagram 最新のお知らせ（index.html の INSTA:START〜END。.github/scripts/instagram-build.mjs が生成） ---------- */
+/* ---------- Instagram 最新のお知らせ（works.html の INSTA:START〜END。.github/scripts/instagram-build.mjs が生成） ---------- */
 /* 件数が少ないとき（1〜2件・端数の行）も中央に寄せるため grid ではなく flex で並べる */
 .insta-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; }
 .insta-card { flex: 0 0 calc((100% - 44px) / 3); display: block; overflow: hidden; text-decoration: none; color: inherit;
@@ -476,3 +476,13 @@ a.polaroid { display: block; color: inherit; text-decoration: none; }
 .can-tags li:nth-child(3n+2) { transform: rotate(.8deg); }
 @media (max-width: 680px) { .can-tags li { font-size: .82rem; padding: 7px 13px; } }
 @media (prefers-reduced-motion: reduce) { .can-tags li { transform: none; } }
+
+/* ===== 自社サイトでの成果（works / index / ai-taisaku / area）— 罫線で区切るお品書き風 ===== */
+.results { max-width: 760px; margin: 0 auto; border-top: 1px solid var(--line); }
+.results__item { display: grid; grid-template-columns: 6.5em 1fr; gap: 0 24px; align-items: baseline; padding: 22px 4px; border-bottom: 1px dashed var(--line); }
+.results__num { font-family: var(--hand); font-weight: 600; font-size: 2rem; line-height: 1.2; color: var(--orange); white-space: nowrap; }
+.results__title { font-family: var(--hand); font-weight: 600; font-size: 1.1rem; line-height: 1.6; margin: 0; }
+.results__text { font-size: .9rem; color: var(--ink-soft); line-height: 1.9; margin: 6px 0 0; }
+.results__text a { color: var(--orange); }
+.results__note { max-width: 760px; margin: 14px auto 0; font-size: .78rem; color: var(--ink-soft); line-height: 1.8; }
+@media (max-width: 560px) { .results__item { grid-template-columns: 1fr; } .results__num { font-size: 1.6rem; margin-bottom: 4px; } }

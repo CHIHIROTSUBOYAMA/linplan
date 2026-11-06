@@ -1,14 +1,14 @@
-// Instagram 投稿を取得して index.html の「最新のお知らせ」欄を更新する
-// GitHub Actions から毎日実行。取得に失敗した場合は index.html を変更しない。
+// Instagram 投稿を取得して works.html（制作実績）の「最新のお知らせ」欄を更新する
+// GitHub Actions から毎日実行。取得に失敗した場合は works.html を変更しない。
 import fs from "node:fs";
 import path from "node:path";
 import { blogSlugFor } from "./insta-blog-link.mjs";
 
 const TOKEN = process.env.IG_ACCESS_TOKEN;
-const LIMIT = Number(process.env.IG_LIMIT || 6);          // トップに出す件数
+const LIMIT = Number(process.env.IG_LIMIT || 6);          // 表示する件数
 const ACCOUNT_URL = "https://www.instagram.com/linplan.wb/";
 const ROOT = process.cwd();
-const INDEX = path.join(ROOT, "index.html");
+const INDEX = path.join(ROOT, "works.html");
 const IMG_DIR = path.join(ROOT, "insta");
 const START = "<!-- INSTA:START -->";
 const END = "<!-- INSTA:END -->";
@@ -19,7 +19,7 @@ if (!TOKEN) fail("IG_ACCESS_TOKEN が設定されていません（リポジト�
 
 const html = fs.readFileSync(INDEX, "utf8");
 const s = html.indexOf(START), e = html.indexOf(END);
-if (s < 0 || e < 0 || e < s) fail("index.html に INSTA:START / INSTA:END のマーカーがありません");
+if (s < 0 || e < 0 || e < s) fail("works.html に INSTA:START / INSTA:END のマーカーがありません");
 
 // ---- 1. 取得 ----
 const fields = "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp";
@@ -87,7 +87,7 @@ const cards = posts.map((p, i) => `      <a ${link(p)} class="insta-card reveal$
       </a>`).join("\n");
 
 const block = posts.length === 0 ? "" : `
-<section class="section section--white insta-feed">
+<section class="section insta-feed">
   <div class="container">
     <div class="section__head reveal">
       <span class="eyebrow">Instagram</span>
@@ -104,4 +104,4 @@ ${cards}
 
 const next = html.slice(0, s + START.length) + block + html.slice(e);
 if (next === html) { console.log("✓ 変更なし"); }
-else { fs.writeFileSync(INDEX, next, "utf8"); console.log(`✓ index.html を更新（${posts.length} 件）`); }
+else { fs.writeFileSync(INDEX, next, "utf8"); console.log(`✓ works.html を更新（${posts.length} 件）`); }

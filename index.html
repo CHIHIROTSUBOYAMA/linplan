@@ -174,23 +174,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .flow-step:nth-child(even) .flow-step__card::after { left: -28px; right: auto; }
   .flow__goal { align-items: flex-start; margin-left: 4px; }
 }
-/* ---------- blog teaser（相談室） ---------- */
-.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
-.post-card { background: var(--white); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
-  display: flex; flex-direction: column; position: relative; color: inherit;
-  transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
-.post-card:hover { transform: translateY(-4px) rotate(-.4deg); box-shadow: 0 14px 34px rgba(44,39,34,.13); }
-.post-card__thumb { aspect-ratio: 16/9; background: var(--orange-soft); display: flex; align-items: center; justify-content: center;
-  font-family: var(--en); font-weight: 700; font-size: 1.05rem; color: var(--orange-deep); position: relative; overflow: hidden; }
-.post-card__thumb span { position: relative; z-index: 1; padding: 0 18px; text-align: center; line-height: 1.4; }
-.post-card__cat { position: absolute; top: 12px; left: 12px; z-index: 2; font-size: .72rem; font-weight: 700;
-  padding: 4px 10px; border-radius: 999px; background: var(--ink); color: var(--paper); }
-.post-card__body { padding: 20px 20px 22px; flex: 1; display: flex; flex-direction: column; }
-.post-card__title { font-size: 1.02rem; font-weight: 700; line-height: 1.55; margin: 0 0 10px; }
-.post-card__excerpt { font-size: .84rem; color: var(--ink-soft); line-height: 1.85; margin: 0 0 16px; flex: 1; }
-.post-card__meta { font-family: var(--en); font-size: .74rem; color: var(--ink-faint); display: flex; gap: 12px; align-items: center; }
-@media (max-width: 920px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 680px) { .blog-grid { grid-template-columns: 1fr; } }
 /* ---------- footer ---------- */
 .site-footer { background: transparent; margin: 0; border-radius: 0; border-top: 1px solid var(--line); padding: 44px 40px 36px; text-align: center; position: relative; overflow: hidden; }
 .site-footer__logo { font-family: var(--en); font-size: 1.1rem; font-weight: 700; color: var(--ink-soft); margin-bottom: 6px; display:flex; flex-direction:column; align-items:center; gap:7px; }
@@ -282,7 +265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="pricing.html">料金</a>
       <a href="works.html">制作実績</a>
       <a href="faq.html">よくある質問</a>
-      <a href="blog/">相談室</a>
+      <a href="blog/">BLOG</a>
       <a href="contact.html" class="btn site-nav__cta">無料で相談！</a>
     </div>
     <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -298,7 +281,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="pricing.html">料金</a>
   <a href="works.html">制作実績</a>
   <a href="faq.html">よくある質問</a>
-  <a href="blog/">相談室</a>
+  <a href="blog/">BLOG</a>
   <a href="contact.html" class="btn site-nav__cta">無料で相談！</a>
 </div>
 
@@ -634,7 +617,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="section__head reveal">
       <span class="eyebrow">Works</span>
       <h2>船橋のホームページ制作 実績・見本サイト</h2>
-      <p class="section__desc">自社プロダクトと見本サイトをご紹介します。</p>
+      <p class="section__desc">自社サイトでの成果、自社プロダクト、見本サイトをご紹介します。</p>
+    </div>
+
+    <div class="works-group reveal">
+      <div class="works-group__head"><h3>Own Site｜自社サイトでの成果</h3><p>このサイトも、お客様に提供するのと同じ方法で作り、運用しています。<br>自社サイトで実際に出た結果です。</p></div>
+      <div class="results">
+        <div class="results__item"><div class="results__num">1位</div><div><h4 class="results__title">Google検索「船橋 ホームページ AI対策」で1位</h4><p class="results__text">通常の検索結果（広告を除く）の一番上に、Linplanのサービス紹介ページが表示されました。</p></div></div>
+        <div class="results__item"><div class="results__num">1社目</div><div><h4 class="results__title">GoogleのAIによる概要で、最初に紹介</h4><p class="results__text">同じ検索で、GoogleのAIが「船橋でAI検索対策に対応している会社」の1社目としてLinplanを挙げました。</p></div></div>
+        <div class="results__item"><div class="results__num">毎朝</div><div><h4 class="results__title">インスタに投稿するだけで、ホームページが更新</h4><p class="results__text">Instagramの最新投稿を、毎朝6時にこのサイトへ自動で反映する仕組みを自作し、運用しています。投稿をもとにAIでブログ記事の下書きも作れます（1記事あたり約5円）。<a href="blog/instagram-auto-update-homepage.html">仕組みの解説 →</a></p></div></div>
+      </div>
+      <p class="results__note">※ 1位・1社目は、2026年11月7日にGoogleのシークレットウィンドウで確認した結果です。検索順位やAIの回答は、日時・地域・端末によって変わります。同じ結果をお約束するものではありません。</p>
     </div>
 
     <div class="works-group reveal">
@@ -721,111 +714,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ===== INSTAGRAM（自動更新・この2行の間は手で編集しない） ===== -->
-<!-- INSTA:START -->
-<section class="section section--white insta-feed">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">Instagram</span>
-      <h2>最新のお知らせ</h2>
-      <p class="section__desc">Instagramで発信している最新の情報です。</p>
-    </div>
-    <div class="insta-grid">
-      <a href="blog/instagram-auto-update-homepage.html" class="insta-card reveal">
-        <img src="insta/18112079576023261.jpg" alt="インスタは更新しているけど、ホームページは何年もそのまま。" width="1080" height="1350" loading="lazy" decoding="async">
-        <div class="insta-card__body">
-          <time datetime="2026-09-26T02:27:50+0000">2026.09.26</time>
-          <h3 class="insta-card__title">インスタは更新しているけど、ホームページは何年もそのまま。</h3>
-          <span class="insta-card__more">ブログ記事を読む →</span>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/Ddu9eJLibX8/" target="_blank" rel="noopener" class="insta-card reveal reveal-d1">
-        <img src="insta/17912920086466663.jpg" alt="船橋でホームページを作っています。" width="1080" height="1350" loading="lazy" decoding="async">
-        <div class="insta-card__body">
-          <time datetime="2026-09-26T02:27:20+0000">2026.09.26</time>
-          <h3 class="insta-card__title">船橋でホームページを作っています。</h3>
-        </div>
-      </a>
-    </div>
-    <div style="text-align:center;margin-top:36px" class="reveal"><a href="https://www.instagram.com/linplan.wb/" class="btn btn--ghost hand" target="_blank" rel="noopener">Instagramを見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
-  </div>
-</section>
-<!-- INSTA:END -->
-
-<!-- ===== BLOG（相談室） ===== -->
-<section class="section section--white">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">Blog</span>
-      <h2>中小企業のHP・IT・AI 相談室</h2>
-      <p class="section__desc">「ホームページっていくらかかるの？」「AIって何に使えるの？」——<br>よくいただく素朴な疑問に、現役の制作者が売り込み抜きの本音でお答えするブログです。</p>
-    </div>
-    <div class="blog-grid">
-      <a href="blog/chatgpt-mise-detekonai.html" class="post-card reveal">
-        <div class="post-card__thumb"><span class="post-card__cat">AI対策</span><span>ChatGPTに出てこない原因</span></div>
-        <div class="post-card__body">
-          <h3 class="post-card__title">ChatGPTにお店が出てこない5つの原因と、今日からできる確認方法</h3>
-          <p class="post-card__excerpt">AIの巡回設定・Bingの店舗情報・情報のずれなど、5つの原因とスマホでできる確認方法を解説します。</p>
-          <div class="post-card__meta"><span>2026.11.03</span><span>約8分</span></div>
-        </div>
-      </a>
-      <a href="blog/gemini-chatgpt-chigai-mise.html" class="post-card reveal reveal-d1">
-        <div class="post-card__thumb"><span class="post-card__cat">AI対策</span><span>GeminiとChatGPTの違い</span></div>
-        <div class="post-card__body">
-          <h3 class="post-card__title">GeminiとChatGPTでお店の出方が違うのはなぜ？見ている情報の違いと対策</h3>
-          <p class="post-card__excerpt">Googleマップだけでは届かない理由と、それぞれに効く対策、自分のお店の出方を比べる手順を解説します。</p>
-          <div class="post-card__meta"><span>2026.11.03</span><span>約7分</span></div>
-        </div>
-      </a>
-      <a href="blog/seikotsuin-ai-taisaku.html" class="post-card reveal reveal-d2">
-        <div class="post-card__thumb"><span class="post-card__cat">AI対策</span><span>整骨院のAI対策</span></div>
-        <div class="post-card__body">
-          <h3 class="post-card__title">整骨院・治療院のAI対策チェックリスト【ChatGPT・Gemini対応】</h3>
-          <p class="post-card__excerpt">巡回設定・Bingの店舗情報・よくある質問・症状ページの独自性まで、10項目のチェックリストで解説します。</p>
-          <div class="post-card__meta"><span>2026.11.03</span><span>約8分</span></div>
-        </div>
-      </a>
-    </div>
-      </a>
-      <a href="blog/instagram-auto-update-homepage.html" class="post-card reveal reveal-d1">
-        <div class="post-card__thumb"><span class="post-card__cat">地域・集客</span><span>インスタに投稿するだけでホーム…</span></div>
-        <div class="post-card__body">
-          <h3 class="post-card__title">インスタに投稿するだけでホームページも新しくなる仕組み</h3>
-          <p class="post-card__excerpt">インスタは更新しているのにホームページが何年も古いまま、というお悩みはありませんか。投稿するだけでホームページも自動で新しくなる仕組みについて、船橋のWeb制作事務所がご紹介します。</p>
-          <div class="post-card__meta"><span>2026.09.28</span><span>約3分</span></div>
-        </div>
-      </a>
-      <a href="blog/funabashi-homepage-hiyo.html" class="post-card reveal reveal-d2">
-        <div class="post-card__thumb"><span class="post-card__cat">お金</span><span>船橋の制作費用と5年総額</span></div>
-        <div class="post-card__body">
-          <h3 class="post-card__title">船橋でホームページ制作を頼むといくら？買い切り・月額の相場と5年総額</h3>
-          <p class="post-card__excerpt">船橋市内で料金を公開している制作会社の価格帯と、買い切り・月額の3年・5年の総額比較、見積もりで確認すべき点を解説します。</p>
-          <div class="post-card__meta"><span>2026.09.26</span><span>約9分</span></div>
-        </div>
-      </a>
-    </div>
-    <div style="text-align:center;margin-top:40px" class="reveal"><a href="blog/" class="btn btn--ghost hand">相談室の記事をすべて見る<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a></div>
-  </div>
-</section>
-
-<!-- ===== AREA ===== -->
-<section class="section section--white">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">Area</span>
-      <h2>船橋市内・近隣エリアは直接お伺いします</h2>
-    </div>
-    <p class="section__desc reveal">船橋駅・西船橋・津田沼・下総中山エリアをはじめ、船橋市内ならどこでも直接お伺いします。習志野市・市川市・鎌ケ谷市・八千代市など近隣の方もお気軽に。「ホームページを作りたいけれど、何から始めればいいか分からない」という段階からのご相談が、実はいちばん多いです。</p>
-    <p class="section__desc reveal">対面での打ち合わせ・サポートの詳細は<a href="area/funabashi.html">船橋市内の対面サポート・対応エリア</a>をご覧ください。</p>
-  </div>
-</section>
-
 <!-- ===== CLOSING CTA ===== -->
 <section class="closing-cta">
   <div class="closing-cta__inner reveal">
     <div class="closing-cta__eyebrow">CONTACT</div>
-    <h2 class="closing-cta__title">まずは、話を聞かせてください。</h2>
-    <p class="closing-cta__sub">どんな小さなことでも大丈夫です。初回ヒアリングは無料・オンラインOK、ご返信は24時間以内。<br>いっしょに「次の一歩」を考えましょう。</p>
+    <h2 class="closing-cta__title">船橋市内・近隣エリアは直接お伺いします</h2>
+    <p class="closing-cta__sub">船橋駅・西船橋・津田沼・下総中山エリアをはじめ、船橋市内ならどこでも直接お伺いします。習志野市・市川市・鎌ケ谷市・八千代市など近隣の方もお気軽に。「ホームページを作りたいけれど、何から始めればいいか分からない」という段階からのご相談が、実はいちばん多いです。</p>
     <div class="closing-cta__actions">
       <a href="contact.html" class="btn btn--primary">無料で相談する<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
       <a href="works.html" class="closing-cta__link">まずは実績を見る</a>
