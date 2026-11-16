@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5DVGF39S');</script>
+<!-- End Google Tag Manager -->
+<title>ChatGPT版サーチコンソールとは？お店の準備｜ Linplan</title>
+<link rel="canonical" href="https://linplan.jp/blog/chatgpt-business-hub.html">
+<meta name="description" content="OpenAIが2026年11月にベータ公開した「Businesses in ChatGPT（Business Hub）」は、ChatGPTで自分のお店が話題に出た回数やクリック数がわかる仕組みです。Googleのサーチコンソールとの違い、登録できるお店、今やっておくことを船橋のWeb制作者が解説します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Linplan">
+<meta property="og:title" content="ChatGPT版サーチコンソール「Business Hub」とは？お店がわかること・今やっておくこと">
+<meta property="og:description" content="OpenAIが2026年11月にベータ公開した「Businesses in ChatGPT（Business Hub）」は、ChatGPTで自分のお店が話題に出た回数やクリック数がわかる仕組みです。Googleのサーチコンソールとの違い、登録できるお店、今やっておくことを船橋のWeb制作者が解説します。">
+<meta property="og:url" content="https://linplan.jp/blog/chatgpt-business-hub.html">
+<meta property="og:image" content="https://linplan.jp/images/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ChatGPT版サーチコンソール「Business Hub」とは？お店がわかること・今やっておくこと",
+  "description": "OpenAIが2026年11月にベータ公開した「Businesses in ChatGPT（Business Hub）」は、ChatGPTで自分のお店が話題に出た回数やクリック数がわかる仕組みです。Googleのサーチコンソールとの違い、登録できるお店、今やっておくことを船橋のWeb制作者が解説します。",
+  "datePublished": "2026-11-16",
+  "dateModified": "2026-11-16",
+  "author": {"@type": "Person","name": "坪山ちひろ","url": "https://linplan.jp/about.html"},
+  "publisher": {"@type": "Organization","name": "Linplan"},
+  "mainEntityOfPage": "https://linplan.jp/blog/chatgpt-business-hub.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Business Hubに登録しないと、ChatGPTでお店が紹介されなくなりますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。登録していないお店も、これまでどおりWeb上の情報をもとにChatGPTの回答に出てくることがあります。登録は、出てくる情報を自分で直したり、話題に出た回数を確かめたりするためのものです。"}},
+    {"@type":"Question","name":"登録にお金はかかりますか？","acceptedAnswer":{"@type":"Answer","text":"2026年11月16日時点で、OpenAIの発表には登録の費用は書かれておらず、無料で登録できると伝える報道があります。ベータ版のため、条件は今後変わる可能性があります。"}},
+    {"@type":"Question","name":"Googleのサーチコンソールの代わりになりますか？","acceptedAnswer":{"@type":"Answer","text":"なりません。Business HubはChatGPTの中での話題の出方を見る道具で、Googleでの検索の言葉やページごとの数字は見られません。Googleからの集客を見るには、これまでどおりサーチコンソールを使います。"}}
+  ]
+}
+</script>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Regular.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Medium.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Bold.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/KleeOne-Regular.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/KleeOne-SemiBold.subset.woff2" crossorigin>
+<link rel="stylesheet" href="../base.css">
+<link rel="icon" href="../favicon.ico" sizes="48x48 32x32 16x16">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>@media(max-width:560px){.btn{white-space:normal}}</style>
+<style>
+/* ============================================================
+   BLOG 固有スタイル（V4スクラップブック準拠）
+   ============================================================ */
+.blog-hero{padding:72px 0 40px;text-align:center;position:relative}
+.blog-hero__kicker{font-family:var(--en);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:600;margin:0 0 14px}
+.blog-hero__title{font-family:var(--hand);font-size:clamp(1.9rem,5vw,3rem);font-weight:600;line-height:1.4;margin:0 0 16px;color:var(--ink)}
+.blog-hero__lead{font-size:.98rem;line-height:2;color:var(--ink-soft);max-width:620px;margin:0 auto}
+
+/* カテゴリチップ */
+.blog-cats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 8px}
+.blog-cat{font-size:.82rem;font-weight:600;padding:7px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink-soft);text-decoration:none;transition:all .2s var(--ease);cursor:pointer}
+.blog-cat:hover,.blog-cat.is-active{border-color:var(--orange);background:var(--orange-soft);color:var(--orange-deep)}
+
+/* 記事カード一覧 */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px;margin:44px 0 20px}
+.post-card{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease);position:relative}
+.post-card:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 14px 34px rgba(44,39,34,.13)}
+.post-card__thumb{aspect-ratio:16/9;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;font-size:1.1rem;color:var(--orange-deep);position:relative;overflow:hidden}
+.post-card__thumb span{position:relative;z-index:1;padding:0 18px;text-align:center;line-height:1.4}
+.post-card__cat{position:absolute;top:12px;left:12px;z-index:2;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+.post-card__body{padding:20px 20px 22px;flex:1;display:flex;flex-direction:column}
+.post-card__title{font-size:1.04rem;font-weight:700;line-height:1.55;margin:0 0 10px}
+.post-card__excerpt{font-size:.84rem;color:var(--ink-soft);line-height:1.85;margin:0 0 16px;flex:1}
+.post-card__meta{font-family:var(--en);font-size:.74rem;color:var(--ink-faint);display:flex;gap:12px;align-items:center}
+
+/* ===== 記事本文ページ ===== */
+.post-wrap{max-width:760px;margin:0 auto;padding:0 28px}
+.post-breadcrumb{font-size:.78rem;color:var(--ink-faint);margin:116px 0 0;font-family:var(--en)}
+.post-breadcrumb a{color:var(--ink-soft);text-decoration:none}
+.post-breadcrumb a:hover{color:var(--orange-deep)}
+.post-head{padding:26px 0 24px;border-bottom:2px dashed var(--line);margin-bottom:34px}
+.post-head__cat{display:inline-block;font-size:.74rem;font-weight:700;padding:5px 13px;border-radius:999px;background:var(--orange-soft);color:var(--orange-deep);margin:0 0 16px}
+.post-head__title{font-family:var(--hand);font-size:clamp(1.6rem,4.4vw,2.4rem);font-weight:600;line-height:1.45;margin:0 0 18px;color:var(--ink)}
+.post-head__meta{font-family:var(--en);font-size:.78rem;color:var(--ink-faint);display:flex;gap:16px;flex-wrap:wrap}
+
+/* 目次 */
+.post-toc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px 26px;margin:0 0 38px}
+.post-toc__ttl{font-family:var(--hand);font-weight:600;font-size:1rem;margin:0 0 12px;color:var(--ink)}
+.post-toc ol{margin:0;padding-left:1.3em}
+.post-toc li{font-size:.88rem;line-height:1.95;color:var(--ink-soft)}
+.post-toc a{color:var(--ink-soft);text-decoration:none}
+.post-toc a:hover{color:var(--orange-deep);text-decoration:underline}
+
+/* 本文 typography */
+.post-body{font-size:.97rem;line-height:2.05;color:var(--ink)}
+.post-body > p{margin:0 0 22px}
+.post-body h2{font-family:var(--hand);font-size:1.5rem;font-weight:600;line-height:1.5;margin:48px 0 18px;padding:0 0 10px;border-bottom:1px solid var(--line);scroll-margin-top:90px}
+.post-body h3{font-size:1.16rem;font-weight:700;line-height:1.6;margin:34px 0 14px;color:var(--ink);scroll-margin-top:90px}
+.post-body h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--orange);border-radius:2px;margin-right:9px;transform:rotate(8deg)}
+.post-body ul,.post-body ol{margin:0 0 22px;padding-left:1.4em}
+.post-body li{margin:0 0 9px;line-height:1.9}
+.post-body strong{font-weight:700;background:linear-gradient(transparent 62%,var(--yellow-soft) 62%)}
+.post-body a{color:var(--orange-deep);text-decoration:underline;text-underline-offset:3px}
+
+/* 結論ボックス（AEO最適化：冒頭の即答） */
+.post-answer{background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:0 6px 6px 0;padding:20px 24px;margin:0 0 34px}
+.post-answer__label{font-family:var(--en);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+.post-answer p{margin:0;font-size:.96rem;line-height:1.95;font-weight:500}
+
+/* 表 */
+.post-table-wrap{overflow-x:auto;margin:0 0 26px}
+.post-body table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:440px}
+.post-body th,.post-body td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.post-body thead th{background:var(--ink);color:var(--paper);font-weight:600}
+.post-body tbody tr:nth-child(even){background:var(--paper)}
+
+/* 引用・補足 */
+.post-note{background:var(--orange-soft);border-radius:6px;padding:16px 20px;margin:0 0 26px;font-size:.88rem;line-height:1.9;color:var(--ink-soft)}
+.post-note strong{background:none}
+
+/* FAQ */
+.post-faq{margin:44px 0 0}
+.post-faq__ttl{font-family:var(--hand);font-size:1.5rem;font-weight:600;margin:0 0 20px}
+.post-faq__item{border:1px solid var(--line);border-radius:6px;padding:18px 22px;margin:0 0 14px;background:var(--white)}
+.post-faq__q{font-weight:700;font-size:.96rem;margin:0 0 10px;padding-left:26px;position:relative}
+.post-faq__q::before{content:"Q";position:absolute;left:0;top:-2px;font-family:var(--en);font-weight:700;color:var(--orange-deep);background:var(--orange-soft);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem}
+.post-faq__a{font-size:.88rem;line-height:1.9;color:var(--ink-soft);margin:0;padding-left:26px;position:relative}
+.post-faq__a::before{content:"A";position:absolute;left:0;top:-2px;font-family:var(--en);font-weight:700;color:var(--teal);background:var(--teal-soft);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem}
+
+/* 著者 */
+.post-author{display:flex;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px 24px;margin:44px 0 0}
+.post-author__avatar{width:56px;height:56px;border-radius:50%;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;color:var(--orange-deep);flex-shrink:0;font-size:1.2rem}
+.post-author__name{font-weight:700;font-size:.96rem;margin:0 0 5px}
+.post-author__bio{font-size:.82rem;color:var(--ink-soft);line-height:1.8;margin:0}
+
+/* 記事末CTA */
+.post-cta{text-align:center;background:var(--ink);border-radius:8px;padding:40px 28px;margin:48px 0 0;position:relative;overflow:hidden}
+.post-cta__ttl{font-family:var(--hand);font-size:1.4rem;font-weight:600;color:var(--paper);margin:0 0 12px}
+.post-cta__txt{font-size:.9rem;color:rgba(251,248,241,.78);line-height:1.9;margin:0 0 22px}
+
+/* 関連記事 */
+.post-related{margin:52px 0 0}
+.post-related__ttl{font-family:var(--hand);font-size:1.3rem;font-weight:600;margin:0 0 20px;text-align:center}
+
+@media(max-width:560px){
+  .blog-grid{grid-template-columns:1fr;gap:22px}
+  .post-body{font-size:.94rem}
+}
+</style>
+
+<link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- エントランスアニメーション（ローダー廃止：読み込み時に見出しをフェードアップ） -->
+<style>
+.site-nav{animation:lpEnterNav .65s var(--ease) both}.phero .eyebrow,.post-head__cat,.blog-hero__kicker{animation:lpEnter .7s var(--ease) both}
+.phero h1,.post-head__title,.blog-hero__title{animation:lpEnter .78s var(--ease) .12s both}
+.phero p,.post-head__meta,.blog-hero__lead{animation:lpEnter .78s var(--ease) .26s both}
+@keyframes lpEnter{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}@keyframes lpEnterNav{from{opacity:0;translate:0 -14px}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:reduce){.phero .eyebrow,.phero h1,.phero p,.post-head__cat,.post-head__title,.post-head__meta,.blog-hero__kicker,.blog-hero__title,.blog-hero__lead,.site-nav{animation:none}}
+</style>
+
+
+<!-- ===== NAV ===== -->
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a href="../" class="site-nav__logo" aria-label="Linplan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>Linplan<span style="color:var(--orange)">.</span></span></a>
+    <div class="site-nav__links">
+      <a href="../about.html">私について</a>
+      <a href="../services.html">サービス</a>
+      <a href="../ai-taisaku.html">AI対策</a>
+      <a href="../pricing.html">料金</a>
+      <a href="../works.html">制作実績</a>
+      <a href="../faq.html">よくある質問</a>
+      <a href="./">BLOG</a>
+      <a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
+    </div>
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <div class="mobile-menu__bar">
+    <button class="mobile-menu__close" aria-label="閉じる">×</button>
+  </div>
+  <a href="../about.html">私について</a>
+  <a href="../services.html">サービス</a>
+  <a href="../ai-taisaku.html">AI対策</a>
+  <a href="../pricing.html">料金</a>
+  <a href="../works.html">制作実績</a>
+  <a href="../faq.html">よくある質問</a>
+  <a href="./">BLOG</a>
+  <a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
+</div>
+
+
+<main>
+  <div class="post-wrap">
+    <nav class="post-breadcrumb"><a href="../">ホーム</a> ／ <a href="./">相談室</a> ／ ChatGPT版サーチコンソールとは</nav>
+  </div>
+
+  <article>
+   <div class="post-wrap">
+    <header class="post-head">
+      <span class="post-head__cat">AEO/GEO</span>
+      <h1 class="post-head__title">ChatGPT版サーチコンソール「Business Hub」とは？<br>お店がわかること・今やっておくこと</h1>
+      <div class="post-head__meta"><span>公開 <time datetime="2026-11-16">2026.11.16</time></span><span>更新 <time datetime="2026-11-16">2026.11.16</time></span><span>約7分で読めます</span><span>カテゴリ：AEO/GEO</span></div>
+    </header>
+
+    <!-- AEO最適化：冒頭の即答ボックス -->
+    <div class="post-answer">
+      <p class="post-answer__label">先に結論</p>
+      <p>OpenAIは2026年11月10日、お店や会社が<strong>ChatGPTに自社の情報を登録し、ChatGPTの中で何回話題に出たかを確かめられる仕組み「Businesses in ChatGPT」</strong>をベータ版で公開しました。管理画面が「Business Hub」で、「ChatGPT版のサーチコンソール」とも呼ばれています。<br>
+      日本のお店も登録できますが、報道では<strong>今の対象は実店舗とネットショップ</strong>です。<br>
+      見られるのは、話題に出た回数・サイトへのクリック数・話題のテーマの3つ。Googleのサーチコンソールの代わりにはなりません。</p>
+    </div>
+
+    <!-- 目次 -->
+    <nav class="post-toc">
+      <p class="post-toc__ttl">この記事でわかること</p>
+      <ol>
+        <li><a href="#a1">Businesses in ChatGPT・Business Hubとは</a></li>
+        <li><a href="#a2">Business Hubでわかること・できること</a></li>
+        <li><a href="#a3">Googleのサーチコンソールとの違い</a></li>
+        <li><a href="#a4">登録できるお店と、登録の流れ</a></li>
+        <li><a href="#a5">船橋のお店が、今やっておくこと</a></li>
+        <li><a href="#a6">よくある質問</a></li>
+      </ol>
+    </nav>
+
+    <div class="post-body">
+      <p>「ChatGPTで、うちのお店はどう紹介されているんだろう」<br>
+      「AIに聞かれたときに、お店の名前が出ているのか知りたい」</p>
+      <p>AIでお店を探す人が増えるなかで、こうした声を聞くようになりました。<br>
+      これまでは、ChatGPTでの自分のお店の扱われ方を確かめる方法が、実際にChatGPTに聞いてみるくらいしかありませんでした。</p>
+      <p>そこにOpenAIが出してきたのが、<strong>Businesses in ChatGPT</strong>と、その管理画面の<strong>Business Hub</strong>です。<br>
+      この記事では、何がわかって何ができるのか、Googleのサーチコンソールと何が違うのか、船橋のお店が今やっておくことを、公式の発表と報道をもとにまとめます。</p>
+
+      <h2 id="a1">Businesses in ChatGPT・Business Hubとは</h2>
+      <p>Businesses in ChatGPTは、<strong>お店や会社が、ChatGPTの中に出てくる自社の情報を自分で管理するための仕組み</strong>です。2026年11月10日にベータ版として公開されました。</p>
+      <p>その管理画面がBusiness Hubです。ここで自分のお店を探して「これはうちのお店です」と申請し、確認が通ると、お店の情報を直したり、ChatGPTでの話題の出方を見たりできるようになります。</p>
+      <p>Googleでいえば、お店の情報を管理する「Googleビジネスプロフィール」と、検索での見られ方がわかる「サーチコンソール」を合わせたようなものです。数字が見られる点から、「ChatGPT版のサーチコンソール」と呼ばれています。</p>
+
+      <h2 id="a2">Business Hubでわかること・できること</h2>
+      <h3>わかること（数字）</h3>
+      <ul>
+        <li><strong>話題に出た回数</strong>：ChatGPTの回答の中で、お店が取り上げられた回数</li>
+        <li><strong>サイトへのクリック数</strong>：ChatGPTの回答から、お店のサイトへ移った回数</li>
+        <li><strong>話題のテーマ</strong>：お店のサイトが情報源として使われた会話で、よく出てくるテーマ</li>
+      </ul>
+      <p>どれも<strong>まとめた数字だけ</strong>です。だれがどんな会話をしたかは、お店の側からは見られません。また、会話の数が一定の件数に届いたときだけ表示されると報じられています。お客様が少ない時期は、数字が出ないこともありそうです。</p>
+      <h3>できること（情報の管理）</h3>
+      <ul>
+        <li>お店の基本情報を直す</li>
+        <li>商品を売っているお店は、価格や在庫を含む商品の一覧（商品フィード）を登録する</li>
+      </ul>
+      <p>あわせて、ChatGPTの中でお店の代わりに質問に答える「Business Agent（ビジネスエージェント）」も発表されました。ただし、こちらは今のところ<strong>アメリカの一部の事業者だけ</strong>が対象で、日本のお店は使えません。</p>
+
+      <h2 id="a3">Googleのサーチコンソールとの違い</h2>
+      <p>「ChatGPT版のサーチコンソール」と呼ばれていますが、中身はかなり違います。</p>
+      <div class="post-table-wrap">
+        <table>
+          <thead><tr><th></th><th>Googleのサーチコンソール</th><th>Business Hub</th></tr></thead>
+          <tbody>
+            <tr><td>見られる数字</td><td>表示回数・クリック数・平均の順位</td><td>話題に出た回数・クリック数・話題のテーマ</td></tr>
+            <tr><td>検索した言葉</td><td>見られる</td><td>見られない（テーマだけ）</td></tr>
+            <tr><td>ページごとの数字</td><td>見られる</td><td>見られない</td></tr>
+            <tr><td>サイトの登録状況の確認</td><td>できる</td><td>できない</td></tr>
+            <tr><td>お店の情報の管理</td><td>できない（ビジネスプロフィールで行う）</td><td>できる</td></tr>
+            <tr><td>使える人</td><td>サイトを持っている人ならだれでも</td><td>対象の業種のお店・会社</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>サーチコンソールは「サイト」を見る道具で、Business Hubは「お店」を見る道具、と考えるとわかりやすいです。<br>
+      Googleからの集客を見るには、これまでどおりサーチコンソールが必要です。Business Hubは、<strong>ChatGPTでの存在感を確かめる道具がひとつ増えた</strong>と考えるのがよいと思います。</p>
+
+      <h2 id="a4">登録できるお店と、登録の流れ</h2>
+      <h3>登録できるお店</h3>
+      <p>OpenAIは、ChatGPTが使える国の対象のお店・会社が登録できると説明しています。報道によると日本のお店も対象で、Business Hubの画面も日本語で表示されます。</p>
+      <p>ただし、2026年11月時点の報道では、登録できるのは<strong>実店舗のあるお店と、ネットショップ（オンラインストア）</strong>です。会社向けのサービス業や代理店などは、まだ対象になっていないと伝えられています。OpenAIは、対象の地域と業種を今後広げるとしています。</p>
+      <h3>登録の流れ</h3>
+      <ol>
+        <li>ChatGPTのBusiness Hubを開き、お店の名前で探す（見つからなければ新しく作る）</li>
+        <li>自分のお店であることを確認する（電話・メール・サイトのドメイン・Shopifyの連携などの方法が報じられています）</li>
+        <li>確認が通ったら、お店の情報を直したり、数字を見たりする</li>
+      </ol>
+      <p>Shopifyでネットショップを運営している場合は、Shopifyの管理画面からつなぐと確認を簡単にできます。登録の費用は、公式の発表には書かれていません（無料で登録できると伝える報道があります）。</p>
+      <div class="post-note"><strong>登録の代行には注意を</strong><br>
+      新しい仕組みが出ると、「ChatGPTへの登録を代行します」といった営業が増えることがあります。登録はお店の方ご自身で、ChatGPTのBusiness Hubから行えます。お店の確認に使う電話番号やメールアドレス、ログイン情報は、知らない業者に渡さないでください。</div>
+
+      <h2 id="a5">船橋のお店が、今やっておくこと</h2>
+      <p>Business Hubは、登録すればChatGPTで紹介されやすくなる、というものではありません。数字を見て、情報を正しく保つための道具です。<br>
+      ChatGPTに選ばれるかどうかは、これまでどおり<strong>Web上にあるお店の情報が、正確でわかりやすいかどうか</strong>が土台になります。今のうちにやっておけることは、次の5つです。</p>
+      <h3>1. ChatGPTで、自分のお店を聞いてみる</h3>
+      <p>「船橋で〇〇のおすすめは？」「〇〇（お店の名前）について教えて」と聞いてみてください。営業時間や場所、メニューが古いまま出てくることもあります。どこを直せばいいかの出発点になります。お店がまったく出てこない場合は、<a href="chatgpt-mise-detekonai.html">ChatGPTにお店が出てこない5つの原因</a>も参考にしてください。</p>
+      <h3>2. お店の情報を、どこでも同じにそろえる</h3>
+      <p>お店の名前・住所・営業時間・定休日・メニューや料金を、ホームページ、Googleビジネスプロフィール、Instagramなどで同じにそろえます。書いてあることが場所によって違うと、AIはどれが正しいか判断できません。</p>
+      <h3>3. ホームページに「お客様が聞きたいこと」の答えを書く</h3>
+      <p>料金の目安、駐車場の有無、予約の方法、よくある質問。AIは、こうした答えが書いてあるページを情報源に使います。書き方のコツは<a href="cited-by-chatgpt.html">ChatGPTに引用されるサイトの3つの共通点</a>でまとめています。</p>
+      <h3>4. ChatGPTの検索ロボットを止めていないか確かめる</h3>
+      <p>ChatGPTの検索は、OpenAIの「OAI-SearchBot」というロボットがサイトを読みに来ることで成り立っています。サイトの設定（robots.txt）でこのロボットを止めていると、ChatGPTの検索結果に出にくくなります。制作会社に作ってもらったサイトなら、一度確認してもらうと安心です。</p>
+      <h3>5. 実店舗・ネットショップなら、登録を検討する</h3>
+      <p>対象のお店なら、Business Hubでお店を申請しておくと、ChatGPTに出てくる情報を自分で直せるようになり、話題の出方も数字で追えます。ベータ版なので、画面や条件は今後変わるかもしれません。</p>
+      <div class="post-note"><strong>Linplanの対応について</strong><br>
+      Linplanでは、AIに正しく紹介されるための<a href="../aeo-geo.html">サイト設計（AEO/GEO対応）</a>を標準で行っています。今のサイトのまま見直したい方には、<a href="../ai-taisaku.html">船橋のAI対策</a>もご用意しています。船橋市内・近隣のお店には<a href="../area/funabashi.html">直接お伺いして</a>、ChatGPTでの見え方を一緒に確かめることもできます。</div>
+
+      <h3>参考資料</h3>
+      <ul>
+        <li><a href="https://openai.com/index/introducing-businesses-chatgpt/" target="_blank" rel="noopener">Introducing Businesses in ChatGPT</a>（OpenAI・英語）</li>
+        <li><a href="https://openai.com/business/businesses-in-chatgpt/" target="_blank" rel="noopener">Businesses in ChatGPT</a>（OpenAI・英語）</li>
+        <li><a href="https://community.openai.com/t/introducing-businesses-in-chatgpt-in-beta/1414865" target="_blank" rel="noopener">Introducing Businesses in ChatGPT in beta</a>（OpenAI 開発者コミュニティ・英語）</li>
+        <li><a href="https://japan.cnet.com/article/35254729/" target="_blank" rel="noopener">いわば「ChatGPT版Search Console」登場</a>（CNET Japan）</li>
+      </ul>
+      <p class="post-note">※2026年11月16日時点の情報です。ベータ版のため、対象のお店や見られる数字、条件は今後変わる可能性があります。</p>
+    </div>
+
+    <!-- FAQ -->
+    <section class="post-faq" id="a6">
+      <h2 class="post-faq__ttl">よくある質問</h2>
+      <div class="post-faq__item">
+        <p class="post-faq__q">Business Hubに登録しないと、ChatGPTでお店が紹介されなくなりますか？</p>
+        <p class="post-faq__a">いいえ。登録していないお店も、これまでどおりWeb上の情報をもとにChatGPTの回答に出てくることがあります。登録は、出てくる情報を自分で直したり、話題に出た回数を確かめたりするためのものです。</p>
+      </div>
+      <div class="post-faq__item">
+        <p class="post-faq__q">登録にお金はかかりますか？</p>
+        <p class="post-faq__a">2026年11月16日時点で、OpenAIの発表には登録の費用は書かれておらず、無料で登録できると伝える報道があります。ベータ版のため、条件は今後変わる可能性があります。</p>
+      </div>
+      <div class="post-faq__item">
+        <p class="post-faq__q">Googleのサーチコンソールの代わりになりますか？</p>
+        <p class="post-faq__a">なりません。Business HubはChatGPTの中での話題の出方を見る道具で、Googleでの検索の言葉やページごとの数字は見られません。Googleからの集客を見るには、これまでどおりサーチコンソールを使います。</p>
+      </div>
+    </section>
+
+    <!-- 著者 -->
+    <div class="post-author">
+      <div class="post-author__avatar">坪</div>
+      <div>
+        <p class="post-author__name">坪山ちひろ｜Linplan代表</p>
+        <p class="post-author__bio">千葉県船橋市を拠点に、中小企業・店舗向けの Web・アプリ・AI を、企画から運用までひとりで一気通貫で手がけています。<a href="../about.html">プロフィールを見る →</a></p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="post-cta">
+      <p class="post-cta__ttl">ChatGPTでの見え方、一緒に確かめます</p>
+      <p class="post-cta__txt">お店の情報がAIに正しく伝わっているかを、一緒に確認します。<br>船橋市内・近隣のお店には直接お伺いします。無料相談からお気軽にどうぞ。</p>
+      <a href="../contact.html" class="btn btn--primary">無料で相談する</a>
+    </div>
+
+    <!-- 関連記事 -->
+    <section class="post-related">
+      <h2 class="post-related__ttl">あわせて読みたい</h2>
+      <div class="blog-grid">
+        <a href="cited-by-chatgpt.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span>AIに引用される条件</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">ChatGPTに引用されるサイトの3つの共通点</h3><div class="post-card__meta"><span>2026.06.15</span><span>約8分</span></div></div>
+        </a>
+        <a href="chatgpt-mise-detekonai.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">AI対策</span><span>お店が出てこない原因</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">ChatGPTにお店が出てこない5つの原因と、今日からできる確認方法</h3><div class="post-card__meta"><span>2026.11.03</span><span>約8分</span></div></div>
+        </a>
+        <a href="what-is-webmcp.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span>WebMCPとは</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">WebMCPとは？AIがホームページで予約や問い合わせをする時代の準備</h3><div class="post-card__meta"><span>2026.09.30</span><span>約6分</span></div></div>
+        </a>
+      </div>
+    </section>
+   </div>
+  </article>
+</main>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="site-footer__logo"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>Linplan<span style="color:var(--orange)">.</span></span></div>
+  <div class="site-footer__tag">AIから選ばれるサイト作りを。</div>
+  <nav class="site-footer__nav">
+    <a href="../about.html">私について</a>
+    <a href="../services.html">サービス</a>
+    <a href="../ai-taisaku.html">AI対策</a>
+    <a href="../pricing.html">料金</a>
+    <a href="../works.html">制作実績</a>
+    <a href="../faq.html">よくある質問</a>
+    <a href="./">相談室</a>
+    <a href="../contact.html">お問い合わせ</a>
+    <a href="../aeo-geo.html">AEO・GEO対応とは</a>
+    <a href="../">船橋のホームページ制作</a>
+    <a href="../area/funabashi.html">対応エリア・対面サポート</a>
+    <a href="../privacy.html">プライバシーポリシー</a>
+    <a href="../tokushoho.html">特定商取引法に基づく表記</a>
+    <a href="https://www.instagram.com/linplan.wb/" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+  <div class="site-footer__meta">千葉県船橋市を拠点に全国対応（打ち合わせはオンラインで完結） ／ c.tsuboyama@linplan.jp</div>
+  <div class="site-footer__copy">© 2026 Linplan — Web・アプリ・AI、ひとりで一気通貫。</div>
+</footer>
+
+
+
+
+<script>
+/* Linplan サイト共通スクリプト（軽量・依存なし） */
+(function () {
+  'use strict';
+
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+    /* ---- nav scroll state ---- */
+    var nav = document.querySelector('.site-nav');
+    function onScroll() {
+      if (!nav) return;
+      if (window.scrollY > 30) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---- mobile menu ---- */
+    var ham = document.querySelector('.hamburger');
+    var menu = document.querySelector('.mobile-menu');
+    var close = document.querySelector('.mobile-menu__close');
+    if (ham && menu) {
+      function closeMenu(){ menu.classList.remove('open'); ham.classList.remove('open'); ham.setAttribute('aria-expanded','false'); }
+      function openMenu(){ menu.classList.add('open'); ham.classList.add('open'); ham.setAttribute('aria-expanded','true'); }
+      ham.addEventListener('click', function () { (menu.classList.contains('open') ? closeMenu : openMenu)(); });
+      if (close) close.addEventListener('click', closeMenu);
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+    }
+
+    /* ---- scroll reveal ---- */
+    var revs = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && revs.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revs.forEach(function (el) { io.observe(el); });
+    } else {
+      revs.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    /* ---- FAQ accordion ---- */
+    document.querySelectorAll('.faq-item').forEach(function (item) {
+      var q = item.querySelector('.faq-q');
+      var a = item.querySelector('.faq-a');
+      if (!q || !a) return;
+      q.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+        item.classList.toggle('open');
+        a.style.maxHeight = isOpen ? null : a.scrollHeight + 'px';
+      });
+    });
+  });
+})();
+
+</script>
+<script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='⇅ スクロール';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
+
+
+<script src="../theme.js"></script>
+</body>
+</html>
