@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5DVGF39S');</script>
+<!-- End Google Tag Manager -->
+<title>Jev（ジェブ）とは？判断だけ返すAIの使いどころ｜ Linplan</title>
+<link rel="canonical" href="https://linplan.jp/blog/what-is-jev.html">
+<meta name="description" content="Jev（ジェブ）は、TypeSafe AIが2026年9月15日に早期アクセスで公開した、文章を書かずに「判断」だけを返すAIモデルです。ChatGPTとの違い、料金、お問い合わせの仕分けなどの使いどころと注意点を、船橋のWeb制作者がわかりやすく解説します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Linplan">
+<meta property="og:title" content="Jev（ジェブ）とは？文章を書かずに「判断」だけ返すAIの仕組みと使いどころ">
+<meta property="og:description" content="Jev（ジェブ）は、TypeSafe AIが2026年9月15日に早期アクセスで公開した、文章を書かずに「判断」だけを返すAIモデルです。ChatGPTとの違い、料金、お問い合わせの仕分けなどの使いどころと注意点を、船橋のWeb制作者がわかりやすく解説します。">
+<meta property="og:url" content="https://linplan.jp/blog/what-is-jev.html">
+<meta property="og:image" content="https://linplan.jp/images/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Jev（ジェブ）とは？文章を書かずに「判断」だけ返すAIの仕組みと使いどころ",
+  "description": "Jev（ジェブ）は、TypeSafe AIが2026年9月15日に早期アクセスで公開した、文章を書かずに「判断」だけを返すAIモデルです。ChatGPTとの違い、料金、お問い合わせの仕分けなどの使いどころと注意点を、船橋のWeb制作者がわかりやすく解説します。",
+  "datePublished": "2026-11-17",
+  "dateModified": "2026-11-17",
+  "author": {"@type": "Person","name": "坪山ちひろ","url": "https://linplan.jp/about.html"},
+  "publisher": {"@type": "Organization","name": "Linplan"},
+  "mainEntityOfPage": "https://linplan.jp/blog/what-is-jev.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Jevは日本語の文章でも使えますか？","acceptedAnswer":{"@type":"Answer","text":"使えます。ただし公式のドキュメントでは、日本語などは英語より精度が下がる場合があると案内されていると報告されています。日本語の問い合わせ40件で95%正しく仕分けできたという国内の検証もありますが、使う前に自分のデータで試すのが確実です。"}},
+    {"@type":"Question","name":"Jevは無料で使えますか？","acceptedAnswer":{"@type":"Answer","text":"無料ではありません。2026年11月17日時点の早期アクセス価格は、読み込ませる文章100万トークンあたり0.042ドルで、返ってくる判断の部分は無料です。早期アクセス中の価格のため、今後変わる可能性があります。"}},
+    {"@type":"Question","name":"JevはChatGPTの代わりになりますか？","acceptedAnswer":{"@type":"Answer","text":"なりません。Jevは決められた選択肢から選ぶ・点数をつけるといった判断だけを返し、返信文や説明文は書きません。文章が必要な場面では、これまでどおりChatGPTやClaudeなどを使い、Jevは仕分けや判定の部分を受け持つ、という組み合わせになります。"}}
+  ]
+}
+</script>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Regular.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Medium.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/ZenKakuGothicNew-Bold.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/KleeOne-Regular.subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/KleeOne-SemiBold.subset.woff2" crossorigin>
+<link rel="stylesheet" href="../base.css">
+<link rel="icon" href="../favicon.ico" sizes="48x48 32x32 16x16">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>@media(max-width:560px){.btn{white-space:normal}}</style>
+<style>
+/* ============================================================
+   BLOG 固有スタイル（V4スクラップブック準拠）
+   ============================================================ */
+.blog-hero{padding:72px 0 40px;text-align:center;position:relative}
+.blog-hero__kicker{font-family:var(--en);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:600;margin:0 0 14px}
+.blog-hero__title{font-family:var(--hand);font-size:clamp(1.9rem,5vw,3rem);font-weight:600;line-height:1.4;margin:0 0 16px;color:var(--ink)}
+.blog-hero__lead{font-size:.98rem;line-height:2;color:var(--ink-soft);max-width:620px;margin:0 auto}
+
+/* カテゴリチップ */
+.blog-cats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 8px}
+.blog-cat{font-size:.82rem;font-weight:600;padding:7px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--ink-soft);text-decoration:none;transition:all .2s var(--ease);cursor:pointer}
+.blog-cat:hover,.blog-cat.is-active{border-color:var(--orange);background:var(--orange-soft);color:var(--orange-deep)}
+
+/* 記事カード一覧 */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px;margin:44px 0 20px}
+.post-card{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease);position:relative}
+.post-card:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 14px 34px rgba(44,39,34,.13)}
+.post-card__thumb{aspect-ratio:16/9;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;font-size:1.1rem;color:var(--orange-deep);position:relative;overflow:hidden}
+.post-card__thumb span{position:relative;z-index:1;padding:0 18px;text-align:center;line-height:1.4}
+.post-card__cat{position:absolute;top:12px;left:12px;z-index:2;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+.post-card__body{padding:20px 20px 22px;flex:1;display:flex;flex-direction:column}
+.post-card__title{font-size:1.04rem;font-weight:700;line-height:1.55;margin:0 0 10px}
+.post-card__excerpt{font-size:.84rem;color:var(--ink-soft);line-height:1.85;margin:0 0 16px;flex:1}
+.post-card__meta{font-family:var(--en);font-size:.74rem;color:var(--ink-faint);display:flex;gap:12px;align-items:center}
+
+/* ===== 記事本文ページ ===== */
+.post-wrap{max-width:760px;margin:0 auto;padding:0 28px}
+.post-breadcrumb{font-size:.78rem;color:var(--ink-faint);margin:116px 0 0;font-family:var(--en)}
+.post-breadcrumb a{color:var(--ink-soft);text-decoration:none}
+.post-breadcrumb a:hover{color:var(--orange-deep)}
+.post-head{padding:26px 0 24px;border-bottom:2px dashed var(--line);margin-bottom:34px}
+.post-head__cat{display:inline-block;font-size:.74rem;font-weight:700;padding:5px 13px;border-radius:999px;background:var(--orange-soft);color:var(--orange-deep);margin:0 0 16px}
+.post-head__title{font-family:var(--hand);font-size:clamp(1.6rem,4.4vw,2.4rem);font-weight:600;line-height:1.45;margin:0 0 18px;color:var(--ink)}
+.post-head__meta{font-family:var(--en);font-size:.78rem;color:var(--ink-faint);display:flex;gap:16px;flex-wrap:wrap}
+
+/* 目次 */
+.post-toc{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px 26px;margin:0 0 38px}
+.post-toc__ttl{font-family:var(--hand);font-weight:600;font-size:1rem;margin:0 0 12px;color:var(--ink)}
+.post-toc ol{margin:0;padding-left:1.3em}
+.post-toc li{font-size:.88rem;line-height:1.95;color:var(--ink-soft)}
+.post-toc a{color:var(--ink-soft);text-decoration:none}
+.post-toc a:hover{color:var(--orange-deep);text-decoration:underline}
+
+/* 本文 typography */
+.post-body{font-size:.97rem;line-height:2.05;color:var(--ink)}
+.post-body > p{margin:0 0 22px}
+.post-body h2{font-family:var(--hand);font-size:1.5rem;font-weight:600;line-height:1.5;margin:48px 0 18px;padding:0 0 10px;border-bottom:1px solid var(--line);scroll-margin-top:90px}
+.post-body h3{font-size:1.16rem;font-weight:700;line-height:1.6;margin:34px 0 14px;color:var(--ink);scroll-margin-top:90px}
+.post-body h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--orange);border-radius:2px;margin-right:9px;transform:rotate(8deg)}
+.post-body ul,.post-body ol{margin:0 0 22px;padding-left:1.4em}
+.post-body li{margin:0 0 9px;line-height:1.9}
+.post-body strong{font-weight:700;background:linear-gradient(transparent 62%,var(--yellow-soft) 62%)}
+.post-body a{color:var(--orange-deep);text-decoration:underline;text-underline-offset:3px}
+
+/* 結論ボックス（AEO最適化：冒頭の即答） */
+.post-answer{background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:0 6px 6px 0;padding:20px 24px;margin:0 0 34px}
+.post-answer__label{font-family:var(--en);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 8px}
+.post-answer p{margin:0;font-size:.96rem;line-height:1.95;font-weight:500}
+
+/* 表 */
+.post-table-wrap{overflow-x:auto;margin:0 0 26px}
+.post-body table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:440px}
+.post-body th,.post-body td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.post-body thead th{background:var(--ink);color:var(--paper);font-weight:600}
+.post-body tbody tr:nth-child(even){background:var(--paper)}
+
+/* 引用・補足 */
+.post-note{background:var(--orange-soft);border-radius:6px;padding:16px 20px;margin:0 0 26px;font-size:.88rem;line-height:1.9;color:var(--ink-soft)}
+.post-note strong{background:none}
+
+/* FAQ */
+.post-faq{margin:44px 0 0}
+.post-faq__ttl{font-family:var(--hand);font-size:1.5rem;font-weight:600;margin:0 0 20px}
+.post-faq__item{border:1px solid var(--line);border-radius:6px;padding:18px 22px;margin:0 0 14px;background:var(--white)}
+.post-faq__q{font-weight:700;font-size:.96rem;margin:0 0 10px;padding-left:26px;position:relative}
+.post-faq__q::before{content:"Q";position:absolute;left:0;top:-2px;font-family:var(--en);font-weight:700;color:var(--orange-deep);background:var(--orange-soft);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem}
+.post-faq__a{font-size:.88rem;line-height:1.9;color:var(--ink-soft);margin:0;padding-left:26px;position:relative}
+.post-faq__a::before{content:"A";position:absolute;left:0;top:-2px;font-family:var(--en);font-weight:700;color:var(--teal);background:var(--teal-soft);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem}
+
+/* 著者 */
+.post-author{display:flex;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px 24px;margin:44px 0 0}
+.post-author__avatar{width:56px;height:56px;border-radius:50%;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-weight:700;color:var(--orange-deep);flex-shrink:0;font-size:1.2rem}
+.post-author__name{font-weight:700;font-size:.96rem;margin:0 0 5px}
+.post-author__bio{font-size:.82rem;color:var(--ink-soft);line-height:1.8;margin:0}
+
+/* 記事末CTA */
+.post-cta{text-align:center;background:var(--ink);border-radius:8px;padding:40px 28px;margin:48px 0 0;position:relative;overflow:hidden}
+.post-cta__ttl{font-family:var(--hand);font-size:1.4rem;font-weight:600;color:var(--paper);margin:0 0 12px}
+.post-cta__txt{font-size:.9rem;color:rgba(251,248,241,.78);line-height:1.9;margin:0 0 22px}
+
+/* 関連記事 */
+.post-related{margin:52px 0 0}
+.post-related__ttl{font-family:var(--hand);font-size:1.3rem;font-weight:600;margin:0 0 20px;text-align:center}
+
+@media(max-width:560px){
+  .blog-grid{grid-template-columns:1fr;gap:22px}
+  .post-body{font-size:.94rem}
+}
+</style>
+
+<link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DVGF39S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- エントランスアニメーション（ローダー廃止：読み込み時に見出しをフェードアップ） -->
+<style>
+.site-nav{animation:lpEnterNav .65s var(--ease) both}.phero .eyebrow,.post-head__cat,.blog-hero__kicker{animation:lpEnter .7s var(--ease) both}
+.phero h1,.post-head__title,.blog-hero__title{animation:lpEnter .78s var(--ease) .12s both}
+.phero p,.post-head__meta,.blog-hero__lead{animation:lpEnter .78s var(--ease) .26s both}
+@keyframes lpEnter{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}@keyframes lpEnterNav{from{opacity:0;translate:0 -14px}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:reduce){.phero .eyebrow,.phero h1,.phero p,.post-head__cat,.post-head__title,.post-head__meta,.blog-hero__kicker,.blog-hero__title,.blog-hero__lead,.site-nav{animation:none}}
+</style>
+
+
+<!-- ===== NAV ===== -->
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a href="../" class="site-nav__logo" aria-label="Linplan ホーム"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>Linplan<span style="color:var(--orange)">.</span></span></a>
+    <div class="site-nav__links">
+      <a href="../about.html">私について</a>
+      <a href="../services.html">サービス</a>
+      <a href="../ai-taisaku.html">AI対策</a>
+      <a href="../pricing.html">料金</a>
+      <a href="../works.html">制作実績</a>
+      <a href="../faq.html">よくある質問</a>
+      <a href="./">BLOG</a>
+      <a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
+    </div>
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <div class="mobile-menu__bar">
+    <button class="mobile-menu__close" aria-label="閉じる">×</button>
+  </div>
+  <a href="../about.html">私について</a>
+  <a href="../services.html">サービス</a>
+  <a href="../ai-taisaku.html">AI対策</a>
+  <a href="../pricing.html">料金</a>
+  <a href="../works.html">制作実績</a>
+  <a href="../faq.html">よくある質問</a>
+  <a href="./">BLOG</a>
+  <a href="../contact.html" class="btn site-nav__cta">無料で相談！</a>
+</div>
+
+
+<main>
+  <div class="post-wrap">
+    <nav class="post-breadcrumb"><a href="../">ホーム</a> ／ <a href="./">相談室</a> ／ Jev（ジェブ）とは</nav>
+  </div>
+
+  <article>
+   <div class="post-wrap">
+    <header class="post-head">
+      <span class="post-head__cat">しくみ・基礎</span>
+      <h1 class="post-head__title">Jev（ジェブ）とは？<br>文章を書かずに「判断」だけ返すAIの仕組みと使いどころ</h1>
+      <div class="post-head__meta"><span>公開 <time datetime="2026-11-17">2026.11.17</time></span><span>更新 <time datetime="2026-11-17">2026.11.17</time></span><span>約7分で読めます</span><span>カテゴリ：しくみ・基礎</span></div>
+    </header>
+
+    <!-- AEO最適化：冒頭の即答ボックス -->
+    <div class="post-answer">
+      <p class="post-answer__label">先に結論</p>
+      <p>Jev（ジェブ）は、アメリカのTypeSafe AIが2026年9月15日に早期アクセスで公開した、<strong>文章ではなく「判断」だけを返すAIモデル</strong>です。返信文やコード、判断の理由の説明は書かず、あらかじめ決めた選択肢から1つを選んだり、点数をつけたりして、その確からしさ（確率）と一緒に返します。<br>
+      そのぶん、<strong>速くて安い</strong>のが特長です。お問い合わせの仕分けのように、<strong>選択肢と基準が決まっていて、回数が多い判断</strong>に向いています。<br>
+      ただし今はウェイトリスト制の早期アクセスで、使うには開発の作業が必要です。お店の方が直接触るより、仕組みに組み込んで使うものです。</p>
+    </div>
+
+    <!-- 目次 -->
+    <nav class="post-toc">
+      <p class="post-toc__ttl">この記事でわかること</p>
+      <ol>
+        <li><a href="#a1">Jev（ジェブ）とは</a></li>
+        <li><a href="#a2">ChatGPTなどとの違い</a></li>
+        <li><a href="#a3">Jevが返せる4つの「判断」</a></li>
+        <li><a href="#a4">料金と速さ</a></li>
+        <li><a href="#a5">お店・会社での使いどころ</a></li>
+        <li><a href="#a6">使う前に知っておきたい注意点</a></li>
+        <li><a href="#a7">よくある質問</a></li>
+      </ol>
+    </nav>
+
+    <div class="post-body">
+      <p>「AIに問い合わせメールを仕分けてもらいたいけれど、ChatGPTだと毎回の料金や待ち時間が気になる」<br>
+      「AIの答えがときどき決めた形から外れて、仕組みに組み込みにくい」</p>
+      <p>AIを業務に組み込もうとすると、こうした悩みにぶつかることがあります。<br>
+      そこに出てきたのが、<strong>Jev（ジェブ）</strong>という、文章を書かないAIです。</p>
+      <p>この記事では、Jevが何をするAIなのか、ChatGPTなどと何が違うのか、中小企業やお店でどんな場面に使えそうかを、公式の発表と国内の検証記事をもとにまとめます。</p>
+
+      <h2 id="a1">Jev（ジェブ）とは</h2>
+      <p>Jevは、アメリカ西海岸のAI企業<strong>TypeSafe AI</strong>が作ったAIモデルです。2026年9月15日に早期アクセスとして公開されました。創業者のDiogo Almeida氏は、OpenAIでChatGPTのもとになった研究に関わった人物だと紹介されています。</p>
+      <p>TypeSafe AIはJevを<strong>「System One（システムワン）モデル」</strong>と呼んでいます。人が考え込まずにパッと判断する「速い思考」になぞらえた名前で、じっくり文章を組み立てるのではなく、<strong>素早く判断することだけに絞ったAI</strong>という位置づけです。</p>
+      <p>いちばんの特徴は、<strong>文章を1文字も書かない</strong>ことです。返すのは「どれを選んだか」「何点か」「正しい確率はどのくらいか」といった判断の結果と、その確からしさだけ。判断の理由を説明する文章も書きません。</p>
+
+      <h2 id="a2">ChatGPTなどとの違い</h2>
+      <p>ChatGPTやClaudeのような、文章を書くAIと比べると、違いがよくわかります。</p>
+      <div class="post-table-wrap">
+        <table>
+          <thead><tr><th></th><th>ChatGPT・Claudeなど</th><th>Jev</th></tr></thead>
+          <tbody>
+            <tr><td>返すもの</td><td>文章（返信文・説明・コードなど）</td><td>判断の結果と、その確率だけ</td></tr>
+            <tr><td>答えの形</td><td>頼んだ形から外れることがある</td><td>決めた選択肢・形からは外れない</td></tr>
+            <tr><td>速さ</td><td>数秒〜それ以上かかることも</td><td>1回0.07〜0.5秒（公式の数字）</td></tr>
+            <tr><td>料金</td><td>読ませる文章と書かせる文章の両方にかかる</td><td>読ませる文章だけ（返す判断は無料）</td></tr>
+            <tr><td>得意なこと</td><td>文章を書く・考えを説明する</td><td>選ぶ・採点する・判定する</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>文章を書くAIに仕分けを頼むと、「お問い合わせの種類は『予約』です。理由は…」のように、決めた形から外れた答えが返ってくることがあります。仕組みに組み込むときは、これがつまずきの原因になります。</p>
+      <p>Jevは、<strong>あらかじめ決めた選択肢の中からしか答えない</strong>ので、ありもしない選択肢をでっち上げることがありません。TypeSafe AIはこれを「ハルシネーション（AIのもっともらしい作り話）が起きない」と説明しています。<br>
+      ただし、<strong>選択肢の中から間違ったものを選ぶことはあります</strong>。「答えの形が崩れない」と「答えが正しい」は別のことなので、ここは混同しないようにしたいところです。</p>
+
+      <h2 id="a3">Jevが返せる4つの「判断」</h2>
+      <p>公式のドキュメントでは、Jevに聞ける質問の型が4つ紹介されています。</p>
+      <ul>
+        <li><strong>Choice（選ぶ）</strong>：選択肢の中から1つを選ぶ。例：この問い合わせは「予約・見積もり・苦情・営業」のどれ？</li>
+        <li><strong>Score（採点する）</strong>：決めた基準で点数をつける。例：この口コミの満足度は5段階でいくつ？</li>
+        <li><strong>Noul（正しいか判定する）</strong>：ある文が正しい確率を0〜1で返す。例：「このメールは営業メールである」は正しい？</li>
+        <li><strong>Box（場所を示す）</strong>：画像の中で、目当てのものがある位置を返す</li>
+      </ul>
+      <p>ChoiceとScoreには、どのくらい自信があるか（確信度）も一緒に返ってきます。<strong>「確信度が高いものは自動で処理し、低いものだけ人が確認する」</strong>といった使い分けができるのが、業務に組み込みやすい点です。</p>
+      <p>読ませるデータは、文章・JSON（システム同士でやりとりする形式のデータ）・画像に対応しています。1回の問い合わせで、同じデータに対して複数の質問をまとめて聞くこともできます。</p>
+
+      <h2 id="a4">料金と速さ</h2>
+      <h3>料金</h3>
+      <p>2026年11月17日時点の早期アクセス価格は、<strong>読み込ませる文章100万トークンあたり0.042ドル</strong>です。返ってくる判断の部分は無料です。トークンは、AIが文章を数えるときの単位です。</p>
+      <p>たとえば、1件あたり500トークンほどの問い合わせメールを1,000件仕分けても、読み込むのは合計50万トークン。<strong>約0.021ドル、日本円で3円ほど</strong>（1ドル150円で計算）です。</p>
+      <p>なお、TypeSafe AI自身が「この価格が補助的なものでないとは言い切れない」と書いているとおり、早期アクセス中の価格です。今後変わる可能性があります。</p>
+      <h3>速さ</h3>
+      <p>公式の説明では、1回の判断にかかる時間は<strong>0.07〜0.5秒</strong>ほど。国内の検証記事でも、平均0.2秒ほどだったと報告されています。</p>
+      <p>TypeSafe AIのサイトには「193.6倍速く、444.6倍安い」という数字が載っていますが、これは<strong>同社が用意した作業での比較</strong>です。同社自身も、実際の業務ではこれほどの差は出にくいかもしれないとしています。数字は目安として見るのがよいと思います。</p>
+
+      <h2 id="a5">お店・会社での使いどころ</h2>
+      <p>Jevが力を発揮するのは、<strong>「選択肢と基準が決まっていて、回数が多い判断」</strong>です。中小企業やお店の業務でいえば、たとえば次のような場面が考えられます。</p>
+      <h3>1. お問い合わせメール・フォームの仕分け</h3>
+      <p>届いたお問い合わせを「予約・見積もり・苦情・営業・その他」に分けて、担当者や返信の優先度を振り分けます。営業メールやいたずらの送信を先にはじいておくこともできます。</p>
+      <h3>2. 口コミ・アンケートの採点</h3>
+      <p>Googleの口コミやアンケートの自由記入欄を、満足・不満・要対応などに分けたり、点数をつけたりします。数が多くても、低い評価のものだけを人が先に読めるようになります。</p>
+      <h3>3. 申込内容のチェック</h3>
+      <p>予約や申込の内容に、必要な情報がそろっているか、条件に合っているかを判定します。確信度の低いものだけをスタッフが確認する流れにすると、手間を減らせます。</p>
+      <h3>文章を書くAIとの組み合わせ</h3>
+      <p>Jevは返信文を書けないので、実際には<strong>文章を書くAIと組み合わせる</strong>使い方が現実的です。</p>
+      <ol>
+        <li>Jevが、届いたお問い合わせを仕分ける（速くて安い）</li>
+        <li>返信が必要なものだけ、ChatGPTやClaudeが返信の下書きを書く</li>
+        <li>人が下書きを確認して送る</li>
+      </ol>
+      <p>全部を文章を書くAIに任せるより、料金も待ち時間も抑えられます。AIをシステムから使う方法（API）の基本は、<a href="ai-api-comparison.html">AIのAPIとは？料金・おすすめを比較</a>でまとめています。</p>
+      <div class="post-note"><strong>数が少ないうちは、無理に使わなくて大丈夫</strong><br>
+      1日に数件のお問い合わせなら、人が読んで仕分けたほうが早く、正確です。Jevのような仕組みが役に立つのは、件数が多くて人の手が追いつかなくなってきたときです。「AIを入れること」を目的にせず、まず困りごとから考えるのがおすすめです。</div>
+
+      <h2 id="a6">使う前に知っておきたい注意点</h2>
+      <h3>1. 今はウェイトリスト制の早期アクセス</h3>
+      <p>2026年11月17日時点では、だれでもすぐに使えるわけではなく、ウェイトリストに登録して順番を待つ形です。料金や仕様も、正式公開までに変わる可能性があります。</p>
+      <h3>2. 使うには開発の作業が必要</h3>
+      <p>ChatGPTのように画面で話しかける道具ではなく、<strong>システムから呼び出して使うAI（API）</strong>です。案内やドキュメントも英語です。お店の業務に組み込むには、問い合わせフォームやメールとつなぐ開発が必要になります。</p>
+      <h3>3. 日本語は英語より精度が下がることがある</h3>
+      <p>国内の検証記事によると、公式のドキュメントでは、日本語などは英語より精度が下がる場合があると案内されています。一方で、日本語の問い合わせ40件を95%（38件）正しく仕分けできたという検証結果もあります。<strong>自分の業務のデータで試してから</strong>決めるのが確実です。</p>
+      <h3>4. 「自信満々の間違い」もある</h3>
+      <p>同じ検証では、間違えた2件にも高い確信度がついていました。確信度の高さだけで自動処理に回すと、間違いがそのまま通ってしまうことがあります。<strong>お客様に直接関わる判断は、最初のうちは人が確認する</strong>流れにしておくと安心です。</p>
+      <h3>5. 性能の数字は、まだ多くが会社自身の測定</h3>
+      <p>速さや正確さの数字の多くは、TypeSafe AIが自社で測ったものです。公開されて2か月ほどで、第三者による検証はまだ多くありません。</p>
+      <div class="post-note"><strong>Linplanの対応について</strong><br>
+      Linplanでは、ホームページ制作にあわせて、お問い合わせの仕分けや返信の下書きなど、<a href="../services.html">AIを業務に組み込む仕組みづくり</a>もご相談いただけます。Jevのような新しいAIも含めて、件数や費用に見合うかどうかから一緒に考えます。船橋市内・近隣の方には<a href="../area/funabashi.html">直接お伺いして</a>お話を聞くこともできます。</div>
+
+      <h3>参考資料</h3>
+      <ul>
+        <li><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener">Introducing System One Models &amp; Jev</a>（TypeSafe AI・英語）</li>
+        <li><a href="https://typesafe.ai/" target="_blank" rel="noopener">TypeSafe AI</a>（公式サイト・英語）</li>
+        <li><a href="https://docs.typesafe.ai/introduction" target="_blank" rel="noopener">TypeSafe AI Documentation</a>（公式ドキュメント・英語）</li>
+        <li><a href="https://blog.nextscape.net/archives/2026/11/04/123116" target="_blank" rel="noopener">TypeSafe AI「Jev」とは？GitHub Issueのトリアージで実力を検証してみた</a>（NEXTSCAPE blog）</li>
+      </ul>
+      <p class="post-note">※2026年11月17日時点の情報です。早期アクセス中のため、料金・仕様・利用条件は今後変わる可能性があります。</p>
+    </div>
+
+    <!-- FAQ -->
+    <section class="post-faq" id="a7">
+      <h2 class="post-faq__ttl">よくある質問</h2>
+      <div class="post-faq__item">
+        <p class="post-faq__q">Jevは日本語の文章でも使えますか？</p>
+        <p class="post-faq__a">使えます。ただし公式のドキュメントでは、日本語などは英語より精度が下がる場合があると案内されていると報告されています。日本語の問い合わせ40件で95%正しく仕分けできたという国内の検証もありますが、使う前に自分のデータで試すのが確実です。</p>
+      </div>
+      <div class="post-faq__item">
+        <p class="post-faq__q">Jevは無料で使えますか？</p>
+        <p class="post-faq__a">無料ではありません。2026年11月17日時点の早期アクセス価格は、読み込ませる文章100万トークンあたり0.042ドルで、返ってくる判断の部分は無料です。早期アクセス中の価格のため、今後変わる可能性があります。</p>
+      </div>
+      <div class="post-faq__item">
+        <p class="post-faq__q">JevはChatGPTの代わりになりますか？</p>
+        <p class="post-faq__a">なりません。Jevは決められた選択肢から選ぶ・点数をつけるといった判断だけを返し、返信文や説明文は書きません。文章が必要な場面では、これまでどおりChatGPTやClaudeなどを使い、Jevは仕分けや判定の部分を受け持つ、という組み合わせになります。</p>
+      </div>
+    </section>
+
+    <!-- 著者 -->
+    <div class="post-author">
+      <div class="post-author__avatar">坪</div>
+      <div>
+        <p class="post-author__name">坪山ちひろ｜Linplan代表</p>
+        <p class="post-author__bio">千葉県船橋市を拠点に、中小企業・店舗向けの Web・アプリ・AI を、企画から運用までひとりで一気通貫で手がけています。<a href="../about.html">プロフィールを見る →</a></p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="post-cta">
+      <p class="post-cta__ttl">AIで減らせる手間、一緒に探します</p>
+      <p class="post-cta__txt">お問い合わせの仕分けや返信など、AIに任せられる作業があるかを一緒に考えます。<br>船橋市内・近隣の方には直接お伺いします。無料相談からお気軽にどうぞ。</p>
+      <a href="../contact.html" class="btn btn--primary">無料で相談する</a>
+    </div>
+
+    <!-- 関連記事 -->
+    <section class="post-related">
+      <h2 class="post-related__ttl">あわせて読みたい</h2>
+      <div class="blog-grid">
+        <a href="ai-api-comparison.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">選び方・比較</span><span>AIのAPIとは</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">AIのAPIとは？無料で使えるものから料金・おすすめ・使い方まで比較【2026年版】</h3><div class="post-card__meta"><span>2026.09.25</span><span>約10分</span></div></div>
+        </a>
+        <a href="chatgpt-business-hub.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span>Business Hubとは</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">ChatGPT版サーチコンソール「Business Hub」とは？お店がわかること・今やっておくこと</h3><div class="post-card__meta"><span>2026.11.16</span><span>約7分</span></div></div>
+        </a>
+        <a href="what-is-webmcp.html" class="post-card">
+          <div class="post-card__thumb"><span class="post-card__cat">AEO/GEO</span><span>WebMCPとは</span></div>
+          <div class="post-card__body"><h3 class="post-card__title">WebMCPとは？AIがホームページで予約や問い合わせをする時代の準備</h3><div class="post-card__meta"><span>2026.09.30</span><span>約6分</span></div></div>
+        </a>
+      </div>
+    </section>
+   </div>
+  </article>
+</main>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="site-footer__logo"><span style="display:inline-flex;align-items:center;gap:4px;font-family:var(--hand);font-weight:600;font-size:1.5rem;color:var(--ink);letter-spacing:-.01em;line-height:1"><span style="display:inline-block;width:11px;height:11px;background:var(--teal);border-radius:0 60% 0 60%;transform:rotate(8deg)"></span>Linplan<span style="color:var(--orange)">.</span></span></div>
+  <div class="site-footer__tag">AIから選ばれるサイト作りを。</div>
+  <nav class="site-footer__nav">
+    <a href="../about.html">私について</a>
+    <a href="../services.html">サービス</a>
+    <a href="../ai-taisaku.html">AI対策</a>
+    <a href="../pricing.html">料金</a>
+    <a href="../works.html">制作実績</a>
+    <a href="../faq.html">よくある質問</a>
+    <a href="./">相談室</a>
+    <a href="../contact.html">お問い合わせ</a>
+    <a href="../aeo-geo.html">AEO・GEO対応とは</a>
+    <a href="../">船橋のホームページ制作</a>
+    <a href="../area/funabashi.html">対応エリア・対面サポート</a>
+    <a href="../privacy.html">プライバシーポリシー</a>
+    <a href="../tokushoho.html">特定商取引法に基づく表記</a>
+    <a href="https://www.instagram.com/linplan.wb/" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+  <div class="site-footer__meta">千葉県船橋市を拠点に全国対応（打ち合わせはオンラインで完結） ／ c.tsuboyama@linplan.jp</div>
+  <div class="site-footer__copy">© 2026 Linplan — Web・アプリ・AI、ひとりで一気通貫。</div>
+</footer>
+
+
+
+
+<script>
+/* Linplan サイト共通スクリプト（軽量・依存なし） */
+(function () {
+  'use strict';
+
+  function ready(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function () {
+    /* ---- nav scroll state ---- */
+    var nav = document.querySelector('.site-nav');
+    function onScroll() {
+      if (!nav) return;
+      if (window.scrollY > 30) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---- mobile menu ---- */
+    var ham = document.querySelector('.hamburger');
+    var menu = document.querySelector('.mobile-menu');
+    var close = document.querySelector('.mobile-menu__close');
+    if (ham && menu) {
+      function closeMenu(){ menu.classList.remove('open'); ham.classList.remove('open'); ham.setAttribute('aria-expanded','false'); }
+      function openMenu(){ menu.classList.add('open'); ham.classList.add('open'); ham.setAttribute('aria-expanded','true'); }
+      ham.addEventListener('click', function () { (menu.classList.contains('open') ? closeMenu : openMenu)(); });
+      if (close) close.addEventListener('click', closeMenu);
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+    }
+
+    /* ---- scroll reveal ---- */
+    var revs = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && revs.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revs.forEach(function (el) { io.observe(el); });
+    } else {
+      revs.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    /* ---- FAQ accordion ---- */
+    document.querySelectorAll('.faq-item').forEach(function (item) {
+      var q = item.querySelector('.faq-q');
+      var a = item.querySelector('.faq-a');
+      if (!q || !a) return;
+      q.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+        item.classList.toggle('open');
+        a.style.maxHeight = isOpen ? null : a.scrollHeight + 'px';
+      });
+    });
+  });
+})();
+
+</script>
+<script>(function(){document.querySelectorAll('.polaroid__shot,.browser__shot').forEach(function(s){if(!s.querySelector('.scroll-hint')){var h=document.createElement('span');h.className='scroll-hint';h.textContent='⇅ スクロール';s.appendChild(h);}s.addEventListener('scroll',function(){if(s.scrollTop>4)s.classList.add('scrolled');else s.classList.remove('scrolled');},{passive:true});});})();</script>
+
+
+<script src="../theme.js"></script>
+</body>
+</html>
